@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+setup.py
+scanpy_dgscrna/__init__.py
+scanpy_dgscrna/__main__.py
+scanpy_dgscrna/plotting.py
+scanpy_dgscrna/preprocessing.py
+scanpy_dgscrna/tools.py
+scanpy_dgscrna.egg-info/PKG-INFO
+scanpy_dgscrna.egg-info/SOURCES.txt
+scanpy_dgscrna.egg-info/dependency_links.txt
+scanpy_dgscrna.egg-info/requires.txt
+scanpy_dgscrna.egg-info/top_level.txt

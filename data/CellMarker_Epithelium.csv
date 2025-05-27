@@ -1,0 +1,18 @@
+,CellMarker_normal+Epithelium+Airway epithelium+Basal cell,CellMarker_normal+Epithelium+Airway epithelium+Club cell (Clara cell),CellMarker_normal+Epithelium+Airway epithelium+Mucous cell,CellMarker_normal+Epithelium+Airway epithelium+Secretory cell,CellMarker_normal+Epithelium+Airway epithelium+Ionocyte,CellMarker_normal+Epithelium+Airway epithelium+Pericyte,CellMarker_normal+Epithelium+Airway epithelium+Smooth muscle cell,CellMarker_normal+Epithelium+Airway epithelium+Ciliated cell,CellMarker_normal+Epithelium+Airway epithelium+Hillock cell,CellMarker_normal+Epithelium+Airway epithelium+Pulmonary neuroendocrine cell,CellMarker_normal+Epithelium+Airway epithelium+Lonocyte,CellMarker_normal+Epithelium+Airway epithelium+Brush cell (Tuft cell),CellMarker_normal+Epithelium+Airway epithelium+Mucous-ciliated cell,CellMarker_normal+Epithelium+Airway epithelium+Suprabasal cell,CellMarker_normal+Epithelium+Airway epithelium+Goblet cell,CellMarker_normal+Epithelium+Airway epithelium+Deuterosomal cell,CellMarker_normal+Epithelium+Airway epithelium+Neuroendocrine cell
+0,KRT5,KRT19,CEACAM6,KRT4,CFTR,ACTA2,ACTA2,FOXJ1,KRT13,INSM1,CFTR,DCLK1,FOXJ1,NOTCH3,MSMB,FOXN4,ASCL1
+1,KRT19,SLPI,,PIGR,ASCL3,MYL9,MYL9,FAM183A,KRT4,ASCL1,ASCL3,RGS13,MUC5AC,KRT19,TFF3,DEUP1,CHG1
+2,KRT15,MSMB,,MUC5B,FOXI1,,,LRRIQ1,,HOXB5,RARRES2,ASCL2,,KRT5,WFDC2,CDC20B,
+3,LGALS1,SCGB1A1,,BPIFB1,,,,TSPAN1,,CALCA,FOXI1,POU2F3,,TP63 low,SCGB3A1,FOXJ1,
+4,ITGA6,BPIFB1,,MUC5AC,,,,CAPS,,CHGA,,IRAG2,,,MUC5AC,CCDC67,
+5,S100A2,TFF3,,WFDC2,,,,TUBB4B,,CGRP,,GNAT3,,,SLPI,,
+6,PDPN,SCGB3A1,,SERPINB3,,,,TPPP3,,,,TRPM5,,,BPIFB1,,
+7,NGFR,MUC5B,,MECOM,,,,DNAH5,,,,AVIL,,,MUC5B,,
+8,ITGB4,WFDC2,,SCGB1A1,,,,C20orf85,,,,LRMP,,,SPDEF,,
+9,KRT14,KRT15,,SLC16A9,,,,DNAH12,,,,,,,GP2,,
+10,TP63,LYPD2,,SERPINB4,,,,SNTN,,,,,,,,,
+11,NPPC,CBR2,,ALDH1A1,,,,PIFO,,,,,,,,,
+12,LAMB3,CYPD2,,SLC6A14,,,,CCDC153,,,,,,,,,
+13,DST,,,B4GALT5,,,,CCDC113,,,,,,,,,
+14,BCAM,,,ADH7,,,,MLF1,,,,,,,,,
+15,LAMA3,,,SLPI,,,,LZTFL1,,,,,,,,,
+16,DAPL1,,,,,,,,,,,,,,,,

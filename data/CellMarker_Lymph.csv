@@ -1,0 +1,11 @@
+,CellMarker_normal+Lymph+Lymph+Macrophage,CellMarker_normal+Lymph+Lymph+Leukocyte,CellMarker_normal+Lymph+Lymph+B cell,CellMarker_normal+Lymph+Lymph+Natural killer cell,CellMarker_normal+Lymph+Lymph+Lymphatic cell,CellMarker_normal+Lymph+Lymph+T cell,CellMarker_normal+Lymph+Lymph+Dendritic cell,CellMarker_cancer+Lymph+Lymph+Lymphocyte,CellMarker_cancer+Lymph+Lymph+Cancer cell
+0,MARCO,PTPRC,MS4A1,NKG7,LYVE1,CD3E,ITGAX,NUSAP1,BCL2
+1,C1QA,,,B3GAT1,LYVE-1,CD5,,PCNA,Traf2DN
+2,CD209,,,TNFSF10,,CD2,,ATP5F1C,
+3,,,,GEM,,CD3,,ATP5C1,
+4,,,,CD2,,,,,
+5,,,,HAVCR2,,,,,
+6,,,,CD57,,,,,
+7,,,,TRAIL,,,,,
+8,,,,KIR,,,,,
+9,,,,TIM3,,,,,

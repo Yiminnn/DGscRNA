@@ -1,0 +1,7 @@
+,CellMarker_normal+Lymph node+Lymph node+T cell,CellMarker_normal+Lymph node+Lymph node+Langerhans cell,CellMarker_normal+Lymph node+Lymph node+Plasmacytoid dendritic cell(pDC),CellMarker_normal+Lymph node+Lymph node+B cell,CellMarker_normal+Lymph node+Lymph+T helper(Th) cell,CellMarker_normal+Lymph node+Lymphoid tissue+Lymphocyte,CellMarker_cancer+Lymph node+Lymph+CD8 T cell,CellMarker_cancer+Lymph node+Lymph+Regulatory T(Treg) cell,CellMarker_cancer+Lymph node+Lymph+T cell,CellMarker_cancer+Lymph node+Lymph+T helper(Th) cell,CellMarker_cancer+Lymph node+Lymph node+Lymphocyte,CellMarker_normal+Lymph node+Lymph+T cell,CellMarker_cancer+Lymph node+Lymph node+Memory T cell,CellMarker_cancer+Lymph node+Lymph node+CD4 T cell,CellMarker_cancer+Lymph node+Lymph node+Rosetting T cell,CellMarker_cancer+Lymph node+Lymph node+Naive T(Th0) cell,CellMarker_normal+Lymph node+Lymph+CD8 T cell
+0,CD3D,CD1A,IL3RA,CD19,CCR6,IRF4,PDCD1,CTLA4,ITGAE,TOX2,GNLY,TRAV1-2,CD45,DPP4,TOX,CD45,PRF1
+1,,CD207,,,KLRB1,,ITGAE,IL2RA,ENTPD1,CD200,PRF1,,,CD69,TOX2,,GZMB
+2,,,,,CD161,,ENTPD1,FOXP3,PDCD1,,NR4A2,,,CD38,,,
+3,,,,,,,PD-1,CD25,,,GZMA,,,CD26,,,
+4,,,,,,,CD103,,,,GZMB,,,,,,
+5,,,,,,,CD39,,,,NR4A1,,,,,,

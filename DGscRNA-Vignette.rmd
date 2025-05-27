@@ -1,0 +1,810 @@
+---
+title: "DGscRNA-Vignette"
+output: html_document
+date: "2023-12-15"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warnings=FALSE)
+```
+
+## Load Packages and Libraries
+```{r lib}
+source(file.path('R', 'source.R'))
+```
+
+## Load Data
+
+Load the single cell data
+```{r data}
+# panc8 is the demo data
+data("panc8")
+panc8 <- SplitObject(panc8, split.by = "tech")
+panc8 <- c(panc8$celseq2, panc8$smartseq2)
+```
+
+## Preprocessing
+Run preprocessing on the list of seurat objects
+```{r preprocessing}
+res.preprocessing <- list_preprocessing(panc8)
+```
+## Dimensionality Reductions
+```{r reduction}
+# proceed to run available dimensionality reduction techniques (PCA & UMAP, followed by scCCESS later)
+integrated_data <- dim_reductions(res.preprocessing$integrated_data)
+```
+## Before Clustering
+``` {r setup}
+# set up tensorflow
+tensorflow::install_tensorflow()
+```
+
+## Clustering
+```{r reduction}
+# proceed to run available clustering strategies (Seurat, 'HDBSCAN', 'monocle3', 'scCCESS')
+integrated_data <- clustering_strategies(integrated_data)
+
+# add the T cell validation column (if available)
+orig_T_cell_annotation <- sample(c(0,1), replace=TRUE, size=ncol(integrated_data))
+integrated_data <- AddMetaData(integrated_data,
+                               metadata = orig_T_cell_annotation,
+                               col.name = 'orig_T_cell_annotation')
+
+saveRDS(integrated_data, file = file.path('data', 'integrated_data.RDS'))
+
+
+```
+
+## DEG Markers
+```{r reduction}
+# proceed to run find markers for all clusters.
+DEG_markers <- find_markers_on_id(integrated_data)
+saveRDS(DEG_markers, file = file.path('data', 'DEG_markers.RDS'))
+```
+
+## Prepare Markers List for Grid Search
+The prepared markers will be in a list format. 
+```{r markers}
+
+full_markers <- list()
+
+# CellMarker 2.0
+cell_marker <- read.xlsx(file.path('data', 'CellMarker_2.xlsx'))
+
+selected_tissue <- 'Lymph'
+
+for (selected_tissue in c('Lymph', 'Lymph node', 'Lymphoid tissue', 'Thyroid', 'Epithelium', 'Blood', 'Thymus')){
+      
+      markers <- list()
+      
+      ### get human
+      single_cell_markers <- cell_marker[cell_marker$species == 'Human', ]
+      
+      single_cell_markers <- single_cell_markers[single_cell_markers$tissue_class %in% selected_tissue, ]
+      
+      # combine the marker and symbol in the same column to improve the chances of hits
+      temp <- single_cell_markers
+      temp$marker <- single_cell_markers$Symbol
+      temp$Symbol <- single_cell_markers$marker
+      single_cell_markers <- rbind(single_cell_markers, temp)
+      
+      # get the overlapping genes 
+      single_cell_markers[is.na(single_cell_markers)] <- 'N/A'
+      
+      # proceed to create the map for the list
+      single_cell_markers$tissue_type_and_cell_type <- paste0(single_cell_markers$tissue_class, '+', single_cell_markers$tissue_type, '+', gsub('+', '', single_cell_markers$cell_name, fixed = T))#(
+      
+      # for cancer cells, add the cancer tag to the front
+      cancer_idx <- single_cell_markers$cell_type == 'Cancer cell'
+      single_cell_markers[cancer_idx, 'tissue_type_and_cell_type'] <- paste0('cancer', '+', single_cell_markers[cancer_idx, 'tissue_type_and_cell_type'])
+      single_cell_markers[!cancer_idx, 'tissue_type_and_cell_type'] <- paste0('normal', '+', single_cell_markers[!cancer_idx, 'tissue_type_and_cell_type'])
+      
+      for (ct in unique(single_cell_markers$tissue_type_and_cell_type)){
+        idx <- which(single_cell_markers$tissue_type_and_cell_type %in% ct)
+        curr <- unique(single_cell_markers[idx, 'Symbol'])
+        
+        markers[[paste0('CellMarker_',ct)]] <- curr[!(curr %in% 'N/A')]
+      
+      }
+      
+      full_markers[[paste0('CellMarker_', selected_tissue)]] <- markers
+      
+}
+
+markers <- list()
+
+# all combined
+single_cell_markers <- cell_marker[cell_marker$species == 'Human', ]
+
+single_cell_markers <- single_cell_markers[single_cell_markers$tissue_class %in% c('Lymph', 'Lymph node', 'Lymphoid tissue', 'Thyroid', 'Epithelium', 'Blood', 'Thymus'), ]
+      
+# combine the marker and symbol in the same column to improve the chances of hits
+temp <- single_cell_markers
+temp$marker <- single_cell_markers$Symbol
+temp$Symbol <- single_cell_markers$marker
+single_cell_markers <- rbind(single_cell_markers, temp)
+
+# get the overlapping genes 
+single_cell_markers[is.na(single_cell_markers)] <- 'N/A'
+
+# proceed to create the map for the list
+single_cell_markers$tissue_type_and_cell_type <- paste0(single_cell_markers$tissue_type, '+', gsub('+', '', single_cell_markers$cell_name, fixed = T))#'TissuesCombined', '+', 
+
+# for cancer cells, add the cancer tag to the front
+cancer_idx <- single_cell_markers$cell_type == 'Cancer cell'
+single_cell_markers[cancer_idx, 'tissue_type_and_cell_type'] <- paste0('cancer', '+', single_cell_markers[cancer_idx, 'tissue_type_and_cell_type'])
+single_cell_markers[!cancer_idx, 'tissue_type_and_cell_type'] <- paste0('normal', '+', single_cell_markers[!cancer_idx, 'tissue_type_and_cell_type'])
+
+for (ct in unique(single_cell_markers$tissue_type_and_cell_type)){
+  idx <- which(single_cell_markers$tissue_type_and_cell_type %in% ct)
+  curr <- unique(single_cell_markers[idx, 'Symbol'])
+  markers[[paste0('CellMarker_AllTissues_',ct)]] <- curr[!(curr %in% 'N/A')]
+}
+
+full_markers[['CellMarker_AllTissues']] <- markers
+
+# Human Protein Atlas
+protein_atlas_markers <- read.csv(file = file.path('data', 'protein_atlas_markers.tsv'), sep = '\t')
+
+tissues_of_interest <- c('Thyroid')
+typeofmarker <- "Evidence at protein level"
+specificity <- 'Cell type enhanced'
+for (typeofmarker in c("Evidence at protein level", "No human protein/transcript evidence", "Evidence at transcript level")){
+  for (specificity in c('Cell type enhanced', 'Cell type enriched', 'Group enriched')){
+    
+        markers <- list()
+        
+        # only get the markers that are cell type enhanced, enriched, and group enriched
+        atlas_markers <- protein_atlas_markers[which(protein_atlas_markers$RNA.single.cell.type.specificity %in% c(specificity)),]
+        
+        # get typeofmarker
+        atlas_markers <- atlas_markers[which(atlas_markers$HPA.evidence %in% c(typeofmarker)),]
+        
+        # get only the ones that contain the desired tissues
+        idx <- rep(F, length(atlas_markers$RNA.tissue.cell.type.enrichment))
+        for (tissue in tissues_of_interest){
+          idx <- idx | grepl(tissue, atlas_markers$RNA.tissue.cell.type.enrichment)
+        }
+        atlas_markers <- atlas_markers[idx,]
+        
+        atlas_markers[is.na(atlas_markers)] <- ''
+        atlas_markers <- atlas_markers[!duplicated(atlas_markers$Gene), ]
+        
+        if (dim(atlas_markers)[1] == 0){
+          # no markers were available
+          next
+        }
+        
+        atlas_cell_types <- list()
+        i <- 1
+        cell_types<- c()
+        for (i in seq(dim(atlas_markers)[1])){
+          curr_marker <- atlas_markers$Gene[i]
+          cell_type_clusters <- atlas_markers$RNA.single.cell.type.specific.nTPM[i]
+          if (cell_type_clusters == ''){
+            next
+          }
+          cell_type_in_tissues <- atlas_markers$RNA.tissue.cell.type.enrichment[i]
+          cell_type_in_tissues <- strsplit( cell_type_in_tissues, split = ',', fixed=TRUE)[[1]]
+          
+          
+          for (ct_tissue_pair in cell_type_in_tissues){
+            ct_tissue_pair <- trimws(ct_tissue_pair, which = 'both')
+            ct_tissue_pair <-  strsplit( ct_tissue_pair , split = ' - ', fixed=TRUE)[[1]]
+            if (ct_tissue_pair[[1]] %in% tissues_of_interest){
+              ct <- gsub(' ', '.', ct_tissue_pair[[2]])
+              ct <- gsub('-', '.', ct)
+              ct <- strsplit(ct , split = '(', fixed=TRUE)[[1]][1]
+              ct <- trimws(ct, which = 'both')
+              cell_types<- c(cell_types, ct)
+            }
+          }
+          
+          #split 
+          cell_type_clusters <- strsplit(cell_type_clusters, split = ';', fixed=TRUE)[[1]]
+          cell_type_clusters <- sapply(strsplit(cell_type_clusters, split = ':', fixed = TRUE), '[', 1)
+          # replace the characters with period (due to R read.csv)
+          cell_type_clusters <- gsub(' ', '.', cell_type_clusters)
+          cell_type_clusters <- gsub('-', '.', cell_type_clusters)
+          
+          for (ct in cell_type_clusters){
+            if (!(ct %in% names(atlas_cell_types))){
+              atlas_cell_types[[ct]] <- c()
+            }
+            atlas_cell_types[[ct]] <- c(atlas_cell_types[[ct]], curr_marker)
+          }
+          
+        }
+        
+        tissue_specific_cell_types <- intersect(unique(cell_types), names(atlas_cell_types))
+        
+        # in addition to T-cells, add more cell types if available. (Optional)
+        # tissue_specific_cell_types<- c(tissue_specific_cell_types, 
+        #                                'Thymic.epithelial.cells',
+        #                                'dendritic.cells',
+        #                                'Undifferentiated.cells',
+        #                                'Plasma.cells',
+        #                                'Macrophages',
+        #                                'Fibroblasts',
+        #                                'monocytes',
+        #                                "NK.cells",
+        #                                "Squamous.epithelial.cells",
+        #                                "Endothelial.cells",
+        #                                "B.cells",
+        #                                "Plasma.cells")
+        # tissue_specific_cell_types <- intersect(names(atlas_cell_types), unique(tissue_specific_cell_types))
+
+        atlas_cell_types <- atlas_cell_types[tissue_specific_cell_types]
+        
+        for (name in names(atlas_cell_types)){
+          new_name <- paste0('HPA_', name, '_', specificity, '_', typeofmarker)
+          atlas_cell_types[[new_name]] <- atlas_cell_types[[name]]
+          atlas_cell_types[[name]] <- NULL
+          #markers[[new_name]] <- atlas_cell_types[[new_name]]
+          markers[[name]] <- atlas_cell_types[[new_name]]
+        }
+        
+        full_markers[[paste0('HPA_', specificity, '_', typeofmarker)]] <- markers
+  }
+}     
+
+markers <- list()
+
+# get all markers
+atlas_markers <- protein_atlas_markers
+
+# get only the ones that contain the desired tissues
+idx <- rep(F, length(atlas_markers$RNA.tissue.cell.type.enrichment))
+for (tissue in tissues_of_interest){
+  idx <- idx | grepl(tissue, atlas_markers$RNA.tissue.cell.type.enrichment)
+}
+atlas_markers <- atlas_markers[idx,]
+
+atlas_markers[is.na(atlas_markers)] <- ''
+atlas_markers <- atlas_markers[!duplicated(atlas_markers$Gene), ]
+
+if (dim(atlas_markers)[1] == 0){
+  # no markers were available
+  next
+}
+
+atlas_cell_types <- list()
+i <- 1
+cell_types<- c()
+for (i in seq(dim(atlas_markers)[1])){
+  curr_marker <- atlas_markers$Gene[i]
+  cell_type_clusters <- atlas_markers$RNA.single.cell.type.specific.nTPM[i]
+  if (cell_type_clusters == ''){
+    next
+  }
+  cell_type_in_tissues <- atlas_markers$RNA.tissue.cell.type.enrichment[i]
+  cell_type_in_tissues <- strsplit( cell_type_in_tissues, split = ',', fixed=TRUE)[[1]]
+  
+  
+  for (ct_tissue_pair in cell_type_in_tissues){
+    ct_tissue_pair <- trimws(ct_tissue_pair, which = 'both')
+    ct_tissue_pair <-  strsplit( ct_tissue_pair , split = ' - ', fixed=TRUE)[[1]]
+    if (ct_tissue_pair[[1]] %in% tissues_of_interest){
+      ct <- gsub(' ', '.', ct_tissue_pair[[2]])
+      ct <- gsub('-', '.', ct)
+      ct <- strsplit(ct , split = '(', fixed=TRUE)[[1]][1]
+      ct <- trimws(ct, which = 'both')
+      cell_types<- c(cell_types, ct)
+    }
+  }
+  
+  #split 
+  cell_type_clusters <- strsplit(cell_type_clusters, split = ';', fixed=TRUE)[[1]]
+  cell_type_clusters <- sapply(strsplit(cell_type_clusters, split = ':', fixed = TRUE), '[', 1)
+  # replace the characters with period (due to R read.csv)
+  cell_type_clusters <- gsub(' ', '.', cell_type_clusters)
+  cell_type_clusters <- gsub('-', '.', cell_type_clusters)
+  
+  for (ct in cell_type_clusters){
+    if (!(ct %in% names(atlas_cell_types))){
+      atlas_cell_types[[ct]] <- c()
+    }
+    atlas_cell_types[[ct]] <- c(atlas_cell_types[[ct]], curr_marker)
+  }
+  
+}
+
+tissue_specific_cell_types <- intersect(unique(cell_types), names(atlas_cell_types))
+
+# in addition to T-cells, add more cell types if available. (Optional)
+# tissue_specific_cell_types<- c(tissue_specific_cell_types, 
+#                                'Thymic.epithelial.cells',
+#                                'dendritic.cells',
+#                                'Undifferentiated.cells',
+#                                'Plasma.cells',
+#                                'Macrophages',
+#                                'Fibroblasts',
+#                                'monocytes',
+#                                "NK.cells",
+#                                "Squamous.epithelial.cells",
+#                                "Endothelial.cells",
+#                                "B.cells",
+#                                "Plasma.cells")
+# tissue_specific_cell_types <- intersect(names(atlas_cell_types), unique(tissue_specific_cell_types))
+
+atlas_cell_types <- atlas_cell_types[tissue_specific_cell_types]
+
+for (name in names(atlas_cell_types)){
+  new_name <- paste0('HPA_allThyroid_', name)
+  atlas_cell_types[[new_name]] <- atlas_cell_types[[name]]
+  atlas_cell_types[[name]] <- NULL
+  #markers[[new_name]] <- atlas_cell_types[[new_name]]
+  markers[[name]] <- atlas_cell_types[[new_name]]
+}
+
+full_markers[['HPA_allThyroid']] <- markers
+
+
+# NCOMREFF
+
+markers <- list()
+
+markers[['NCOMMREFF+T Cells']] <- c('IL7R', 'CCR7', 'CD3D', 'CD3E', 'CD3G')
+markers[['NCOMMREFF+NK Cells']] <- c('GZMK', 'GZMA', 'CD8A', 'NKG7')
+markers[['NCOMMREFF+Treg Cells']] <- c('TIGIT', 'TNFRSF4', 'CXCL13', 'IL32', 'TNFRSF18', 'FOXP3', 'CTLA4')
+markers[['NCOMMREFF+B Cells']] <- c('CD79A', 'CD74', 'IGHM', 'MS4A1', 'CD19', 'MS4A1', 'CD79A', 'JCHAIN')
+markers[['NCOMMREFF+Thyroid Epithelial Cells']] <- c('FN1', 'KRT19', 'CITED1', 'TG', 'EPCAM', 'KRT18', 'KRT19')
+markers[['NCOMMREFF+Macrophage Cells']] <- c('CD14')
+markers[['NCOMMREFF+Fibroblast Cells']] <- c('TAGLN', 'ACTA2', 'DCN', 'SPARC')
+markers[['NCOMMREFF+Endothelial Cells']] <- c('SPARCL1', 'PLVAP', 'VWF', 'MMRN1', 'LYVE1')
+
+full_markers[['Pubmed_34663816']] <- markers
+
+abbreviate_name <- function(marker_set){
+  new_marker_set_name <- marker_set
+  new_marker_set_name <- gsub('Evidence at protein level', 'EPL', new_marker_set_name, fixed = T)
+  new_marker_set_name <- gsub('No human protein/transcript evidence', 'NE', new_marker_set_name, fixed = T)
+  new_marker_set_name <- gsub('Evidence at transcript level', 'ETL', new_marker_set_name, fixed = T)
+  new_marker_set_name <- gsub('Cell type enhanced', 'CTEN', new_marker_set_name, fixed = T)
+  new_marker_set_name <- gsub('Cell type enriched', 'CTER', new_marker_set_name, fixed = T)
+  new_marker_set_name <- gsub('Group enriched', 'GE', new_marker_set_name, fixed = T)
+  
+  return(new_marker_set_name)
+}
+
+full_markers_excel <- list()
+
+for (marker_set in names(full_markers)){
+  
+  new_marker_set_name <- abbreviate_name(marker_set)
+  full_markers_excel[[new_marker_set_name]] <- as.data.frame(t(purrr::map_dfr(full_markers[[marker_set]], ~as_tibble(t(.)))))
+  
+  new_column_names <- c()
+  for (ncn in names(full_markers[[marker_set]])){
+    update <- abbreviate_name(ncn)
+    new_column_names <- c(new_column_names, update)
+    if (update != ncn){
+      full_markers[[marker_set]][[update]] <- full_markers[[marker_set]][[ncn]]
+      full_markers[[marker_set]][[ncn]] <- NULL
+    }
+  }
+  
+  colnames(full_markers_excel[[new_marker_set_name]]) <- new_column_names
+  
+  if (new_marker_set_name != marker_set){
+    full_markers[[new_marker_set_name]] <- full_markers[[marker_set]]
+    full_markers[[marker_set]] <- NULL
+  }
+
+}
+
+all_markers <- c()
+for (set in names(full_markers)){
+  all_markers <- c(all_markers, names(full_markers[[set]]))
+}
+all_markers <- unique(all_markers)
+
+# openxlsx::write.xlsx(full_markers_excel, file.path('data', "full_markers_excel.xlsx"))
+
+```
+## Run Cluster Density Score
+
+```{r density_scoring, warnings=FALSE}
+
+integrated_data <- readRDS(file = file.path('data', 'integrated_data.RDS'))
+DEG_markers <- readRDS(file = file.path('data', 'DEG_markers.RDS'))
+
+
+for (annotation_name in names(full_markers)){
+  integrated_data <- density_score(integrated_data, ct_markers = full_markers[[annotation_name]], DEG_markers = DEG_markers, annotation_name = annotation_name)
+  break
+}
+
+# proceed to save the file as loom for deep learing on python
+
+SaveLoom(integrated_data, filename = file.path('data', "integrated_data.loom"), overwrite = T)
+
+
+```
+
+## Running Python for Deep Learning
+
+```{r python}
+library(reticulate)
+
+# turn it into a function
+
+# first, create a virtual environment
+py_env <- 'DGscRNA_py'
+if (virtualenv_exists(py_env)){
+  use_virtualenv(py_env)
+} else {
+  reticulate::virtualenv_create(py_env)
+  use_virtualenv(py_env)
+  virtualenv_install(envname = py_env, packages = c('numpy', 'pandas', 'scanpy', 'torch', 'torchmetrics', 'loompy'))
+}
+
+source_loc <- file.path(getwd(), 'R', 'source.py')
+
+file_loc <- file.path(getwd(), "dgscrna_run.sh")
+
+# create the script
+file_p<-file(file_loc)
+writeLines(c(paste('source', file.path(virtualenv_root(), py_env, 'bin', 'activate')),
+             paste('cd', file.path(getwd(), 'data')),
+             paste('python3', source_loc, file.path(getwd(), 'data'), 'integrated_data.loom', 'study_sets'),
+             'deactivate'), file_p)
+close(file_p)
+
+command_res <- system(paste('sh', file_loc), intern = T)
+
+```
+
+## Loading Results
+
+```{r loading}
+# The data can be loaded at the same location of the loom file
+
+# load the data once again for final annotations
+DGscRNA_annotations <- read.csv(file.path('data', 'annotated_integrated_data.loom.csv'))
+
+for (new_annotation in colnames(DGscRNA_annotations)){
+  if (!(new_annotation %in% colnames(integrated_data@meta.data))){
+    integrated_data <- AddMetaData(integrated_data,
+                                   metadata = DGscRNA_annotations[,new_annotation],
+                                   col.name = new_annotation)
+  }
+}
+
+
+# proceed to generalize the T cell subtypes (for validation with known T cell subtypes, optional)
+T_cell_types = c('Naive T(Th0) cell',
+                'T helper(Th) cell',
+                'NK Cells',
+                'Treg Cells',
+                'Cytotoxic T cell',
+                'CD8+ T cell',
+                'CD4+ tumor antigen-specific T (Tas) cell',
+                'Regulatory CD4 T cell',
+                'CD3/CD28-stimulated NK cell',
+                'Cytotoxic CD8 T cell',
+                'CD8 T cell',
+                'T helper 1(Th1) cell',
+                'T cell',
+                'T helper(Th) cell ',
+                'T follicular helper(Tfh) cell',
+                'Cytotoxic T cell',
+                'Regulatory T(Treg) cell',
+                'T Cells',
+                'Treg Cells',
+                'NK Cells',
+                'T.cells',
+                'NK.cells')
+
+metadata <- integrated_data@meta.data
+results <- colnames(metadata)[grepl('DGscRNA_General', colnames(metadata), fixed = T) & grepl('hdbscan.UMAP', colnames(metadata), fixed = T)]
+
+best_annotation <- 'none'
+best_score <- -1
+for (column in results){
+  temp <- rep(0, dim(metadata)[1])
+  temp[metadata[, column] %in% T_cell_types] <- 1
+  score <- MLmetrics::F1_Score(y_true = metadata$orig_T_cell_annotation, y_pred = temp)
+  if (score > best_score){
+    best_score <- score
+    best_annotation <- column
+  }
+}
+
+res <- cbind(metadata[,colnames(metadata)[1:22]], metadata[,best_annotation])
+
+write.csv(res, 'DGscRNA_metadata.csv')
+
+```
+
+
+## Validation
+
+```{r val}
+
+#load(file = file.path('data', 'full_marker_list.Rdata'))
+integrated_data <- readRDS(file = file.path('data', 'integrated_data.RDS'))
+full_marker_list <- full_markers
+
+markers <- list()
+set_name <- names(full_marker_list)[1]
+ct_name <- names(full_marker_list[[set_name]])[1]
+all_marker_genes <- c()
+for (set_name in names(full_marker_list)){
+  for (ct_name in names(full_marker_list[[set_name]])){
+    curr <- full_marker_list[[set_name]][[ct_name]]
+    markers[[paste0(set_name, '+', ct_name)]] <- intersect(curr[!(curr %in% 'N/A')],rownames(integrated_data@assays$integrated@data)) 
+    all_marker_genes <- c(all_marker_genes, markers[[paste0(set_name, '+', ct_name)]])
+  }
+}
+
+all_marker_genes <- unique(all_marker_genes)
+
+for (name in names(markers)){
+  if (length(markers[[name]]) < 1){
+    markers[[name]] <- NULL
+  }
+}
+
+```
+
+## SCINA
+```{r SCINA}
+
+################## SCINA ##################
+
+# run SCINA
+SCINA_results <- SCINA::SCINA(as.matrix(integrated_data@assays$integrated@data), markers, max_iter = 100, convergence_n = 10, 
+                       convergence_rate = 0.999, sensitivity_cutoff = 0.9, rm_overlap=FALSE, allow_unknown=TRUE, log_file='SCINA.log')
+
+save(SCINA_results, file = file.path('validation_data', 'SCINA_results.Rdata'))
+
+```
+
+## scCATCH
+```{r scCATCH}
+################## scCATCH ##################
+
+custom_dataframe <- data.frame(species = c(),
+                               tissue = c(),
+                               celltype = c(),
+                               gene = c(),
+                               pmid = c())
+
+for (i in names(markers)){
+  
+  is.cm <- grepl('CellMarker', i, fixed = T)
+  
+  splits <- strsplit(i, split = '+', fixed = TRUE)[[1]]
+  
+  
+  tissue <- splits[length(splits)-1]
+  if (tissue == 'CD14'){
+    print(i)
+  }
+  ct <- splits[length(splits)]
+  
+  if (!is.cm){
+    tissue <- 'Thyroid'
+  } else if(grepl('AllTissues', i, fixed = T)){
+    tissue <- 'MultipleTissues'
+  }
+  
+  subtype <- 'cancer'
+  if (grepl('_normal+', i, fixed = T)){
+    subtype <- 'normal'
+  }
+  
+  curr_dataframe <- data.frame(species = rep("Human", length(markers[[i]])),
+                               tissue = rep(tissue, length(markers[[i]])),
+                               celltype = rep(ct, length(markers[[i]])),
+                               gene = markers[[i]],
+                               pmid = rep('NA', length(markers[[i]])),
+                               #subtype
+                               subtype1 = rep(subtype, length(markers[[i]])),
+                               subtype2 = rep(NA, length(markers[[i]])),
+                               subtype3 = rep(NA, length(markers[[i]]))
+                               )
+  custom_dataframe <- rbind(custom_dataframe, curr_dataframe)
+}
+
+
+
+seurat.snn <-scCATCH::createscCATCH(data = integrated_data@assays$integrated@data, cluster = as.character(integrated_data$seurat_clusters))
+
+save(seurat.snn, file = file.path('validation_data', "seurat_cellmarker1.snn.Rdata"))
+
+seurat.snn <- scCATCH::findmarkergene(object = seurat.snn, marker = custom_dataframe, if_use_custom_marker = TRUE)
+
+save(seurat.snn, file = file.path('validation_data', "seurat_cellmarker2.snn.Rdata"))
+
+seurat.snn <- scCATCH::findcelltype(object = seurat.snn)
+
+save(seurat.snn, file = file.path('validation_data', "seurat_cellmarker3.snn.Rdata"))
+
+```
+
+## signacX
+```{r signacX}
+################## SignacX ##################
+integrated_data@assays$integrated@counts <- integrated_data@assays$integrated@data
+DefaultAssay(integrated_data)
+
+signacx.labels <- SignacX::SignacFast(integrated_data, num.cores = parallel::detectCores(), do.normalize = T, graph.used = 'snn')#
+
+
+save(signacx.labels, file = file.path('validation_data', 'signacx.labels.Rdata'))
+signacx.celltypes <- SignacX::GenerateLabels(signacx.labels, E = integrated_data)
+save(signacx.celltypes, file = file.path('validation_data', 'signacx.celltypes.Rdata'))
+
+```
+
+## SCSA
+```{r SCSA}
+################## SCSA ##################
+
+## in python, skip
+
+```
+
+## scType
+```{r scType}
+################## ScType ##################
+lapply(c("dplyr","Seurat","HGNChelper","openxlsx"), library, character.only = T)
+# load sctype functions
+source("https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/R/gene_sets_prepare.R")
+source("https://raw.githubusercontent.com/IanevskiAleksandr/sc-type/master/R/sctype_score_.R")
+
+
+custom_dataframe <- data.frame(tissueType = c(),
+                               cellName  = c(),
+                               geneSymbolmore1 = c())
+
+
+for (i in names(markers)){
+  
+  is.cm <- grepl('CellMarker', i, fixed = T)
+  
+  splits <- strsplit(i, split = '+', fixed = TRUE)[[1]]
+  
+  tissue <- splits[length(splits)-1]
+  if (tissue == 'CD14'){
+    print(i)
+  }
+  ct <- splits[length(splits)]
+  
+  if (!is.cm){
+    tissue <- 'Thyroid'
+  } else if(grepl('AllTissues', i, fixed = T)){
+    tissue <- 'MultipleTissues'
+  }
+  
+  subtype <- 'cancer'
+  if (grepl('_normal+', i, fixed = T)){
+    subtype <- 'normal'
+  }
+
+  curr_dataframe <- data.frame(tissueType = rep(tissue, length(markers[[i]])),
+                               cellName = rep(ct, length(markers[[i]])),
+                               geneSymbolmore1 = markers[[i]]
+                               )
+
+  custom_dataframe <- rbind(custom_dataframe, curr_dataframe)
+}
+
+
+
+scType_res <- sctype_score(scRNAseqData = integrated_data@assays$integrated@data, scaled = F, gs = markers, gs2 = NULL)
+
+save(scType_res, file = file.path('validation_data', "scType_res.Rdata"))
+
+
+```
+
+```{r load_validation}
+
+# load the prior results
+annotation_file_res <- read.csv(file = 'DGscRNA_metadata.csv', row.names = 1)
+
+# load SCINA_results (SCINA)
+load(file = file.path('validation_data', 'SCINA_results.Rdata'))
+annotation_file_res$SCINA_ct <- SCINA_results$cell_labels
+
+# load seurat.snn (scCATCH)
+load(file = file.path('validation_data', "seurat_cellmarker3.snn.Rdata"))
+
+## add
+scCATCH_ct <- rep('Unknown', length(unique(annotation_file_res$seurat_clusters)))
+names(scCATCH_ct) <- sort(unique(annotation_file_res$seurat_clusters))
+for (i in seq(dim(seurat.snn@celltype)[1])){
+  curr_row <- seurat.snn@celltype[i,]
+  scCATCH_ct[curr_row$cluster == names(scCATCH_ct)] <- curr_row$cell_type
+}
+
+annotation_file_res$scCATCH_ct <- rep('Unknown', dim(annotation_file_res)[1])
+
+for (cluster in unique(annotation_file_res$seurat_clusters)){
+  annotation_file_res[annotation_file_res$seurat_clusters == cluster, 'scCATCH_ct'] <- scCATCH_ct[as.character(cluster)]
+}
+
+
+## load scType_res (scTYPE)
+
+load(file = file.path('validation_data', "scType_res.Rdata"))
+
+
+cL_resutls <- do.call("rbind", lapply(unique(annotation_file_res$seurat_clusters), function(cl){
+  scType_res.cl = sort(rowSums(scType_res[ ,rownames(annotation_file_res[annotation_file_res$seurat_clusters==cl, ])]), decreasing = !0)
+  head(data.frame(cluster = cl, type = names(scType_res.cl), scores = scType_res.cl, ncells = sum(annotation_file_res$seurat_clusters==cl)), 10)
+}))
+
+scType_scores <- cL_resutls %>% group_by(cluster) %>% top_n(n = 1, wt = scores)  
+scType_scores <- scType_scores[!duplicated(scType_scores$cluster),]
+
+annotation_file_res$scType_ct <- rep('Unknown', dim(annotation_file_res)[1])
+
+for (cluster in unique(annotation_file_res$seurat_clusters)){
+  annotation_file_res[annotation_file_res$seurat_clusters == cluster, 'scType_ct'] <- scType_scores[scType_scores$cluster == cluster, 'type']
+}
+
+
+## load signacx.celltypes (SignacX)
+
+load(file = file.path('validation_data', 'signacx.celltypes.Rdata'))
+load(file = file.path('validation_data', 'signacx.labels.Rdata'))
+
+annotation_file_res$signacx_ct <- signacx.celltypes$CellStates
+
+write.csv(annotation_file_res, 'DGscRNA_metadata_w_others.csv')
+```
+
+```{r temp}
+
+for (i in names(markers)){
+  if (grepl(toupper('dendritic'), toupper(i), fixed = T)){
+    print(i)
+  }
+}
+
+for (i in names(markers)){
+  if (grepl(toupper('stroma'), toupper(i), fixed = T)){
+    print(i)
+  }
+}
+
+for (i in names(markers)){
+  if (grepl(toupper('epithelial'), toupper(i), fixed = T)){
+    print(i)
+  }
+}
+
+for (i in names(markers)){
+  if (grepl(toupper('follicular'), toupper(i), fixed = T)){
+    print(i)
+  }
+}
+```
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

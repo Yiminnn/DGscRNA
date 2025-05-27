@@ -1,0 +1,24 @@
+# Core dependencies
+scanpy>=1.9.0
+pandas>=1.3.0
+numpy>=1.20.0
+torch>=1.10.0
+torchmetrics>=0.6.0
+scikit-learn>=1.0.0
+matplotlib>=3.5.0
+seaborn>=0.11.0
+openpyxl>=3.0.0
+numba>=0.56.0
+igraph>=0.10.0
+leidenalg>=0.8.0
+scikit-misc>=0.5.0
+
+# Optional dependencies for enhanced functionality
+plotly>=5.0.0
+
+# Development dependencies (optional)
+# pytest>=6.0
+# pytest-cov
+# black
+# isort
+# flake8
