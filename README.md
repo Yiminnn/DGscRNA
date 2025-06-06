@@ -1,208 +1,158 @@
-# scanpy-dgscrna
+## **DGscRNA Algorithm Pipeline Overview**
 
-A scanpy extension for automated cell type annotation using density scoring and deep learning.
+DGscRNA (Density-based Gene expression scoring for single-cell RNA-seq with Deep Learning) is a two-stage cell type annotation method that integrates marker-based density scoring with neural network classification.
 
-## Overview
+---
 
-`scanpy-dgscrna` integrates marker-based density scoring with deep learning to provide robust cell type annotation for single-cell RNA-seq data. The package combines:
+## **Stage 1: Preprocessing & Clustering**
 
-- **Density scoring**: Uses marker gene sets from multiple sources with different thresholds
-- **Deep learning**: Employs a neural network to classify cells based on expression patterns
-- **Scanpy integration**: Seamlessly works with scanpy workflows and AnnData objects
-
-## Installation
-
-```bash
-# Install from source
-pip install -e .
-
-# Or install with optional dependencies
-pip install -e ".[all]"
+### **1.1 Data Preprocessing**
+```r
+# Quality control and normalization
+seurat_object[["percent.mt"]] <- PercentageFeatureSet(seurat_object, pattern="^MT-")
+seurat_object <- subset(seurat_object, subset = nFeature_RNA > 200 & percent.mt < 15)
+seurat_object <- NormalizeData(seurat_object, normalization.method = "LogNormalize")
+seurat_object <- FindVariableFeatures(seurat_object, selection.method = "vst", nfeatures = 2000)
 ```
 
-## Quick Start
+### **1.2 Dimensionality Reduction & Clustering**
+- **PCA**: Principal component analysis for initial dimensionality reduction
+- **UMAP**: Non-linear dimensionality reduction for visualization
+- **Multiple Clustering**: Supports various clustering algorithms:
+  - Seurat (graph-based clustering)
+  - HDBSCAN (density-based clustering)
+  - Monocle3 (trajectory-based clustering)
+  - scCCESS (consensus clustering)
 
+---
+
+## **Stage 2: Density-Based Scoring**
+
+### **2.1 Marker Gene Loading**
+The algorithm loads cell type marker genes from multiple databases:
+- **CellMarker 2.0**: Curated cell type markers
+- **Human Protein Atlas**: Tissue-specific markers
+- **PanglaoDB**: Single-cell marker database
+- **Custom marker sets**: User-defined markers
+
+### **2.2 Density Score Calculation**
+For each cluster and cell type combination:
+
+```r
+density_score <- function(integrated_data, ct_markers, DEG_markers_set, clustering, cutoffs) {
+    # For each cluster:
+    curr_markers <- DEG_markers[DEG_markers$cluster == cluster_i, ]
+    curr_markers <- curr_markers[curr_markers$avg_log2FC > 1, ] # Upregulated genes
+    
+    # For each cell type marker set:
+    intersecting_genes <- intersect(curr_cell_type_set, top_genes)
+    
+    # Calculate density score:
+    score = sum(avg_log2FC_of_intersecting_genes) / length(cell_type_marker_set)
+}
+```
+
+### **2.3 Multi-Threshold Scoring**
+Three cutoff strategies are applied:
+- **`0.5`**: Hard threshold (score ≥ 0.5)
+- **`mean`**: Dynamic threshold (score ≥ mean of all scores)
+- **`none`**: No threshold (accepts highest score)
+
+### **2.4 Initial Annotation**
+```r
+# Assign cell types based on maximum density scores
+if (max_score < threshold) {
+    annotation <- "Undecided"
+} else {
+    annotation <- cell_type_with_max_score
+}
+```
+
+---
+
+## **Stage 3: Deep Learning Refinement**
+
+### **3.1 Data Preparation**
 ```python
-import scanpy as sc
-import scanpy_dgscrna as dgsc
+# Separate cells into training and prediction sets
+agreed_cells = cells_with_confident_annotations  # Training data
+disagreed_cells = cells_labeled_as_"Undecided"   # Prediction targets
 
-# Load your data
-adata = sc.read_h5ad('your_data.h5ad')
-
-# Run the complete workflow
-dgsc.run_dgscrna_workflow(
-    adata, 
-    marker_folder='path/to/markers',
-    cluster_columns=['leiden', 'seurat_clusters']
-)
-
-# Check results
-print(adata.obs.columns)  # See new annotation columns
+X_train = gene_expression_matrix[agreed_cells, :]
+y_train = cell_type_labels[agreed_cells]
+X_test = gene_expression_matrix[disagreed_cells, :]
 ```
 
-## Detailed Usage
-
-### 1. Prepare your data
-
+### **3.2 Neural Network Architecture**
 ```python
-# Basic preprocessing
-dgsc.pp.prepare_for_annotation(adata, min_genes=200, mt_threshold=20)
-
-# Select highly variable genes
-dgsc.pp.select_hvgs(adata, n_top_genes=2000)
-
-# Add undecided labels for annotation
-dgsc.pp.add_undecided_labels(adata, 'leiden', clusters_to_mark=[5, 8, 12])
+class DeepModel(nn.Module):
+    def __init__(self, input_shape, class_shape):
+        self.fc1 = nn.Linear(input_shape, 256)    # Input: 2000 genes
+        self.fc2 = nn.Linear(256, 128)            # Hidden layer
+        self.fc3 = nn.Linear(128, class_shape)    # Output: cell types
+        self.activation = nn.LeakyReLU()
+        self.output_activation = nn.Softmax()
 ```
 
-### 2. Load marker gene sets
-
-Organize your marker files in a folder structure:
-```
-markers/
-├── CellMarker.xlsx
-├── PanglaoDB.tsv
-└── HumanPrimaryCellAtlas.csv
-```
-
-Each file should have:
-- A gene column (default: 'gene')
-- Cell type columns with marker genes
-
+### **3.3 Training Process**
 ```python
-# Load markers
-marker_sources = dgsc.load_markers('path/to/markers')
-print(f"Loaded {len(marker_sources)} marker sources")
+for epoch in range(EPOCHS):
+    for batch in train_data:
+        preds = model(samples)
+        loss = criterion(preds, labels)
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
 ```
 
-### 3. Calculate density scores
-
+### **3.4 Confidence-Based Prediction**
 ```python
-# Calculate density scores with different thresholds
-dgsc.density_score(
-    adata, 
-    marker_sources, 
-    cluster_columns=['leiden', 'seurat_clusters'],
-    cutoffs=['0.5', 'mean', 'none']
-)
+# Apply trained model to "Undecided" cells
+probabilities = model(X_test)
+max_probs = np.max(probabilities, axis=1)
+
+# High confidence predictions (≥90%) are accepted
+confident_predictions = predictions[max_probs >= 0.90]
+low_confidence = predictions[max_probs < 0.90]  # Remain "Unknown"
 ```
 
-### 4. Deep learning annotation
+---
 
-```python
-# Annotate using deep learning
-dgsc.dgscrna_annotate(
-    adata, 
-    annotation_column='leiden_CellMarker_Tcell_0.5',
-    epochs=10,
-    confidence_threshold=0.9
-)
-```
+## **Stage 4: Integration & Output**
 
-### 5. Visualization
+### **4.1 Final Annotation**
+The algorithm produces multiple annotation columns:
+- `{clustering}_{marker_source}_{celltype}_{cutoff}`: Density-based annotations
+- `{clustering}_{marker_source}_{celltype}_{cutoff}_DGscRNA`: Deep learning refined annotations
 
-```python
-# Plot annotation results
-dgsc.pl.plot_annotation_comparison(
-    adata, 
-    'leiden', 
-    'leiden_CellMarker_Tcell_0.5_DGscRNA'
-)
+### **4.2 Quality Metrics**
+- **Accuracy**: Overall prediction accuracy
+- **F1-Score**: Balanced precision and recall
+- **Precision/Recall**: Per-class performance metrics
+- **Confidence scores**: Prediction reliability
 
-# Plot UMAP with annotations
-dgsc.pl.plot_umap_annotations(
-    adata, 
-    ['leiden', 'leiden_CellMarker_Tcell_0.5_DGscRNA']
-)
+---
 
-# Plot density scores
-score_cols = [col for col in adata.obs.columns if 'CellMarker' in col and '0.5' in col]
-dgsc.pl.plot_density_scores(adata, score_cols, 'leiden')
-```
+## **Key Algorithm Advantages**
 
-## API Reference
+1. **Multi-Source Integration**: Combines multiple marker databases
+2. **Adaptive Thresholding**: Multiple cutoff strategies for robustness
+3. **Deep Learning Refinement**: Improves uncertain predictions
+4. **Confidence Scoring**: Provides prediction reliability estimates
+5. **Scalable**: Works with various clustering methods and datasets
 
-### Tools (`dgsc.tl`)
+---
 
-- `load_markers()`: Load marker gene sets from files
-- `density_score()`: Calculate density scores for cell types
-- `dgscrna_annotate()`: Deep learning-based annotation
-- `run_dgscrna_workflow()`: Complete workflow
-
-### Preprocessing (`dgsc.pp`)
-
-- `prepare_for_annotation()`: Basic data preprocessing
-- `select_hvgs()`: Select highly variable genes
-- `add_undecided_labels()`: Add undecided labels for annotation
-
-### Plotting (`dgsc.pl`)
-
-- `plot_annotation_comparison()`: Compare annotations
-- `plot_umap_annotations()`: UMAP plots with annotations
-- `plot_density_scores()`: Visualize density scores
-- `plot_marker_expression()`: Marker gene expression
-- `plot_confusion_matrix()`: Confusion matrix for validation
-
-## Input Data Format
-
-### AnnData object
-- `adata.X`: Gene expression matrix (cells × genes)
-- `adata.obs`: Cell metadata including cluster assignments
-- `adata.var`: Gene metadata
-
-### Marker files
-Supported formats: `.xlsx`, `.csv`, `.tsv`
-
-Example structure:
-```
-gene        | Tcell      | Bcell      | Monocyte
-------------|------------|------------|----------
-CD3D        | 1          | 0          | 0
-CD3E        | 1          | 0          | 0
-CD19        | 0          | 1          | 0
-CD14        | 0          | 0          | 1
-```
-
-## Parameters
-
-### Density scoring thresholds
-- `'none'`: Use raw expression scores
-- `'mean'`: Use cluster mean as threshold
-- `'0.5'`: Use 0.5 as threshold (for normalized data)
-- Custom: Any float value
-
-### Deep learning parameters
-- `epochs`: Number of training epochs (default: 10)
-- `batch_size`: Batch size for training (default: 256)
-- `learning_rate`: Learning rate (default: 1e-3)
-- `confidence_threshold`: Minimum confidence for predictions (default: 0.9)
-
-## Examples
-
-See the `examples/` directory for complete workflows:
-- Basic annotation workflow
-- Multi-source marker integration
-- Custom threshold optimization
-- Visualization gallery
-
-## Citation
-
-If you use this package in your research, please cite:
+## **Workflow Summary**
 
 ```
-Your paper citation here
+Single-cell Data → Preprocessing → Clustering → Marker Loading
+                                      ↓
+Density Scoring → Multi-threshold Evaluation → Initial Annotations
+                                      ↓
+"Undecided" Cells → Deep Learning Training → Confidence-based Prediction
+                                      ↓
+Final Annotations with Confidence Scores
 ```
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contributing
-
-Contributions are welcome! Please see CONTRIBUTING.md for guidelines.
-
-## Support
-
-For questions and support:
-- GitHub Issues: https://github.com/yourusername/scanpy-dgscrna/issues
-- Email: your.email@example.com
+This pipeline effectively combines the interpretability of marker-based methods with the power of deep learning to provide robust, confident cell type annotations for single-cell RNA-seq data.
