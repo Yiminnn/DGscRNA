@@ -99,10 +99,16 @@ def density_score(
     marker_sources: Dict[str, pd.DataFrame],
     cluster_columns: List[str],
     cutoffs: List[str] = ['0.5', 'mean', 'none'],
+    deg_markers: Optional[Dict[str, Dict[str, pd.DataFrame]]] = None,
+    use_deg: bool = True,
+    min_logfc_threshold: float = 1.0,
     copy: bool = False
 ) -> Optional[sc.AnnData]:
     """
-    Calculate density scores for cell type annotation.
+    Calculate density scores for cell type annotation using differential expression analysis.
+    
+    This function implements the density scoring strategy similar to the R version,
+    using differential expression markers to calculate cluster-specific scores.
     
     Parameters
     ----------
@@ -114,6 +120,12 @@ def density_score(
         Column names in adata.obs containing cluster assignments
     cutoffs : list of str, default ['0.5', 'mean', 'none']
         Thresholds for density scoring
+    deg_markers : dict, optional
+        Pre-computed differential expression markers. If None, will compute them.
+    use_deg : bool, default True
+        Whether to use differential expression analysis or simple mean expression
+    min_logfc_threshold : float, default 1.0
+        Minimum log fold change threshold for considering genes as upregulated
     copy : bool, default False
         Return a copy instead of writing to adata
         
@@ -125,67 +137,156 @@ def density_score(
     if copy:
         adata = adata.copy()
     
-    # Ensure we have the required genes
-    all_markers = set()
-    for source_df in marker_sources.values():
-        for celltype in source_df.columns:
-            markers = source_df[celltype].dropna().tolist()
-            all_markers.update(markers)
+    print("Starting density scoring with differential expression analysis...")
     
-    # Filter to genes present in the data
-    available_markers = list(set(all_markers) & set(adata.var_names))
-    print(f"Found {len(available_markers)} marker genes in data out of {len(all_markers)} total markers")
+    # Compute differential expression markers if not provided
+    if use_deg and deg_markers is None:
+        print("Computing differential expression markers...")
+        deg_markers = {}
+        for clustering in cluster_columns:
+            if clustering in adata.obs.columns:
+                deg_markers[clustering] = find_all_markers(adata, clustering)
     
-    # Calculate scores for each clustering method and marker source
+    # Process each clustering method
     for clustering in cluster_columns:
         if clustering not in adata.obs.columns:
             print(f"Clustering '{clustering}' not found in adata.obs, skipping...")
             continue
-            
-        clusters = adata.obs[clustering].unique()
         
-        for source_name, source_df in marker_sources.items():
-            print(f"Processing {clustering} with {source_name} markers...")
+        print(f"Processing clustering: {clustering}")
+        clusters = sorted(adata.obs[clustering].unique())
+        
+        # Get DEG markers for this clustering if using DEG approach
+        if use_deg and deg_markers and clustering in deg_markers:
+            cluster_deg_markers = deg_markers[clustering]
+        else:
+            cluster_deg_markers = None
+        
+        # Process each marker source
+        for source_name, marker_dict in marker_sources.items():
+            print(f"  Processing marker source: {source_name}")
             
-            for celltype in source_df.columns:
-                markers = source_df[celltype].dropna().tolist()
-                markers = [m for m in markers if m in adata.var_names]
+            # Convert marker dict to list of cell types and their markers
+            if isinstance(marker_dict, dict):
+                cell_types = list(marker_dict.keys())
                 
-                if not markers:
-                    continue
+                # Create satisfaction matrix: rows = cell types, cols = clusters
+                satisfaction_matrix = np.zeros((len(cell_types), len(clusters)))
                 
-                # Get marker expression for all cells
-                marker_expr = adata[:, markers].X
-                if hasattr(marker_expr, 'toarray'):
-                    marker_expr = marker_expr.toarray()
-                
-                # Calculate mean expression per cell for these markers
-                cell_scores = np.mean(marker_expr, axis=1)
-                
-                for cutoff in cutoffs:
-                    if cutoff == 'none':
-                        # Use raw scores
-                        final_scores = cell_scores
-                    elif cutoff == 'mean':
-                        # Use global mean as threshold
-                        threshold = np.mean(cell_scores)
-                        final_scores = (cell_scores >= threshold).astype(float)
-                    elif cutoff == '0.5':
-                        # Use 0.5 as threshold (assuming normalized data)
-                        final_scores = (cell_scores >= 0.5).astype(float)
-                    else:
-                        # Try to parse as float
-                        try:
-                            threshold = float(cutoff)
-                            final_scores = (cell_scores >= threshold).astype(float)
-                        except ValueError:
-                            print(f"Invalid cutoff: {cutoff}, skipping...")
-                            continue
+                for cluster_idx, cluster in enumerate(clusters):
+                    cluster_str = str(cluster)
                     
-                    # Store scores
-                    score_name = f"{clustering}_{source_name}_{celltype}_{cutoff}"
-                    adata.obs[score_name] = final_scores
+                    # Get upregulated genes for this cluster if using DEG
+                    if use_deg and cluster_deg_markers and cluster_str in cluster_deg_markers:
+                        cluster_markers_df = cluster_deg_markers[cluster_str]
+                        upregulated_genes = cluster_markers_df[
+                            cluster_markers_df['avg_log2FC'] > min_logfc_threshold
+                        ]['gene'].tolist()
+                    else:
+                        # Fallback: use all genes (for non-DEG approach)
+                        upregulated_genes = list(adata.var_names)
+                    
+                    # Calculate satisfaction scores for each cell type
+                    for ct_idx, cell_type in enumerate(cell_types):
+                        cell_type_markers = marker_dict[cell_type]
+                        if not isinstance(cell_type_markers, list):
+                            continue
+                        
+                        # Find intersection between cell type markers and upregulated genes
+                        intersecting_genes = list(set(cell_type_markers) & set(upregulated_genes))
+                        
+                        if len(intersecting_genes) > 0 and use_deg and cluster_deg_markers and cluster_str in cluster_deg_markers:
+                            # Sum log fold changes of intersecting genes
+                            cluster_markers_df = cluster_deg_markers[cluster_str]
+                            intersecting_logfc = cluster_markers_df[
+                                cluster_markers_df['gene'].isin(intersecting_genes)
+                            ]['avg_log2FC'].sum()
+                            
+                            # Normalize by the number of markers in the cell type
+                            satisfaction_score = intersecting_logfc / len(cell_type_markers)
+                            
+                            # Penalize small marker sets (similar to R version)
+                            if len(cell_type_markers) <= 1:
+                                satisfaction_score *= 0.8
+                                
+                        elif len(intersecting_genes) > 0:
+                            # Fallback: use simple proportion if DEG not available
+                            satisfaction_score = len(intersecting_genes) / len(cell_type_markers)
+                        else:
+                            satisfaction_score = 0.0
+                        
+                        satisfaction_matrix[ct_idx, cluster_idx] = satisfaction_score
+                
+                # Find maximum scores and assign cell types
+                max_scores = np.max(satisfaction_matrix, axis=0)
+                
+                # Process each cutoff strategy
+                for cutoff in cutoffs:
+                    cluster_annotations = []
+                    cluster_scores = []
+                    
+                    for cluster_idx, cluster in enumerate(clusters):
+                        max_score = max_scores[cluster_idx]
+                        
+                        # Find cell type(s) with maximum score
+                        max_indices = np.where(satisfaction_matrix[:, cluster_idx] == max_score)[0]
+                        
+                        # Handle ties
+                        if len(max_indices) > 1:
+                            annotation = 'Undecided'
+                        else:
+                            annotation = cell_types[max_indices[0]]
+                        
+                        # Apply cutoff thresholds
+                        if cutoff != 'none':
+                            if cutoff == 'mean':
+                                threshold = np.mean(max_scores)
+                            elif cutoff == '0.5':
+                                threshold = 0.5
+                            else:
+                                try:
+                                    threshold = float(cutoff)
+                                except ValueError:
+                                    print(f"Invalid cutoff: {cutoff}, using 0.5")
+                                    threshold = 0.5
+                            
+                            if max_score < threshold:
+                                annotation = 'Undecided'
+                        
+                        cluster_annotations.append(annotation)
+                        cluster_scores.append(max_score)
+                    
+                    # Map cluster annotations to cells
+                    cell_annotations = []
+                    cell_scores = []
+                    
+                    for cell_cluster in adata.obs[clustering]:
+                        try:
+                            cluster_idx = clusters.index(cell_cluster)
+                            cell_annotations.append(cluster_annotations[cluster_idx])
+                            cell_scores.append(cluster_scores[cluster_idx])
+                        except ValueError:
+                            cell_annotations.append('Undecided')
+                            cell_scores.append(0.0)
+                    
+                    # Add annotations to adata
+                    annotation_name = f"{clustering}_{source_name}_{cutoff}"
+                    score_name = f"{clustering}_{source_name}_{cutoff}_score"
+                    
+                    # Clean column names
+                    annotation_name = annotation_name.replace(" ", ".").replace("/", ".")
+                    score_name = score_name.replace(" ", ".").replace("/", ".")
+                    
+                    adata.obs[annotation_name] = cell_annotations
+                    adata.obs[score_name] = cell_scores
+                    
+                    print(f"    Added annotation column: {annotation_name}")
+                    
+                    # Print summary
+                    unique_annotations = pd.Series(cell_annotations).value_counts()
+                    print(f"      Annotation distribution: {dict(unique_annotations)}")
     
+    print("Density scoring completed!")
     return adata if copy else None
 
 
@@ -424,6 +525,249 @@ def dgscrna_annotate(
     return adata if copy else None
 
 
+def find_all_markers(
+    adata: sc.AnnData,
+    cluster_column: str,
+    method: str = 'wilcoxon',
+    min_logfc: float = 0.25,
+    min_pct: float = 0.1,
+    max_pval: float = 0.05,
+    copy: bool = False
+) -> Dict[str, pd.DataFrame]:
+    """
+    Find differentially expressed genes for each cluster (equivalent to Seurat's FindAllMarkers).
+    
+    Parameters
+    ----------
+    adata : AnnData
+        Annotated data matrix
+    cluster_column : str
+        Column name in adata.obs containing cluster assignments
+    method : str, default 'wilcoxon'
+        Test method for differential expression ('wilcoxon', 't-test', 't-test_overestim_var')
+    min_logfc : float, default 0.25
+        Minimum log fold change threshold
+    min_pct : float, default 0.1
+        Minimum percentage of cells expressing the gene in either group
+    max_pval : float, default 0.05
+        Maximum adjusted p-value threshold
+    copy : bool, default False
+        Return a copy instead of writing to adata
+        
+    Returns
+    -------
+    Dict[str, pd.DataFrame]
+        Dictionary with cluster IDs as keys and marker DataFrames as values
+    """
+    if copy:
+        adata = adata.copy()
+    
+    if cluster_column not in adata.obs.columns:
+        raise ValueError(f"Cluster column '{cluster_column}' not found in adata.obs")
+    
+    print(f"Finding markers for clustering: {cluster_column}")
+    
+    # Get unique clusters
+    clusters = sorted(adata.obs[cluster_column].unique())
+    all_markers = {}
+    
+    for cluster in clusters:
+        print(f"  Processing cluster {cluster}...")
+        
+        # Create mask for current cluster vs all others
+        cluster_mask = adata.obs[cluster_column] == cluster
+        
+        if cluster_mask.sum() < 3:  # Skip clusters with too few cells
+            print(f"    Skipping cluster {cluster} (only {cluster_mask.sum()} cells)")
+            continue
+        
+        # Perform differential expression test
+        try:
+            # Use scanpy's rank_genes_groups for one cluster vs rest
+            adata_temp = adata.copy()
+            adata_temp.obs['temp_group'] = 'other'
+            adata_temp.obs.loc[cluster_mask, 'temp_group'] = 'target'
+            
+            # Run differential expression
+            sc.tl.rank_genes_groups(
+                adata_temp,
+                groupby='temp_group',
+                groups=['target'],
+                reference='other',
+                method=method,
+                use_raw=False,
+                corr_method='benjamini-hochberg'
+            )
+            
+            # Extract results
+            result = sc.get.rank_genes_groups_df(
+                adata_temp,
+                group='target'
+            )
+            
+            # Filter results based on thresholds
+            filtered_result = result[
+                (result['logfoldchanges'] >= min_logfc) &
+                (result['pvals_adj'] <= max_pval)
+            ].copy()
+            
+            # Add additional statistics
+            if len(filtered_result) > 0:
+                # Calculate percentage of cells expressing each gene
+                cluster_cells = adata[cluster_mask]
+                other_cells = adata[~cluster_mask]
+                
+                pct_1_list = []
+                pct_2_list = []
+                avg_log2fc_list = []
+                
+                for gene in filtered_result['names']:
+                    if gene in adata.var_names:
+                        # Get expression data
+                        cluster_expr = cluster_cells[:, gene].X
+                        other_expr = other_cells[:, gene].X
+                        
+                        if hasattr(cluster_expr, 'toarray'):
+                            cluster_expr = cluster_expr.toarray().flatten()
+                            other_expr = other_expr.toarray().flatten()
+                        
+                        # Calculate percentages
+                        pct_1 = (cluster_expr > 0).mean()
+                        pct_2 = (other_expr > 0).mean()
+                        
+                        # Calculate average log2 fold change
+                        mean_cluster = np.mean(cluster_expr)
+                        mean_other = np.mean(other_expr)
+                        
+                        # Add small pseudocount to avoid log(0)
+                        avg_log2fc = np.log2((mean_cluster + 1e-9) / (mean_other + 1e-9))
+                        
+                        pct_1_list.append(pct_1)
+                        pct_2_list.append(pct_2)
+                        avg_log2fc_list.append(avg_log2fc)
+                    else:
+                        pct_1_list.append(0)
+                        pct_2_list.append(0)
+                        avg_log2fc_list.append(0)
+                
+                # Add to result dataframe
+                filtered_result['pct_1'] = pct_1_list
+                filtered_result['pct_2'] = pct_2_list
+                filtered_result['avg_log2FC'] = avg_log2fc_list
+                filtered_result['cluster'] = cluster
+                
+                # Filter by percentage threshold
+                filtered_result = filtered_result[
+                    (filtered_result['pct_1'] >= min_pct) |
+                    (filtered_result['pct_2'] >= min_pct)
+                ]
+                
+                # Rename columns to match Seurat output (keep avg_log2FC, rename logfoldchanges to match)
+                filtered_result = filtered_result.rename(columns={
+                    'names': 'gene',
+                    'pvals': 'p_val',
+                    'pvals_adj': 'p_val_adj',
+                    'logfoldchanges': 'logfoldchanges_orig'  # Keep original but rename to avoid confusion
+                })
+                
+                # Sort by average log fold change
+                filtered_result = filtered_result.sort_values('avg_log2FC', ascending=False)
+                
+                all_markers[str(cluster)] = filtered_result
+                print(f"    Found {len(filtered_result)} markers for cluster {cluster}")
+            else:
+                print(f"    No significant markers found for cluster {cluster}")
+                all_markers[str(cluster)] = pd.DataFrame()
+                
+        except Exception as e:
+            print(f"    Error processing cluster {cluster}: {e}")
+            all_markers[str(cluster)] = pd.DataFrame()
+    
+    print(f"Completed marker finding for {len(all_markers)} clusters")
+    return all_markers
+
+
+def density_score_with_deg(
+    adata: sc.AnnData,
+    marker_sources: Dict[str, pd.DataFrame],
+    cluster_columns: List[str],
+    cutoffs: List[str] = ['0.5', 'mean', 'none'],
+    epochs: int = 10,
+    confidence_threshold: float = 0.9,
+    copy: bool = False
+) -> Optional[sc.AnnData]:
+    """
+    Calculate density scores and perform differential expression analysis.
+    
+    Parameters
+    ----------
+    adata : AnnData
+        Annotated data matrix
+    marker_sources : dict
+        Dictionary of marker gene sets from different sources
+    cluster_columns : list of str
+        Column names in adata.obs containing cluster assignments
+    cutoffs : list of str, default ['0.5', 'mean', 'none']
+        Thresholds for density scoring
+    epochs : int, default 10
+        Number of training epochs for deep learning
+    confidence_threshold : float, default 0.9
+        Minimum confidence for accepting predictions
+    copy : bool, default False
+        Return a copy instead of writing to adata
+        
+    Returns
+    -------
+    AnnData or None
+        Returns AnnData if copy=True, otherwise modifies adata in place
+    """
+    if copy:
+        adata = adata.copy()
+    
+    print("Calculating density scores...")
+    density_score(adata, marker_sources, cluster_columns, cutoffs)
+    
+    # Find annotation columns (those with density scores)
+    annotation_columns = [col for col in adata.obs.columns 
+                         if any(cutoff in col for cutoff in cutoffs) 
+                         and any(source in col for source in marker_sources.keys())]
+    
+    print(f"Running DGscRNA annotation on {len(annotation_columns)} annotation combinations...")
+    
+    # Run deep learning annotation on each combination
+    for annotation_col in annotation_columns:
+        if 'DGscRNA' not in annotation_col:  # Avoid re-annotating already processed columns
+            print(f"Processing {annotation_col}...")
+            try:
+                dgscrna_annotate(adata, annotation_col, epochs=epochs, 
+                               confidence_threshold=confidence_threshold)
+            except Exception as e:
+                print(f"Error processing {annotation_col}: {e}")
+                continue
+    
+    print("Performing differential expression analysis...")
+    for annotation_col in annotation_columns:
+        if 'DGscRNA' in annotation_col:  # Only process DGscRNA annotations
+            cluster_column = annotation_col
+            break
+    else:
+        print("No DGscRNA annotations found, skipping differential expression analysis")
+        return adata if copy else None
+    
+    # Run differential expression analysis
+    all_markers = find_all_markers(adata, cluster_column, copy=True)
+    
+    # Store results in adata
+    for cluster, markers_df in all_markers.items():
+        if not markers_df.empty:
+            # Create a unique key for this cluster's markers
+            key = f"DE_{cluster}"
+            adata.uns[key] = markers_df
+    
+    print("Density scoring and differential expression analysis completed!")
+    return adata if copy else None
+
+
 def run_dgscrna_workflow(
     adata: sc.AnnData,
     marker_folder: Union[str, Path],
@@ -485,6 +829,25 @@ def run_dgscrna_workflow(
             except Exception as e:
                 print(f"Error processing {annotation_col}: {e}")
                 continue
+    
+    print("Performing differential expression analysis...")
+    for annotation_col in annotation_columns:
+        if 'DGscRNA' in annotation_col:  # Only process DGscRNA annotations
+            cluster_column = annotation_col
+            break
+    else:
+        print("No DGscRNA annotations found, skipping differential expression analysis")
+        return adata if copy else None
+    
+    # Run differential expression analysis
+    all_markers = find_all_markers(adata, cluster_column, copy=True)
+    
+    # Store results in adata
+    for cluster, markers_df in all_markers.items():
+        if not markers_df.empty:
+            # Create a unique key for this cluster's markers
+            key = f"DE_{cluster}"
+            adata.uns[key] = markers_df
     
     print("DGscRNA workflow completed!")
     return adata if copy else None

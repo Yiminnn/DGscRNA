@@ -19,6 +19,7 @@ __email__ = "your.email@example.com"
 # Make main functions available at package level
 from .tools import (
     load_markers,
+    find_all_markers,
     density_score,
     dgscrna_annotate,
     run_dgscrna_workflow
@@ -29,6 +30,7 @@ __all__ = [
     "pl", 
     "pp",
     "load_markers",
+    "find_all_markers",
     "density_score",
     "dgscrna_annotate",
     "run_dgscrna_workflow"
