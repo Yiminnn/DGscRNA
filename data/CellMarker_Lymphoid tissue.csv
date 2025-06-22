@@ -1,9 +1,0 @@
-,CellMarker_normal+Lymphoid tissue+Lymphoid tissue+Epithelial cell,CellMarker_cancer+Lymphoid tissue+Lymph node+Regulatory T(Treg) cell,CellMarker_cancer+Lymphoid tissue+Lymph node+Natural killer cell,CellMarker_cancer+Lymphoid tissue+Lymph node+Activated T cell,CellMarker_cancer+Lymphoid tissue+Lymph node+T cell,CellMarker_cancer+Lymphoid tissue+Lymph node+B cell,CellMarker_cancer+Lymphoid tissue+Lymph node+T helper 2(Th2) cell,CellMarker_cancer+Lymphoid tissue+Lymph node+T helper 1(Th1) cell,CellMarker_cancer+Lymphoid tissue+Lymph node+Naive T(Th0) cell,CellMarker_cancer+Lymphoid tissue+Lymph node+Cytotoxic T cell,CellMarker_cancer+Lymphoid tissue+Lymph node+T helper 17(Th17) cell,CellMarker_cancer+Lymphoid tissue+Lymph node+Macrophage,CellMarker_cancer+Lymphoid tissue+Lymph node+T follicular helper(Tfh) cell
-0,EpCAM,IL2RA,GZMA,IL2RA,CD4,CD19,IL13,TBX21,LEF1,GNLY,CCR4,CD68,CXCR5
-1,,CTLA4,GZMK,CD69,CD8A,,PTGDR2,IFNG,IL7R,GZMK,KLRB1,,PDCD1
-2,,LAG3,NCAM1,CD25,CD3,,IL4,,CCR7,GZMA,CD161,,BCL6
-3,,LGMN,GNLY,,CD8,,CRTH2,,,,,,
-4,,FOXP3,,,,,GATA-3,,,,,,
-5,,TNFRSF18,,,,,,,,,,,
-6,,IKZF4,,,,,,,,,,,
-7,,IKZF2,,,,,,,,,,,
