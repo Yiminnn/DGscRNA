@@ -60,16 +60,20 @@ def run_clustering(
             sc.tl.louvain(adata, resolution=resolution, random_state=random_state)
             
         elif method == 'hdbscan':
-            # Use PCA embeddings for HDBSCAN
-            if 'X_pca' not in adata.obsm:
-                sc.tl.pca(adata, random_state=random_state)
+            # Use UMAP embeddings for HDBSCAN clustering on all genes
+            if 'X_umap' not in adata.obsm:
+                # First compute PCA if not available
+                if 'X_pca' not in adata.obsm:
+                    sc.tl.pca(adata, random_state=random_state)
+                # Then compute UMAP using all genes via PCA
+                sc.tl.umap(adata, random_state=random_state)
             
-            # Run HDBSCAN (no random_state parameter as it's not supported consistently)
+            # Run HDBSCAN on UMAP coordinates
             clusterer = hdbscan.HDBSCAN(
                 min_cluster_size=kwargs.get('min_cluster_size', 50),
                 min_samples=kwargs.get('min_samples', 5)
             )
-            clusters = clusterer.fit_predict(adata.obsm['X_pca'])
+            clusters = clusterer.fit_predict(adata.obsm['X_umap'])
             
             # Add to obs (HDBSCAN uses -1 for noise points)
             adata.obs[f'{method}_clusters'] = [f'Cluster_{i}' if i >= 0 else 'Noise' for i in clusters]
