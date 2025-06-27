@@ -9,8 +9,8 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 setup(
     name="dgscrna",
     version="0.1.0",
-    author="DGscRNA Team",
-    author_email="your.email@example.com",
+    author="Yimin Liu",
+    author_email="yiminliu.career@gmail.com",
     description="A Python package for single-cell RNA-seq cell type annotation using marker-based scoring and deep learning",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -19,7 +19,7 @@ setup(
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Science/Research",
-        "License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",
