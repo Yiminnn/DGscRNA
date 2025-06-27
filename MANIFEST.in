@@ -1,0 +1,17 @@
+include README.md
+include LICENSE
+include pyproject.toml
+include setup.py
+
+recursive-include dgscrna *.py
+recursive-include docs *.md *.rst
+recursive-include examples *.ipynb *.py *.R *.rmd
+recursive-include tests *.py
+
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude __pycache__
+global-exclude .DS_Store
+global-exclude .git*
+global-exclude *.so
+global-exclude *.dylib 
