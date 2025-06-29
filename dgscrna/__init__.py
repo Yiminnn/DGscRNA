@@ -2,7 +2,7 @@
 DGscRNA: Deep learning-guided single-cell RNA-seq cell type annotation
 """
 
-__version__ = "0.1.0"
+__version__ = "1.0"
 __author__ = "DGscRNA Team"
 
 from .core.preprocessing import preprocess_adata, integrate_datasets
