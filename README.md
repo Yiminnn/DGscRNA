@@ -76,22 +76,9 @@ sc.pl.umap(adata, color=['leiden', 'CellMarker_Thyroid_mean_DGscRNA'])
 - [Tutorial](docs/tutorial.md)
 - [Examples](examples/)
 
-## Citation
-
-If you use DGscRNA in your research, please cite:
-
-```bibtex
-@article{dgscrna2023,
-  title={DGscRNA: Deep learning-guided single-cell RNA-seq cell type annotation},
-  author={Your Name},
-  journal={Bioinformatics},
-  year={2023}
-}
-```
-
 ## License
 
-MIT License - see LICENSE file for details.
+GPL-3.0 License - see LICENSE file for details.
 
 ## Contributing
 
