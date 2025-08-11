@@ -79,7 +79,7 @@ def run_dgscrna_pipeline(
     # Step 3: Find marker genes for each clustering method
     print("Finding marker genes...")
     for method in clustering_methods:
-        cluster_key = f"{method}" if method != 'hdbscan' else 'hdbscan_clusters'
+        cluster_key = f"{method}" if method.endswith('clusters') else f"{method}_clusters"
         if cluster_key in adata.obs.columns:
             adata = find_markers(adata, groupby=cluster_key, **kwargs)
         
@@ -96,14 +96,8 @@ def run_dgscrna_pipeline(
     if marker_sets_to_use:
         marker_sets = {k: v for k, v in marker_sets.items() if k in marker_sets_to_use}
     
-    # Ensure cutoff_strategy is a list
-    if isinstance(cutoff_strategy, str):
-        cutoff_strategies = [cutoff_strategy]
-    else:
-        cutoff_strategies = cutoff_strategy
-    
     for method in clustering_methods:
-        cluster_key = f"{method}_clusters" if not method.endswith('_clusters') else method
+        cluster_key = f"{method}" if method.endswith('clusters') else f"{method}_clusters"
         if cluster_key not in adata.obs.columns:
             continue
             
@@ -133,7 +127,7 @@ def run_dgscrna_pipeline(
         dl_results = {}
         
         for method in clustering_methods:
-            cluster_key = f"{method}_clusters"
+            cluster_key = f"{method}" if method.endswith('clusters') else f"{method}_clusters"
             if cluster_key not in adata.obs.columns:
                 continue
                 

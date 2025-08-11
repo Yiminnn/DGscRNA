@@ -54,11 +54,11 @@ def run_clustering(
         print(f"Running {method} clustering...")
         
         if method == 'leiden':
-            sc.tl.leiden(adata, resolution=resolution, random_state=random_state)
+            sc.tl.leiden(adata, resolution=resolution, random_state=random_state, key_added='leiden_clusters')
             
         elif method == 'louvain':
-            sc.tl.louvain(adata, resolution=resolution, random_state=random_state)
-            
+            sc.tl.louvain(adata, resolution=resolution, random_state=random_state, key_added='louvain_clusters')
+
         elif method == 'hdbscan':
             # Use UMAP embeddings for HDBSCAN clustering on all genes
             if 'X_umap' not in adata.obsm:
