@@ -79,7 +79,7 @@ def run_dgscrna_pipeline(
     # Step 3: Find marker genes for each clustering method
     print("Finding marker genes...")
     for method in clustering_methods:
-        cluster_key = f"{method}_clusters"
+        cluster_key = f"{method}" if method != 'hdbscan' else 'hdbscan_clusters'
         if cluster_key in adata.obs.columns:
             adata = find_markers(adata, groupby=cluster_key, **kwargs)
         
