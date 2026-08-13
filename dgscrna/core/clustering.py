@@ -35,6 +35,9 @@ def run_clustering(
         Number of neighbors for neighborhood graph
     n_clusters : int, optional
         Number of clusters for K-means (if None, estimated from data)
+    **kwargs : cluster_space {'umap','pca'} selects the HDBSCAN embedding
+        (default 'umap'); min_cluster_size (default 50) and min_samples
+        (defaults to min_cluster_size, matching dbscan::hdbscan's minPts)
     random_state : int, default=42
         Random state for reproducibility
     **kwargs
@@ -60,23 +63,30 @@ def run_clustering(
             sc.tl.louvain(adata, resolution=resolution, random_state=random_state, key_added='louvain_clusters')
 
         elif method == 'hdbscan':
-            # Use UMAP embeddings for HDBSCAN clustering on all genes
-            if 'X_umap' not in adata.obsm:
-                # First compute PCA if not available
-                if 'X_pca' not in adata.obsm:
-                    sc.tl.pca(adata, random_state=random_state)
-                # Then compute UMAP using all genes via PCA
+            # R reference (examples/R/source.R, clustering_strategies) runs
+            # dbscan::hdbscan(minPts = 50) on the PCA embedding and again on the
+            # UMAP embedding. dbscan's single minPts sets BOTH the minimum
+            # cluster size and the core-distance neighbour count, so min_samples
+            # defaults to min_cluster_size here rather than to 5.
+            if 'X_pca' not in adata.obsm:
+                sc.tl.pca(adata, random_state=random_state)
+            space = kwargs.get('cluster_space', 'umap')
+            if space == 'umap' and 'X_umap' not in adata.obsm:
                 sc.tl.umap(adata, random_state=random_state)
+            rep = 'X_umap' if space == 'umap' else 'X_pca'
             
-            # Run HDBSCAN on UMAP coordinates
+            min_cluster_size = kwargs.get('min_cluster_size', 50)
             clusterer = hdbscan.HDBSCAN(
-                min_cluster_size=kwargs.get('min_cluster_size', 50),
-                min_samples=kwargs.get('min_samples', 5)
+                min_cluster_size=min_cluster_size,
+                min_samples=kwargs.get('min_samples', min_cluster_size)
             )
-            clusters = clusterer.fit_predict(adata.obsm['X_umap'])
+            clusters = clusterer.fit_predict(np.asarray(adata.obsm[rep], dtype=np.float64))
             
-            # Add to obs (HDBSCAN uses -1 for noise points)
+            # HDBSCAN labels noise -1. It is kept as an explicit 'Noise' group so
+            # it is never silently dropped, and downstream it is excluded from
+            # differential expression and from cell-type assignment.
             adata.obs[f'{method}_clusters'] = [f'Cluster_{i}' if i >= 0 else 'Noise' for i in clusters]
+            adata.uns[f'{method}_noise_fraction'] = float(np.mean(np.asarray(clusters) == -1))
             
         elif method == 'kmeans':
             # Use PCA embeddings for K-means
@@ -108,6 +118,8 @@ def find_markers(
     method: str = 'wilcoxon',
     key_added: str = 'rank_genes_groups',
     n_genes: int = 100,
+    layer: Optional[str] = 'lognorm',
+    exclude_groups: Optional[List[str]] = ('Noise',),
     **kwargs
 ):
     """
@@ -125,6 +137,16 @@ def find_markers(
         Key to store results in uns
     n_genes : int, default=100
         Number of top genes to return per cluster
+    layer : str, optional, default='lognorm'
+        Layer holding log-normalised counts. The R reference implementation
+        (examples/R/source.R, find_markers_on_id) runs FindAllMarkers on the
+        log-normalised assay. If `adata.X` has been z-scored by
+        `sc.pp.scale`, differential expression on `.X` yields NaN log
+        fold-changes for every gene, which silently drives every marker score
+        to zero. Falls back to `.X` when the layer is absent.
+    exclude_groups : list of str, optional, default=('Noise',)
+        Groups to drop before testing. HDBSCAN noise is not a cell population,
+        so it gets neither differential expression nor a cell-type call.
     **kwargs
         Additional arguments for sc.tl.rank_genes_groups
         
@@ -141,6 +163,24 @@ def find_markers(
     # Set the grouping
     adata.obs[groupby] = adata.obs[groupby].astype('category')
     
+    # Resolve the expression layer. Testing on z-scored .X produces NaN logFCs.
+    use_layer = layer if (layer is not None and layer in adata.layers) else None
+    if layer is not None and use_layer is None:
+        warnings.warn(
+            f"layer '{layer}' not found; running differential expression on .X. "
+            "If .X has been scaled, log fold-changes will be NaN and all marker "
+            "scores will be zero.",
+            RuntimeWarning,
+        )
+    
+    # Groups that are not cell populations (HDBSCAN noise) are not tested
+    groups = 'all'
+    if exclude_groups:
+        present = list(adata.obs[groupby].cat.categories)
+        keep = [g for g in present if g not in set(exclude_groups)]
+        if len(keep) < len(present):
+            groups = keep
+    
     # Find marker genes
     sc.tl.rank_genes_groups(
         adata,
@@ -148,6 +188,9 @@ def find_markers(
         method=method,
         key_added=key_added,
         n_genes=n_genes,
+        layer=use_layer,
+        use_raw=False,
+        groups=groups,
         **kwargs
     )
     

@@ -63,6 +63,8 @@ def score_cell_types(
     deg_key: str = 'rank_genes_groups',
     cutoffs: List[str] = ['0.5', 'mean', 'none'],
     min_logfc: float = 1.0,
+    max_pval_adj: Optional[float] = 0.05,
+    abstain_groups: Optional[List[str]] = ('Noise',),
     random_state: int = 42
 ):
     """
@@ -82,6 +84,13 @@ def score_cell_types(
         Key in uns containing differential expression results
     cutoffs : List[str], default=['0.5', 'mean', 'none']
         List of cutoff methods for scoring
+    max_pval_adj : float, optional, default=0.05
+        Adjusted p-value ceiling for a gene to count. The R reference
+        (examples/R/source.R, density_score) filters on avg_log2FC only; pass
+        None to reproduce that behaviour exactly.
+    abstain_groups : list of str, optional, default=('Noise',)
+        Clusters that are never assigned a cell type. HDBSCAN noise is not a
+        population, so it is labelled 'Unknown' rather than scored.
     min_logfc : float, default=1.0
         Minimum log fold change for marker genes
     random_state : int, default=42
@@ -131,7 +140,9 @@ def score_cell_types(
             cluster_pvals = deg_results['pvals_adj'][cluster]
             
             # Filter by significance and log fold change
-            significant = (cluster_pvals < 0.05) & (cluster_logfcs > min_logfc)
+            significant = cluster_logfcs > min_logfc
+            if max_pval_adj is not None:
+                significant = significant & (cluster_pvals < max_pval_adj)
             significant_genes = cluster_genes[significant]
             significant_logfcs = cluster_logfcs[significant]
             
@@ -160,25 +171,39 @@ def score_cell_types(
         best_indices = np.argmax(scoring_matrix, axis=0)
         best_cell_types = [cell_type_names[i] for i in best_indices]
         
-        # Apply cutoffs
+        # Apply cutoffs. R marks a cluster Undecided when its max is below the
+        # cutoff; 'none' applies no threshold at all.
         if cutoff == '0.5':
             threshold = 0.5
         elif cutoff == 'mean':
             threshold = np.mean(max_scores)
         else:  # 'none'
-            threshold = 0
+            threshold = None
         
         # Create cluster-to-cell-type mapping
         cluster_assignments = {}
         for i, cluster in enumerate(cluster_names):
             cell_type = best_cell_types[i]
             score = max_scores[i]
-            if score >= threshold:
-                cluster_assignments[cluster] = cell_type
-            else:
+            
+            # A tie is not evidence for the panel that happens to sort first.
+            # R: res <- names(which(scores == max)); if (length(res) > 1) 'Undecided'.
+            # An all-zero column is the degenerate case: every panel ties at 0.
+            if int(np.sum(scoring_matrix[:, i] == score)) > 1:
                 cluster_assignments[cluster] = 'Undecided'
+            elif threshold is not None and score < threshold:
+                cluster_assignments[cluster] = 'Undecided'
+            else:
+                cluster_assignments[cluster] = cell_type
         
-        # Map cluster assignments to individual cells
+        # Clusters that are not populations never carry a cell-type call
+        if abstain_groups:
+            for g in abstain_groups:
+                if g in cluster_assignments:
+                    cluster_assignments[g] = 'Unknown'
+        
+        # Map cluster assignments to individual cells. Clusters absent from the
+        # DEG results (e.g. an excluded noise group) fall through to 'Unknown'.
         final_assignments = []
         for cell_cluster in adata.obs[cluster_key]:
             final_assignments.append(cluster_assignments.get(cell_cluster, 'Unknown'))
