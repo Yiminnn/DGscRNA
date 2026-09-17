@@ -20,10 +20,13 @@ def run():
     summary=json.loads((OUT/'summary/campaign_summary.json').read_text());assert summary['status']=='complete'
     nb=json.loads((OUT/'summary/notebook_update_manifest.json').read_text());assert nb['status']=='complete'
     assert sha(ROOT/'notebooks/dgscrna_results.ipynb')==nb['current_sha256']
-    inv=pd.read_csv(OUT/'summary/completion_inventory.csv');assert len(inv)==99 and inv.audited.all()
+    inv=pd.read_csv(OUT/'summary/completion_inventory.csv');assert len(inv)==summary['expected_analysis_units'] and inv.audited.all()
     design=json.loads((OUT/'verification/design_audit.json').read_text());assert len(design['comparisons'])==14
     early=list((OUT/'verification/pre_guard_density').glob('*.json'));assert len(early)==16
     assert all(json.loads(p.read_text())['status']=='passed' for p in early)
+    seeds=json.loads((OUT/'verification/PTC_marker_seed_coverage_audit.json').read_text())
+    assert seeds['status']=='complete' and seeds['selected_group_routes']==32
+    assert all(json.loads((OUT/'verification/ptc_density'/f'PTC_{g}_CCA2000.json').read_text())['status']=='passed' for g in ['NMT','TTU'])
     code_files=sorted(p for p in CODE.rglob('*') if p.is_file() and '__pycache__' not in str(p) and p.name!='CURRENT_TASK.md' and not p.name.endswith(('.pyc','.next')))
     for p in code_files:
         if p.suffix=='.py':ast.parse(p.read_text(),filename=str(p))
@@ -36,15 +39,16 @@ def run():
     (OUT/'verification/source_syntax_checks.json').write_text(json.dumps(checked,indent=2)+'\n')
     source_index=[dict(path=str(p.relative_to(ROOT)),sha256=sha(p)) for p in code_files]
     (OUT/'summary/source_manifest.json').write_text(json.dumps(source_index,indent=2)+'\n')
-    files=[];artifacts=[]
+    files=[];artifacts=[];cached_deg_aliases=[]
     def copy(p):
         rel=p.relative_to(ROOT);target=STAGE/rel;target.parent.mkdir(parents=True,exist_ok=True)
         shutil.copy2(p,target);files.append(str(rel))
-    def bundle(paths,target,relative_root):
+    def bundle(paths,target,relative_root,extra_members=()):
         target.parent.mkdir(parents=True,exist_ok=True)
         temp=target.with_name(target.name+'.part')
         with tarfile.open(temp,'w:gz',compresslevel=1) as archive:
             for p in sorted(paths):archive.add(p,arcname=str(p.relative_to(relative_root)),recursive=False)
+            for source,archive_name in extra_members:archive.add(source,arcname=archive_name,recursive=False)
         temp.replace(target);files.append(str(target.relative_to(STAGE)))
     copy(ROOT/'notebooks/dgscrna_results.ipynb')
     for p in code_files:copy(p)
@@ -78,7 +82,21 @@ def run():
             paths.append(p)
             if len(parts)==1 or (parts[0]=='evaluation' and len(parts)==2):copy(p)
         target=STAGE/prep.relative_to(ROOT)/'terminal_results_and_audits.tar.gz'
-        bundle(paths,target,prep)
+        # The two validated archived PTC routes reuse DEG files outside their unit
+        # directory. Include those exact cached files in the delivery as well.
+        extra_members=[]
+        for manifest in sorted(prep.glob('*/score_manifest.json')):
+            score=json.loads(manifest.read_text())
+            if not score.get('DEG_file'):continue
+            source=Path(score['DEG_file'])
+            if source.is_relative_to(prep):continue
+            assert source.is_file() and sha(source)==score['DEG_sha256']
+            archive_name=str(manifest.parent.relative_to(prep)/'DEG_full_integrated2000.rds')
+            existing=prep/archive_name
+            if existing.exists():assert sha(existing)==score['DEG_sha256']
+            else:extra_members.append((source,archive_name))
+            cached_deg_aliases.append(dict(unit=row.unit,source=str(source),archived_as=archive_name,sha256=score['DEG_sha256']))
+        bundle(paths,target,prep,extra_members)
         for p in prep.glob('*/terminal/*/training_manifest.json'):
             m=json.loads(p.read_text())
             for name in ['terminal.npz','model_state.pt']:
@@ -92,6 +110,8 @@ def run():
     with gzip.open(local_record,'wt') as f:
         for r in artifacts:f.write(json.dumps(r)+'\n')
     copy(local_record)
+    deg_record=OUT/'summary/cached_DEG_delivery_sources.json'
+    deg_record.write_text(json.dumps(cached_deg_aliases,indent=2)+'\n');copy(deg_record)
     layout=OUT/'summary/DELIVERY_LAYOUT.md'
     layout.write_text('''# Delivery layout
 

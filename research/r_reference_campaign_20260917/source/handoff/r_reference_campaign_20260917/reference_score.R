@@ -20,7 +20,8 @@ suppressPackageStartupMessages(library(Matrix))
 suppressPackageStartupMessages(library(jsonlite))
 suppressPackageStartupMessages(library(digest))
 suppressPackageStartupMessages(library(future))
-plan(multicore,workers=min(4L,as.integer(Sys.getenv('SLURM_CPUS_PER_TASK','4'))))
+deg_workers<-min(4L,as.integer(Sys.getenv('SLURM_CPUS_PER_TASK','4')))
+plan(multicore,workers=deg_workers)
 options(future.globals.maxSize=32*1024^3)
 args <- commandArgs(trailingOnly=TRUE)
 unit <- args[[1]]
@@ -28,7 +29,11 @@ prep <- if(length(args)>1L) args[[2]] else file.path(base,'benchmark',unit,'refe
 stopifnot(file.exists(file.path(prep,'PREPARED')))
 pm <- fromJSON(file.path(prep,'prepare_manifest.json'))
 # Lower fork concurrency for the all-gene assay; same DEG statistics.
-if(pm$features$scoring>10000L)plan(multicore,workers=min(2L,as.integer(Sys.getenv('SLURM_CPUS_PER_TASK','2'))))
+if(pm$features$scoring>10000L) {
+  deg_workers<-min(as.integer(Sys.getenv('DGSCRNA_DEG_WORKERS','2')),as.integer(Sys.getenv('SLURM_CPUS_PER_TASK','2')))
+  stopifnot(deg_workers>=1L,deg_workers<=4L)
+  plan(multicore,workers=deg_workers)
+}
 obj <- readRDS(file.path(prep,'expression_PCA30.rds'))
 cells <- read.csv(file.path(prep,'cells.csv'),stringsAsFactors=FALSE)
 stopifnot(identical(colnames(obj),cells$cell_id))
@@ -78,6 +83,8 @@ for(space in c('PCA30','UMAP2')) for(method in c('SNN','HDBSCAN_R')) {
   cat(format(Sys.time()),unit,route,'clusters',length(ids),'DEG\n');flush.console()
   degpath <- file.path(dest,'DEG.rds')
   if(file.exists(degpath)) deg<-readRDS(degpath) else {
+    # Release completed clustering temporaries before forked DEG workers inherit the heap.
+    invisible(gc())
     if(length(ids)>1L) {
       deg<-FindAllMarkers(obj,assay=assay,slot='data',test.use='wilcox_limma',
         logfc.threshold=0.25,min.pct=0.1,min.diff.pct=-Inf,only.pos=FALSE,
@@ -137,7 +144,7 @@ for(space in c('PCA30','UMAP2')) for(method in c('SNN','HDBSCAN_R')) {
     execution_source=Sys.getenv('DGSCRNA_EXECUTION_SOURCE'),source_sha256=digest(file=Sys.getenv('DGSCRNA_EXECUTION_SOURCE'),algo='sha256'),
     original_density_arithmetic=TRUE,cluster_indexing='observed labels; equivalent to legacy contiguous zero-based indexing',
     noise_zero_scored_as_cluster=TRUE,dbscan_version=as.character(packageVersion('dbscan')),arms=arms,
-    reference_labels_used_for_fit=FALSE,job=Sys.getenv('SLURM_JOB_ID'),
+    reference_labels_used_for_fit=FALSE,DEG_workers=deg_workers,job=Sys.getenv('SLURM_JOB_ID'),
     elapsed_seconds=as.numeric(difftime(Sys.time(),started,units='secs')))
   write_json(m,file.path(dest,'score_manifest.json'),auto_unbox=TRUE,pretty=TRUE)
   writeLines(digest(file=file.path(dest,'score_manifest.json'),algo='sha256'),file.path(dest,'SCORE_COMPLETE'))

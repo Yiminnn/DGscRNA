@@ -36,20 +36,21 @@ def run():
           libraries='; '.join(item['libraries']),selection_basis=item['selection_basis']))
     marker_table=pd.DataFrame(marker_rows)
     marker_table.to_csv(dest/'marker_context_roster.csv',index=False)
-    reviewer_contexts=marker_table[marker_table.dataset.ne('HCL')][['dataset','primary','related','n_libraries']]
+    reviewer_contexts=marker_table[marker_table.dataset.ne('HCL')&marker_table.unit.eq(marker_table.dataset)][['dataset','primary','related','n_libraries']]
     inputs=[json.loads(p.read_text()) for p in OUT.glob('inputs/*/*/input_manifest.json')]
     input_table=pd.DataFrame([dict(dataset=m['dataset'],unit=m['unit'],n_cells=m['n_cells'],n_genes=m['n_genes'],
-      n_batches=len(m['batch_sizes']),input_semantics=m['input_semantics'],source=m['source']) for m in inputs])
+      n_batches=len(m['batch_sizes']),input_semantics=m['input_semantics'],source=m['source'],
+      analysis_role='CCA feasibility sensitivity' if m.get('derived_control_of') else 'primary') for m in inputs])
     input_table.to_csv(dest/'input_roster.csv',index=False)
-    cohort=input_table.groupby('dataset',as_index=False).agg(cells=('n_cells','sum'),analysis_units=('unit','nunique'))
+    cohort=input_table[input_table.analysis_role.eq('primary')].groupby('dataset',as_index=False).agg(cells=('n_cells','sum'),analysis_units=('unit','nunique'))
     assert len(cohort)==11 and int(cohort.set_index('dataset').loc['HCL','cells'])==599926
     cohort.to_csv(dest/'cohort_sizes.csv',index=False)
     allm=pd.read_csv(dest/'all_annotation_metrics.csv.gz',low_memory=False)
     best=pd.read_csv(dest/'benchmark_descriptive_maxima.csv')
     b=allm[allm.dataset.ne('PTC')&allm.dataset.ne('HCL')&allm.stage.eq('final090')&allm.endpoint.eq('common_lineage')]
     fixed=b[b.library.eq('CM2_primary_normal')&b.cutoff.eq('mean')]
-    comparison=fixed.pivot(index='dataset',columns='route',values='macro_F1').reset_index() if len(fixed) else pd.DataFrame()
-    descriptive=best[best.dataset.ne('HCL')&best.endpoint.eq('common_lineage')][['dataset','n_tested','descriptive_maximum_macro_F1','maximum_route','maximum_library','maximum_cutoff']]
+    comparison=fixed.pivot(index='unit',columns='route',values='macro_F1').reset_index() if len(fixed) else pd.DataFrame()
+    descriptive=best[best.dataset.ne('HCL')&best.endpoint.eq('common_lineage')][['dataset','unit','n_tested','descriptive_maximum_macro_F1','maximum_route','maximum_library','maximum_cutoff']]
     descriptive.to_csv(dest/'reviewer_descriptive_maxima_common_lineage.csv',index=False)
     p=pd.read_csv(dest/'PTC_fixed_historical_marker_contexts.csv')
     select=((p.scope.eq('NMT')&p.route.isin(['PCA30_SNN','seurat_clusters'])) |
@@ -63,6 +64,13 @@ def run():
     ptc_maxima=pd.read_csv(dest/'PTC_descriptive_maxima_by_family.csv')
     ptc_maxima_table=ptc_maxima[ptc_maxima.metric.eq('macro_F1_T_nonT_unknown_as_error')][
         ['group','family','value','unit','route','library','cutoff','unknown_fraction']]
+    seed_audit=OUT/'verification/PTC_marker_seed_coverage_audit.json'
+    seed_diagnosis_en=seed_diagnosis_zh=''
+    density_audits=[OUT/'verification/ptc_density'/f'PTC_{g}_CCA2000.json' for g in ['NMT','TTU']]
+    if seed_audit.exists() and all(p.exists() for p in density_audits):
+        assert all(json.loads(p.read_text())['status']=='passed' for p in density_audits)
+        seed_diagnosis_en='''A targeted audit explains two distinct failures in separate-group CCA2000. The original Thyroid T-cell panel contains only CD3D; NMT's selected 2,000 genes omit it, giving this panel zero density score and no T-cell training class. TTU retains all genes in the Pubmed T/Treg panels, but neither panel wins any UMAP-HDBSCAN cluster even before applying the mean cutoff. The same TTU inputs do produce T seeds with SNN clustering. Thus marker loss and cluster/score competition are different mechanisms; reducing the cutoff alone cannot repair the latter case. All 204 initial arms in each group exactly replay the unmodified archived density function after arbitrary cluster-ID remapping. The per-condition marker-retention and seed-vocabulary audits are in `verification/PTC_selected_T_marker_retention.csv` and `verification/PTC_selected_marker_seed_coverage.csv`. A DL classifier cannot learn a T class absent from its initial class vocabulary. These observations do not establish that all HVG use is harmful.'''
+        seed_diagnosis_zh='''分组 CCA2000 的异常已定位到两种机制：NMT 的原 Thyroid T-cell panel 只有 CD3D，而这次 2,000 个特征未保留 CD3D，导致该 panel 打分为零、DL 没有 T-cell 训练类别。TTU 则保留了 Pubmed T/Treg panel 的全部基因，但它们在 UMAP＋HDBSCAN 的任何 cluster 中都未赢得最高分，在应用 mean cutoff 之前就没有 T-cell 种子；相同输入的 SNN 路线仍能产生 T-cell 种子。两组各 204 个初始注释组合都已通过原始 density 函数逐项重算核验。这说明 marker 丢失与聚类/打分竞争要分开解释，不能将所有差异都归因于 HVG，也不能期待 DL 补出训练标签中不存在的类别。逐条件证据见 `verification/PTC_selected_marker_seed_coverage.csv`。'''
     # A complete mapping audit exposes resolution mismatches; it does not change evaluation.
     pm=pd.read_csv(OUT/'markers/native_panel_metadata.csv',keep_default_na=False)
     mapping=[];truthrows=[]
@@ -88,6 +96,8 @@ This report extends the existing notebook and preserves its GBM results. The ful
 
 The reviewer cohort roster follows the previously approved human datasets in `handoff/deck_datasets_provenance.md`. HCL is analyzed in all 59 original tissue groups, retaining 599,926 cells. Its aggregate is a **tissue-conditional** analysis; it is not a pooled 600k-cell CCA/HDBSCAN scalability benchmark. No claim of that benchmark is made here.
 
+Colorectal has one donor with only three curated cells, so the full 47,107-cell cohort cannot execute the reference 30-dimensional CCA and is retained as an explicitly uncorrected RNA fallback. A separate `colorectal_CCA28_ge31` sensitivity applies a donor-size-only feasibility rule (at least 31 cells), retaining 47,104 cells from 28 donors for the actual CCA workflow. All 12 prespecified marker libraries are byte-identical between these two runs. The three excluded cell IDs and donor-size rule are recorded; no evaluation labels select the exclusion. This is a second analysis of the same dataset, not an additional independent cohort, and the cohort count above counts its cells only once.
+
 For each reviewer unit the CellMarker candidates were fixed from sampled anatomy and normal/disease context before scoring: primary tissue; disease-specific primary panels where appropriate; relevant blood/lymphoid, vascular, stromal or sampled extranodal tissues; related unions; AllHuman. Distinct native normal/cancer/tissue/type panels and full gene denominators are preserved. PTC retains all 17 original archived libraries, including extra-thyroid CellMarker tissues, HPA and the GSE184362-derived Pubmed library. See `marker_context_roster.csv`, `markers/marker_roster.json` and `markers/native_panel_metadata.csv` for exact choices and evidence PMIDs.
 
 {markdown(reviewer_contexts)}
@@ -101,7 +111,7 @@ CellMarker source: [CellMarker 2.0](https://bio-bigdata.hrbmu.edu.cn/CellMarker2
 - PTC archived all-eight-sample reference: four clustering branches × 17 marker libraries × three density cutoffs = 204 terminal arms. The selected NMT Thyroid/PCA-SNN/none and TTU Pubmed/UMAP-HDBSCAN/mean routes reproduce the previously validated refit, including probabilities. They do **not** recover the historical model weights or erase the previously documented differences from Sup labels.
 - Seventeen newly prepared PTC conditions compare joint CCA gene budgets (500/1k/2k/3k/5k/all), no correction/Harmony, and all-eight versus separate NMT/TTU integration.
 - Twelve additional conditions isolate geometry gene budget on a fixed all-gene CCA expression matrix. Scoring and DL use the same fixed 2,000 genes and byte-identical input. This contrast is conditional on that all-gene CCA fit.
-- Reviewer units use reference 2,000-gene preparation, four clustering branches, all prespecified marker contexts and all three cutoffs. Single-batch units retain RNA scoring; adaptive dimension/neighbor caps for small batches are logged. This campaign does not replace the earlier GBM HVG grid with a new R HVG sweep.
+- Reviewer units use 2,000 geometry/DL genes, four clustering branches, all prespecified marker contexts and all three cutoffs. CCA assays score their integrated feature set; single-batch and RNA-fallback units score all eligible RNA genes. Those scoring universes are explicitly recorded, not assumed equal. Adaptive dimension/neighbor caps for small batches are logged. This campaign does not replace the earlier GBM HVG grid with a new R HVG sweep.
 - Marker-only, terminal confidence 0.90, and 0.70 sensitivity are all reported. “DG-scRNA final” means terminal DL/refinement. A valid no-op is distinct from executed training; an absent scientific result is never scored as a failure of the method.
 
 QC cells, normalization, R-compatible DEG statistics, the original density formula and MLP parameters are fixed. “All genes” means genes detected in at least three cells in every included PTC sample, without variance ranking. Changing the full CCA budget changes anchor, geometry, scoring and DL genes together; it cannot isolate a geometry mechanism. RNA versus Harmony holds the scoring/DL expression fixed. CCA versus RNA changes expression and geometry together; `verification/design_audit.json` records actual gene identities and cell order.
@@ -128,6 +138,8 @@ The table keeps the paper-selected NMT and TTU routes fixed across interventions
 
 The historical binary mapping treats Unknown as non-T. Its ordinary accuracy and non-T F1 can therefore reward abstention. `PTC_abstention_aware_metrics.csv.gz` additionally treats Unknown as an error in accuracy and as a false negative for its true class, reporting coverage and two-class macro F1. T-positive F1 is unchanged by this treatment. A completely unresolved arm has zero abstention-aware accuracy and macro F1, even if its historical non-T F1 appears favorable.
 
+{seed_diagnosis_en}
+
 {markdown(selected)}
 
 `PTC_paired_ablation_changes.csv.gz` matches route, marker, cutoff, scope and endpoint between interventions. `DL_vs_initial_paired_changes.csv.gz` isolates the annotation changes after DL on the same fitted inputs. Full condition-level metrics are in `all_annotation_metrics.csv.gz`; all clustering results are in the separate `all_clustering_metrics.csv`.
@@ -153,15 +165,19 @@ Notebook: `notebooks/dgscrna_results.ipynb` in the existing delivery root. The E
     (dest/'RESULTS_AND_INTERPRETATION.md').write_text(report)
     (dest/'RESULTS_ZH.md').write_text(f'''# PTC 与 reviewer 数据集：R 原始流程重跑
 
-状态：**{s['status']}**；完成评价 {s['evaluated_units']}/99 个分析单元，{s['terminal_annotation_conditions_evaluated']} 个最终注释组合；图已完成 {s['plotted_units']}，完整性审计 {s.get('audited_units',0)}。
+状态：**{s['status']}**；完成评价 {s['evaluated_units']}/{s['expected_analysis_units']} 个分析单元，{s['terminal_annotation_conditions_evaluated']} 个最终注释组合；图已完成 {s['plotted_units']}，完整性审计 {s.get('audited_units',0)}。
 
 PTC 保留原始 17 个 marker 库，NMT 与 TTU 的论文选定 marker 路线分别固定报告。除整体 CCA/HVG 数量比较外，另有固定校正表达、marker 打分与 DL 输入、只改变聚类特征的对照。RNA/Harmony 的 DL 输入完全一致；CCA/RNA 同时改变表达和聚类空间。
 
 Reviewer 沿用已确认的 11 套人类数据，先按真实采样组织固定 CellMarker 候选，再报告全部组合。HCL 保留全部 599,926 个细胞，按 59 个原始组织组分别运行；不能把它写成一次 60 万细胞整体聚类的性能证明。
 
+Colorectal 的全体 47,107 个细胞中，一位供者只有 3 个细胞，无法执行原定 30 维 CCA；全细胞 RNA fallback 保留，另加只按供者细胞数筛选的 CCA 对照：28 位供者、47,104 个细胞，marker 库完全不变。3 个排除细胞及原因单独记录，数据集细胞总数不重复累加。RNA fallback 的打分基因集也与 CCA 不同，因此两个版本属于整体流程对照。
+
 所有最终 DG-scRNA 数值都来自 terminal DL，保留 Unknown、无需训练及无法训练的状态。原始 saved labels 的对齐属于 concordance；TCR 的阴性不等于确定非 T 细胞。原论文历史权重/Accuracy 来源尚未恢复，这次的新实验不改变此前诊断。
 
 PTC 同时给出原始二分类指标和 Unknown 记为错误的指标：原规则把 Unknown 算作非 T，不能仅凭这种规则下较高的非 T F1/accuracy 判断方法更优。
+
+{seed_diagnosis_zh}
 
 ## 实际采用的 reviewer marker 组织
 
@@ -203,7 +219,7 @@ PTC 同时给出原始二分类指标和 Unknown 记为错误的指标：原规�
 
 # R-reference PTC ablations and reviewer cohorts — 2026-09-17
 
-**{s['status']}**: {s['evaluated_units']}/99 analysis units evaluated; {s['terminal_annotation_conditions_evaluated']} terminal annotation conditions. This section extends the original notebook; every preceding GBM/PTC cell is preserved.
+**{s['status']}**: {s['evaluated_units']}/{s['expected_analysis_units']} analysis units evaluated; {s['terminal_annotation_conditions_evaluated']} terminal annotation conditions. This section extends the original notebook; every preceding GBM/PTC cell is preserved.
 
 PTC: 17 original libraries, 30 preparation/reference units including isolated geometry controls. Reviewer: the 11 approved human cohorts, with prespecified CellMarker contexts; HCL is conditional on its 59 original tissue groups. Original saved labels, validated refit, and fresh integrations remain distinct. Historical model weights and the manuscript Accuracy provenance remain unresolved.
 
@@ -227,6 +243,9 @@ show_figure("summary/workflow_decision_tree.png")''')
                 code(f'show_figure("summary/{image_name}.png")')
         md('## Full-grid descriptive optima and fixed PTC routes\n\nThese observed maxima use the same evaluation labels. They support a within-dataset comparison, not a global-optimum claim. The PTC table keeps the historical group-specific route fixed.')
         code('display(pd.read_csv(CAMPAIGN / "summary/reviewer_descriptive_maxima_common_lineage.csv"))\ndisplay(pd.read_csv(CAMPAIGN / "summary/PTC_fixed_paper_route_terminal.csv"))\ndisplay(pd.read_csv(CAMPAIGN / "summary/PTC_descriptive_maxima_by_family.csv"))')
+        if seed_diagnosis_en:
+            md('## PTC marker retention and missing training classes\n\n'+seed_diagnosis_en)
+            code('display(pd.read_csv(CAMPAIGN / "verification/PTC_selected_marker_seed_coverage.csv"))\ndisplay(pd.read_csv(CAMPAIGN / "verification/PTC_selected_T_marker_retention.csv"))')
         md('## Every clustering branch and terminal marker grid\n\nEach atlas uses one saved UMAP for visual comparison of all four clustering partitions. Numbers identify clusters; legends identify biological labels and donors. Annotation illustration uses a fixed context, while the heatmaps retain the entire marker/cutoff grid. Individual PDF exports and marker-to-DL panels are saved alongside each atlas.')
         ready=inventory[inventory.evaluated&inventory.plotted].copy()
         ready['sort_group']=ready.unit.map(lambda u:0 if u=='brain_GBM' else (1 if u.startswith('PTC_') else (3 if u.startswith('HCL__') else 2)))
@@ -243,7 +262,7 @@ show_figure("summary/workflow_decision_tree.png")''')
         NotebookClient(campaign,timeout=1200,kernel_name='python3',resources={'metadata':{'path':str(ROOT/'notebooks')}},allow_errors=False).execute()
         assert sha(path)==original_hash,'Notebook changed during execution; refusing to overwrite external edits'
         banner=nbformat.v4.new_markdown_cell(
-          f'**2026-09-17 最新实验状态：{s["status"]}。** 已完成评价 {s["evaluated_units"]}/99 个分析单元。'
+          f'**2026-09-17 最新实验状态：{s["status"]}。** 已完成评价 {s["evaluated_units"]}/{s["expected_analysis_units"]} 个分析单元。'
           ' [本轮 R 参考实验、完整流程图与所有聚类图](#r-reference-campaign-20260917)位于文末；'
           '本轮状态以该节为准。此前所有 GBM/PTC 单元和结果完整保留。',metadata={'tags':[TAG]})
         nb.cells=[banner]+baseline+campaign.cells

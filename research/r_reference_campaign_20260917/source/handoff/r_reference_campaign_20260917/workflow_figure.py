@@ -26,9 +26,9 @@ def run():
     ax.text(.5,.98,'DG-scRNA: R-reference workflow and ablation map',ha='center',va='top',fontsize=13,fontweight='bold')
     ax.text(.5,.954,'Blue: varied in the experiment grid   |   Gray: fixed algorithm or evaluation rule',ha='center',fontsize=8)
     x=.345;w=.61
-    node(x,.909,w,.056,'Input and normalization','Fixed published cells; genes detected in ≥3 cells; LogNormalize 10,000',kind='fixed')
+    node(x,.909,w,.056,'Input and normalization','Curated inputs; genes detected in ≥3 cells; LogNormalize 10,000',kind='fixed')
     arrow(x,.875,x,.860)
-    node(x,.829,w,.060,'A1  Integration scope','PTC: archived / fresh all 8 versus NMT and TTU separately')
+    node(x,.829,w,.060,'A1  Integration / cohort scope','PTC: archived / fresh all 8 versus NMT and TTU separately\nColorectal: full-cohort RNA + 28-donor CCA sensitivity',size=7.8)
     arrow(x,.793,.18,.774);arrow(x,.793,.51,.774)
     node(.18,.737,.28,.066,'A2  Feature budget','500 / 1k / 2k / 3k / 5k / all\nRecord anchor, geometry, score, DL genes',size=7.9)
     node(.51,.737,.28,.066,'A3  Batch correction','CCA expression / RNA / Harmony PCs\nRNA vs Harmony: matched score + DL',size=7.9)
@@ -63,13 +63,13 @@ def run():
       'SNN: Louvain, resolution 0.5.\nHDBSCAN: R minPts = 50.\nUMAP: cosine, 30 neighbors,\nmin_dist = 0.3, seed = 42.\n\nDEG: original R-compatible rule.\nDensity: singleton factor 0.8;\nfull panel denominator;\nties → Undecided.'),
       (.303,'DL parameters held fixed',
       'MLP: 256 / 128, LeakyReLU.\nLegacy Softmax → CrossEntropy.\nAdamax 0.001; 10 epochs.\n90/10 split; batch 256.\nOnly unresolved cells updated.\n\nNo evaluation labels enter fitting.'),
-      (.126,'Interpretation',
+      (.150,'Interpretation',
       'Best among measured conditions\nis dataset- and endpoint-specific.\nThe grid is not fully factorial.\nNo global-optimum claim.\nSaved labels are concordance,\nnot independent ground truth.')]
     for y,title,body in notes:
         ax.text(.72,y,title,ha='left',va='top',fontsize=8.4,fontweight='bold',color=orange)
         ax.text(.72,y-.023,body,ha='left',va='top',fontsize=7.1,linespacing=1.3)
-    ax.text(.04,.026,'PTC varies A1–A9; reviewer cohorts use the reference 2,000-gene preparation and vary A4–A9.\n“All genes” means genes shared after the fixed detection filter; no variance ranking. Adaptations for tiny batches are logged.',
-            fontsize=7,ha='left',va='center',linespacing=1.3)
+    ax.text(.04,.026,'PTC varies A1–A9; reviewer grids vary A4–A9; colorectal adds the A1/A3 sensitivity (3-cell donor excluded from CCA only).\nReviewer: 2,000 geometry/DL genes; RNA assays score all eligible genes. “All genes” uses the fixed detection filter, without variance ranking.',
+            fontsize=6.6,ha='left',va='center',linespacing=1.3)
     fig.subplots_adjust(left=.025,right=.99,top=.995,bottom=.015)
     for ext in ['png','pdf','svg']:fig.savefig(out/f'workflow_decision_tree.{ext}',dpi=300,facecolor='white')
     plt.close(fig)

@@ -17,12 +17,15 @@ suppressPackageStartupMessages(library(Matrix))
 suppressPackageStartupMessages(library(jsonlite))
 suppressPackageStartupMessages(library(digest))
 suppressPackageStartupMessages(library(future))
-plan(sequential);options(Seurat.object.assay.version='v3',future.globals.maxSize=120*1024^3)
+anchor_workers<-as.integer(Sys.getenv('DGSCRNA_ANCHOR_WORKERS','1'))
+stopifnot(anchor_workers>=1L,anchor_workers<=as.integer(Sys.getenv('SLURM_CPUS_PER_TASK','1')))
+if(anchor_workers==1L)plan(sequential) else plan(multicore,workers=anchor_workers)
+options(Seurat.object.assay.version='v3',future.globals.maxSize=120*1024^3)
 root <- '/fs/scratch/PCON0080/yimin/dgscrna'
 base <- file.path(root,'results/hvg_ptc_20260916_v1/r_reference_campaign_20260917')
 args <- commandArgs(trailingOnly=TRUE)
 unit <- if(length(args)) args[[1]] else readLines(file.path(base,'benchmark_units.txt'))[[as.integer(Sys.getenv('SLURM_ARRAY_TASK_ID'))+1L]]
-dataset <- if(grepl('^HCL__',unit))'HCL' else unit
+dataset <- if(length(args)>1L)args[[2]] else if(grepl('^HCL__',unit))'HCL' else unit
 inp <- file.path(base,'inputs',dataset,unit)
 dest <- file.path(base,'benchmark',unit,'reference_CCA2000');dir.create(dest,recursive=TRUE,showWarnings=FALSE)
 im <- fromJSON(file.path(inp,'input_manifest.json'))
@@ -103,7 +106,7 @@ write.csv(Embeddings(obj,'pca'),file.path(dest,'PCA30.csv'))
 m <- list(unit=unit,dataset=dataset,n_cells=ncol(obj),input_manifest_sha256=digest(file=file.path(inp,'input_manifest.json'),algo='sha256'),
  input_semantics=im$input_semantics,correction=correction,anchor_dimensions=if(can_integrate)ndims else NULL,
  features=list(anchor=length(features),geometry=length(features),scoring=nrow(obj[[assay]]),DL=length(features)),
- assay=assay,seed=42L,DL_binary=file.path(dest,'DL.float32.bin'),DL_binary_sha256=digest(file=file.path(dest,'DL.float32.bin'),algo='sha256'),
+ assay=assay,seed=42L,anchor_workers=anchor_workers,DL_binary=file.path(dest,'DL.float32.bin'),DL_binary_sha256=digest(file=file.path(dest,'DL.float32.bin'),algo='sha256'),
  n_batches=length(batch_sizes),job=Sys.getenv('SLURM_JOB_ID'),execution_source=Sys.getenv('DGSCRNA_EXECUTION_SOURCE'),source_sha256=digest(file=Sys.getenv('DGSCRNA_EXECUTION_SOURCE'),algo='sha256'),
  QC='fixed published curated cells; genes detected in >=3 pooled cells; no stochastic re-QC',
  adaptive_parameters='CCA dimension and neighbor caps explicitly reduced only for small batches; see fields and script',

@@ -38,7 +38,8 @@ batch scope and random seeds separately for every condition.
    feature budget varies (500/1k/2k/3k/5k/all). They are conditional on that fixed
    CCA fit, not replacements for the original CCA2000 reference. Together with
    17 combined preparation conditions and the archived baseline there are 30
-   PTC analysis units; 69 reviewer units give 99 total.
+   PTC analysis units; 70 reviewer analysis units give 100 total (including the
+   explicitly paired colorectal CCA-feasibility sensitivity below).
 3. Run reviewer datasets with the same reference algorithm and multiple marker
    contexts. Use available raw counts; explicitly describe already-normalized
    data when counts are unavailable. Do not pass RPKM as raw UMI counts silently.
@@ -91,3 +92,16 @@ and https://doi.org/10.1093/nar/gkac947. Freeze the cached human workbook checks
   retroactively reconstruct transient source bytes. Later terminal jobs also
   freeze their driver and cap PyTorch at four threads, including high-memory
   all-gene tasks; the legacy MLP helper remains unchanged.
+
+## Colorectal CCA-feasibility sensitivity (added after input audit)
+
+The full 47,107-cell colorectal cohort includes donor HTA8_6004 with only three
+curated cells. The full-cohort result remains an explicitly uncorrected RNA
+fallback; it is not described as an executed CCA result. Add one CCA analysis
+using a fixed donor-size threshold of at least 31 cells, needed for 30-dimensional
+CCA: 28 donors and 47,104 cells. Preserve the excluded three cells in the original
+cohort and record their IDs/reason. Reuse the exact 12 frozen colorectal marker
+libraries, every clustering branch/cutoff and terminal DL. No labels or prediction
+scores inform this exclusion. The two versions have different expression/scoring
+universes and represent a combined workflow sensitivity, not an isolated batch
+effect test. Count biological cohorts/cells only once in the roster.

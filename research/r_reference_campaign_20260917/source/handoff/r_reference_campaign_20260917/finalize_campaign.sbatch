@@ -12,6 +12,7 @@ export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
 export PATH=/fs/scratch/PCON0080/yimin/mamba_envs/dgscrna/bin:$PATH
 cd /fs/scratch/PCON0080/yimin/dgscrna
 python handoff/r_reference_campaign_20260917/audit_design.py
+python handoff/r_reference_campaign_20260917/audit_ptc_marker_seed_coverage.py --require-complete
 python handoff/r_reference_campaign_20260917/plot_abstention.py
 python handoff/r_reference_campaign_20260917/aggregate.py --require-complete
 python -u handoff/r_reference_campaign_20260917/report_and_notebook.py

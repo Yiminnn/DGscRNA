@@ -13,7 +13,7 @@ def run():
     import matplotlib.pyplot as plt
     dest=OUT/'summary';dest.mkdir(exist_ok=True)
     plt.rcParams.update({'font.family':'DejaVu Sans','font.size':8,'pdf.fonttype':42,'svg.fonttype':'none'})
-    expected=[(u,'HCL' if u.startswith('HCL__') else u,OUT/'benchmark'/u/'reference_CCA2000') for u in (OUT/'benchmark_units.txt').read_text().splitlines()]
+    expected=[(u,'HCL' if u.startswith('HCL__') else ('colorectal' if u=='colorectal_CCA28_ge31' else u),OUT/'benchmark'/u/'reference_CCA2000') for u in (OUT/'benchmark_units.txt').read_text().splitlines()]
     specs=json.loads((ROOT/'handoff/r_reference_campaign_20260917/ptc_ablation_conditions.json').read_text())
     expected += [(s['unit'],'PTC',OUT/'PTC_ablation'/s['unit']) for s in specs]
     expected += [(f'PTC_{g}_GEOMETRY{h}_FIXED_CCAall_DL2000','PTC',OUT/'PTC_ablation'/f'PTC_{g}_GEOMETRY{h}_FIXED_CCAall_DL2000') for g in ['NMT','TTU'] for h in ['500','1000','2000','3000','5000','all']]
@@ -156,7 +156,7 @@ def run():
         plt.close(fig)
     fp=fixed[fixed.stage.eq('final090') & fixed.endpoint.eq('common_lineage') & fixed.dataset.ne('HCL')]
     if len(fp):
-        piv=fp.pivot(index='dataset',columns='route',values='macro_F1').reindex(columns=list(palette))
+        piv=fp.pivot(index='unit',columns='route',values='macro_F1').reindex(columns=list(palette))
         hf=pd.DataFrame(hcl)
         if len(hf):
             hs=hf[hf.library.eq('CM2_primary_normal') & hf.cutoff.eq('mean') & hf.stage.eq('final090') & hf.endpoint.eq('common_lineage')]

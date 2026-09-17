@@ -1,7 +1,7 @@
 {
   "branch": "align-r-reference",
   "scope": "Added research/r_reference_campaign_20260917 only; installed Python package and earlier research snapshot unchanged.",
-  "source_files": 69,
+  "source_files": 73,
   "files": [
     {
       "source": "handoff/harmonize.py",
@@ -30,20 +30,20 @@
     {
       "source": "handoff/r_reference_campaign_20260917/PLAN.md",
       "snapshot": "source/handoff/r_reference_campaign_20260917/PLAN.md",
-      "sha256": "fd786b9d398b6853f213ee9cc15441a3aa10634524c0d993d77ecce52476a31a",
-      "bytes": 6042
+      "sha256": "3486c0b73f831e0def479cefc06baa86654c42c87ae1b2ec7cda10e51b255d90",
+      "bytes": 6996
     },
     {
       "source": "handoff/r_reference_campaign_20260917/README.md",
       "snapshot": "source/handoff/r_reference_campaign_20260917/README.md",
-      "sha256": "374d9d032917c743ef17b377dc935ba6e7c04d55464d8c5413b66aae6ccf659f",
-      "bytes": 3569
+      "sha256": "1eae8e5d9b1e8f0da2b6da037611c7af00800f2b1c9fd797688fb4a981fbde98",
+      "bytes": 4394
     },
     {
       "source": "handoff/r_reference_campaign_20260917/aggregate.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/aggregate.py",
-      "sha256": "dad7b133151b769d45e2d7ee6a6cc475a7e2225225f02cf09a8b4367c29ec19f",
-      "bytes": 16856
+      "sha256": "c31547d4e2f05db2e9406310d832b08996feb6878745f984b9a5d6b30f5c51d2",
+      "bytes": 16903
     },
     {
       "source": "handoff/r_reference_campaign_20260917/aggregate.sbatch",
@@ -82,6 +82,18 @@
       "bytes": 533
     },
     {
+      "source": "handoff/r_reference_campaign_20260917/audit_ptc_density.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/audit_ptc_density.R",
+      "sha256": "c13c8ed9261b469b88a0839484c5794989736a2a8fe020a1ca7d4df8d11a0e98",
+      "bytes": 4476
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/audit_ptc_marker_seed_coverage.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/audit_ptc_marker_seed_coverage.py",
+      "sha256": "2367d7ada040ea5b6b70d8f666abf73ae5ab48028f131e9b0e15244eacb6a106",
+      "bytes": 4520
+    },
+    {
       "source": "handoff/r_reference_campaign_20260917/audit_unit.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/audit_unit.py",
       "sha256": "6319a24755941d2b047cb9488a81e230259d793094959912e3041fdbf0cab291",
@@ -110,6 +122,12 @@
       "snapshot": "source/handoff/r_reference_campaign_20260917/check_historical_abstention_accuracy.py",
       "sha256": "198dee538030eded8208b081dad5d39a4a2fa90864f9d18186931b387d7aed1c",
       "bytes": 2251
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/colorectal_CCA_control.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/colorectal_CCA_control.sbatch",
+      "sha256": "0b56b0186d71368991b33b7afe95dbcf80bcc07836ffc379cfa79eaad625b466",
+      "bytes": 587
     },
     {
       "source": "handoff/r_reference_campaign_20260917/evaluate_unit.py",
@@ -142,6 +160,12 @@
       "bytes": 530
     },
     {
+      "source": "handoff/r_reference_campaign_20260917/export_colorectal_CCA_control.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/export_colorectal_CCA_control.py",
+      "sha256": "e6eb8afd44e9039d3d4163cdfbb497b1b9055afd09ade356441ebb6c657d5fd1",
+      "bytes": 4310
+    },
+    {
       "source": "handoff/r_reference_campaign_20260917/export_datasets.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/export_datasets.py",
       "sha256": "0475b6e67aab769f213cbd634c3e7b6ec38a4a9a8356108ef00d54c8af2cd7e5",
@@ -156,8 +180,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/finalize_campaign.sbatch",
       "snapshot": "source/handoff/r_reference_campaign_20260917/finalize_campaign.sbatch",
-      "sha256": "6d45c63dac4cfd6e574688ebdf71b412784b1d592fcf2032a738ba0ee1905190",
-      "bytes": 2106
+      "sha256": "637b52302508b1fe6c5193286e01ac62572e2dceb7044a93e8faaa007e58a168",
+      "bytes": 2204
     },
     {
       "source": "handoff/r_reference_campaign_20260917/inventory.py",
@@ -264,8 +288,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/reference_prepare.R",
       "snapshot": "source/handoff/r_reference_campaign_20260917/reference_prepare.R",
-      "sha256": "32adb055dccf1de50842cd40e5a4be3fc02cb817327cc773f5a5c58b72c2af03",
-      "bytes": 7243
+      "sha256": "1bef65b2884528599518ebd1c87145b629700db12c2e6c4919aa03a0b4444ef7",
+      "bytes": 7538
     },
     {
       "source": "handoff/r_reference_campaign_20260917/reference_prepare.sbatch",
@@ -276,8 +300,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/reference_score.R",
       "snapshot": "source/handoff/r_reference_campaign_20260917/reference_score.R",
-      "sha256": "73c4f1871091177709883772b67d08a73bb64f1a9cb958191ccd6d801a31f506",
-      "bytes": 8835
+      "sha256": "5bdb5b1145133f1f0866c106eea79bd392a78ffe9d367c0deb3d282a38f3c324",
+      "bytes": 9121
     },
     {
       "source": "handoff/r_reference_campaign_20260917/reference_score.sbatch",
@@ -288,8 +312,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/report_and_notebook.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/report_and_notebook.py",
-      "sha256": "c9f803c28a4594f6aca1c151d4daf5f66dcd291ca70835115b54400279bb92a4",
-      "bytes": 25948
+      "sha256": "bc6d3cd2a367be6177c7ea010dc3b426e7ec2abc0eeecd1d996139af0b042113",
+      "bytes": 30048
     },
     {
       "source": "handoff/r_reference_campaign_20260917/report_and_notebook.sbatch",
@@ -354,8 +378,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/stage_delivery.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/stage_delivery.py",
-      "sha256": "c3583417f4eceadc237d236714e20a65443cd89e1b25a024baaa5b56dd1525ea",
-      "bytes": 7869
+      "sha256": "fa1ec0eb82d205ec1a24729e88b5875bb400349ef5edf6be1bee99fc03ad7291",
+      "bytes": 9447
     },
     {
       "source": "handoff/r_reference_campaign_20260917/terminal.py",
@@ -408,8 +432,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/workflow_figure.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/workflow_figure.py",
-      "sha256": "0990cc90696578900344312685cef27eaa488e30fb822c98f3c09b4063a619c6",
-      "bytes": 6328
+      "sha256": "9d59d2b85a75b039fc80972f3666cf8290a5bbfd65c1d25268a6984b64df2fc9",
+      "bytes": 6443
     },
     {
       "source": "handoff/r_reference_campaign_20260917/workflow_figure.sbatch",
