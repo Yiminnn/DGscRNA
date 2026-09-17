@@ -36,8 +36,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/README.md",
       "snapshot": "source/handoff/r_reference_campaign_20260917/README.md",
-      "sha256": "5b504c173c37cf7814d9fd17e822f0d1a4554a1926afc379df45bc77ed33602f",
-      "bytes": 5699
+      "sha256": "80a7611043a6ba0cef0cd585488c64251190e750cd165631955a4f02e4ff5f0d",
+      "bytes": 5945
     },
     {
       "source": "handoff/r_reference_campaign_20260917/aggregate.py",
@@ -258,8 +258,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/orchestrate.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/orchestrate.py",
-      "sha256": "1dd7b8cf676a4661fa835dc2ef77796b9d2bb21393748ba2490a09344c8beb4f",
-      "bytes": 12810
+      "sha256": "35fab9741d28ca86522f028963b7498e840c42f66dbd32c46ea0fbe34e827101",
+      "bytes": 14204
     },
     {
       "source": "handoff/r_reference_campaign_20260917/orchestrate.sbatch",

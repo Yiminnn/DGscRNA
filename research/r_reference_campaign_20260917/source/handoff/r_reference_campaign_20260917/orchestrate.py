@@ -17,12 +17,37 @@ def submit(options,script,args=()):
     with (OUT/'submission_events.jsonl').open('a') as f:f.write(json.dumps({'time':time.time(),'job':job,'command':cmd})+'\n')
     print('SUBMITTED',job,script,list(args),flush=True);return job
 
+def restore_score_recoveries(state,records):
+    """Reconcile already-submitted continuations from independent durable receipts.
+
+    These receipts do not submit work. A later route registration takes priority;
+    only the recorded old job or its matching continuation can be reconciled.
+    """
+    for unit,record in records.items():
+        assert record['unit']==unit and record['route'] in ROUTES
+        assert record['scientific_parameters_changed'] is False
+        old,new=record['old_score_job'],record['score_resume_job']
+        assert old.isdigit() and new.isdigit()
+        u=state['units'].get(unit,{})
+        current=u.get('parallel_score_routes',{}).get(record['route'])
+        if current not in [old,new]:continue
+        if current==old:
+            u['parallel_score_routes'][record['route']]=new
+            u['score_job']=new
+            if old not in u.setdefault('previous_score_jobs',[]):u['previous_score_jobs'].append(old)
+            if new not in u.setdefault('parallel_score_jobs',[]):u['parallel_score_jobs'].append(new)
+        u['checkpointed_deg_recovery']=record
+        u.pop('needs_score_job_review',None)
+        u.pop('unfinished_inactive_score_routes',None)
+
 def tick():
     OUT.mkdir(exist_ok=True)
     with (OUT/'dispatcher.lock').open('w') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         path=OUT/'dispatch_state.json'
         state=json.loads(path.read_text()) if path.exists() else {'units':{},'errors':[]}
+        recovery_receipts=OUT/'verification/allgene_SNN_timeout_recovery.json'
+        if recovery_receipts.exists():restore_score_recoveries(state,json.loads(recovery_receipts.read_text()))
         rows=subprocess.check_output(['squeue','-u','yimin','-h','-r','-o','%i|%j|%T'],text=True).splitlines()
         activeids={r.split('|')[0].split('_')[0] for r in rows}
         current_terminal_arrays={r.split('|')[0].split('_')[0] for r in rows if '|Rref_terminal|' in r}
