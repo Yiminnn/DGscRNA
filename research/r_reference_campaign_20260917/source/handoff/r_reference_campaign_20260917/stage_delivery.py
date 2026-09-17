@@ -73,7 +73,8 @@ def run():
         copy(ROOT/rel)
     for sub in ['summary','markers','verification']:
         for p in sorted((OUT/sub).rglob('*')):
-            if p.is_file() and p.name not in ['DELIVERY_RECEIPT.json','REMOTE_RECEIPT_UPLOADED.json']:copy(p)
+            if (p.is_file() and p.name not in ['DELIVERY_RECEIPT.json','DELIVERY_MANIFEST.json']
+                and not p.name.startswith('REMOTE_RECEIPT_UPLOADED')):copy(p)
     # Full task/step resource accounting and failed-attempt logs are delivery artifacts.
     bundle([p for p in (OUT/'resources').rglob('*') if p.is_file() and not p.name.endswith('.part')],
       STAGE/OUT.relative_to(ROOT)/'slurm_accounting_and_failed_logs.tar.gz',OUT/'resources')
@@ -157,12 +158,38 @@ hash-verified before the local `summary/REMOTE_RECEIPT_UPLOADED.json` success ma
 No website or replacement-version notebook is generated, and no old result files are deleted.
 ''')
     copy(layout)
+    campaign_rel=str(OUT.relative_to(ROOT))
+    index=STAGE/'README.md'
+    index.write_text(f'''# DG-scRNA 实验结果目录
+
+本目录继续使用原 notebook；此前 GBM/PTC 内容保留。本轮 R 参考流程共完成 {summary['expected_analysis_units']} 个分析单元。
+
+- [原结果 notebook：新增实验位于文末](notebooks/dgscrna_results.ipynb)
+- [本轮中文结果与解释]({campaign_rel}/summary/RESULTS_ZH.md) · [English report]({campaign_rel}/summary/RESULTS_AND_INTERPRETATION.md)
+- [完整流程与 ablation 节点：PDF]({campaign_rel}/summary/workflow_decision_tree.pdf) · [可编辑 SVG]({campaign_rel}/summary/workflow_decision_tree.svg)
+- [数据集与 marker 组织清单]({campaign_rel}/summary/marker_context_roster.csv)
+- [所有最终注释指标与无 DL 对照]({campaign_rel}/summary/all_annotation_metrics.csv.gz) · [聚类指标]({campaign_rel}/summary/all_clustering_metrics.csv)
+- [PTC 成对 ablation 比较]({campaign_rel}/summary/PTC_paired_ablation_changes.csv.gz) · [batch 混合与标签保留诊断]({campaign_rel}/verification/batch_biology/INTERPRETATION.md)
+- [逐数据集结果与图]({campaign_rel}/benchmark/) · [PTC ablation 结果与图]({campaign_rel}/PTC_ablation/) · [PTC 原始 checkpoint 对照]({campaign_rel}/PTC_archived_CCA2000/)
+- [SLURM 运行账本]({campaign_rel}/resources/slurm_job_ledger.csv) · [目录及归档说明]({campaign_rel}/summary/DELIVERY_LAYOUT.md)
+- [交付文件 SHA256 清单]({campaign_rel}/summary/DELIVERY_MANIFEST.json) · [完成后的交付核验记录]({campaign_rel}/summary/DELIVERY_RECEIPT.json)
+
+每个分析目录的 `terminal_results_and_audits.tar.gz` 包含全部初始/最终逐细胞标签、置信度、训练记录、聚类、DEG 和审计资料；在对应目录解压即可恢复明细树。模型权重、概率 NPZ 和大矩阵留在 HPC，并提供原路径及校验值索引。
+
+最终 DG-scRNA 指标使用 DL/refinement 端点；结构性无法训练与无需训练的状态单独保留。历史标签一致性、TCR 代理指标与 reviewer 的 curated labels 各自报告，不能混作同一真值。HCL 按 59 个原组织组运行。论文历史权重与 Accuracy 来源仍未恢复，本轮结果不改变这一限制。
+''')
+    files.append('README.md')
     files=sorted(set(files))
-    listpath=PARENT/'R_reference_campaign_20260917_upload_files.txt';listpath.write_text('\n'.join(files)+'\n')
     manifest=[dict(path=rel,bytes=(STAGE/rel).stat().st_size,sha256=sha(STAGE/rel)) for rel in files]
     manifest_path=PARENT/'R_reference_campaign_20260917_delivery_manifest.json'
     manifest_path.write_text(json.dumps(dict(remote=REMOTE,status='staged',n_files=len(files),
-       total_bytes=sum(r['bytes'] for r in manifest),files=manifest,job=os.environ['SLURM_JOB_ID']),indent=2)+'\n')
-    print('STAGED',len(files),'files',sum(r['bytes'] for r in manifest),'bytes',flush=True)
+       n_upload_files=len(files)+1,total_bytes=sum(r['bytes'] for r in manifest),files=manifest,
+       manifest_scope='Payload hashes; the manifest itself and the later receipt are excluded to avoid self-referential hashes.',
+       delivered_manifest=str(OUT.relative_to(ROOT)/'summary/DELIVERY_MANIFEST.json'),
+       job=os.environ['SLURM_JOB_ID']),indent=2)+'\n')
+    delivered_manifest=OUT/'summary/DELIVERY_MANIFEST.json'
+    shutil.copy2(manifest_path,delivered_manifest);copy(delivered_manifest)
+    listpath=PARENT/'R_reference_campaign_20260917_upload_files.txt';listpath.write_text('\n'.join(sorted(set(files)))+'\n')
+    print('STAGED',len(files),'files including delivery manifest',sum(r['bytes'] for r in manifest)+manifest_path.stat().st_size,'bytes',flush=True)
 
 if __name__=='__main__':run()

@@ -330,8 +330,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/record_delivery.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/record_delivery.py",
-      "sha256": "cf982282f1821a856e0af74c804aa3508b1de8eb80a0a82d99da83b0773a3168",
-      "bytes": 6011
+      "sha256": "b0bd5df986b77d4cad70410cdab76a883911c230cb9cc164dfe3b0f10f81908e",
+      "bytes": 6259
     },
     {
       "source": "handoff/r_reference_campaign_20260917/reference_prepare.R",
@@ -438,8 +438,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/stage_delivery.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/stage_delivery.py",
-      "sha256": "fd2025d2e72910747311c004d297b7ab17cb93bd8d0b9ac776597aa11dd73c81",
-      "bytes": 11743
+      "sha256": "b30dc55b439d25db522fbb84194dca8500c5d06f53958a1b4e2dc689f3a0d38a",
+      "bytes": 14556
     },
     {
       "source": "handoff/r_reference_campaign_20260917/terminal.py",

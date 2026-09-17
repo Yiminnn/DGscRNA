@@ -22,8 +22,10 @@ def record_payload_delivery():
     assert manifest['job'] == os.environ['SLURM_JOB_ID']
     record = dict(status='delivered_and_verified',
         time=datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        job=os.environ['SLURM_JOB_ID'], remote=REMOTE, n_files=manifest['n_files'],
-        total_bytes=manifest['total_bytes'], manifest_sha256=sha(plan),
+        job=os.environ['SLURM_JOB_ID'], remote=REMOTE, n_files=manifest.get('n_upload_files',manifest['n_files']),
+        payload_files=manifest['n_files'],receipt_itself_excluded_from_file_count=True,
+        total_bytes=manifest['total_bytes']+(plan.stat().st_size if manifest.get('delivered_manifest') else 0),
+        manifest_sha256=sha(plan),delivered_manifest=manifest.get('delivered_manifest'),
         notebook_sha256=sha(ROOT / 'notebooks/dgscrna_results.ipynb'),
         verification='rclone copy and one-way full-download check both exited 0; no differences',
         receipt_upload_verification='Separate REMOTE_RECEIPT_UPLOADED.json marker is required.',
