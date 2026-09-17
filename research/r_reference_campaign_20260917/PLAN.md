@@ -130,3 +130,8 @@ are content-addressed and each arm has an exclusive writer lock; submitted job
 registrations are persisted immediately. Stop/restart a dispatcher only while
 holding its between-tick flock. Interrupted scoring caches are atomically
 published or preserved under an invalid-cache name before recomputation.
+
+For long all-gene scoring jobs, completed routes may enter terminal DL before the
+other routes finish. The same immutable task lists, terminal driver and arm locks
+apply. The full-grid dispatcher waits for those partial arrays before assigning
+remaining arms; evaluation still requires all prescribed routes and conditions.

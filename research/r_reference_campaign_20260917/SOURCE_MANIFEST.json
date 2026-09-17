@@ -1,7 +1,7 @@
 {
   "branch": "align-r-reference",
   "scope": "Added research/r_reference_campaign_20260917 only; installed Python package and earlier research snapshot unchanged.",
-  "source_files": 83,
+  "source_files": 84,
   "files": [
     {
       "source": "handoff/harmonize.py",
@@ -30,8 +30,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/PLAN.md",
       "snapshot": "source/handoff/r_reference_campaign_20260917/PLAN.md",
-      "sha256": "3f39139c5cee980caf802c513f1ad34eecb79be6e33e9ea2d4c576c25572daa8",
-      "bytes": 8718
+      "sha256": "3b099b54c797e8890164789192b965e50e37e8bfe6f0599020720d4af55e5ff0",
+      "bytes": 9043
     },
     {
       "source": "handoff/r_reference_campaign_20260917/README.md",
@@ -246,8 +246,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/orchestrate.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/orchestrate.py",
-      "sha256": "0bfd7b65fa31e5e6292cf1bd34661544dfba2e2aa8cbfadb916afa29fa381f34",
-      "bytes": 12365
+      "sha256": "1dd7b8cf676a4661fa835dc2ef77796b9d2bb21393748ba2490a09344c8beb4f",
+      "bytes": 12810
     },
     {
       "source": "handoff/r_reference_campaign_20260917/orchestrate.sbatch",
@@ -440,6 +440,12 @@
       "snapshot": "source/handoff/r_reference_campaign_20260917/stage_delivery.py",
       "sha256": "b30dc55b439d25db522fbb84194dca8500c5d06f53958a1b4e2dc689f3a0d38a",
       "bytes": 14556
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/submit_partial_terminal.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/submit_partial_terminal.py",
+      "sha256": "25b39c9b611eab9dd45e8a587e36e95093a4a7dd60dbf87f6b7fab6a87f9c9b0",
+      "bytes": 3091
     },
     {
       "source": "handoff/r_reference_campaign_20260917/terminal.py",

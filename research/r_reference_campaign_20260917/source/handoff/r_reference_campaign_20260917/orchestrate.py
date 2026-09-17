@@ -127,6 +127,13 @@ def tick():
                 elif u.get('evaluation_job') and u['evaluation_job'] not in activeids:
                     u['needs_evaluation_job_review']=True
                 continue
+            # Completed routes can train while another route is still scoring.
+            # Wait for their existing arrays before assigning the remaining arms.
+            partial_active=[job for job in u.get('partial_terminal_jobs',[]) if job in activeids]
+            if partial_active:
+                u['waiting_for_partial_terminal_jobs']=partial_active
+                continue
+            u.pop('waiting_for_partial_terminal_jobs',None)
             jid=u.get('terminal_job')
             if jid and jid not in activeids:
                 u['needs_terminal_job_review']=True
