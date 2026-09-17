@@ -1,0 +1,104 @@
+[
+  {
+    "unit": "PTC_ALL8_CCA2000",
+    "group": "ALL8",
+    "correction": "CCA",
+    "hvg": "2000"
+  },
+  {
+    "unit": "PTC_NMT_CCA500",
+    "group": "NMT",
+    "correction": "CCA",
+    "hvg": "500"
+  },
+  {
+    "unit": "PTC_NMT_CCA1000",
+    "group": "NMT",
+    "correction": "CCA",
+    "hvg": "1000"
+  },
+  {
+    "unit": "PTC_NMT_CCA2000",
+    "group": "NMT",
+    "correction": "CCA",
+    "hvg": "2000"
+  },
+  {
+    "unit": "PTC_NMT_CCA3000",
+    "group": "NMT",
+    "correction": "CCA",
+    "hvg": "3000"
+  },
+  {
+    "unit": "PTC_NMT_CCA5000",
+    "group": "NMT",
+    "correction": "CCA",
+    "hvg": "5000"
+  },
+  {
+    "unit": "PTC_NMT_CCAall",
+    "group": "NMT",
+    "correction": "CCA",
+    "hvg": "all"
+  },
+  {
+    "unit": "PTC_NMT_NONE_RNA2000",
+    "group": "NMT",
+    "correction": "NONE",
+    "hvg": "2000"
+  },
+  {
+    "unit": "PTC_NMT_HARMONY_RNA2000",
+    "group": "NMT",
+    "correction": "HARMONY",
+    "hvg": "2000"
+  },
+  {
+    "unit": "PTC_TTU_CCA500",
+    "group": "TTU",
+    "correction": "CCA",
+    "hvg": "500"
+  },
+  {
+    "unit": "PTC_TTU_CCA1000",
+    "group": "TTU",
+    "correction": "CCA",
+    "hvg": "1000"
+  },
+  {
+    "unit": "PTC_TTU_CCA2000",
+    "group": "TTU",
+    "correction": "CCA",
+    "hvg": "2000"
+  },
+  {
+    "unit": "PTC_TTU_CCA3000",
+    "group": "TTU",
+    "correction": "CCA",
+    "hvg": "3000"
+  },
+  {
+    "unit": "PTC_TTU_CCA5000",
+    "group": "TTU",
+    "correction": "CCA",
+    "hvg": "5000"
+  },
+  {
+    "unit": "PTC_TTU_CCAall",
+    "group": "TTU",
+    "correction": "CCA",
+    "hvg": "all"
+  },
+  {
+    "unit": "PTC_TTU_NONE_RNA2000",
+    "group": "TTU",
+    "correction": "NONE",
+    "hvg": "2000"
+  },
+  {
+    "unit": "PTC_TTU_HARMONY_RNA2000",
+    "group": "TTU",
+    "correction": "HARMONY",
+    "hvg": "2000"
+  }
+]

@@ -1,0 +1,438 @@
+{
+  "branch": "align-r-reference",
+  "scope": "Added research/r_reference_campaign_20260917 only; installed Python package and earlier research snapshot unchanged.",
+  "source_files": 69,
+  "files": [
+    {
+      "source": "handoff/harmonize.py",
+      "snapshot": "source/handoff/harmonize.py",
+      "sha256": "906fda90feed0674418dc879472abb56948b853ff8905b64be30b5b9df842c95",
+      "bytes": 5101
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/label_rules.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/label_rules.py",
+      "sha256": "759e2b7fe9b2adfc97f072ff8caed7802f210b649e49bdd5643fdb6dc26048c9",
+      "bytes": 4230
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/ptc_common.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/ptc_common.py",
+      "sha256": "3fcba04e4fd6154f24efbda069ca2574040bb749a5eced615e028d780e33b789",
+      "bytes": 2100
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/refine.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/refine.py",
+      "sha256": "e32daabbf2e883666deace944020ebdab406f705f24200ae1cb3a8df9860d3c3",
+      "bytes": 14828
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/PLAN.md",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/PLAN.md",
+      "sha256": "fd786b9d398b6853f213ee9cc15441a3aa10634524c0d993d77ecce52476a31a",
+      "bytes": 6042
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/README.md",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/README.md",
+      "sha256": "374d9d032917c743ef17b377dc935ba6e7c04d55464d8c5413b66aae6ccf659f",
+      "bytes": 3569
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/aggregate.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/aggregate.py",
+      "sha256": "dad7b133151b769d45e2d7ee6a6cc475a7e2225225f02cf09a8b4367c29ec19f",
+      "bytes": 16856
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/aggregate.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/aggregate.sbatch",
+      "sha256": "aba52350f9856c04347f46710164b6094d2cac0a86573dd6d05d330c5b2658d1",
+      "bytes": 515
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/archive_source_to_repo.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/archive_source_to_repo.py",
+      "sha256": "0473c50d3c64083211ac66432ef541bafbab459f7f02cb423b4f0ef61577ed73",
+      "bytes": 2379
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/audit_design.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/audit_design.py",
+      "sha256": "e4c571978741e5cdb558bafb24f0c2d609e791c20620f7d02fccf6f7cbdfd159",
+      "bytes": 2518
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/audit_design.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/audit_design.sbatch",
+      "sha256": "1b14466e244513cb333b35da4180876a54dcb5c1c493e0ef046d5927afb6d856",
+      "bytes": 515
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/audit_pre_guard_density.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/audit_pre_guard_density.R",
+      "sha256": "30cad2307424b0de8c0538f7d69e464e45e3c416564a1139f1f8b814b59a749e",
+      "bytes": 3231
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/audit_pre_guard_density.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/audit_pre_guard_density.sbatch",
+      "sha256": "009ddbe0fc6be19106abbbd17b57c8c3dfd634d2dde98740e781e6a7d67cf226",
+      "bytes": 533
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/audit_unit.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/audit_unit.py",
+      "sha256": "6319a24755941d2b047cb9488a81e230259d793094959912e3041fdbf0cab291",
+      "bytes": 6034
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/audit_unit.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/audit_unit.sbatch",
+      "sha256": "55530003386a6d2321d27cd40435471033bc92b455510e9a326b028cbb73d01f",
+      "bytes": 525
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/build_markers.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/build_markers.py",
+      "sha256": "b9274ea922ce12973102b874114cf6e229b3e1583837cc1042cd1890837295bd",
+      "bytes": 6731
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/build_markers.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/build_markers.sbatch",
+      "sha256": "1f7894081afc2f26a28663a4dd48ae8040ac4d6bfd898309459a2920c3f8c760",
+      "bytes": 509
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/check_historical_abstention_accuracy.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/check_historical_abstention_accuracy.py",
+      "sha256": "198dee538030eded8208b081dad5d39a4a2fa90864f9d18186931b387d7aed1c",
+      "bytes": 2251
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/evaluate_unit.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/evaluate_unit.py",
+      "sha256": "e99e8784b8e3c1216e1475183ccf233d2aac51157c9017d2f9aba7aa5d9fcef1",
+      "bytes": 10046
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/evaluate_unit.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/evaluate_unit.sbatch",
+      "sha256": "e3380b5ce25eebab3e5d88192c745df1376be43480730bf2be52298293f28fbf",
+      "bytes": 517
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/evaluation_rules.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/evaluation_rules.py",
+      "sha256": "68acf347f03dde9571165b30b0ad8c8e97af75b1f57f287516fc71624eaa1517",
+      "bytes": 4580
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/export_archived_geometry.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/export_archived_geometry.R",
+      "sha256": "3f0f9e7e69d85833b27c5c288eb69d6f28dbd81bc83f37cc9bcd64dc3373265e",
+      "bytes": 842
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/export_archived_geometry.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/export_archived_geometry.sbatch",
+      "sha256": "368ef19fc5974960e6f96acd95aee7c3e3df9c7258b1a56247a7f6434c98fe31",
+      "bytes": 530
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/export_datasets.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/export_datasets.py",
+      "sha256": "0475b6e67aab769f213cbd634c3e7b6ec38a4a9a8356108ef00d54c8af2cd7e5",
+      "bytes": 5177
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/export_datasets.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/export_datasets.sbatch",
+      "sha256": "df348bfb7d6d7185653869e885196a713ba81f2330f280b63341695505af6487",
+      "bytes": 536
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/finalize_campaign.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/finalize_campaign.sbatch",
+      "sha256": "6d45c63dac4cfd6e574688ebdf71b412784b1d592fcf2032a738ba0ee1905190",
+      "bytes": 2106
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/inventory.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/inventory.py",
+      "sha256": "37a060e86abc0b920cbf6d15e24627d64e09a341719e5f413aaf7c7678e9a08c",
+      "bytes": 2584
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/inventory.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/inventory.sbatch",
+      "sha256": "4d6d87f91db94ad3e5be434be9ccbf6495c6eb60cc6c70f54cfab1f79a91f1f3",
+      "bytes": 770
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/orchestrate.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/orchestrate.py",
+      "sha256": "eaedbb7dbdd584aedd8c6c749fa58d25580a8cc5e2a3c139f55c98de72e1cb10",
+      "bytes": 8607
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/orchestrate.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/orchestrate.sbatch",
+      "sha256": "d67ba26e2171c32514e1740655313a55924a78ac5d84c54eca3b352a41cf90c0",
+      "bytes": 450
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/plot_abstention.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/plot_abstention.py",
+      "sha256": "6edb958e8f3dff9e7e38c90b3dee5a7a89c6f6b406be0c5a3b448b803b50614c",
+      "bytes": 2645
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/plot_unit.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/plot_unit.py",
+      "sha256": "0bbb71865b34dbf5b4fe8febb46fbf955add69e23c981b475ea552dc60220401",
+      "bytes": 10692
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/plot_unit.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/plot_unit.sbatch",
+      "sha256": "1adc1308db5b851f68772d4d3dc225ca432e82aca56e2bd785a47a5dfa85fe91",
+      "bytes": 504
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/ptc_ablation_conditions.json",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/ptc_ablation_conditions.json",
+      "sha256": "3ef19e4458ffb65dccdd1b614c90b04e869ef59830c4375c2a1499a9f9d67b30",
+      "bytes": 1784
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/ptc_ablation_prepare.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/ptc_ablation_prepare.R",
+      "sha256": "6fe57350840e9da4d231cd34e01784e896d968bd301e2cf43d3f736556f30277",
+      "bytes": 8104
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/ptc_ablation_prepare.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/ptc_ablation_prepare.sbatch",
+      "sha256": "b9fdd73cdd2f76b2bf5231b4ce111b0f00b7941ab7cfe49df72bd0eccea1e0fd",
+      "bytes": 530
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/ptc_abstention.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/ptc_abstention.py",
+      "sha256": "30cbea9c2fc0475779b0f0895c5f307e5f0122902bbfa1f6ca84617cb2783c7c",
+      "bytes": 4944
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/ptc_abstention.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/ptc_abstention.sbatch",
+      "sha256": "ac374346a3ac5b3c3e53a9f57f0b6c4d2138c13ecfefa8edbf6430a4b882c7d4",
+      "bytes": 529
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/ptc_geometry_only.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/ptc_geometry_only.R",
+      "sha256": "dbcf7703d659be47da3af6a51e2fe40931eed6b6a7a920553adbb9a0b6768735",
+      "bytes": 4502
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/ptc_geometry_only.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/ptc_geometry_only.sbatch",
+      "sha256": "0fa3672d9da4df33308212a25bca1a99d23cc79f2a16f0c4572e9dc7e44535a8",
+      "bytes": 528
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/ptc_grid.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/ptc_grid.R",
+      "sha256": "c444d793a5b24d72b9f6e3e1dddd518691794dcef6777e4c15958ba588f2ae43",
+      "bytes": 6271
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/ptc_grid.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/ptc_grid.sbatch",
+      "sha256": "d1e747369447fdf7adc54f887370d78bedcb6003ec8ebd1518c8676eac03262c",
+      "bytes": 531
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/record_delivery.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/record_delivery.py",
+      "sha256": "ad2d5ef2ddc4e9f5e5488eb98fbf9d774dbf2f6b0df8ecd7bc0bbb6dc92480ea",
+      "bytes": 922
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/reference_prepare.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/reference_prepare.R",
+      "sha256": "32adb055dccf1de50842cd40e5a4be3fc02cb817327cc773f5a5c58b72c2af03",
+      "bytes": 7243
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/reference_prepare.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/reference_prepare.sbatch",
+      "sha256": "238d6a3bb0ec18d665dcd4961a43ec4c556d903fb6f1b602340232303cff6c51",
+      "bytes": 522
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/reference_score.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/reference_score.R",
+      "sha256": "73c4f1871091177709883772b67d08a73bb64f1a9cb958191ccd6d801a31f506",
+      "bytes": 8835
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/reference_score.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/reference_score.sbatch",
+      "sha256": "9ca62134396a31e427280bb60f853450ef6b22436f11b15132ad4545d820c179",
+      "bytes": 515
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/report_and_notebook.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/report_and_notebook.py",
+      "sha256": "c9f803c28a4594f6aca1c151d4daf5f66dcd291ca70835115b54400279bb92a4",
+      "bytes": 25948
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/report_and_notebook.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/report_and_notebook.sbatch",
+      "sha256": "672d98cb596bdd3255547db988ca74eb10d670111526a8646e2288a32047594e",
+      "bytes": 555
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/source_snapshots/before_execution_guard_ptc_ablation_prepare.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/source_snapshots/before_execution_guard_ptc_ablation_prepare.R",
+      "sha256": "bdb3d206d1fdab2e26baebbe8e25e8b441f2a24aadadc3cee4b4e49b03f6a224",
+      "bytes": 6315
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/source_snapshots/before_execution_guard_reference_prepare.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/source_snapshots/before_execution_guard_reference_prepare.R",
+      "sha256": "7d14c6c9094f244158c02f8b23a802f9debea2f96703160828e20a5be73f5991",
+      "bytes": 6459
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/source_snapshots/before_execution_guard_reference_score.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/source_snapshots/before_execution_guard_reference_score.R",
+      "sha256": "0c8f92b70b888a6a189e4d53bc15c5902c421f224ef129ef8e8d7851ea15137f",
+      "bytes": 7871
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/source_snapshots/evaluation_rules_before_cache.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/source_snapshots/evaluation_rules_before_cache.py",
+      "sha256": "c39bca933e9ff8bfea82c3eee0e2ab6618d1c0dfe813325eceebd5005f7ddfde",
+      "bytes": 4470
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/source_snapshots/execution_guard_transition.json",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/source_snapshots/execution_guard_transition.json",
+      "sha256": "845b740ed88316b3f35df91b0808546f7784beb094745cf3236f7eb7577d626b",
+      "bytes": 901
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/source_snapshots/ptc_ablation_prepare_before_order_contract.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/source_snapshots/ptc_ablation_prepare_before_order_contract.R",
+      "sha256": "e290cd1cbcf07448743a9c879c0c5d3c3c7b036d24535660e0b40617d6f5cbf6",
+      "bytes": 7102
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/source_snapshots/reference_score_before_worker_cap.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/source_snapshots/reference_score_before_worker_cap.R",
+      "sha256": "7f5caac4047e34598958ff4a522dfa64074fe28db37fc8cd8de58329f8dc71ed",
+      "bytes": 7808
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/source_snapshots/reference_score_capped_before_sum_order.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/source_snapshots/reference_score_capped_before_sum_order.R",
+      "sha256": "59e2e430e1e865685824098a147921de6b065c20c89da3b3b4fc2286508a8994",
+      "bytes": 7816
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/source_snapshots/terminal_before_execution_guard.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/source_snapshots/terminal_before_execution_guard.py",
+      "sha256": "2ec5736a055b46c4f3df7080cb81bef3c857de6e568738dcdeeb0851165baaf7",
+      "bytes": 3228
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/stage_delivery.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/stage_delivery.py",
+      "sha256": "c3583417f4eceadc237d236714e20a65443cd89e1b25a024baaa5b56dd1525ea",
+      "bytes": 7869
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/terminal.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/terminal.py",
+      "sha256": "4dad43e19f7251e4306e87451f535d72e13c8c1bc55c5fdd8c6cead0ef11363e",
+      "bytes": 3892
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/terminal.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/terminal.sbatch",
+      "sha256": "ae3627ab836e341009d86a6a9b35ee8f81c93992fc57071bf9583109d655af24",
+      "bytes": 515
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/validate_density.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/validate_density.R",
+      "sha256": "bdcbb61b813372bdbe6f529560ba4bab02972cdebf51b50dbcdae406349b0506",
+      "bytes": 2088
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/validate_density.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/validate_density.sbatch",
+      "sha256": "3534f59b664c7e2ed5bf4d98a5a3eb2ec650661e29019655004895de6556b8b7",
+      "bytes": 526
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/validate_ptc_grid.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/validate_ptc_grid.R",
+      "sha256": "2bd15ae060324f59d955703c2d2c76b25ecff4a974d7fec9c984f018dad974eb",
+      "bytes": 1891
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/validate_ptc_grid.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/validate_ptc_grid.sbatch",
+      "sha256": "7ab9bda4a14b88a6c337aec747ca908d9300be9c88e8985cbd3f259181bae6ef",
+      "bytes": 518
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/validate_terminal_and_order.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/validate_terminal_and_order.py",
+      "sha256": "8550159bef07d9c6a07df219eb0f3b477d2a6fce62cc85d83d8776dc1d539b63",
+      "bytes": 2179
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/validate_terminal_and_order.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/validate_terminal_and_order.sbatch",
+      "sha256": "7039e3bc872851e791cf6ab92c7099b7d8613064592a884328d8eb99105806e5",
+      "bytes": 539
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/workflow_figure.py",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/workflow_figure.py",
+      "sha256": "0990cc90696578900344312685cef27eaa488e30fb822c98f3c09b4063a619c6",
+      "bytes": 6328
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/workflow_figure.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/workflow_figure.sbatch",
+      "sha256": "38e50381eecf1cca636e1c0d4cd963b5453d65dafe3e21911064315cf05456f3",
+      "bytes": 524
+    }
+  ],
+  "dependencies": [
+    "Prior source archive: research/gbm_ptc_20260917/reference/ptc_archive/source.R and source.py",
+    "R dbscan 64-bit MST-index patch described in the prior reproducibility archive",
+    "Site-specific R/Python environments, raw data and cached CellMarker workbook (not included)"
+  ],
+  "excluded": [
+    "patient metadata",
+    "per-cell labels",
+    "expression/anchor matrices",
+    "model weights",
+    "rendered notebooks",
+    "result tables",
+    "credentials",
+    "OneDrive files",
+    "transient current-task notes"
+  ],
+  "portability": "Preserves executed absolute HPC paths; research execution archive, not a portable standalone package release."
+}

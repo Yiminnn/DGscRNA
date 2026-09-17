@@ -1,0 +1,21 @@
+{
+  "unix_time": 1789627035.6294396,
+  "changes": [
+    {
+      "file": "reference_prepare.R",
+      "before_sha256": "7d14c6c9094f244158c02f8b23a802f9debea2f96703160828e20a5be73f5991",
+      "after_sha256": "32adb055dccf1de50842cd40e5a4be3fc02cb817327cc773f5a5c58b72c2af03"
+    },
+    {
+      "file": "reference_score.R",
+      "before_sha256": "0c8f92b70b888a6a189e4d53bc15c5902c421f224ef129ef8e8d7851ea15137f",
+      "after_sha256": "4eb9831083a02fe6be3fb34594860fb47499868fdb2fb406932701729e0f1145"
+    },
+    {
+      "file": "ptc_ablation_prepare.R",
+      "before_sha256": "bdb3d206d1fdab2e26baebbe8e25e8b441f2a24aadadc3cee4b4e49b03f6a224",
+      "after_sha256": "e290cd1cbcf07448743a9c879c0c5d3c3c7b036d24535660e0b40617d6f5cbf6"
+    }
+  ],
+  "note": "Atomic replacement keeps open file handles intact. New jobs execute immutable per-job copies; scientific algorithms unchanged by the guard."
+}

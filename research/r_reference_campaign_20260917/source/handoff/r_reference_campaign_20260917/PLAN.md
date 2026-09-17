@@ -1,0 +1,93 @@
+# R-reference PTC ablation and reviewer datasets — 2026-09-17
+
+The user explicitly requested continued PTC ablations and all previously selected
+reviewer datasets with multiple biologically justified marker libraries. This
+authorizes a new experimental phase; it does not resolve historical refitting
+differences or the unreconciled manuscript Accuracy row. Preserve all old outputs.
+
+## Scope and endpoints
+
+- PTC: archived all-eight-sample checkpoint is the paper reference; NMT and TTU
+  retain separate reporting and original selected routes. New within-group
+  integration is an explicitly named intervention. All 17 original marker sets
+  and all three original score cutoffs are retained.
+- Reviewer roster: Baron human, Muraro, Segerstolpe, Xin, Immune_ALL_human, HCL,
+  brain_GBM, breast_TNBC, colorectal, kidney_ccRCC, blood_DLBCL. This is the
+  previously user-approved human cohort roster documented in
+  `handoff/deck_datasets_provenance.md`, not every example in a cited review.
+- No independent Pu cohort. GSE184362-derived markers remain included.
+- Every annotation condition reaches terminal original-style DL/refinement, or
+  reports its structural/no-op state. Marker-only calls are the no-DL ablation.
+  Saved historic labels are concordance endpoints, not independent truth.
+
+## Frozen comparisons
+
+Use explicit R Seurat-v4-compatible DEG statistics, the archived density rule,
+and the validated legacy PyTorch MLP implementation. No simplified-package
+defaults are silently substituted. Keep cells and evaluation mapping fixed.
+Record normalization, anchor genes, geometry genes, scoring genes, DL genes,
+batch scope and random seeds separately for every condition.
+
+1. Recover the complete original PTC marker × cutoff × four clustering grid on
+   archived CCA geometry. Include the two reproduced selected routes as controls.
+2. PTC ablation: HVG count, geometry, clustering, marker context, cutoff, DL and
+   correction/scope. Isolated geometry contrasts hold scoring and DL inputs fixed;
+   changing expression correction is a separate combined-workflow contrast.
+   The 12 isolated-geometry controls use one all-shared-gene CCA fit per group,
+   the same 2,000 scoring/DL genes and a byte-identical DL matrix; only the PCA
+   feature budget varies (500/1k/2k/3k/5k/all). They are conditional on that fixed
+   CCA fit, not replacements for the original CCA2000 reference. Together with
+   17 combined preparation conditions and the archived baseline there are 30
+   PTC analysis units; 69 reviewer units give 99 total.
+3. Run reviewer datasets with the same reference algorithm and multiple marker
+   contexts. Use available raw counts; explicitly describe already-normalized
+   data when counts are unavailable. Do not pass RPKM as raw UMI counts silently.
+4. Marker candidates are frozen from actual sampled organs and normal/disease
+   context before evaluating predictions: primary tissue, relevant immune/stromal
+   contexts, sampled metastatic/extranodal organs, unions and all-tissue controls.
+   Preserve native normal/cancer and tissue prefixes; retain full denominators.
+5. Hold evaluation labels out of annotation. Summarize the full marker grid, not
+   a best-on-test claim. Where a selector is evaluated, select contexts using
+   training donors and report held-out donor performance separately.
+
+## Resources and delivery
+
+All scientific data inspection, fitting, evaluation, tests and plotting run in
+SLURM. Stage reusable expression, geometry and DEG outputs once; independent DL
+conditions run in capped arrays. Pilot before expansion, inspect MaxRSS, preserve
+failed logs, retry infrastructure errors without changing scientific conditions.
+HCL requires a separately documented memory/scaling strategy after inventory.
+
+Results: `results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/`.
+Update the existing result notebook in place, retain all earlier GBM material,
+show every clustering result and terminal annotation grid, and synchronize new
+deliverables to the already authorized OneDrive directory. Keep statistical
+claims limited to observed datasets/conditions; random seeds are not patients.
+
+Primary CellMarker source: https://bio-bigdata.hrbmu.edu.cn/CellMarker2.0/index.html
+and https://doi.org/10.1093/nar/gkac947. Freeze the cached human workbook checksum.
+
+## Execution and interpretation details
+
+- HCL retains all 599,926 cells across its 59 original tissue groups. Each group
+  runs the same pipeline with its actual anatomical marker contexts; this is
+  explicitly a tissue-conditional atlas analysis, not a pooled >100k clustering
+  scalability experiment. Report its tissue count and aggregation rule.
+- Fixed illustrative reviewer context is primary-normal CellMarker / mean;
+  every other context remains in the complete grid. Descriptive maxima use the
+  evaluation labels and must be named as such. Any donor-held-out label selector
+  is transductive (all cells already entered unsupervised fitting), not an unseen
+  donor refit. Preserve curated-semantic and common-lineage endpoints separately.
+- Muraro uses the inspected raw.X integer matrix. Xin remains RPKM. The inspected
+  Immune_ALL prepared X comes from its published mixed UMI/full-length count
+  layer; fractional values are retained. Do not describe all inputs as raw UMI.
+- All final model/NPZ/history hashes, exported prediction CSVs, known-label
+  retention and 0.90/0.70 threshold reconstruction are audited. Preserve fixed
+  PTC cell order, not merely the same cell set. Cross-condition feature identities
+  and input hashes are tested explicitly in SLURM.
+- Running R jobs use per-job immutable source copies after the recorded guard
+  transition. Earlier 16 reviewer units receive an independent unmodified
+  original-density replay audit. This validates their outputs; it does not
+  retroactively reconstruct transient source bytes. Later terminal jobs also
+  freeze their driver and cap PyTorch at four threads, including high-memory
+  all-gene tasks; the legacy MLP helper remains unchanged.
