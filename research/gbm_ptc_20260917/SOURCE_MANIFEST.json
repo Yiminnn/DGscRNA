@@ -1,0 +1,1654 @@
+{
+  "created_utc": "2026-09-17T05:28:25.344111+00:00",
+  "package_base_commit": "4bf17c4cb9518ab427fa92e8bf5bb4d594d30e00",
+  "sources_byte_preserved": true,
+  "n_files": 186,
+  "files": [
+    {
+      "source": "handoff/g274_table4/cgo_grid.py",
+      "snapshot": "source/handoff/g274_table4/cgo_grid.py",
+      "bytes": 14719,
+      "sha256": "cf5df3a3bccf0a2d2602d4c3e9dfd49bda3582f0c86451beab9b7c8df49faeb5"
+    },
+    {
+      "source": "handoff/g274_table4/fit_core.py",
+      "snapshot": "source/handoff/g274_table4/fit_core.py",
+      "bytes": 7963,
+      "sha256": "e11768932cb1b61dec96139564dbb9f2f7d295a934c4ce4021d79eb4c95e6ed8"
+    },
+    {
+      "source": "handoff/g274_table4/fit_runner.py",
+      "snapshot": "source/handoff/g274_table4/fit_runner.py",
+      "bytes": 20382,
+      "sha256": "003536dcafd98279a82b24f12d172182a4c15e81594c41228203b903a91d6cc5"
+    },
+    {
+      "source": "handoff/g274_table4/metrics_core.py",
+      "snapshot": "source/handoff/g274_table4/metrics_core.py",
+      "bytes": 16788,
+      "sha256": "40d3c4566810ddb137e4a6a2b84a40bc0dde33a76a8e7aa5eb60ff4b5bdba2c4"
+    },
+    {
+      "source": "handoff/g274_table4/runtime_guard.py",
+      "snapshot": "source/handoff/g274_table4/runtime_guard.py",
+      "bytes": 1103,
+      "sha256": "f1d3655bf1da52531022c706d733bac21e05207e8d97a4ac9e8e31815d37b947"
+    },
+    {
+      "source": "handoff/g274_table4/v5_final_annotations.py",
+      "snapshot": "source/handoff/g274_table4/v5_final_annotations.py",
+      "bytes": 29706,
+      "sha256": "0a3995a7a3a47c1acdbf87ac40210c90f7ca6fa5d9bff0b2bc3eca574bed1a24"
+    },
+    {
+      "source": "handoff/gbm/darmanis_region_final.py",
+      "snapshot": "source/handoff/gbm/darmanis_region_final.py",
+      "bytes": 16737,
+      "sha256": "14327d5acb9f2dfbd22cb50a57ccffba60742eb5e9c0d81cfc9af31d7a0a184b"
+    },
+    {
+      "source": "handoff/gbm/darmanis_validate_20260910.py",
+      "snapshot": "source/handoff/gbm/darmanis_validate_20260910.py",
+      "bytes": 13604,
+      "sha256": "d54fbcfd593fe6ec5d42562e64215f759a384d2776ae86876af2f38722dee971"
+    },
+    {
+      "source": "handoff/gbm/test_darmanis_region_final.py",
+      "snapshot": "source/handoff/gbm/test_darmanis_region_final.py",
+      "bytes": 3757,
+      "sha256": "a7507d38aa81b9d615d722b41165bceb30781368d1733b7c8f964124174c9a8f"
+    },
+    {
+      "source": "handoff/gbm_cluster_figures_20260916/assemble.py",
+      "snapshot": "source/handoff/gbm_cluster_figures_20260916/assemble.py",
+      "bytes": 17290,
+      "sha256": "ff92e6e899d721ab49acb4fd6430266092433df573a2112955428ca1984ad7cb"
+    },
+    {
+      "source": "handoff/gbm_cluster_figures_20260916/assemble.sbatch",
+      "snapshot": "source/handoff/gbm_cluster_figures_20260916/assemble.sbatch",
+      "bytes": 658,
+      "sha256": "cdd88a04c074c80e788be4fb07acfff7a07dbfae5e08e7c71cfe809f7544e99b"
+    },
+    {
+      "source": "handoff/gbm_cluster_figures_20260916/plots.py",
+      "snapshot": "source/handoff/gbm_cluster_figures_20260916/plots.py",
+      "bytes": 18667,
+      "sha256": "2b2989fe47f2258027ad8b90f4ea9cd638d801c2eb7a7a7267e6d6a29f3ed877"
+    },
+    {
+      "source": "handoff/gbm_cluster_figures_20260916/plots.sbatch",
+      "snapshot": "source/handoff/gbm_cluster_figures_20260916/plots.sbatch",
+      "bytes": 572,
+      "sha256": "d87ea2bbe007f8b82da4270d250dcda71decf3adad22b71baf8668ee9ea044ae"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/array.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/array.sbatch",
+      "bytes": 667,
+      "sha256": "ea31f02b9d28de99c25b1018d3bdd9a698c7c980419c5c365e525220a44c93dc"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/build_notebook.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/build_notebook.py",
+      "bytes": 18326,
+      "sha256": "616c2a57d8653476813afcd949594cbcad69d54ce812766a4442494c55c3065d"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/build_notebook.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/build_notebook.sbatch",
+      "bytes": 543,
+      "sha256": "d4ee3018e5ef13874b489fb0ec772783f8cb08cc068c4b81add2ae36b4875318"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/checks.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/checks.sbatch",
+      "bytes": 539,
+      "sha256": "d07fe21ebdf048db8cd53b1b032426388d7296060f3c524bce8369ec8baad984"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/common.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/common.py",
+      "bytes": 2733,
+      "sha256": "36d1f0c36fd825795ecf567befd3a0b9fb1cc67817e85e1fc7ad401ae62c2683"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/compare_methods.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/compare_methods.py",
+      "bytes": 9250,
+      "sha256": "9abb68a6a19de78fcdf7079069678aba929eb83d052465d8d925ba8ea6eb17e4"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/compare_methods.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/compare_methods.sbatch",
+      "bytes": 542,
+      "sha256": "37647683d795f40eea7834b3c6b54c0baf7607f7dcac9d0d8da8d3cbfdbc6d4e"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/contract_checks.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/contract_checks.py",
+      "bytes": 4693,
+      "sha256": "28eee9015838e0d124daaecac4de87a2f5bb3e3bb794c44c601ebe721a6d4a9d"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/diagnose_tsne.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/diagnose_tsne.py",
+      "bytes": 2348,
+      "sha256": "74a3179ea8370dcfeb7170cb77e69980b1d3eab56beeaf127cf28f6860795380"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/diagnose_tsne.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/diagnose_tsne.sbatch",
+      "bytes": 586,
+      "sha256": "7f2cb78de683bb9317241da25c6f4e24b4fb89365c8c5320825d147665774ee5"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/diagnose_tsne_same_node.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/diagnose_tsne_same_node.sbatch",
+      "bytes": 649,
+      "sha256": "ed6ab2bbd23a86f8dc088dfdc12f0b78c51a8c1160f24dcc103fc7c4154343ad"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/dispatch.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/dispatch.py",
+      "bytes": 2281,
+      "sha256": "67cf487fe940242cf37eb1c7ddff8dae3cd8a6e5276ae2acb663671bea4edb92"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/dispatch.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/dispatch.sbatch",
+      "bytes": 435,
+      "sha256": "914a86847be83e15917a5841b51b56c3c5561b93034bd438357c0a713c815d8d"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/dispatch_singleton.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/dispatch_singleton.py",
+      "bytes": 1639,
+      "sha256": "9654efa49cebfdbdfe737c29fa0cd05a989b2da79df24802878edd7962d432ac"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/dispatch_singleton.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/dispatch_singleton.sbatch",
+      "bytes": 465,
+      "sha256": "d255fdd83d6cc7dadba5c447748f625e264cd0ae045f05ceb8fe299bfc44994e"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/draw_workflow.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/draw_workflow.py",
+      "bytes": 6195,
+      "sha256": "bc557d41654e13f821575e30b72b4a4916b766f819c47309ee1530f95c269e34"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/draw_workflow.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/draw_workflow.sbatch",
+      "bytes": 431,
+      "sha256": "a8b1c56a88c4923d73006bccc09f2e208a1acc5e217eed7e1911e7ae710387dd"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/evaluate.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/evaluate.py",
+      "bytes": 10126,
+      "sha256": "1aeab8eda8d737288758be71c2554231bfcd265f53a8331c80728c7a82eab2c7"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/evaluate.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/evaluate.sbatch",
+      "bytes": 659,
+      "sha256": "8a4cc698edfa14e5560c0c5e92ff1471e60ed9c35938d7931ca4d3bf08398116"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/finalize_gbm.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/finalize_gbm.py",
+      "bytes": 2925,
+      "sha256": "54c8ca3e4c41fcd08b8338d226439fd956c7014a94f55b7d818b06b5d1680739"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/finalize_gbm.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/finalize_gbm.sbatch",
+      "bytes": 439,
+      "sha256": "ae448bdef75cf8602be196bb60c87853d181a2186dba004e6f986704f2414b46"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/fit.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/fit.py",
+      "bytes": 20172,
+      "sha256": "c29ac4abd5408e6b988b3c2048aaea21f88fb939f9c4b030d921330b61c82352"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/fit.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/fit.sbatch",
+      "bytes": 735,
+      "sha256": "670173f11610f12f1791728eb563679e17ed99ed4488fea1d4f12777dc9c383e"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/make_protocol.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/make_protocol.py",
+      "bytes": 6480,
+      "sha256": "ab3b77104a979f00fc4b998af166779e047f5edd2f1941137c8abeb87b6e34de"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/monitor.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/monitor.py",
+      "bytes": 2034,
+      "sha256": "d4f4d288936dda16c1e3f5b4318e9300c7696b616abe65c7af4fd6fb77d40e82"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/plots.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/plots.py",
+      "bytes": 17083,
+      "sha256": "f6e91b85ee380de74e1ede2fab8fc99a17f6ca05c27551ac43cec571a8b4e86f"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/plots.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/plots.sbatch",
+      "bytes": 533,
+      "sha256": "f5b3d61623f4656d490650b8acb2acf7297653b4946b180903062f9c1f97c8e9"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/prepare.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/prepare.py",
+      "bytes": 8463,
+      "sha256": "dd1916234ebdcda6ea7d9698d984c746ca55ad085eed1a86febd0ec5afe1d4d2"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/prepare.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/prepare.sbatch",
+      "bytes": 685,
+      "sha256": "066ab451608cdfa0fdd8dd868d0d3dd4e5222849cb5542fdc9c3a26c3a44a8e5"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/quality.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/quality.py",
+      "bytes": 5024,
+      "sha256": "abcf52bc25e0cc8a434a5e33e69a430d3b764bdff44a859b6034c0417c163522"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/quality.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/quality.sbatch",
+      "bytes": 663,
+      "sha256": "ae0b3770af3f4ab8e93b3021e565bf50ad2ba020c5a313c450c96766a3d8f7a8"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/render_workflow.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/render_workflow.sbatch",
+      "bytes": 630,
+      "sha256": "6d903aa0c888ff0c8fa4d1c061302cafc2e8ead2d4ef8a19989a27e493b66431"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/report.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/report.py",
+      "bytes": 23059,
+      "sha256": "466b606e83566d6ff0dc624b55374623449143b0051a75e0310017ad1783295f"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/report.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/report.sbatch",
+      "bytes": 427,
+      "sha256": "ad4634d959d2eb7dcc480f1b618fce3ae3f03084dbfdf23a6838a4e658bf71ff"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/resolve.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/resolve.py",
+      "bytes": 3297,
+      "sha256": "7e843c361c66b840ad82e7d1eee0ea4eb13200f1ea0a4f4da6644fb93d935d56"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/resources.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/resources.py",
+      "bytes": 4371,
+      "sha256": "6e9efc23841401e972d6c797c16da396b95437191596a385bf3917edddf1c686"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/retry_numerical.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/retry_numerical.py",
+      "bytes": 3040,
+      "sha256": "16ce17d831e5af5a57c17be46924b7d5846c8d635dfed3b00aa0f18f8235d0f1"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/retry_numerical.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/retry_numerical.sbatch",
+      "bytes": 542,
+      "sha256": "648a6ec7a6a96a4e98c73740b1b808cd1f0e56cbac9f7549951ee0cfa501518b"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/singleton_robustness.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/singleton_robustness.py",
+      "bytes": 10522,
+      "sha256": "b9f0567ca35d0e6a996c969ed4cd56c37373af909e3d864e7b3babfaba9d4a25"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/singleton_robustness.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/singleton_robustness.sbatch",
+      "bytes": 691,
+      "sha256": "c70495814f7bc8e7ec72a76f3fb1f09b2e38721743385af09ee1f9ae01f7a27f"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/summarize.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/summarize.py",
+      "bytes": 14558,
+      "sha256": "302b9266d511f71639419533dbbfcccd553c2e4c113f42473a6cec5252c6e673"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/summarize.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/summarize.sbatch",
+      "bytes": 541,
+      "sha256": "0bb8336af3a1a11aad26e7c113d6bb540f7f4715b292cac56666c71dac4699a9"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/verify_results.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/verify_results.py",
+      "bytes": 7976,
+      "sha256": "524db404e53bc615345b9e0db5d9b5cc8130db9e5352f6ab69392ef94f7aaeaf"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/verify_results.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/verify_results.sbatch",
+      "bytes": 544,
+      "sha256": "4b76e982ad75e0c701e498f55ac9c55c79e242d313567eb47a9724140c975c15"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/verify_singleton.py",
+      "snapshot": "source/handoff/hvg_ptc_20260916/verify_singleton.py",
+      "bytes": 6944,
+      "sha256": "449135216290f6000dfab197eff1c457ccf2c834d24c772a42909863fb20ef09"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/verify_singleton.sbatch",
+      "snapshot": "source/handoff/hvg_ptc_20260916/verify_singleton.sbatch",
+      "bytes": 564,
+      "sha256": "812a2eec079f0f80df020f1781fc526be93433bc055131755ff890c22b668420"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/workflow.dot",
+      "snapshot": "source/handoff/hvg_ptc_20260916/workflow.dot",
+      "bytes": 5463,
+      "sha256": "170dfd09823bbb715fcc6d338e991207cbcb5da61b89f02cc4fb8bb25d0d36b2"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/check_accuracy_consistency.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/check_accuracy_consistency.py",
+      "bytes": 2101,
+      "sha256": "5061e9335595cfa181e9ba5c3f000820dd8f6a7883bf739801723bc14a065203"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/check_accuracy_consistency.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/check_accuracy_consistency.sbatch",
+      "bytes": 540,
+      "sha256": "f47a708782696a1b97080fc449fad187ddda706d42a2fe50f32bed7e1dfb75f3"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/check_paper_baseline.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/check_paper_baseline.py",
+      "bytes": 10364,
+      "sha256": "29e6ccb20986f16cd6ea54ea4965771fe24cbabf011328c8dc5e0daa022cc209"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/check_paper_baseline.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/check_paper_baseline.sbatch",
+      "bytes": 555,
+      "sha256": "db7f24436fb3bb2bf07a64b6bdffc6e6ddcb858ec4ba5e9f71831801280ccb25"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/correct_notebook.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/correct_notebook.py",
+      "bytes": 11365,
+      "sha256": "d7b248902037d2f7160ff5ddd12285a88f6dbc6f8443c6b1785a42634d34972e"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/correct_notebook.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/correct_notebook.sbatch",
+      "bytes": 528,
+      "sha256": "35719664c1beb514ff469cf045d905f8ac5b2b9596c214af151705c71cd0ad26"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/diagnose_initialization.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/diagnose_initialization.py",
+      "bytes": 10344,
+      "sha256": "db266d191612647d1ab2538e10515571a10eb5f0f48b36648f43f6cc47413bc6"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/diagnose_initialization.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/diagnose_initialization.sbatch",
+      "bytes": 557,
+      "sha256": "c346d960f5b8b624bf5c0692233edb1da5ed0d9e552b65a97bfd462d7c1d08e1"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/diagnose_recovery_inputs.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/diagnose_recovery_inputs.py",
+      "bytes": 10041,
+      "sha256": "1dcd013b4fcbd3694aeb8650c3d51310237241bec30f7cac8713884080fe6aba"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/diagnose_recovery_inputs.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/diagnose_recovery_inputs.sbatch",
+      "bytes": 538,
+      "sha256": "04a5717756c739694c615cf6fbff355d079814e53172b3a31d5c0330ef04dbce"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/evaluate_selected_routes.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/evaluate_selected_routes.py",
+      "bytes": 7156,
+      "sha256": "b449b0e302e0301ec3695f1cd0637c2778b480c01d75304fb4549e585752443b"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/evaluate_selected_routes.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/evaluate_selected_routes.sbatch",
+      "bytes": 539,
+      "sha256": "c9d2d6b2675f29a172222cafc82216f5cc2cc2234649676a207a5e54dc7752c8"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/extract_original_paper_note.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/extract_original_paper_note.py",
+      "bytes": 1406,
+      "sha256": "44e3abbe54fe1c1911f74f4e8db56fe75c29377c482bb51d630ec58abc25c67e"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/extract_original_paper_note.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/extract_original_paper_note.sbatch",
+      "bytes": 465,
+      "sha256": "10e572c00630e3b2b51f12fd54211e09b14ccef2590298a3c2f0b7638e48375d"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/finalize_full_verification.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/finalize_full_verification.py",
+      "bytes": 11971,
+      "sha256": "f2f2410d2552281958aaf8dbd16bc90da2d8389a591794e323176afa8ba6172a"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/finalize_full_verification.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/finalize_full_verification.sbatch",
+      "bytes": 1822,
+      "sha256": "7a29fc99185e00a0b21c122bda8f35f4bc603261f8a7f37fecbc1419d523c79b"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/finalize_recovery_diagnosis.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/finalize_recovery_diagnosis.py",
+      "bytes": 12725,
+      "sha256": "4dbe058e02e2a267f80193078043930c83539a3d79d1f8d3d3e170b540bae540"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/finalize_recovery_diagnosis.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/finalize_recovery_diagnosis.sbatch",
+      "bytes": 1588,
+      "sha256": "67cb30163ccefc9e290ef7322796fd12891304aac99cf3a47e7c66b827f8cfe8"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/install_literal_dependencies.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/install_literal_dependencies.sbatch",
+      "bytes": 529,
+      "sha256": "2f064e7299f820272883dd706dc263636f74e5c1ff43e33e4366e01391606d77"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/locate_home_originals.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/locate_home_originals.py",
+      "bytes": 8424,
+      "sha256": "0f0f203ee8b49e26da220ad70ac4629f325646cff13bc646e42117925fb0eda9"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/locate_home_originals.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/locate_home_originals.sbatch",
+      "bytes": 527,
+      "sha256": "7045ae7aad12eb56f7d02a57aa3676cbd2805873887ad9984c5aee8c6ce8f2ba"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/reconcile_historical_metrics.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/reconcile_historical_metrics.py",
+      "bytes": 5101,
+      "sha256": "0797801e4b1acc02b1826ecf3cc8889c4ce2c1bf45e2d19cc6ffb7a9d3358eee"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/reconcile_historical_metrics.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/reconcile_historical_metrics.sbatch",
+      "bytes": 652,
+      "sha256": "bc12c45ddb40b44a2e807f11bec0e8187e7937ba225c4707088d4a25b2aefc56"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/record_final_receipt.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/record_final_receipt.py",
+      "bytes": 865,
+      "sha256": "dc854b31735ccf494ee00720068a5d9d8d12be598cd849ee1339de99bb2d5b45"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/reference_sources/MLmetrics_1.1.1_Classification.R",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/reference_sources/MLmetrics_1.1.1_Classification.R",
+      "bytes": 16015,
+      "sha256": "284316577960aa32f28d95968f9adf6ae988606e14768c9d21cd0bab4ce7348c"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/refine_selected_routes.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/refine_selected_routes.py",
+      "bytes": 2795,
+      "sha256": "a8eababdf32110a336a16aa8c64ff3eff82bc0657df9ef447983fe2f897b36f8"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/refine_selected_routes_full_parallel.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/refine_selected_routes_full_parallel.py",
+      "bytes": 2809,
+      "sha256": "adc6a6c3cd7ef625c6e7a02b34d0e2e97d8460cbbd050f49da1f59d35c70f540"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/refine_selected_routes_marker_union.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/refine_selected_routes_marker_union.py",
+      "bytes": 2808,
+      "sha256": "36819d12384fdc621a1662ec64cf63c6ba3ec7500dd5bc9d74c63e355370e1a4"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/replay_selected_routes.R",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/replay_selected_routes.R",
+      "bytes": 7232,
+      "sha256": "7fb8f5071dd8e0344557ed972684779a28b8a7a87034ca9fa429c25f9ff1c408"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/replay_selected_routes.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/replay_selected_routes.sbatch",
+      "bytes": 677,
+      "sha256": "4f4c9f4849df2187ca201dd7bcd4ec2e7ec65501d473bc8e031f28d7f5e5c6f7"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/replay_selected_routes_full_parallel.R",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/replay_selected_routes_full_parallel.R",
+      "bytes": 7420,
+      "sha256": "cabbfcbe079d64494a8db31c5cc37974fc967f1f97a877d4141be7b86265074c"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/replay_selected_routes_full_parallel.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/replay_selected_routes_full_parallel.sbatch",
+      "bytes": 703,
+      "sha256": "6e06ff681d4a4fe678be7687a38726455bb111e1dd2fd77b7c5d5ba41d444670"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/replay_selected_routes_marker_union.R",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/replay_selected_routes_marker_union.R",
+      "bytes": 7552,
+      "sha256": "26e07fc3d232a8453b1c9b5232b0eb37afd5e73166b9d0aa7a01ab28ab1f2ad6"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/replay_selected_routes_marker_union.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/replay_selected_routes_marker_union.sbatch",
+      "bytes": 701,
+      "sha256": "65706f8e78b7b002bb98d16b3e8ea0a481ad61b35d274ce0dea3b5028eaaabe9"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/stage_delivery.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/stage_delivery.py",
+      "bytes": 4062,
+      "sha256": "f0c6f0dbd09a8c2185823fb9f8a01d9e219a5af4785a159e2fd73c381ee7d3f8"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/summarize_initialization.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/summarize_initialization.sbatch",
+      "bytes": 535,
+      "sha256": "382061c4434774cb3ba74e4b1d389610f16a3f00307c5c938f8754a4dcc052b5"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/trace_DL_discrepancies.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/trace_DL_discrepancies.py",
+      "bytes": 3678,
+      "sha256": "7a88e8a3ceb2652cbdd82892a6114f00bc5dfa7ccbb2cf1659b3f715ee2e4cad"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/trace_DL_discrepancies.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/trace_DL_discrepancies.sbatch",
+      "bytes": 516,
+      "sha256": "a0d13abdc8a6d95f98bd101576f9000b4ecd2029bbf7381762e10f7adb4f444f"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/verify_literal_DL.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/verify_literal_DL.py",
+      "bytes": 5809,
+      "sha256": "7328b7a9659f62e2d1a452c5b559cb661ae9ec68ec49283ff588f29a3b95a935"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/verify_literal_DL.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/verify_literal_DL.sbatch",
+      "bytes": 662,
+      "sha256": "2e342ccf7531dddc0eb111ff10de12ec03337bafb495f3d5402d6c61a507ed2d"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/verify_metric_R.R",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/verify_metric_R.R",
+      "bytes": 1031,
+      "sha256": "a73052aa3d106fc2895dbb048833c89e46eecaaa2613928d0cd64ee135b86fba"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/verify_original_input_and_models.py",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/verify_original_input_and_models.py",
+      "bytes": 4189,
+      "sha256": "f0f718477f644acf30ff28647044012c8079e422b283ed406ad33dac9ebc4238"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/verify_original_input_and_models.sbatch",
+      "snapshot": "source/handoff/ptc_paper_baseline_20260916/verify_original_input_and_models.sbatch",
+      "bytes": 540,
+      "sha256": "ba2f5ac612121a707054c9d22963cb83af9dd5a3a824a0875d7488141a7311c0"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/FINAL_ANALYSIS_PLAN.md",
+      "snapshot": "source/handoff/ptc_recovery_20260916/FINAL_ANALYSIS_PLAN.md",
+      "bytes": 3627,
+      "sha256": "525df611538df8a78caad52c5d2eae678e4a5ba4ae52a636818b57b8e6ecd250"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/annotate.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/annotate.sbatch",
+      "bytes": 682,
+      "sha256": "5dee51566bd58928190837168aff2bbfa527e7346b0642d9067d19b7fc6e2d23"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/archive_members.txt",
+      "snapshot": "source/handoff/ptc_recovery_20260916/archive_members.txt",
+      "bytes": 4113,
+      "sha256": "6f04656bd53e239b8a4dd446997b9898600a75a90609b9586807f74189ae546b"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/audit_comparator_names.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/audit_comparator_names.py",
+      "bytes": 4675,
+      "sha256": "1404b6b1545a0ba13a0589757eaefb3ff7df8fbacf731f50e7fe60a8a3019177"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/audit_raw_QC.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/audit_raw_QC.R",
+      "bytes": 7093,
+      "sha256": "b2690bb546aced51bc8aa5c7a1e212dd1ebd26ed2f24656cf81e6b456ae18d90"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/audit_tcr.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/audit_tcr.py",
+      "bytes": 5596,
+      "sha256": "f26617c4e3819e23454e35283510f6bbf9cf453a6f620eaf9a32ebff7dffe9ce"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/audit_tcr.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/audit_tcr.sbatch",
+      "bytes": 510,
+      "sha256": "056b95865b100d662a0d2fe4e9a92b010abb38b9d661c005504dafbb68a1e558"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/batch_biology.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/batch_biology.py",
+      "bytes": 5215,
+      "sha256": "fc5386e996157815b4ef253b1310b4f83690b1d027930ceb30b07ee73912a711"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/biology_detail.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/biology_detail.py",
+      "bytes": 10525,
+      "sha256": "56cdc4566502a958b0d92fa9142b93ec2b3ef3bfdaca7cdfd18a17a50b17da4f"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/build_notebook_ptc.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/build_notebook_ptc.py",
+      "bytes": 19175,
+      "sha256": "a45d91ccc5adac191a1811c427c4a8fb840435bc7e188f38b7b8cfc8c83d23b1"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/cluster_groups.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/cluster_groups.R",
+      "bytes": 4580,
+      "sha256": "108ccb4f2c664dd517a43fd1fcf6f090038b69d677bba078581fd92f60b8ebda"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/cluster_groups.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/cluster_groups.sbatch",
+      "bytes": 574,
+      "sha256": "0218c3939a330190aa94b10afdf9c925e2eea73dbfab3e787c4ec1561b9d6980"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/cluster_matched_samples.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/cluster_matched_samples.R",
+      "bytes": 3996,
+      "sha256": "afc8a62c7ad60792db69385d28031e0e24c04a010a4ced1c9cb1512d06319f9f"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/evaluate.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/evaluate.sbatch",
+      "bytes": 517,
+      "sha256": "4bea4d2d6c7c27223e7b02b0e837bf78adaf477bfad549ab989b290e9e4c6d58"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/evaluate_conditions.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/evaluate_conditions.py",
+      "bytes": 10014,
+      "sha256": "d0c0c2fc91e66cd4542c885f9b14b429edc88812aed19c3b0a0a173c7306cd82"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/export_biology.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/export_biology.R",
+      "bytes": 2239,
+      "sha256": "2eb9c9b2988b8f0a9bb89c2153df7ca1c978110fd108eddb5ddfa2bff5d3305c"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/fit_geometry.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/fit_geometry.py",
+      "bytes": 5405,
+      "sha256": "8d537c40a524660fbb44bc8874368e00d6c16701306b95fcd3040ee740e7a917"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/fit_geometry.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/fit_geometry.sbatch",
+      "bytes": 505,
+      "sha256": "13507e26f4a3ed060f227c0a02ced37cd4d7f3647c928346d6c6a6c6bb471f7d"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/freeze_label_rules.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/freeze_label_rules.py",
+      "bytes": 1392,
+      "sha256": "fbabe3198f432d41f74585230ee24ec0189be15f65cb0a54fd8c951fd0ab2232"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/harmony.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/harmony.py",
+      "bytes": 1722,
+      "sha256": "808f5336cb616faf04eb3b786bcfa0233a5dfc9c82afca4345ddae7cc197bdb4"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/harmony.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/harmony.sbatch",
+      "bytes": 500,
+      "sha256": "e66edac0e3c6618c557b86390afa41c6f4ccaf267f714fabe81da023e76d2cb0"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/install_dbscan.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/install_dbscan.R",
+      "bytes": 1023,
+      "sha256": "9b0a67001b3f8e87230035eb48a752c7605b92663b14c66bb3b65ec7b6676942"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/install_dbscan_index64.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/install_dbscan_index64.R",
+      "bytes": 2160,
+      "sha256": "d560808984cbdc9985d92ed4d97b75c21cb302a049d2a3f23a23a62ccdbca34a"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/inventory.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/inventory.py",
+      "bytes": 12397,
+      "sha256": "1a0d9b2a4e15d42ffe37ba2663574eac4b1e7803ba62d9b1786d77a7b46a77d1"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/inventory.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/inventory.sbatch",
+      "bytes": 518,
+      "sha256": "328d28029148399f804f9a3a9c6d568d788b148404cdcc4f1d4cc4809037411e"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/inventory_r.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/inventory_r.R",
+      "bytes": 4164,
+      "sha256": "a6273e01e853fdc6536238475b2c48f7be588a03da8812c79338e65254b9dff4"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/inventory_r.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/inventory_r.sbatch",
+      "bytes": 523,
+      "sha256": "5ea602de0dfc874a4fbf28a17f61e37335a368d4c961e28ef08b9b0f6c2d2e69"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/inventory_workspace.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/inventory_workspace.R",
+      "bytes": 4069,
+      "sha256": "e5954cd8d9e6f293e1814ee00b67b049411f77f9b7bba3e5673d34f447ba7970"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/inventory_workspace.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/inventory_workspace.sbatch",
+      "bytes": 528,
+      "sha256": "9c8ee63deef5388d7b0946aa4588b87fc27844becd338c5432de0b8d98aa5be1"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/label_rules.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/label_rules.py",
+      "bytes": 4230,
+      "sha256": "759e2b7fe9b2adfc97f072ff8caed7802f210b649e49bdd5643fdb6dc26048c9"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/make_geometry_manifest.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/make_geometry_manifest.py",
+      "bytes": 1559,
+      "sha256": "e2f2f3380fa6b4481f341140cb78c0de7e9616d30bc6ab808c73e6b74ebc9df7"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/matched_samples.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/matched_samples.sbatch",
+      "bytes": 928,
+      "sha256": "36fa12b3a0460f6fc43715c88b09c9d61fc3a4501a146523550f0ac32999d312"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/monitor.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/monitor.py",
+      "bytes": 2769,
+      "sha256": "161f050700d932da1ba2e35357adf0e77118f1f5b04992bc5791408560427c51"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/monitor.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/monitor.sbatch",
+      "bytes": 447,
+      "sha256": "29eb47cc383f243bf712904ec74f45e53695fd9ee4ff6a46931e10108159e558"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/monitor_v2.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/monitor_v2.py",
+      "bytes": 2792,
+      "sha256": "55231856478be55bc8f473cf46c330ed1b58798d11005d19ca8ec05ced9cd640"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/monitor_v2.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/monitor_v2.sbatch",
+      "bytes": 510,
+      "sha256": "7606d9e9d063541b1ad8bc0b24da337f5330ce9e0c7446ff25215840cba12422"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/optimization_diagnostics.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/optimization_diagnostics.py",
+      "bytes": 2718,
+      "sha256": "c6d43ad694fbfc408537693c2ad84e349d1b7c4d2a24195753db8f2bb8f8ffd1"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/plot_ptc.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/plot_ptc.py",
+      "bytes": 22282,
+      "sha256": "98930f6bffee4eff12e29be026f9dfe7fc9a866df3bcd8f21848dbc25a191f09"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/pooled_partitions.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/pooled_partitions.sbatch",
+      "bytes": 784,
+      "sha256": "f336949fd3ec4e9f1e2babf27f8f89fb8ee180938184fe02a5cdf3496f49e91e"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/postprocess.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/postprocess.sbatch",
+      "bytes": 464,
+      "sha256": "e4f414d0853aa5914cb85fd2c9683ce042719f289570bb4052b9d0eba64e44b9"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/prepare_evaluation_reference.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/prepare_evaluation_reference.py",
+      "bytes": 8129,
+      "sha256": "f5b07f4e4c3b2475f42f611c9be4117f095cc19728a4085903a84be4b5268cf4"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/prepare_groups.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/prepare_groups.R",
+      "bytes": 10362,
+      "sha256": "6bc98b0c82cb17a9c361570328c7d1cfb53f23687776fe837ab746d6d47bdb3e"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/prepare_groups.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/prepare_groups.sbatch",
+      "bytes": 518,
+      "sha256": "37af5306d4dd9cc1bd645d55455f056883e6c391c2d94eac39eca6d73d334c18"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/prepare_harmony.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/prepare_harmony.sbatch",
+      "bytes": 784,
+      "sha256": "45b7499190c74db5d7a2ca90b84d4f525aade9d74d8c23810f1731c48968b67a"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/ptc_common.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/ptc_common.py",
+      "bytes": 2100,
+      "sha256": "3fcba04e4fd6154f24efbda069ca2574040bb749a5eced615e028d780e33b789"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/reconcile_s3.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/reconcile_s3.py",
+      "bytes": 5571,
+      "sha256": "d9aac4ed2f15df344468dca786257070a3fae6d0277df6e22000b66a85bcd79d"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/reconcile_s3.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/reconcile_s3.sbatch",
+      "bytes": 519,
+      "sha256": "6f86c89a69673356ca8178f1c12728388375066d07b98f1cfaa882687ac06507"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/reconcile_tables.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/reconcile_tables.py",
+      "bytes": 8260,
+      "sha256": "0ac155cff2af2cfcab9696cb55ad39077041b7c42e7430b43da175f6aa6ecf7a"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/reconcile_tables.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/reconcile_tables.sbatch",
+      "bytes": 521,
+      "sha256": "11f7bd5bcaf1f4af322a28f0a1f79fd1c78747085127e8ecf8b3d1f65bc09318"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/recover_geometry_precision.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/recover_geometry_precision.py",
+      "bytes": 3070,
+      "sha256": "5ac718854e5731a096985c7b91f10ee2793b15ad39edc63f2584007d0514a9b4"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/reference_sources/Seurat_v4.0.1_differential_expression.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/reference_sources/Seurat_v4.0.1_differential_expression.R",
+      "bytes": 64453,
+      "sha256": "f2f4bae884ba8ead5626b90a95d385246337681c36df1bf06a0a477ed3be4da5"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/reference_sources/dbscan_1.2.5_R_hdbscan.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/reference_sources/dbscan_1.2.5_R_hdbscan.R",
+      "bytes": 18803,
+      "sha256": "342667b2eedb434a406da47f1f97e2c7729f9603742887f7cb355fd3cd83e31a"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/reference_sources/dbscan_1.2.6_R_hdbscan.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/reference_sources/dbscan_1.2.6_R_hdbscan.R",
+      "bytes": 18803,
+      "sha256": "342667b2eedb434a406da47f1f97e2c7729f9603742887f7cb355fd3cd83e31a"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/refine.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/refine.py",
+      "bytes": 14828,
+      "sha256": "e32daabbf2e883666deace944020ebdab406f705f24200ae1cb3a8df9860d3c3"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/refine_matched_samples.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/refine_matched_samples.py",
+      "bytes": 747,
+      "sha256": "3a540e8e8d0959f528c95360c86f2897c3427df68566d35fd709acdf88ce271a"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/refine_pooled_partition.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/refine_pooled_partition.py",
+      "bytes": 859,
+      "sha256": "03e511cb359d4c7a0ba90d1a444d97dfae316a86b2ce1db240ccb1eea804760e"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/release_annotations.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/release_annotations.py",
+      "bytes": 1967,
+      "sha256": "5b6813a3a34b18297b1f0a7e9d621e19f8eab20203e746594b7821e7ec3a0e28"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/release_evaluations.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/release_evaluations.py",
+      "bytes": 1794,
+      "sha256": "11a67eab19ef6214728903fdd99725a46c6ac37378cb14ad72948735378e8d9f"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/replay_R_baseline.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/replay_R_baseline.R",
+      "bytes": 6330,
+      "sha256": "b493f4ea7593848a3db433a6161efebabcb39c0c3d076ecd423a02352c6a4d72"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/replay_R_baseline.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/replay_R_baseline.sbatch",
+      "bytes": 523,
+      "sha256": "a43bd71bb67182fc5ca10d95ffde781adc061279011319eeab763c641105f9ff"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/report_ptc.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/report_ptc.py",
+      "bytes": 25656,
+      "sha256": "eb0bfa97ad3e1e3038a5bf3e08f2d926272c3eec58ac1495b839c8be6b182fab"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/score_matched_samples.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/score_matched_samples.R",
+      "bytes": 1220,
+      "sha256": "3cf61bc39b532177c57ec4c0a0a53391424fdc9878bd3d6a1ff3609af1ea0282"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/score_partitions.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/score_partitions.R",
+      "bytes": 11634,
+      "sha256": "d9eb197594025f5979bc794a9cf6d85356906064d296f5e0ffb8143f05e02d2a"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/score_pooled_partition.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/score_pooled_partition.R",
+      "bytes": 870,
+      "sha256": "f7b493c17f3b5ca885fd0dccba43ff6c0c795e015bc77ed5baa8e6d9b6b9790b"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/stage_archive.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/stage_archive.py",
+      "bytes": 4143,
+      "sha256": "10c130768d6d4185c13b4e46c1ca040398360bd22784bcb6b04ac581ec615eea"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/stage_archive.sbatch",
+      "snapshot": "source/handoff/ptc_recovery_20260916/stage_archive.sbatch",
+      "bytes": 451,
+      "sha256": "46cabc1a1b21d78405f20742935f0416fc22f8a2fa50f3a8f95f733de2d5e581"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/summarize_ptc.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/summarize_ptc.py",
+      "bytes": 19293,
+      "sha256": "0522bf6928a87f11cef317e246fab85946ed6183ab0aa4e81a3c7c77d71bb930"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_analysis_preflight.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/verify_analysis_preflight.py",
+      "bytes": 1791,
+      "sha256": "f2ffa7ce5c64b70d817d3cfad4563c5427b0263d44666f4be23a5c9c4bf40c0c"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_dbscan_index64.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/verify_dbscan_index64.R",
+      "bytes": 2492,
+      "sha256": "97c6842d1b96c333bbe6ef451235a31eaeed5b0282702803e0b519a356f87ef8"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_delivery.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/verify_delivery.py",
+      "bytes": 12785,
+      "sha256": "4a465da6ef94b05277e41245e7dbce0f10aac85524d369fb02439436d222f34e"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_geometry_census.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/verify_geometry_census.py",
+      "bytes": 4310,
+      "sha256": "45b7d9be02dc7bc920094c5f78abbb30dfb21005165a8e158e907f272606acdb"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_legacy_density.R",
+      "snapshot": "source/handoff/ptc_recovery_20260916/verify_legacy_density.R",
+      "bytes": 2863,
+      "sha256": "4511dc4171fc76ee8fc480d0b197efc52319b80be14fa2d837cf8c410e099e3e"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_legacy_implementations.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/verify_legacy_implementations.py",
+      "bytes": 4041,
+      "sha256": "430de7cbad7052d7e74b4c324992d75ef84bd98157d778c80f1d9e265d50b94c"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_recovery_parity.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/verify_recovery_parity.py",
+      "bytes": 2255,
+      "sha256": "951e0adca128067cbff47a6d3f2af92201dc0c053e7529b522666446f6edf937"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_terminal.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/verify_terminal.py",
+      "bytes": 6992,
+      "sha256": "7f6772bce6a06ae9573d4e6a6457733f45f3888147b6cd6cf10ddacf6d0b2728"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/vocabulary_audit.py",
+      "snapshot": "source/handoff/ptc_recovery_20260916/vocabulary_audit.py",
+      "bytes": 2455,
+      "sha256": "a500a807e7972f278f682b4f4ead9f3d5b321f5545207e3d40ee28e58db05f95"
+    },
+    {
+      "source": "handoff/repo_snapshot_20260917/audit_package.py",
+      "snapshot": "source/handoff/repo_snapshot_20260917/audit_package.py",
+      "bytes": 6460,
+      "sha256": "1e5119518c13a96d5918666256b368c22547d818bde8d80eca135c5829a05231"
+    },
+    {
+      "source": "handoff/repo_snapshot_20260917/audit_package.sbatch",
+      "snapshot": "source/handoff/repo_snapshot_20260917/audit_package.sbatch",
+      "bytes": 807,
+      "sha256": "ce134fba7e2cc5066f7828cfe5d78f13a4b7d8d6a024517c550c89c854fbd18c"
+    },
+    {
+      "source": "handoff/repo_snapshot_20260917/build_snapshot.py",
+      "snapshot": "source/handoff/repo_snapshot_20260917/build_snapshot.py",
+      "bytes": 5136,
+      "sha256": "61dee824188bfdae91c92e3ca8059c3f2a709fc1b03fc6d7a168fe0f7fd79805"
+    },
+    {
+      "source": "handoff/repo_snapshot_20260917/validate_snapshot.py",
+      "snapshot": "source/handoff/repo_snapshot_20260917/validate_snapshot.py",
+      "bytes": 3287,
+      "sha256": "56dc9a0ca45d4e1e13cf09d85645ce88e8aec2544f1a950570e37ebb6b9deebc"
+    },
+    {
+      "source": "handoff/repo_snapshot_20260917/validate_snapshot.sbatch",
+      "snapshot": "source/handoff/repo_snapshot_20260917/validate_snapshot.sbatch",
+      "bytes": 399,
+      "sha256": "f474b21aa2b8de101bfe516fe239c10cd0720f43c5019098a2ee0696b59a9d13"
+    },
+    {
+      "source": "results/hvg_ptc_20260916_v1/ptc_recovery/archive/tcr/ptc_val/scripts/DGscRNA-Share/R/source.R",
+      "snapshot": "reference/ptc_archive/source.R",
+      "bytes": 19941,
+      "sha256": "0123b4ad09fa337c10caeaa93ef01999470438ad1e139e56d4bfd7006d15b5bf"
+    },
+    {
+      "source": "results/hvg_ptc_20260916_v1/ptc_recovery/archive/tcr/ptc_val/scripts/DGscRNA-Share/R/source.py",
+      "snapshot": "reference/ptc_archive/source.py",
+      "bytes": 14800,
+      "sha256": "35e0d53050dff919844ae0d834ea4a458d3ffb05a2a2cde76eb1e23675cd2255"
+    }
+  ],
+  "local_python_dependencies": [
+    {
+      "source": "handoff/ptc_recovery_20260916/reconcile_tables.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/report.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/report.py",
+      "module": "resources",
+      "dependency": "handoff/hvg_ptc_20260916/resources.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/refine_pooled_partition.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/refine_pooled_partition.py",
+      "module": "refine",
+      "dependency": "handoff/ptc_recovery_20260916/refine.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_recovery_parity.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/refine.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/optimization_diagnostics.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/summarize.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/compare_methods.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/vocabulary_audit.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/verify_results.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/verify_results.py",
+      "module": "evaluate",
+      "dependency": "handoff/hvg_ptc_20260916/evaluate.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/verify_results.py",
+      "module": "resolve",
+      "dependency": "handoff/hvg_ptc_20260916/resolve.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/verify_singleton.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/verify_singleton.py",
+      "module": "evaluate",
+      "dependency": "handoff/hvg_ptc_20260916/evaluate.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/freeze_label_rules.py",
+      "module": "label_rules",
+      "dependency": "handoff/ptc_recovery_20260916/label_rules.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/freeze_label_rules.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/stage_archive.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/evaluate.py",
+      "module": "cgo_grid",
+      "dependency": "handoff/g274_table4/cgo_grid.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/evaluate.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/evaluate.py",
+      "module": "metrics_core",
+      "dependency": "handoff/g274_table4/metrics_core.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/evaluate.py",
+      "module": "resolve",
+      "dependency": "handoff/hvg_ptc_20260916/resolve.py"
+    },
+    {
+      "source": "handoff/g274_table4/cgo_grid.py",
+      "module": "darmanis_region_final",
+      "dependency": "handoff/gbm/darmanis_region_final.py"
+    },
+    {
+      "source": "handoff/g274_table4/cgo_grid.py",
+      "module": "runtime_guard",
+      "dependency": "handoff/g274_table4/runtime_guard.py"
+    },
+    {
+      "source": "handoff/g274_table4/cgo_grid.py",
+      "module": "v5_final_annotations",
+      "dependency": "handoff/g274_table4/v5_final_annotations.py"
+    },
+    {
+      "source": "handoff/gbm/darmanis_region_final.py",
+      "module": "darmanis_validate_20260910",
+      "dependency": "handoff/gbm/darmanis_validate_20260910.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/finalize_gbm.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/prepare_evaluation_reference.py",
+      "module": "label_rules",
+      "dependency": "handoff/ptc_recovery_20260916/label_rules.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/prepare_evaluation_reference.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_geometry_census.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_delivery.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/resolve.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/make_geometry_manifest.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/make_protocol.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/inventory.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_legacy_implementations.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_legacy_implementations.py",
+      "module": "refine",
+      "dependency": "handoff/ptc_recovery_20260916/refine.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/recover_geometry_precision.py",
+      "module": "fit",
+      "dependency": "handoff/hvg_ptc_20260916/fit.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/recover_geometry_precision.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/refine_selected_routes.py",
+      "module": "refine",
+      "dependency": "handoff/ptc_recovery_20260916/refine.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/evaluate_conditions.py",
+      "module": "label_rules",
+      "dependency": "handoff/ptc_recovery_20260916/label_rules.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/evaluate_conditions.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/evaluate_conditions.py",
+      "module": "verify_terminal",
+      "dependency": "handoff/ptc_recovery_20260916/verify_terminal.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/retry_numerical.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/retry_numerical.py",
+      "module": "fit",
+      "dependency": "handoff/hvg_ptc_20260916/fit.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/plots.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/refine_matched_samples.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/refine_matched_samples.py",
+      "module": "refine",
+      "dependency": "handoff/ptc_recovery_20260916/refine.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/summarize_ptc.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/audit_comparator_names.py",
+      "module": "label_rules",
+      "dependency": "handoff/ptc_recovery_20260916/label_rules.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/audit_comparator_names.py",
+      "module": "prepare_evaluation_reference",
+      "dependency": "handoff/ptc_recovery_20260916/prepare_evaluation_reference.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/audit_comparator_names.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/verify_original_input_and_models.py",
+      "module": "verify_terminal",
+      "dependency": "handoff/ptc_recovery_20260916/verify_terminal.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/biology_detail.py",
+      "module": "label_rules",
+      "dependency": "handoff/ptc_recovery_20260916/label_rules.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/biology_detail.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/quality.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/quality.py",
+      "module": "metrics_core",
+      "dependency": "handoff/g274_table4/metrics_core.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/quality.py",
+      "module": "resolve",
+      "dependency": "handoff/hvg_ptc_20260916/resolve.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_terminal.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/refine_selected_routes_marker_union.py",
+      "module": "refine",
+      "dependency": "handoff/ptc_recovery_20260916/refine.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/prepare.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/prepare.py",
+      "module": "fit_runner",
+      "dependency": "handoff/g274_table4/fit_runner.py"
+    },
+    {
+      "source": "handoff/g274_table4/fit_runner.py",
+      "module": "fit_core",
+      "dependency": "handoff/g274_table4/fit_core.py"
+    },
+    {
+      "source": "handoff/g274_table4/fit_runner.py",
+      "module": "runtime_guard",
+      "dependency": "handoff/g274_table4/runtime_guard.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/fit_geometry.py",
+      "module": "fit",
+      "dependency": "handoff/hvg_ptc_20260916/fit.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/fit_geometry.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/report_ptc.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/diagnose_initialization.py",
+      "module": "refine",
+      "dependency": "handoff/ptc_recovery_20260916/refine.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/draw_workflow.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/build_notebook_ptc.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/reconcile_s3.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/dispatch_singleton.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/dispatch.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/monitor.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/fit.py",
+      "module": "cgo_grid",
+      "dependency": "handoff/g274_table4/cgo_grid.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/fit.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/fit.py",
+      "module": "fit_core",
+      "dependency": "handoff/g274_table4/fit_core.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/plot_ptc.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/plot_ptc.py",
+      "module": "summarize_ptc",
+      "dependency": "handoff/ptc_recovery_20260916/summarize_ptc.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/audit_tcr.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/diagnose_tsne.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/diagnose_tsne.py",
+      "module": "fit_core",
+      "dependency": "handoff/g274_table4/fit_core.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/release_evaluations.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/refine_selected_routes_full_parallel.py",
+      "module": "refine",
+      "dependency": "handoff/ptc_recovery_20260916/refine.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/resources.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/release_annotations.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/contract_checks.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/contract_checks.py",
+      "module": "darmanis_region_final",
+      "dependency": "handoff/gbm/darmanis_region_final.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/contract_checks.py",
+      "module": "fit",
+      "dependency": "handoff/hvg_ptc_20260916/fit.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/contract_checks.py",
+      "module": "metrics_core",
+      "dependency": "handoff/g274_table4/metrics_core.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/contract_checks.py",
+      "module": "test_darmanis_region_final",
+      "dependency": "handoff/gbm/test_darmanis_region_final.py"
+    },
+    {
+      "source": "handoff/gbm/test_darmanis_region_final.py",
+      "module": "darmanis_region_final",
+      "dependency": "handoff/gbm/darmanis_region_final.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/harmony.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_paper_baseline_20260916/finalize_recovery_diagnosis.py",
+      "module": "correct_notebook",
+      "dependency": "handoff/ptc_paper_baseline_20260916/correct_notebook.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/build_notebook.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/singleton_robustness.py",
+      "module": "cgo_grid",
+      "dependency": "handoff/g274_table4/cgo_grid.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/singleton_robustness.py",
+      "module": "common",
+      "dependency": "handoff/hvg_ptc_20260916/common.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/singleton_robustness.py",
+      "module": "darmanis_region_final",
+      "dependency": "handoff/gbm/darmanis_region_final.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/singleton_robustness.py",
+      "module": "evaluate",
+      "dependency": "handoff/hvg_ptc_20260916/evaluate.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/singleton_robustness.py",
+      "module": "fit",
+      "dependency": "handoff/hvg_ptc_20260916/fit.py"
+    },
+    {
+      "source": "handoff/hvg_ptc_20260916/singleton_robustness.py",
+      "module": "resolve",
+      "dependency": "handoff/hvg_ptc_20260916/resolve.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/batch_biology.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_analysis_preflight.py",
+      "module": "ptc_common",
+      "dependency": "handoff/ptc_recovery_20260916/ptc_common.py"
+    },
+    {
+      "source": "handoff/ptc_recovery_20260916/verify_analysis_preflight.py",
+      "module": "summarize_ptc",
+      "dependency": "handoff/ptc_recovery_20260916/summarize_ptc.py"
+    }
+  ],
+  "unresolved_ambiguous_imports": [],
+  "excluded": "Expression matrices, patient metadata, cell labels, model weights, rendered notebooks, result tables, credentials and OneDrive content",
+  "portability": "Executed scripts retain site-specific absolute paths. This is an archival source snapshot, not a portable standalone release."
+}

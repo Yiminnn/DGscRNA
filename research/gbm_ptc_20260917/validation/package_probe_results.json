@@ -1,0 +1,73 @@
+{
+  "job": "7340233",
+  "package_commit": "4bf17c4cb9518ab427fa92e8bf5bb4d594d30e00",
+  "package_path": "/fs/scratch/PCON0080/yimin/dgscrna/.worktrees/reproducibility-gbm-ptc-20260917/dgscrna",
+  "inputs": "synthetic; no patient data or production outputs loaded",
+  "package_modified": false,
+  "versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pandas": "2.3.3",
+    "scanpy": "1.11.5",
+    "anndata": "0.12.17",
+    "torch": "2.5.1",
+    "hdbscan": "0.8.44",
+    "harmonypy": "2.0.0",
+    "scikit-learn": "1.9.0",
+    "umap-learn": "0.5.12"
+  },
+  "probes": [
+    {
+      "probe": "default_preprocessing_DEG",
+      "executed": true,
+      "result": {
+        "lognorm_layer_saved": false,
+        "mitochondrial_metric_computed": false,
+        "n_hvg": 181,
+        "n_logfc": 200,
+        "n_nonfinite_logfc": 200,
+        "failure": "preprocess scales X without preserving lognorm; default DEG falls back to scaled X"
+      }
+    },
+    {
+      "probe": "multiple_partition_DEG_isolation",
+      "executed": true,
+      "result": {
+        "calls": [
+          {
+            "scored_partition": "leiden_clusters",
+            "deg_partition": "hdbscan_clusters"
+          },
+          {
+            "scored_partition": "hdbscan_clusters",
+            "deg_partition": "hdbscan_clusters"
+          }
+        ],
+        "all_partitions_use_own_DEG": false,
+        "probe_type": "mocked data-flow isolation; no clustering algorithm performance measured"
+      }
+    },
+    {
+      "probe": "harmony_corrected_basis_routing",
+      "executed": true,
+      "result": {
+        "corrected_basis_exists": true,
+        "hdbscan_consumes_corrected_basis": false,
+        "hdbscan_consumes_uncorrected_basis": true,
+        "probe_type": "mocked Harmony and clustering; verifies representation routing only"
+      }
+    },
+    {
+      "probe": "Unknown_training_class",
+      "executed": true,
+      "result": {
+        "training_classes": [
+          "TypeA",
+          "Unknown"
+        ],
+        "Unknown_is_a_training_class": true,
+        "Undecided_is_a_training_class": false
+      }
+    }
+  ]
+}

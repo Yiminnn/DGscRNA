@@ -1,0 +1,16 @@
+{
+  "job": "7340282",
+  "verified_utc": "2026-09-17T05:29:22.976561+00:00",
+  "source_files_verified": 186,
+  "python_sources_parsed": 94,
+  "R_sources_parsed": 24,
+  "shell_sources_parsed": 65,
+  "all_source_hashes_match": true,
+  "existing_package_files_modified": false,
+  "credential_literal_scan_passed": true,
+  "scientific_probe_job": "7340233",
+  "scientific_probe_job_state": "COMPLETED",
+  "scientific_probe_job_exit": "0:0",
+  "existing_R_alignment_tests": "6 passed",
+  "scope": "Source identity/syntax validation and previously completed synthetic data-flow probes; not a new cohort benchmark"
+}
