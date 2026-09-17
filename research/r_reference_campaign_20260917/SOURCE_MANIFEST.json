@@ -1,7 +1,7 @@
 {
   "branch": "align-r-reference",
   "scope": "Added research/r_reference_campaign_20260917 only; installed Python package and earlier research snapshot unchanged.",
-  "source_files": 84,
+  "source_files": 86,
   "files": [
     {
       "source": "handoff/harmonize.py",
@@ -30,14 +30,14 @@
     {
       "source": "handoff/r_reference_campaign_20260917/PLAN.md",
       "snapshot": "source/handoff/r_reference_campaign_20260917/PLAN.md",
-      "sha256": "3b099b54c797e8890164789192b965e50e37e8bfe6f0599020720d4af55e5ff0",
-      "bytes": 9043
+      "sha256": "a64b7161d88162a6746dfc46686269b6a456a0ddb7d6df4c7f97064203918387",
+      "bytes": 9758
     },
     {
       "source": "handoff/r_reference_campaign_20260917/README.md",
       "snapshot": "source/handoff/r_reference_campaign_20260917/README.md",
-      "sha256": "ea607a0e7df590c2719c12e26475565b639b755785a6068de8100b5f69e37838",
-      "bytes": 5106
+      "sha256": "5b504c173c37cf7814d9fd17e822f0d1a4554a1926afc379df45bc77ed33602f",
+      "bytes": 5699
     },
     {
       "source": "handoff/r_reference_campaign_20260917/aggregate.py",
@@ -146,6 +146,18 @@
       "snapshot": "source/handoff/r_reference_campaign_20260917/check_historical_abstention_accuracy.py",
       "sha256": "198dee538030eded8208b081dad5d39a4a2fa90864f9d18186931b387d7aed1c",
       "bytes": 2251
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/checkpointed_deg.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/checkpointed_deg.R",
+      "sha256": "a5bf6b1b74669c1c5fd8ebf28db9aae854b64af15ff10ae3ef93493a9a7c1a16",
+      "bytes": 7163
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/checkpointed_deg.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/checkpointed_deg.sbatch",
+      "sha256": "bf90f8f91861d9a4861d619869b37e2797920d85f4e9ec2f665421faa8169cda",
+      "bytes": 538
     },
     {
       "source": "handoff/r_reference_campaign_20260917/collect_slurm_accounting.py",
@@ -438,8 +450,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/stage_delivery.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/stage_delivery.py",
-      "sha256": "b30dc55b439d25db522fbb84194dca8500c5d06f53958a1b4e2dc689f3a0d38a",
-      "bytes": 14556
+      "sha256": "56fddbfef9e1c8afdf07758febcd9794583f91175d6a65036e54a6e6a03d8b92",
+      "bytes": 15315
     },
     {
       "source": "handoff/r_reference_campaign_20260917/submit_partial_terminal.py",

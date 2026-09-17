@@ -135,3 +135,13 @@ For long all-gene scoring jobs, completed routes may enter terminal DL before th
 other routes finish. The same immutable task lists, terminal driver and arm locks
 apply. The full-grid dispatcher waits for those partial arrays before assigning
 remaining arms; evaluation still requires all prescribed routes and conditions.
+
+If a full-gene DEG route times out without a complete DEG checkpoint, independent
+cluster chunks may evaluate the installed Seurat `FindAllMarkers` function with
+only its outer identity loop restricted. All cells, genes, tests, thresholds and
+within-cluster row ordering stay unchanged. A prerequisite GBM check requires exact
+equality of all DEG fields, attributes and row order to the saved original full
+loop. Each cluster result carries input/function/source hashes; assembly follows
+the original identity order and restores original row names. The original scorer
+then consumes the assembled DEG file through its existing cache path. This is a
+resource-recovery option, not an additional scientific ablation.

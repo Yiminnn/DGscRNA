@@ -91,6 +91,15 @@ def run():
             bundle(selected,target,dataset_dir)
     for row in inv.itertuples(index=False):
         prep=Path(row.directory)
+        for checkpoint in prep.glob('*/DEG_checkpoints/ASSEMBLED.json'):
+            assembled=json.loads(checkpoint.read_text())
+            validation_path=OUT/'verification/checkpointed_DEG_equivalence.json'
+            validation=json.loads(validation_path.read_text())
+            assert validation['status']=='passed' and validation['exact_all_fields_attributes_and_row_order']
+            assert assembled['status']=='assembled' and assembled['validation_sha256']==sha(validation_path)
+            assert assembled['source_sha256']==validation['source_sha256']
+            assert assembled['installed_FindAllMarkers_sha256']==validation['installed_FindAllMarkers_sha256']
+            assert assembled['sha256']==sha(checkpoint.parent.parent/'DEG.rds')
         paths=[]
         for p in prep.rglob('*'):
             if not p.is_file():continue
