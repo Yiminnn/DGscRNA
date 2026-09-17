@@ -1,20 +1,5 @@
 #!/usr/bin/env Rscript
 stopifnot(nzchar(Sys.getenv('SLURM_JOB_ID')))
-# Earlier completed geometry preparations did not use this guard; the transition
-# record documents that exception without claiming to recover their source bytes.
-if (!nzchar(Sys.getenv('DGSCRNA_EXECUTION_SOURCE'))) {
-  original_script <- '/fs/scratch/PCON0080/yimin/dgscrna/handoff/r_reference_campaign_20260917/ptc_geometry_only.R'
-  snapshot_dir <- file.path('/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/execution_sources', Sys.getenv('SLURM_JOB_ID'))
-  dir.create(snapshot_dir, recursive=TRUE, showWarnings=FALSE)
-  snapshot_script <- file.path(snapshot_dir, 'ptc_geometry_only.R')
-  if (!file.exists(snapshot_script)) {
-    temporary <- paste0(snapshot_script, '.part')
-    stopifnot(file.copy(original_script, temporary), file.rename(temporary, snapshot_script))
-  }
-  Sys.setenv(DGSCRNA_EXECUTION_SOURCE=snapshot_script)
-  source(snapshot_script, local=.GlobalEnv)
-  quit(status=0)
-}
 suppressPackageStartupMessages(library(Seurat))
 suppressPackageStartupMessages(library(jsonlite))
 suppressPackageStartupMessages(library(digest))
@@ -67,8 +52,7 @@ for(budget in c('500','1000','2000','3000','5000','all')) {
     fixed_expression_source_sha256=digest(file=file.path(allprep,'prepare_manifest.json'),algo='sha256'),
     contrast='Only PCA/UMAP geometry features vary; same all-gene CCA fit, scoring matrix, full marker denominators, DL matrix and cell order.',
     limitation='Conditional on an all-shared-gene CCA fit; do not substitute this baseline for the original CCA2000 pipeline.',
-    job=Sys.getenv('SLURM_JOB_ID'),execution_source=Sys.getenv('DGSCRNA_EXECUTION_SOURCE'),
-    source_sha256=digest(file=Sys.getenv('DGSCRNA_EXECUTION_SOURCE'),algo='sha256'))
+    job=Sys.getenv('SLURM_JOB_ID'),source_sha256=digest(file=file.path(root,'handoff/r_reference_campaign_20260917/ptc_geometry_only.R'),algo='sha256'))
   write_json(m,file.path(dest,'prepare_manifest.json'),auto_unbox=TRUE,pretty=TRUE)
   writeLines(capture.output(sessionInfo()),file.path(dest,'sessionInfo.txt'))
   writeLines(digest(file=file.path(dest,'prepare_manifest.json'),algo='sha256'),file.path(dest,'PREPARED'))

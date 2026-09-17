@@ -1,5 +1,6 @@
 """Run one marker/cutoff condition through the validated original-style MLP."""
 import json
+import fcntl
 import os
 import sys
 from pathlib import Path
@@ -32,15 +33,25 @@ def run():
     else:
         spec=json.loads(Path(sys.argv[1]).read_text())[task]
         source=Path(spec['source']);armid=spec['arm_id']
+    dest=source/'terminal'/armid;dest.mkdir(parents=True,exist_ok=True)
+    with (dest/'terminal.lock').open('a') as lock:
+        fcntl.flock(lock,fcntl.LOCK_EX)
+        finish_arm(source,armid,dest)
+
+def finish_arm(source,armid,dest):
+    import numpy as np
+    import pandas as pd
+    import torch
     assert (source/'SCORE_COMPLETE').read_text().strip()==refine.sha(source/'score_manifest.json')
     m=json.loads((source/'score_manifest.json').read_text())
     arm=m['arms'][armid]
-    dest=source/'terminal'/armid;dest.mkdir(parents=True,exist_ok=True)
     trained=(dest/'COMPLETE').exists()
     if trained:
         previous=json.loads((dest/'training_manifest.json').read_text())
+        assert (dest/'COMPLETE').read_text().strip()==refine.sha(dest/'training_manifest.json')
         assert previous['provenance']['score_manifest_sha256']==refine.sha(source/'score_manifest.json')
         if (dest/'TERMINAL_COMPLETE').exists():
+            assert (dest/'TERMINAL_COMPLETE').read_text().strip()==refine.sha(dest/'training_manifest.json')
             print('Already complete',dest,flush=True);return
     assert m['initial_sha256']==refine.sha(source/'initial_calls.csv.gz')
     initial=pd.read_csv(source/'initial_calls.csv.gz',usecols=['cell_id',arm['seed_column']],keep_default_na=False,dtype=str)
@@ -58,13 +69,17 @@ def run():
             score_manifest_sha256=refine.sha(source/'score_manifest.json'),
             training_source_sha256=refine.sha(Path(refine.__file__)),
             driver_source_sha256=refine.sha(Path(__file__)),execution_source=str(Path(__file__)),
+            task_assignment_source=sys.argv[1],
+            task_assignment_sha256=refine.sha(Path(sys.argv[1])) if sys.argv[1]!='PTC' else None,
             torch_num_threads=torch.get_num_threads(),
             historical_model_weights_recovered=False,evaluation_labels_used_for_fit=False))
     z=np.load(dest/'terminal.npz',allow_pickle=False)
     result=cells[['cell_id']].copy()
     for name in ['initial','final090','final070','lineage','confidence_rounded']:result[name]=z[name]
-    result.to_csv(dest/'predictions.csv.gz',index=False)
-    (dest/'TERMINAL_COMPLETE').write_text(refine.sha(dest/'training_manifest.json')+'\n')
+    temporary=dest/('predictions.csv.gz.part.'+os.environ['SLURM_JOB_ID'])
+    result.to_csv(temporary,index=False,compression='gzip');temporary.replace(dest/'predictions.csv.gz')
+    temporary=dest/('TERMINAL_COMPLETE.part.'+os.environ['SLURM_JOB_ID'])
+    temporary.write_text(refine.sha(dest/'training_manifest.json')+'\n');temporary.replace(dest/'TERMINAL_COMPLETE')
     print(source.name,armid,json.loads((dest/'training_manifest.json').read_text())['dl_status'],flush=True)
 
 if __name__=='__main__':run()

@@ -1,0 +1,8 @@
+{
+  "recorded_at_utc": "2026-09-17T09:46:33.166512+00:00",
+  "source_file": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/r_reference_campaign_20260917/ptc_geometry_only.R",
+  "observed_source_copy": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/r_reference_campaign_20260917/source_snapshots/ptc_geometry_only_observed_before_guard.R",
+  "observed_source_sha256": "dbcf7703d659be47da3af6a51e2fe40931eed6b6a7a920553adbb9a0b6768735",
+  "scope": "This copy records the source observed when the guard was added. Earlier completed geometry preparation jobs did not create per-job immutable copies. Their exact execution bytes are not established by this transition copy.",
+  "earlier_output_audits": "Existing feature, cell-order and byte-identical DL input audits remain separate evidence about outputs; they do not recover prior execution source bytes."
+}

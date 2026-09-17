@@ -87,11 +87,19 @@ and https://doi.org/10.1093/nar/gkac947. Freeze the cached human workbook checks
   PTC cell order, not merely the same cell set. Cross-condition feature identities
   and input hashes are tested explicitly in SLURM.
 - Running R jobs use per-job immutable source copies after the recorded guard
-  transition. Earlier 16 reviewer units receive an independent unmodified
+  transition. The completed isolated-geometry preparation jobs are an exception:
+  they ran before that driver received its guard. Their feature/cell-order/input
+  audits establish output invariants, not exact historical execution bytes. The
+  geometry transition record preserves only the source observed at the change.
+  Earlier 16 reviewer units receive an independent unmodified
   original-density replay audit. This validates their outputs; it does not
   retroactively reconstruct transient source bytes. Later terminal jobs also
   freeze their driver and cap PyTorch at four threads, including high-memory
   all-gene tasks; the legacy MLP helper remains unchanged.
+- Delivery includes a campaign-only SLURM task/step resource ledger and preserved
+  failed-attempt logs. Active accounting rows remain explicitly non-final. A local
+  delivery receipt alone is insufficient: its remote copy must be downloaded and
+  hash-verified, and the finalizer must independently finish successfully in SLURM.
 
 ## Colorectal CCA-feasibility sensitivity (added after input audit)
 
@@ -105,3 +113,20 @@ libraries, every clustering branch/cutoff and terminal DL. No labels or predicti
 scores inform this exclusion. The two versions have different expression/scoring
 universes and represent a combined workflow sensitivity, not an isolated batch
 effect test. Count biological cohorts/cells only once in the roster.
+
+## Quantitative correction diagnostics and completion checks
+
+Six PTC correction controls (NMT/TTU × CCA2000, RNA, Harmony) receive exact k=30
+neighbor diagnostics in saved PCA30/UMAP2. Queries are identical across arms,
+sampled with seed42 within fixed archived population × sample strata. Batch
+mixing is normalized by sample composition within each population and MT/N/TU/T
+prefix; archived broad/native label purity, NMT tissue-state retention and TCR
+detection homophily remain separate endpoints. Archived labels are concordance
+references and sample/state confounding remains explicit. No fit is modified.
+
+Final completion independently checks the frozen marker libraries × three cutoffs
+× four named routes and all evaluation stages/scopes. New terminal task lists
+are content-addressed and each arm has an exclusive writer lock; submitted job
+registrations are persisted immediately. Stop/restart a dispatcher only while
+holding its between-tick flock. Interrupted scoring caches are atomically
+published or preserved under an invalid-cache name before recomputation.

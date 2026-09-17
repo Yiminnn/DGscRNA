@@ -71,6 +71,39 @@ def run():
         assert all(json.loads(p.read_text())['status']=='passed' for p in density_audits)
         seed_diagnosis_en='''A targeted audit explains two distinct failures in separate-group CCA2000. The original Thyroid T-cell panel contains only CD3D; NMT's selected 2,000 genes omit it, giving this panel zero density score and no T-cell training class. TTU retains all genes in the Pubmed T/Treg panels, but neither panel wins any UMAP-HDBSCAN cluster even before applying the mean cutoff. The same TTU inputs do produce T seeds with SNN clustering. Thus marker loss and cluster/score competition are different mechanisms; reducing the cutoff alone cannot repair the latter case. All 204 initial arms in each group exactly replay the unmodified archived density function after arbitrary cluster-ID remapping. The per-condition marker-retention and seed-vocabulary audits are in `verification/PTC_selected_T_marker_retention.csv` and `verification/PTC_selected_marker_seed_coverage.csv`. A DL classifier cannot learn a T class absent from its initial class vocabulary. These observations do not establish that all HVG use is harmful.'''
         seed_diagnosis_zh='''分组 CCA2000 的异常已定位到两种机制：NMT 的原 Thyroid T-cell panel 只有 CD3D，而这次 2,000 个特征未保留 CD3D，导致该 panel 打分为零、DL 没有 T-cell 训练类别。TTU 则保留了 Pubmed T/Treg panel 的全部基因，但它们在 UMAP＋HDBSCAN 的任何 cluster 中都未赢得最高分，在应用 mean cutoff 之前就没有 T-cell 种子；相同输入的 SNN 路线仍能产生 T-cell 种子。两组各 204 个初始注释组合都已通过原始 density 函数逐项重算核验。这说明 marker 丢失与聚类/打分竞争要分开解释，不能将所有差异都归因于 HVG，也不能期待 DL 补出训练标签中不存在的类别。逐条件证据见 `verification/PTC_selected_marker_seed_coverage.csv`。'''
+    batch_dir=OUT/'verification/batch_biology'
+    batch_en=batch_zh=''
+    if (batch_dir/'COMPLETE').exists():
+        bm=json.loads((batch_dir/'manifest.json').read_text())
+        assert bm['status']=='complete' and bm['n_units']==6 and bm['n_unit_spaces']==12
+        assert (batch_dir/'COMPLETE').read_text().strip()==sha(batch_dir/'manifest.json')
+        batch=pd.read_csv(batch_dir/'PTC_batch_biology_unit_summary.csv')
+        compact=batch[['group','condition','space','normalized_cross_sample_mixing_population_sample_balanced',
+            'archived_broad_purity_population_sample_balanced','mixing_represented_cell_fraction']].rename(columns={
+            'normalized_cross_sample_mixing_population_sample_balanced':'normalized_mixing',
+            'archived_broad_purity_population_sample_balanced':'archived_broad_label_purity',
+            'mixing_represented_cell_fraction':'represented_cell_fraction'})
+        compact.to_csv(dest/'PTC_batch_biology_compact.csv',index=False)
+        batch_en='''## Batch mixing and biological-label retention
+
+Six NMT/TTU correction controls are evaluated in saved PCA30 and UMAP2 spaces using identical seeded query cells and exact k=30 neighbors. Mixing is measured within each fixed archived broad population and MT/N/TU/T prefix, normalized by that population's sample composition, then averaged equally over population/sample strata. A ratio of 1 is the exchangeable sample-label expectation; values above 1 are possible and are not automatically better. The table also reports archived-label neighborhood purity and represented-cell coverage. Native-label purity, chance adjustment, NMT tissue-state retention and TCR-detection homophily are separate diagnostics in the full tables.
+
+RNA→Harmony increases normalized mixing in both groups while archived-label concordance is broadly similar. CCA versus Harmony varies by group. RNA/Harmony uses identical scoring/DL input; CCA/RNA is a combined expression/geometry comparison. Historical annotations are concordance references, not independent truth, and tissue state is confounded with sample. These diagnostics do not identify a universally optimal correction method.
+
+'''+markdown(compact)+'''
+
+![PTC mixing and label-retention diagnostics](../verification/batch_biology/PTC_batch_biology_comparison.png)
+
+Exact query IDs, neighbor graphs, exclusions, paired changes and metric definitions are retained under `verification/batch_biology/`.
+'''
+        batch_zh='''## Batch 混合与生物标签保留
+
+六个 NMT/TTU 校正对照使用相同的抽样细胞，在 PCA30 和 UMAP2 中搜索精确的 30 个近邻。只在相同历史细胞大类和 MT/N/TU/T 组织前缀内评价跨样本混合，并按该群体的样本组成归一化；1 表示可交换样本标签的期望，超过 1 不代表越大越好。下表同时保留历史标签邻域一致性和可评价群体覆盖率。
+
+RNA→Harmony 在两组中均提高归一化混合，历史标签一致性整体接近；CCA 与 Harmony 的取舍依组别而变。历史标签不是独立真值，组织状态也与样本混杂，不能据此宣称一种 batch 方法普遍最优。细粒度标签、机会校正、NMT 组织状态保留和 TCR 检出邻域指标分别保存在完整表中。
+
+'''+markdown(compact)+'\n'
+    elif not partial:raise AssertionError('Complete batch/biology diagnostics required')
     # A complete mapping audit exposes resolution mismatches; it does not change evaluation.
     pm=pd.read_csv(OUT/'markers/native_panel_metadata.csv',keep_default_na=False)
     mapping=[];truthrows=[]
@@ -148,11 +181,15 @@ The historical binary mapping treats Unknown as non-T. Its ordinary accuracy and
 
 The earlier paper restoration diagnosis remains valid: original saved Sup endpoints were identified; original F1/AUC definitions were reconciled; historical DL weights and the manuscript Accuracy computation were not recovered. New ablations use the validated refit and explicitly named fresh integrations. They are not a claim of exact historical retraining.
 
+{batch_en}
+
 ## Terminal states and verification
 
 {markdown(statuses)}
 
-Every complete analysis unit has model/NPZ/history checksum checks, prediction-export equality, known-label retention, exact threshold reconstruction, and cell-order checks. The original selected PTC refits have zero probability difference from the prior validated run. Early reviewer scoring jobs started before immutable per-job source guards; their saved outputs are separately replayed with the unmodified original density function. That replay verifies outputs and does not retroactively reconstruct transient script bytes. Later R and terminal jobs retain executed source copies. Failed attempts and resource-only retries are preserved in SLURM logs and submission records.
+Every complete analysis unit has model/NPZ/history checksum checks, prediction-export equality, known-label retention, exact threshold reconstruction, and cell-order checks. An independent frozen-grid audit checks each prescribed route and marker-library × cutoff identity, every terminal condition and every evaluation row; expected counts do not come only from the scored manifests. The original selected PTC refits have zero probability difference from the prior validated run. Early reviewer scoring jobs started before immutable per-job source guards; their saved outputs are separately replayed with the unmodified original density function. That replay verifies outputs and does not retroactively reconstruct transient script bytes. Later main reference R and terminal jobs retain executed source copies. The twelve geometry-only preparations preceded the guard added to that driver; their observed source and this provenance exception are documented without claiming reconstructed execution bytes.
+
+Campaign-only SLURM allocation/task/step accounting, elapsed time, MaxRSS and failed-attempt logs are delivered in `slurm_accounting_and_failed_logs.tar.gz`, with a readable ledger under `resources/`. Resource retries preserve existing successful checkpoints. Serial, two-worker and four-worker executions reproduce all 9,782 saved GBM PCA-SNN DEG rows exactly. New score caches are published atomically; invalid interrupted caches are preserved for inspection before recomputation. Following a shared-task-list failure during dispatcher recovery, subsequent terminal arrays use content-addressed task lists and arm-level locks; `verification/terminal_tasklist_recovery.json` records the affected attempts and validation. Delivery completion requires successful finalizer SLURM exit plus independent download/hash verification of the uploaded receipt.
 
 Two implementation safeguards are explicit: R dbscan uses the previously validated 64-bit MST-index patch for cohorts above the 32-bit index limit, and density scores index the observed cluster IDs rather than assuming that noise label 0 must exist. The scoring formula is preserved; arbitrary ID remapping is used when replaying the legacy function in validation. Fixed curated cells, logged small-batch adaptations and current pinned software versions remain part of this reference execution, not a claim of historical binary identity.
 
@@ -196,6 +233,8 @@ PTC 同时给出原始二分类指标和 Unknown 记为错误的指标：原规�
 下表按 Unknown 记为错误的 T/non-T macro F1 排序，分别保留 NMT、TTU 及各类干预。它描述已经测到的组合，使用了同一套评价标签；各家族的输入不同，不能混称为原始流程的单一最优配置。TCR 检出仍只是评价代理。
 
 {markdown(ptc_maxima_table)}
+
+{batch_zh}
 
 目前只能根据完整表格说明「在这个数据集、marker 和指标下，所测组合中的最好结果」，不能把整条流程所有步骤都写成最优。固定参数、未测交互及语义标签分辨率必须交代。全部结果与解释见 [RESULTS_AND_INTERPRETATION.md](RESULTS_AND_INTERPRETATION.md)，实际基因与输入一致性见 `../verification/design_audit.json`。
 ''')
@@ -246,6 +285,9 @@ show_figure("summary/workflow_decision_tree.png")''')
         if seed_diagnosis_en:
             md('## PTC marker retention and missing training classes\n\n'+seed_diagnosis_en)
             code('display(pd.read_csv(CAMPAIGN / "verification/PTC_selected_marker_seed_coverage.csv"))\ndisplay(pd.read_csv(CAMPAIGN / "verification/PTC_selected_T_marker_retention.csv"))')
+        if batch_en:
+            md('## PTC batch mixing and biological-label retention\n\nSame seeded queries across correction arms; exact neighbors within fixed biological strata. Mixing and archived-label concordance are separate endpoints. Historical labels are not independent truth; a mixing ratio above one is not automatically better.')
+            code('show_figure("verification/batch_biology/PTC_batch_biology_comparison.png")\ndisplay(pd.read_csv(CAMPAIGN / "summary/PTC_batch_biology_compact.csv"))\ndisplay(pd.read_csv(CAMPAIGN / "verification/batch_biology/PTC_batch_biology_paired_changes.csv"))')
         md('## Every clustering branch and terminal marker grid\n\nEach atlas uses one saved UMAP for visual comparison of all four clustering partitions. Numbers identify clusters; legends identify biological labels and donors. Annotation illustration uses a fixed context, while the heatmaps retain the entire marker/cutoff grid. Individual PDF exports and marker-to-DL panels are saved alongside each atlas.')
         ready=inventory[inventory.evaluated&inventory.plotted].copy()
         ready['sort_group']=ready.unit.map(lambda u:0 if u=='brain_GBM' else (1 if u.startswith('PTC_') else (3 if u.startswith('HCL__') else 2)))

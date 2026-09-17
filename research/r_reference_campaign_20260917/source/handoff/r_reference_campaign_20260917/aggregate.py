@@ -19,6 +19,9 @@ def run():
     expected += [(f'PTC_{g}_GEOMETRY{h}_FIXED_CCAall_DL2000','PTC',OUT/'PTC_ablation'/f'PTC_{g}_GEOMETRY{h}_FIXED_CCAall_DL2000') for g in ['NMT','TTU'] for h in ['500','1000','2000','3000','5000','all']]
     expected += [('PTC_archived_CCA2000','PTC',OUT/'PTC_archived_CCA2000')]
     inventories=[];metrics=[];clusters=[];statuses=[];donors=[];abstentions=[]
+    grid_path=OUT/'verification/frozen_grid_audit.json'
+    grid=json.loads(grid_path.read_text()) if grid_path.exists() else {}
+    grid_records={r['unit']:r for r in grid.get('records',[])}
     for unit,dataset,prep in expected:
         pm=json.loads((prep/'prepare_manifest.json').read_text()) if (prep/'prepare_manifest.json').exists() else {}
         if unit=='PTC_archived_CCA2000':pm={'n_cells':92404,'correction':'archived_all8_CCA2000','features':{'anchor':2000,'geometry':2000,'scoring':2000,'DL':2000}}
@@ -26,10 +29,14 @@ def run():
         n_expected=sum(len(json.loads(p.read_text())['arms']) for p in manifests)
         n_terminal=len(list(prep.glob('*/terminal/*/TERMINAL_COMPLETE')))
         complete=(prep/'evaluation/COMPLETE').exists()
+        evaluation_manifest=prep/'evaluation/evaluation_manifest.json'
+        grid_fresh=(unit in grid_records and evaluation_manifest.exists() and
+            grid_records[unit]['evaluation_manifest_sha256']==hashlib.sha256(evaluation_manifest.read_bytes()).hexdigest())
         inv=dict(dataset=dataset,unit=unit,directory=str(prep),n_cells=pm.get('n_cells'),
             correction=pm.get('correction'),prepared=bool(pm),scored_routes=len(manifests),
             expected_terminal_from_scored_routes=n_expected,terminal_complete=n_terminal,evaluated=complete,
             plotted=(prep/'figures/FIGURES_COMPLETE').exists(),audited=(prep/'verification/AUDIT_COMPLETE').exists(),
+            frozen_grid_audited=grid_fresh,
             abstention_audited=dataset!='PTC' or (prep/'evaluation/ABSTENTION_COMPLETE').exists())
         inv.update({f'features_{k}':v for k,v in pm.get('features',{}).items()})
         inventories.append(inv)
@@ -198,7 +205,8 @@ def run():
         fig.suptitle(title,fontsize=10);fig.tight_layout(rect=(0,.025,1,.96))
         if any_data:save(fig,'PTC_'+mode)
         else:plt.close(fig)
-    complete=bool(inv.evaluated.all() and inv.plotted.all() and inv.audited.all() and inv.abstention_audited.all())
+    complete=bool(inv.evaluated.all() and inv.plotted.all() and inv.audited.all() and inv.abstention_audited.all()
+        and inv.frozen_grid_audited.all() and grid.get('status')=='passed' and grid.get('units')==len(inv))
     report=dict(status='complete' if complete else 'in_progress',timestamp_epoch=time.time(),job=os.environ['SLURM_JOB_ID'],
        expected_analysis_units=len(inv),evaluated_units=int(inv.evaluated.sum()),plotted_units=int(inv.plotted.sum()),audited_units=int(inv.audited.sum()),
        terminal_annotation_conditions_evaluated=len(st),clustering_conditions_evaluated=len(cl),

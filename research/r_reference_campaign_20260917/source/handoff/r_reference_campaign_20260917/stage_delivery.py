@@ -27,6 +27,22 @@ def run():
     seeds=json.loads((OUT/'verification/PTC_marker_seed_coverage_audit.json').read_text())
     assert seeds['status']=='complete' and seeds['selected_group_routes']==32
     assert all(json.loads((OUT/'verification/ptc_density'/f'PTC_{g}_CCA2000.json').read_text())['status']=='passed' for g in ['NMT','TTU'])
+    batch_dir=OUT/'verification/batch_biology'
+    batch=json.loads((batch_dir/'manifest.json').read_text())
+    assert batch['status']=='complete' and batch['n_units']==6 and batch['n_unit_spaces']==12
+    assert batch['same_queries_and_cell_order_across_correction_arms']
+    assert (batch_dir/'COMPLETE').read_text().strip()==sha(batch_dir/'manifest.json')
+    assert all(sha(batch_dir/name)==value for name,value in batch['outputs'].items())
+    task_recovery=json.loads((OUT/'verification/terminal_tasklist_recovery.json').read_text())
+    assert task_recovery['status']=='passed' and task_recovery['terminal_arms_reaudited']==204
+    grid=json.loads((OUT/'verification/frozen_grid_audit.json').read_text())
+    assert grid['status']=='passed' and grid['units']==100
+    score_recovery=json.loads((OUT/'verification/score_recovery_and_DEG_workers.json').read_text())
+    assert score_recovery['status']=='passed'
+    accounting=json.loads((OUT/'resources/accounting_manifest.json').read_text())
+    assert accounting['status']=='collected' and accounting['job']==os.environ['SLURM_JOB_ID']
+    for name,value in accounting['files'].items():assert sha(OUT/'resources'/name)==value
+    for entry in accounting['failed_logs']:assert sha(OUT/entry['path'])==entry['sha256']
     code_files=sorted(p for p in CODE.rglob('*') if p.is_file() and '__pycache__' not in str(p) and p.name!='CURRENT_TASK.md' and not p.name.endswith(('.pyc','.next')))
     for p in code_files:
         if p.suffix=='.py':ast.parse(p.read_text(),filename=str(p))
@@ -57,7 +73,12 @@ def run():
         copy(ROOT/rel)
     for sub in ['summary','markers','verification']:
         for p in sorted((OUT/sub).rglob('*')):
-            if p.is_file() and p.name not in ['DELIVERY_RECEIPT.json']:copy(p)
+            if p.is_file() and p.name not in ['DELIVERY_RECEIPT.json','REMOTE_RECEIPT_UPLOADED.json']:copy(p)
+    # Full task/step resource accounting and failed-attempt logs are delivery artifacts.
+    bundle([p for p in (OUT/'resources').rglob('*') if p.is_file() and not p.name.endswith('.part')],
+      STAGE/OUT.relative_to(ROOT)/'slurm_accounting_and_failed_logs.tar.gz',OUT/'resources')
+    for name in ['accounting_manifest.json','slurm_job_ledger.csv','failed_job_logs.json']:
+        copy(OUT/'resources'/name)
     for p in OUT.glob('*.json'):
         if p.name not in ['dispatch_state.json']:copy(p)
     for p in OUT.glob('*.txt'):copy(p)
@@ -76,7 +97,8 @@ def run():
             # Dense expression/anchor inputs and model weights remain on HPC.
             if p.name in ['expression_PCA30.rds','RNA_normalized.rds','anchors.rds','DL.float32.bin','model_state.pt','terminal.npz']:
                 continue
-            if p.name.endswith(('.native_order_backup','.part')):continue
+            if (p.name.endswith(('.native_order_backup','.part')) or '.part.' in p.name
+                or '.invalid_' in p.name):continue
             if 'figures' in parts or 'verification' in parts:
                 copy(p);continue
             paths.append(p)
@@ -127,6 +149,11 @@ Models and probability NPZ files remain on HPC, with original paths/checksums in
 Dense expression/anchor matrices and raw h5ad files are not duplicated into OneDrive.
 Input sources and checksums remain in per-cohort input-manifest archives. Executed source copies are in
 `executed_sources.tar.gz`; reviewable workflow code is under `handoff/r_reference_campaign_20260917/`.
+`resources/slurm_job_ledger.csv` retains per-allocation/array-task state, elapsed time and the maximum
+available step MaxRSS. Active rows remain explicitly non-final. `slurm_accounting_and_failed_logs.tar.gz`
+contains raw accounting steps, job provenance and preserved campaign failure logs; missing measurements
+or cancelled-before-start logs are explicitly reported. The remote receipt is separately downloaded and
+hash-verified before the local `summary/REMOTE_RECEIPT_UPLOADED.json` success marker is written.
 No website or replacement-version notebook is generated, and no old result files are deleted.
 ''')
     copy(layout)
