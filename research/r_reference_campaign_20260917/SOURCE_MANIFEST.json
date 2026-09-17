@@ -1,7 +1,7 @@
 {
   "branch": "align-r-reference",
   "scope": "Added research/r_reference_campaign_20260917 only; installed Python package and earlier research snapshot unchanged.",
-  "source_files": 86,
+  "source_files": 90,
   "files": [
     {
       "source": "handoff/harmonize.py",
@@ -36,8 +36,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/README.md",
       "snapshot": "source/handoff/r_reference_campaign_20260917/README.md",
-      "sha256": "80a7611043a6ba0cef0cd585488c64251190e750cd165631955a4f02e4ff5f0d",
-      "bytes": 5945
+      "sha256": "39f8e9860f39353c4dcd31ba1ff8fa498a1ea41d6affee01fe6de0747d43e5e0",
+      "bytes": 6647
     },
     {
       "source": "handoff/r_reference_campaign_20260917/aggregate.py",
@@ -56,6 +56,30 @@
       "snapshot": "source/handoff/r_reference_campaign_20260917/archive_source_to_repo.py",
       "sha256": "0473c50d3c64083211ac66432ef541bafbab459f7f02cb423b4f0ef61577ed73",
       "bytes": 2379
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/audit_TTU_cluster_rng.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/audit_TTU_cluster_rng.R",
+      "sha256": "05898795c891b616303c801773c255fedbec71026e811adfc7b31582acaa716f",
+      "bytes": 4547
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/audit_TTU_cluster_rng.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/audit_TTU_cluster_rng.sbatch",
+      "sha256": "e95f0080477f6c60d6cf0333a8c94ecc5b0737d31bf9b06a767e323caf0f91ed",
+      "bytes": 537
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/audit_TTU_wilcox_kernel.R",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/audit_TTU_wilcox_kernel.R",
+      "sha256": "e7c596b5314e92533b07815ceb076a2d877eed9a0370e1040120f04c05f4942a",
+      "bytes": 5063
+    },
+    {
+      "source": "handoff/r_reference_campaign_20260917/audit_TTU_wilcox_kernel.sbatch",
+      "snapshot": "source/handoff/r_reference_campaign_20260917/audit_TTU_wilcox_kernel.sbatch",
+      "sha256": "e7134c3e66db3f8125fa6271838462095fd4f1cf1ce773c01557cd5a5fed176e",
+      "bytes": 543
     },
     {
       "source": "handoff/r_reference_campaign_20260917/audit_batch_biology.py",
@@ -372,8 +396,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/report_and_notebook.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/report_and_notebook.py",
-      "sha256": "af39cca0603353f2b9d6c53a71b49b7412a50e6aa6dba87b5b32c3caec440d9b",
-      "bytes": 39770
+      "sha256": "72fe2029eb954bb941f5ff531e31b7420d9002a084b64cddbd11a51ab94f9946",
+      "bytes": 40996
     },
     {
       "source": "handoff/r_reference_campaign_20260917/report_and_notebook.sbatch",
@@ -450,8 +474,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/stage_delivery.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/stage_delivery.py",
-      "sha256": "56fddbfef9e1c8afdf07758febcd9794583f91175d6a65036e54a6e6a03d8b92",
-      "bytes": 15315
+      "sha256": "842b9eed77eb4e11a372269920b2d20952831ec2046ebd0355c1b7c9f2bb9a46",
+      "bytes": 15785
     },
     {
       "source": "handoff/r_reference_campaign_20260917/submit_partial_terminal.py",

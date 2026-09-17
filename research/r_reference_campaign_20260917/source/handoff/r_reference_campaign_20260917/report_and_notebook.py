@@ -217,6 +217,8 @@ Every complete analysis unit has model/NPZ/history checksum checks, prediction-e
 
 Campaign-only SLURM allocation/task/step accounting, elapsed time, MaxRSS and failed-attempt logs are delivered in `slurm_accounting_and_failed_logs.tar.gz`, with a readable ledger under `resources/`. Resource retries preserve existing successful checkpoints. Serial, two-worker and four-worker executions reproduce all 9,782 saved GBM PCA-SNN DEG rows exactly. New score caches are published atomically; invalid interrupted caches are preserved for inspection before recomputation. Following a shared-task-list failure during dispatcher recovery, subsequent terminal arrays use content-addressed task lists and arm-level locks; `verification/terminal_tasklist_recovery.json` records the affected attempts and validation. Delivery completion requires successful finalizer SLURM exit plus independent download/hash verification of the uploaded receipt.
 
+The TTU all-gene UMAP-SNN scorer emitted a parallel-RNG warning. An independent replay reproduced this warning in `FindClusters`; all six combinations of one/four workers and unset/42/2026 global seeds exactly reproduced all 44,149 saved cluster labels with the original Louvain seed 0. A separate check reproduced 288 saved Wilcoxon p-values across all 46 DEG-bearing clusters under three seeds and one/four workers. The latter is a sampled numerical check, not a full all-gene DEG replay. Both audit records and the original warning log are retained under `verification/`, and delivery checks that their input hashes still match the delivered results. No warning was suppressed and no scientific setting was changed to obtain agreement.
+
 Two implementation safeguards are explicit: R dbscan uses the previously validated 64-bit MST-index patch for cohorts above the 32-bit index limit, and density scores index the observed cluster IDs rather than assuming that noise label 0 must exist. The scoring formula is preserved; arbitrary ID remapping is used when replaying the legacy function in validation. Fixed curated cells, logged small-batch adaptations and current pinned software versions remain part of this reference execution, not a claim of historical binary identity.
 
 ## How to use the results in the paper
@@ -261,6 +263,8 @@ PTC 同时给出原始二分类指标和 Unknown 记为错误的指标：原规�
 {markdown(ptc_maxima_table)}
 
 {batch_zh}
+
+TTU 全基因 UMAP-SNN 日志中的并行随机数警告已专项核验：相同输入重跑时，警告出现在 FindClusters；1/4 个 worker × 3 种全局随机数状态的 6 次重跑，全部 44,149 个细胞的 cluster 标签均与保存结果完全一致。另对全部 46 个有 DEG 的 cluster 抽查 288 个基因–cluster 检验，其 p 值跨随机种子及 worker 数均完全一致。抽查不等同于重算全部基因；原日志、核验代码和结果均保留。
 
 目前只能根据完整表格说明「在这个数据集、marker 和指标下，所测组合中的最好结果」，不能把整条流程所有步骤都写成最优。固定参数、未测交互及语义标签分辨率必须交代。全部结果与解释见 [RESULTS_AND_INTERPRETATION.md](RESULTS_AND_INTERPRETATION.md)，实际基因与输入一致性见 `../verification/design_audit.json`。
 ''')

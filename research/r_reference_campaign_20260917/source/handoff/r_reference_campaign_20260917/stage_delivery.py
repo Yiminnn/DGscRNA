@@ -39,6 +39,12 @@ def run():
     assert grid['status']=='passed' and grid['units']==100
     score_recovery=json.loads((OUT/'verification/score_recovery_and_DEG_workers.json').read_text())
     assert score_recovery['status']=='passed'
+    wilcox=json.loads((OUT/'verification/TTU_wilcox_kernel_audit.json').read_text())
+    assert wilcox['status']=='passed'
+    assert wilcox['input_DEG_sha256']==sha(OUT/'PTC_ablation/PTC_TTU_CCAall/UMAP2_SNN/DEG.rds')
+    clustering_rng=json.loads((OUT/'verification/TTU_cluster_rng_audit.json').read_text())
+    assert clustering_rng['status']=='passed'
+    assert clustering_rng['input_clusters_sha256']==sha(OUT/'PTC_ablation/PTC_TTU_CCAall/UMAP2_SNN/clusters.csv')
     accounting=json.loads((OUT/'resources/accounting_manifest.json').read_text())
     assert accounting['status']=='collected' and accounting['job']==os.environ['SLURM_JOB_ID']
     for name,value in accounting['files'].items():assert sha(OUT/'resources'/name)==value
