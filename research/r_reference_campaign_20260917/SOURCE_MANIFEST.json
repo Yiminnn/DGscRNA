@@ -42,8 +42,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/aggregate.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/aggregate.py",
-      "sha256": "94fbd754ba1f3adfd045583449fe43127a347e693fb31c130d64b45a5243c7ae",
-      "bytes": 17519
+      "sha256": "1cce1dffac5c8faa3c35b2a5bf5cfc61726ff70ed53f2d86ba93a92f5f826775",
+      "bytes": 17763
     },
     {
       "source": "handoff/r_reference_campaign_20260917/aggregate.sbatch",
@@ -360,8 +360,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/report_and_notebook.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/report_and_notebook.py",
-      "sha256": "ba1e27c9df02bd9203be15098872f5809bd77a18105c15757b4be413aee99ff5",
-      "bytes": 35248
+      "sha256": "31f77527d620e59fdce1ba49516d6f1a75aca97d86bc85970da87732094901fa",
+      "bytes": 38193
     },
     {
       "source": "handoff/r_reference_campaign_20260917/report_and_notebook.sbatch",

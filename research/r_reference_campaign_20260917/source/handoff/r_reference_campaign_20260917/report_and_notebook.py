@@ -71,6 +71,24 @@ def run():
         assert all(json.loads(p.read_text())['status']=='passed' for p in density_audits)
         seed_diagnosis_en='''A targeted audit explains two distinct failures in separate-group CCA2000. The original Thyroid T-cell panel contains only CD3D; NMT's selected 2,000 genes omit it, giving this panel zero density score and no T-cell training class. TTU retains all genes in the Pubmed T/Treg panels, but neither panel wins any UMAP-HDBSCAN cluster even before applying the mean cutoff. The same TTU inputs do produce T seeds with SNN clustering. Thus marker loss and cluster/score competition are different mechanisms; reducing the cutoff alone cannot repair the latter case. All 204 initial arms in each group exactly replay the unmodified archived density function after arbitrary cluster-ID remapping. The per-condition marker-retention and seed-vocabulary audits are in `verification/PTC_selected_T_marker_retention.csv` and `verification/PTC_selected_marker_seed_coverage.csv`. A DL classifier cannot learn a T class absent from its initial class vocabulary. These observations do not establish that all HVG use is harmful.'''
         seed_diagnosis_zh='''分组 CCA2000 的异常已定位到两种机制：NMT 的原 Thyroid T-cell panel 只有 CD3D，而这次 2,000 个特征未保留 CD3D，导致该 panel 打分为零、DL 没有 T-cell 训练类别。TTU 则保留了 Pubmed T/Treg panel 的全部基因，但它们在 UMAP＋HDBSCAN 的任何 cluster 中都未赢得最高分，在应用 mean cutoff 之前就没有 T-cell 种子；相同输入的 SNN 路线仍能产生 T-cell 种子。两组各 204 个初始注释组合都已通过原始 density 函数逐项重算核验。这说明 marker 丢失与聚类/打分竞争要分开解释，不能将所有差异都归因于 HVG，也不能期待 DL 补出训练标签中不存在的类别。逐条件证据见 `verification/PTC_selected_marker_seed_coverage.csv`。'''
+        seed_diagnosis_en+='\n\nIn all six NMT geometry-only controls, the same fixed 2,000 scoring genes exclude CD3D. The Thyroid-context T-cell F1 is therefore structurally zero across geometry budgets; this flat curve cannot establish that geometry has no effect. Other marker libraries and lineage/abstention endpoints remain in the full grid.'
+        seed_diagnosis_zh+='\n\nNMT 的六个纯几何对照固定使用同一套不含 CD3D 的 2,000 个打分基因，因此原 Thyroid marker 下的 T-cell F1 在全部几何预算上都是结构性零值；不能把这条平线解释为几何特征没有影响。其他 marker 库、细胞谱系一致性及 Unknown 指标仍保留在完整比较中。'
+        contrast_units=[f'PTC_TTU_GEOMETRY{budget}_FIXED_CCAall_DL2000' for budget in ['5000','all']]
+        contrast=p[p.unit.isin(contrast_units)&p.scope.eq('TTU')&p.route.eq('UMAP2_HDBSCAN_R')
+            &p.library.eq('Pubmed_34663816')&p.cutoff.eq('mean')&p.stage.eq('final090')&p.endpoint.eq('strict_T_name_rule')]
+        if set(contrast.unit)==set(contrast_units):
+            assert len(contrast)==2
+            contrast=contrast.set_index('unit').loc[contrast_units].reset_index()
+            seeds=pd.read_csv(OUT/'verification/PTC_selected_marker_seed_coverage.csv')
+            seeds=seeds[seeds.unit.isin(contrast_units)&seeds.scope.eq('TTU')].set_index('unit')
+            if set(seeds.index)==set(contrast_units):
+                contrast['initial_T_cells']=contrast.unit.map(seeds.n_initial_T_fit)
+                contrast['final_T_cells']=contrast.unit.map(seeds.n_final_T_fit)
+                contrast[['unit','route','library','cutoff','F1_T','unknown_fraction','initial_T_cells','final_T_cells']].to_csv(
+                    dest/'PTC_TTU_geometry_5000_vs_all_counterexample.csv',index=False)
+                a,b=contrast.iloc[0],contrast.iloc[1]
+                seed_diagnosis_en+=f'\n\nA conditional counterexample occurs in TTU: with CCA expression, scoring/DL genes, Pubmed markers, mean cutoff and UMAP-HDBSCAN fixed, changing only geometry features from 5,000 to all reduces terminal TCR-agreement T-cell F1 from {a.F1_T:.4f} to {b.F1_T:.4f}; initial T seeds change from {int(a.initial_T_cells):,} to {int(b.initial_T_cells):,}. This single-seed comparison contradicts universal superiority of all genes in the evaluated conditions; it does not establish 5,000 genes as universally optimal.'
+                seed_diagnosis_zh+=f'\n\nTTU 提供了一个条件明确的反例：固定 CCA 表达、打分/DL 基因、Pubmed marker、mean cutoff 与 UMAP＋HDBSCAN，仅把聚类特征从 5,000 改为全基因，最终相对 TCR 检出标签的 T-cell F1 从 {a.F1_T:.4f} 降至 {b.F1_T:.4f}，初始 T-cell 种子从 {int(a.initial_T_cells):,} 降至 {int(b.initial_T_cells):,}。这一固定随机种子的对照可以反驳所测条件下全基因总是更优，不能证明 5,000 个基因普遍最优。'
     batch_dir=OUT/'verification/batch_biology'
     batch_en=batch_zh=''
     if (batch_dir/'COMPLETE').exists():

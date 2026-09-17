@@ -198,6 +198,9 @@ def run():
                 axs[row,col].set_xticks(range(6));axs[row,col].set_xticklabels(['500','1k','2k','3k','5k','All'])
             axs[2,col].set_xlabel('Requested geometry gene budget' if mode=='geometry_only' else 'Requested CCA feature budget')
         for row,label in enumerate(['TCR agreement: strict T F1','Archived lineage concordance','Unknown fraction']):axs[row,0].set_ylabel(label)
+        if mode=='geometry_only':
+            axs[0,0].text(.5,.55,'CD3D absent from fixed scoring genes\nNo T-cell seeds in this marker context',
+                transform=axs[0,0].transAxes,ha='center',va='center',fontsize=8,color='#555555')
         handles,labels=axs[0,0].get_legend_handles_labels()
         if not handles:handles,labels=axs[0,1].get_legend_handles_labels()
         fig.legend(handles,labels,loc='lower center',ncol=4,fontsize=7,bbox_to_anchor=(.5,-.012))
