@@ -360,8 +360,8 @@
     {
       "source": "handoff/r_reference_campaign_20260917/report_and_notebook.py",
       "snapshot": "source/handoff/r_reference_campaign_20260917/report_and_notebook.py",
-      "sha256": "31f77527d620e59fdce1ba49516d6f1a75aca97d86bc85970da87732094901fa",
-      "bytes": 38193
+      "sha256": "af39cca0603353f2b9d6c53a71b49b7412a50e6aa6dba87b5b32c3caec440d9b",
+      "bytes": 39770
     },
     {
       "source": "handoff/r_reference_campaign_20260917/report_and_notebook.sbatch",

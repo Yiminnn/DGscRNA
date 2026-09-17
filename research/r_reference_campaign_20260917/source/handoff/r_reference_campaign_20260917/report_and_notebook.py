@@ -84,11 +84,19 @@ def run():
             if set(seeds.index)==set(contrast_units):
                 contrast['initial_T_cells']=contrast.unit.map(seeds.n_initial_T_fit)
                 contrast['final_T_cells']=contrast.unit.map(seeds.n_final_T_fit)
-                contrast[['unit','route','library','cutoff','F1_T','unknown_fraction','initial_T_cells','final_T_cells']].to_csv(
+                paper_contrast=p[p.unit.isin(contrast_units)&p.scope.eq('TTU')&p.route.eq('UMAP2_HDBSCAN_R')
+                    &p.library.eq('Pubmed_34663816')&p.cutoff.eq('mean')&p.stage.eq('final090')&p.endpoint.eq('paper_broad_T_compatibility')]
+                assert len(paper_contrast)==2 and set(paper_contrast.unit)==set(contrast_units)
+                paper_contrast=paper_contrast.set_index('unit')
+                for name,column in [('paper_broad_T_F1','F1_T'),('paper_nonT_F1','F1_nonT'),('paper_binary_AUC','AUC_binary')]:
+                    contrast[name]=contrast.unit.map(paper_contrast[column])
+                contrast[['unit','route','library','cutoff','F1_T','paper_broad_T_F1','paper_nonT_F1','paper_binary_AUC',
+                    'unknown_fraction','initial_T_cells','final_T_cells']].rename(columns={
+                    'F1_T':'strict_name_T_F1','initial_T_cells':'initial_explicit_T_cells','final_T_cells':'final_explicit_T_cells'}).to_csv(
                     dest/'PTC_TTU_geometry_5000_vs_all_counterexample.csv',index=False)
                 a,b=contrast.iloc[0],contrast.iloc[1]
-                seed_diagnosis_en+=f'\n\nA conditional counterexample occurs in TTU: with CCA expression, scoring/DL genes, Pubmed markers, mean cutoff and UMAP-HDBSCAN fixed, changing only geometry features from 5,000 to all reduces terminal TCR-agreement T-cell F1 from {a.F1_T:.4f} to {b.F1_T:.4f}; initial T seeds change from {int(a.initial_T_cells):,} to {int(b.initial_T_cells):,}. This single-seed comparison contradicts universal superiority of all genes in the evaluated conditions; it does not establish 5,000 genes as universally optimal.'
-                seed_diagnosis_zh+=f'\n\nTTU 提供了一个条件明确的反例：固定 CCA 表达、打分/DL 基因、Pubmed marker、mean cutoff 与 UMAP＋HDBSCAN，仅把聚类特征从 5,000 改为全基因，最终相对 TCR 检出标签的 T-cell F1 从 {a.F1_T:.4f} 降至 {b.F1_T:.4f}，初始 T-cell 种子从 {int(a.initial_T_cells):,} 降至 {int(b.initial_T_cells):,}。这一固定随机种子的对照可以反驳所测条件下全基因总是更优，不能证明 5,000 个基因普遍最优。'
+                seed_diagnosis_en+=f'\n\nA conditional counterexample occurs in TTU: with CCA expression, scoring/DL genes, Pubmed markers, mean cutoff and UMAP-HDBSCAN fixed, changing only geometry features from 5,000 to all reduces terminal TCR-agreement strict-name T-cell F1 from {a.F1_T:.4f} to {b.F1_T:.4f}; initial explicit T seeds change from {int(a.initial_T_cells):,} to {int(b.initial_T_cells):,}. Under the paper-compatible broad mapping, non-T-positive F1 decreases from {a.paper_nonT_F1:.4f} to {b.paper_nonT_F1:.4f}, and binary AUC from {a.paper_binary_AUC:.4f} to {b.paper_binary_AUC:.4f}. Thus the counterexample also holds under the historical metric definitions. Explicit T/Treg seeds and strict-name metrics keep NK/NKT separate; the broad mapping is reported independently. This single-seed comparison contradicts universal superiority of all genes in the evaluated conditions; it does not establish 5,000 genes as universally optimal.'
+                seed_diagnosis_zh+=f'\n\nTTU 提供了一个条件明确的反例：固定 CCA 表达、打分/DL 基因、Pubmed marker、mean cutoff 与 UMAP＋HDBSCAN，仅把聚类特征从 5,000 改为全基因，最终相对 TCR 检出标签的 strict-name T-cell F1 从 {a.F1_T:.4f} 降至 {b.F1_T:.4f}，显式 T-cell 初始种子从 {int(a.initial_T_cells):,} 降至 {int(b.initial_T_cells):,}。按论文兼容的宽口径，non-T 为正类的 F1 也从 {a.paper_nonT_F1:.4f} 降至 {b.paper_nonT_F1:.4f}，二分类 AUC 从 {a.paper_binary_AUC:.4f} 降至 {b.paper_binary_AUC:.4f}；反例在原指标定义下同样成立。显式 T/Treg 名称规则将 NK/NKT 单列，不能与论文宽口径混称。这一固定随机种子的对照可以反驳所测条件下全基因总是更优，不能证明 5,000 个基因普遍最优。'
     batch_dir=OUT/'verification/batch_biology'
     batch_en=batch_zh=''
     if (batch_dir/'COMPLETE').exists():
