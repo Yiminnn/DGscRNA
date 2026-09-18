@@ -35,6 +35,10 @@ def tick():
                 manifest=json.loads((pilot/'cohort_manifest.json').read_text())
                 if manifest['source_sha256']==catch_source:catch_completed[sample]=manifest
         catch_ready=catch_audited and len(catch_completed)==2
+        # Once core work and all native pilots pass, the remaining scCATCH
+        # cohort fits within the verified per-user SLURM job/CPU allowances.
+        # This changes scheduling only; each fit retains its audited settings.
+        if catch_ready and core.get('n_evaluated_plotted')==726:limit=128
         profile_dir=OUT/'verification/scCATCH_resource_profiles';catch_profiles={};catch_bounds={}
         if checked(profile_dir):
             profiles=json.loads((profile_dir/'manifest.json').read_text())

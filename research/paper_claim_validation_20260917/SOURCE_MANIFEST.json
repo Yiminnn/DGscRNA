@@ -209,7 +209,7 @@
     },
     {
       "path": "EXECUTION_NOTES.md",
-      "sha256": "bb851a112f6922de25b4a91194fcf9688f475c36a29f867e12ecaec2f329b472"
+      "sha256": "9bff8a4dcc3481aeebf62d84270633e2e5cc13cd2ab3218d27dbec64e8a2c7c2"
     },
     {
       "path": "full_GBM_report.py",
@@ -261,7 +261,7 @@
     },
     {
       "path": "aux_dispatch.py",
-      "sha256": "3f6f553ba5309e4900303788c4495e4cbc33a6c02f718ba92fc72f19c9394678"
+      "sha256": "adc3454926df470031310cccff091ed94c69ec9649c0653ec975fd673e282258"
     },
     {
       "path": "reviewer_evidence.py",
@@ -273,7 +273,7 @@
     },
     {
       "path": "COMPARATOR_PROTOCOL.md",
-      "sha256": "7ee9112cb38fe3cb74a410c4b07ca85cb3326300a19c0b204ed081e9a24a164f"
+      "sha256": "171d6908c2971d82627807847e25a9a31a80fb48aaa8914fbfb3093410ae1982"
     },
     {
       "path": "refine_controls_derivation.json",
@@ -464,7 +464,7 @@
       "sha256": "585e25ef8f5946a52bf2aed68d5becfc38be94a8663aa01c1b31d88aa57f1de3"
     }
   ],
-  "archived_at": "2026-09-18T07:01:17.102471+00:00",
+  "archived_at": "2026-09-18T09:07:31.457145+00:00",
   "excluded": [
     "data",
     "per-cell labels",
