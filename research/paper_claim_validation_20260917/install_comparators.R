@@ -1,0 +1,26 @@
+stopifnot(nzchar(Sys.getenv('SLURM_JOB_ID')))
+root<-'/fs/scratch/PCON0080/yimin/dgscrna'
+base<-file.path(root,'results/hvg_ptc_20260916_v1/paper_claim_validation_20260917')
+lib<-file.path(base,'vendor_R');dir.create(lib,recursive=TRUE,showWarnings=FALSE)
+.libPaths(c(lib,.libPaths()))
+packages<-c('scCATCH_06c6ffb.tar.gz','SCINA_1.2.0.tar.gz')
+for(pkg in packages) {
+  src<-file.path(root,'handoff/paper_claim_validation_20260917/vendor_sources',pkg)
+  unpack<-file.path(base,'vendor_build',sub('.tar.gz$','',pkg));dir.create(unpack,recursive=TRUE,showWarnings=FALSE)
+  untar(src,exdir=unpack)
+  descriptions<-list.files(unpack,pattern='^DESCRIPTION$',recursive=TRUE,full.names=TRUE)
+  stopifnot(length(descriptions)==1L)
+  desc<-read.dcf(descriptions[[1]])
+  dep<-paste(desc[1,intersect(c('Depends','Imports','LinkingTo'),colnames(desc))],collapse=',')
+  dep<-trimws(gsub('\\([^)]*\\)','',unlist(strsplit(dep,','))))
+  dep<-setdiff(dep,c('R','',rownames(installed.packages())))
+  if(length(dep))install.packages(dep,lib=lib,repos='https://cloud.r-project.org',dependencies=c('Depends','Imports','LinkingTo'),Ncpus=2)
+  status<-system2(file.path(R.home('bin'),'R'),c('CMD','INSTALL',paste0('--library=',lib),dirname(descriptions[[1]])))
+  stopifnot(status==0L)
+}
+suppressPackageStartupMessages(library(scCATCH))
+suppressPackageStartupMessages(library(SCINA))
+jsonlite::write_json(list(status='installed',job=Sys.getenv('SLURM_JOB_ID'),library=lib,
+  scCATCH=as.character(packageVersion('scCATCH')),SCINA=as.character(packageVersion('SCINA'))),
+  file.path(base,'comparator_install.json'),pretty=TRUE,auto_unbox=TRUE)
+writeLines(capture.output(sessionInfo()),file.path(base,'comparator_sessionInfo.txt'))

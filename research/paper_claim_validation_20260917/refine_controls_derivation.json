@@ -1,0 +1,12 @@
+{
+  "original_sha256": "e32daabbf2e883666deace944020ebdab406f705f24200ae1cb3a8df9860d3c3",
+  "replacements": {
+    "nn.Linear(n_features,256)": "nn.Linear(n_features,PARAMS[\"architecture\"][0])",
+    "nn.Linear(256,128)": "nn.Linear(PARAMS[\"architecture\"][0],PARAMS[\"architecture\"][1])",
+    "nn.Linear(128,n_classes)": "nn.Linear(PARAMS[\"architecture\"][1],n_classes)",
+    "random.seed(42);np.random.seed(42);torch.manual_seed(42)": "random.seed(PARAMS[\"model_seed\"]);np.random.seed(PARAMS[\"model_seed\"]);torch.manual_seed(PARAMS[\"model_seed\"])",
+    "generator=torch.Generator().manual_seed(42)": "generator=torch.Generator().manual_seed(PARAMS[\"split_seed\"])",
+    "for epoch in range(10):": "for epoch in range(PARAMS[\"epochs\"]):"
+  },
+  "native_defaults_unchanged": true
+}

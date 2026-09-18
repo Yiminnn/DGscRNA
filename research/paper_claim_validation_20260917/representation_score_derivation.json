@@ -1,0 +1,11 @@
+{
+  "original_sha256": "89953d3113a2f7d4b78aedead6d93aaf0b3bf536c75110467d9ba176c36fa0ed",
+  "replacements": {
+    "for(space in c('PCA30','UMAP2')) for(method in c('SNN','HDBSCAN_R')) {": "for(space in cfg$space) for(method in c('SNN','HDBSCAN_R')) {\n  if(method!=cfg$method)next",
+    "red <- if(space=='PCA30')'pca' else 'umap'": "red <- 'control'",
+    "resolution=0.5,algorithm=1": "resolution=cfg$resolution,algorithm=1",
+    "fit <- dbscan::hdbscan(z,minPts=50L)": "fit <- dbscan::hdbscan(z,minPts=as.integer(cfg$minPts))",
+    "geometry=pm$correction,assay=assay": "geometry=pm$correction,representation_control=cfg,assay=assay"
+  },
+  "additional_changes": "Read frozen JSON config, use validated control embedding, bypass the core UMAP2 cache loader; retain full RNA DEG and every density formula."
+}
