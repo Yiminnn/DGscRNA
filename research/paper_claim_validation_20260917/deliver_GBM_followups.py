@@ -42,7 +42,9 @@ def run():
         sample=row['sample'];paths=[]
         for method in ['scType','scCATCH','SCINA','SingleR','scDeepSort']:
             for p in (OUT/'comparators'/method/sample).rglob('*'):
-                if p.is_file() and p.name in selected:paths.append(p)
+                recovery_source=(method=='scCATCH' and 'attempts' in p.parts and
+                                 p.suffix in ['.R','.json','.txt','.log'])
+                if p.is_file() and (p.name in selected or recovery_source):paths.append(p)
         for family in ['GBM_DL_controls','GBM_representation_controls']:
             for p in (OUT/family/sample).rglob('*'):
                 if not p.is_file():continue
@@ -69,6 +71,11 @@ def run():
         copy(OUT/name)
     for p in (OUT/'verification').rglob('*'):
         if p.is_file() and p.suffix in ['.json','.csv','.md','.txt']:copy(p)
+    guard_audit=OUT/'verification/scCATCH_dimension_guard_audit'
+    if guard_audit.exists():
+        assert checked(guard_audit)
+        bundle([p for p in guard_audit.rglob('*') if p.is_file()],OUT,
+               'artifacts/scCATCH_dimension_guard_validation.tar.gz')
     from delivery_index import update
     files.extend(update(STAGE,'GBM_full'))
     records=[dict(path=n,sha256=sha(STAGE/n),bytes=(STAGE/n).stat().st_size) for n in sorted(set(files))]

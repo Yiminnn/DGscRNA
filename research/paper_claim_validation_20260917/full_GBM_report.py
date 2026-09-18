@@ -32,6 +32,22 @@ def run():
     support_text=f"Expression contrasts meeting the frozen support threshold: fixed glioma markers — {supported['fixed_glioma']}; training-patient-selected markers — {supported['training_patient_selected']}. Insufficient-support contrasts are retained in the tables and are not evidence of no expression difference."
     modules=pd.read_csv(OUT/'workflow_choice_summary/marker_DL_patient_paired.csv')
     dl=modules[(modules.cohort=='primary97')&(modules.contrast=='DL_fixed_marker')].iloc[0]
+    guard_audit=OUT/'verification/scCATCH_dimension_guard_audit'
+    guarded_samples=[]
+    for path in sorted((OUT/'comparators/scCATCH').glob('*/hvg2000/UMAP2_HDBSCAN_R/cohort_manifest.json')):
+        native=json.loads(path.read_text())
+        if 'compatibility_guard' in native:
+            assert checked(guard_audit)
+            assert native['compatibility_guard']['validation_manifest_sha256']==sha(guard_audit/'manifest.json')
+            guarded_samples.append(native['sample'])
+    guard_text=''
+    guard_zh=''
+    if guarded_samples:
+        guard=json.loads((guard_audit/'manifest.json').read_text())
+        assert guard['status']=='passed' and guard['real_parity']['exact_all_native_labels'] and guard['real_parity']['exact_union_DEG']
+        names=', '.join(guarded_samples)
+        guard_text=f'scCATCH 3.2.2 required a process-local dimension-preservation repair for {names}: its native matrix subsetting fails on a singleton cluster. Two column subsets use drop=FALSE; every cell, original cluster (including noise), marker, test and threshold is retained. Sparse/dense regression fixtures pass, and the completed native TKU4163 audit has exactly identical union DEG and all 48 final-label conditions with the repair. Failed attempts, runtime caller sources and the validation proof are archived. This guarded execution is disclosed separately from unmodified native runs.'
+        guard_zh=f'scCATCH 3.2.2 在 {names} 的单细胞簇上有矩阵降维报错；恢复运行仅给两处列子集加 drop=FALSE，保留全部细胞、原聚类、marker、检验和阈值。稀疏/稠密回归检查通过，正常样本 TKU4163 的 union DEG 和全部48个最终标签条件与已完成原生审计完全一致。原失败记录、实际修复脚本及验证材料随结果归档。'
     text=f'''# Completed GBM evidence package
 
 The native-R core covers 121 samples / 59 patients and 429,305 cells, with the historical primary 97 samples / 55 patients reported separately. All 726 feature-budget units and 2,904 clustering outputs have terminal predictions, evaluation tables and figures. The 139,392 terminal conditions include trained, no-op and untrainable states; these are not 139,392 successful neural-network fits.
@@ -45,6 +61,8 @@ All 363 geometry-only controls hold RNA scoring and normalized HVG2000 DL expres
 In the fixed-marker, mean-cutoff 2x2 ablation, terminal DL changes primary macro-F1 by {dl.macroF1_present_mean_delta:.6f} (95%patient-bootstrapCI[{dl.macroF1_present_CI95_low:.6f},{dl.macroF1_present_CI95_high:.6f}]), while coverage changes by {dl.coverage_mean_delta:.6f}. Higher coverage is not necessarily higher annotation accuracy. All four simple module contrasts and the interaction are reported, with five-test Holm correction per cohort. The workflow-node table distinguishes tested alternatives from normalization, scoring-formula and pilot-only parameter choices for which optimality was not established. Marker-only remains an ablation, not the final DG-scRNA endpoint.
 
 The matched-partition patient-heldout comparison uses terminal DG-scRNA, scType and scCATCH on the same HVG2000/UMAP2/HDBSCAN partition, plus per-cell SCINA with the same marker roster. Each receives its recorded threshold opportunities. CARE_TME, BrainAtlas112 and UNION_all are excluded from primary marker selection because they overlap author-label construction. The highest heldout point among marker-information methods is {marker.index[0]} ({marker.iloc[0].macroF1_present_mean:.6f}); DG-scRNA is {primary.loc['DG-scRNA','macroF1_present_mean']:.6f}. All competitors remain in the tables. Tuned 24-configuration DG/scType results are not substituted into this fixed-partition comparison.
+
+{guard_text}
 
 SingleR references contain only labelled training-patient cells, excluding all samples of each heldout patient; its primary mean is {primary.loc['SingleR','macroF1_present_mean']:.6f}. Published pretrained Brain scDeepSort is an atlas-GNN condition, with mean {primary.loc['scDeepSort','macroF1_present_mean']:.6f}. These reference-information conditions differ from marker methods. The pretrained atlas lacks a malignant class; missing vocabulary remains in the denominator. Every primary score includes all cells, including Unknown/unmapped calls. These are retrospective patient-label-heldout folds in an explored cohort, not a never-seen external test cohort.
 
@@ -70,6 +88,8 @@ The original notebook is extended, with all clustering figures indexed and the E
 规模验证为三方法×五档细胞量×三次独立运行，最大120000细胞，报告均值与标准差；每次都为完整大输入运行，不是多个小样本合计。Unknown、marker来源和DL新增错误表已更新。沿用原notebook和OneDrive目录；PTC后续控制单独推进，本文件不宣称整项研究完成。
 
 Unknown表达对照达到预设支持人数的细胞大类：固定glioma marker为{supported['fixed_glioma']}；训练患者所选marker为{supported['training_patient_selected']}。支持人数不足的对照仍保留在表中，不能据此声称不存在表达差异。
+
+{guard_zh}
 ''')
     methods='''# Method description corrections supported by executed source
 
@@ -142,6 +162,7 @@ extra_figure('summary/workflow_decision_tree.png')''')
         write_json(dest/'notebook_manifest.json',dict(status='completed',old_cells_preserved=len(baseline),added_cells=len(addition.cells)+1,
             errors=errors,previous_sha256=before,current_sha256=sha(path)))
     write_json(dest/'manifest.json',dict(status='completed_GBM_PTC_followups_pending',stage_manifests={v:sha(OUT/v/'manifest.json') for v in folders},
+        scCATCH_guarded_samples=guarded_samples,scCATCH_dimension_guard_audit_sha256=sha(guard_audit/'manifest.json') if guarded_samples else None,
         files={p.name:sha(p) for p in dest.iterdir() if p.suffix in ['.md','.json'] and p.name!='manifest.json'},
         notebook_sha256=sha(path),job=os.environ['SLURM_JOB_ID'],source_sha256=sha(__file__),completed_at=utc()))
     complete(dest)
