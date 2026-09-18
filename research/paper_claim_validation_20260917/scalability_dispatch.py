@@ -27,7 +27,7 @@ def tick():
     active=states();source=freeze('scalability')
     slots=sum((name.startswith('claim_scale_') or name.startswith('claim_scalability_')) and name!='claim_scale_dispatch' for name,status in active.values())
     core=json.loads((OUT/'dispatch_state.json').read_text())
-    limit=12 if core.get('n_terminal_complete')==726 else 8
+    limit=16 if core.get('n_terminal_complete')==726 else 8
     tasks=[(method,n,0) for method in PILOTS for n in SIZES]
     tasks += [(method,n,rep) for n in SIZES for rep in [1,2] for method in ['SCINA','scDeepSort','DG-scRNA']]
     for method,n,repeat in tasks:
@@ -45,7 +45,11 @@ def tick():
                 if exact and exact[0]['State'].split()[0] in ['FAILED','TIMEOUT','OUT_OF_MEMORY','CANCELLED','COMPLETED','NODE_FAIL']:
                     record.update(status='needs_review',accounting=acc)
                 continue
-            gate=n if repeat and n<=50000 else 10000 if n<=50000 else 50000
+            # The passed10k native-method pilot already gates every <=50k cold
+            # input. Independent same-input repetitions need not serialize on
+            # the first30k/50k endpoint; preserve its conservative reservation.
+            # All100k/120k runs still require the completed measured50k pilot.
+            gate=10000 if n<=50000 else 50000
             if not checked(dest(method,gate)):continue
             gate_record=state['jobs'][f'{method}/{gate}']
             if gate_record.get('status')!='complete' or not gate_record.get('accounting'):continue

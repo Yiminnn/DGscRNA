@@ -100,13 +100,41 @@ def run(partial=False):
     stat.to_csv(dest/'fixed_marker_patient_paired.csv',index=False)
     pd.DataFrame(paired_diffs).to_csv(dest/'fixed_marker_patient_differences.csv',index=False)
     pd.DataFrame(choices).to_csv(dest/'patient_heldout_selection.csv',index=False)
-    pd.DataFrame(cv).to_csv(dest/'patient_heldout_test_results.csv',index=False)
+    heldout=pd.DataFrame(cv)
+    heldout.to_csv(dest/'patient_heldout_test_results.csv',index=False)
+    if not missing:
+        route_contrasts=[];route_differences=[]
+        for (cohort,evidence),g in heldout.groupby(['cohort','evidence']):
+            reference=g[g.selection=='UMAP2_HDBSCAN_R'][['patient','macroF1_present','coverage']].rename(
+                columns={'macroF1_present':'reference_F1','coverage':'reference_coverage'})
+            for route in [r for r in ROUTES if r!='UMAP2_HDBSCAN_R']:
+                p=g[g.selection==route].merge(reference,on='patient',validate='one_to_one').sort_values('patient')
+                assert len(p)==len(reference)
+                delta=(p.macroF1_present-p.reference_F1).to_numpy()
+                boot=delta[rng.integers(0,len(delta),size=(10000,len(delta)))].mean(1)
+                route_contrasts.append(dict(cohort=cohort,evidence=evidence,route=route,n_patients=len(p),
+                    comparison='Route-specific selected workflow minus UMAP2-HDBSCAN selected workflow',
+                    reference_mean_F1=float(p.reference_F1.mean()),candidate_mean_F1=float(p.macroF1_present.mean()),
+                    mean_delta=float(delta.mean()),CI95_low=float(np.quantile(boot,.025)),CI95_high=float(np.quantile(boot,.975)),
+                    p_wilcoxon=float(wilcoxon(delta).pvalue) if np.any(np.abs(delta)>1e-14) else 1.,
+                    mean_coverage_delta=float((p.coverage-p.reference_coverage).mean()),
+                    selection='Each route chooses HVG/library/cutoff on the same training-patient folds',
+                    inference='Conditional on frozen heldout predictions; not a pure clusterer effect or refitted bootstrap'))
+                for row,delta_value in zip(p.itertuples(),delta):
+                    route_differences.append(dict(cohort=cohort,evidence=evidence,route=route,patient=row.patient,delta=float(delta_value)))
+        route_stats=pd.DataFrame(route_contrasts);route_stats['p_Holm']=1.
+        for _,g in route_stats.groupby(['cohort','evidence']):
+            ix=g.sort_values('p_wilcoxon',kind='stable').index
+            route_stats.loc[ix,'p_Holm']=np.minimum(1,np.maximum.accumulate(
+                route_stats.loc[ix,'p_wilcoxon'].to_numpy()*np.arange(len(ix),0,-1)))
+        route_stats.to_csv(dest/'patient_heldout_route_comparisons.csv',index=False)
+        pd.DataFrame(route_differences).to_csv(dest/'patient_heldout_route_differences.csv',index=False)
     pd.DataFrame(factorial).to_csv(dest/'marker_DL_factorial_heldout.csv',index=False)
     df[df.stage=='terminal090'].groupby(['dl_status','training_executed']).size().rename('n').reset_index().to_csv(dest/'terminal_status_counts.csv',index=False)
     m=dict(status='partial' if missing else 'completed',expected_units=726,completed_units=len(frames),missing_units=missing,
         n_annotation_metric_rows=len(df),n_clustering_results=len(cp),
         primary='patient-weighted mean of per-sample L1 macro-F1 over present author classes; full-cell denominator',
-        multiplicity='Holm across23 fixed-marker configurations versus original default separately for primary/full cohort',
+        multiplicity='Holm across23 fixed-marker configurations versus original default per cohort; separately,3 selected-route contrasts versus selected UMAP2-HDBSCAN per cohort/evidence family',
         uncertainty='10000 paired patient bootstrap resamples; Wilcoxon paired sensitivity; no noninferiority claim',
         selection='5 folds frozen by patient ID; training labels choose config; heldout labels score only; retrospective cohort',
         scope='Within GSE274546 candidates. Does not itself establish superiority to other annotation methods.',

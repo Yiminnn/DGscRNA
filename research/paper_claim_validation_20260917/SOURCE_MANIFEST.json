@@ -37,7 +37,7 @@
     },
     {
       "path": "report.py",
-      "sha256": "71bc0c91a4e542773347a4c10819a6211f3185569dc9fa8f8d6d577286b80e10"
+      "sha256": "6290dbb1b4c16cbceaac68a0dc62e6872a62d736db78c4fb6de03ef8f81c4a3a"
     },
     {
       "path": "audit_SN040_wilcox_kernel.R",
@@ -157,7 +157,7 @@
     },
     {
       "path": "aggregate.py",
-      "sha256": "fd6a5ab6d84c562c3cd91ef387eabb15ec4a2d5fd1587095ec801d1d2ce672a3"
+      "sha256": "d1caff8bc30d992951c417e0d6f1e8425c159ea95e51937cdc746aa9b7b4a423"
     },
     {
       "path": "core_finalize.py",
@@ -197,7 +197,7 @@
     },
     {
       "path": "EXECUTION_NOTES.md",
-      "sha256": "ed9ce3474907a398e03be1666eaa4e3f0ded4131ab27904dd146b489ed7c277a"
+      "sha256": "41961b17e229f31d5a6d2c7ea78d2f029b1293dbf458f2dced7e786be1af8da5"
     },
     {
       "path": "full_GBM_report.py",
@@ -409,7 +409,7 @@
     },
     {
       "path": "scalability_dispatch.py",
-      "sha256": "ec21e80bf4d657f2282774e0024e625a52e235fdb24ab95ff07383b6e05ee424"
+      "sha256": "5b41e2841c90da1a807437b28ec4c1f3f876ee439043b0e3e76ed0566dac3d81"
     },
     {
       "path": "learning_curves.py",
@@ -436,7 +436,7 @@
       "sha256": "585e25ef8f5946a52bf2aed68d5becfc38be94a8663aa01c1b31d88aa57f1de3"
     }
   ],
-  "archived_at": "2026-09-18T02:55:29.748864+00:00",
+  "archived_at": "2026-09-18T03:05:23.517442+00:00",
   "excluded": [
     "data",
     "per-cell labels",

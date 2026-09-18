@@ -58,6 +58,19 @@ def run():
     cv_summary=cv.groupby(['cohort','evidence','selection'])[['macroF1_present','coverage','unknown_rate']].agg(['mean','std','count'])
     cv_summary.columns=['_'.join(c) for c in cv_summary.columns]
     cv_summary.reset_index().to_csv(d/'patient_heldout_summary.csv',index=False)
+    route_stats=pd.read_csv(d/'patient_heldout_route_comparisons.csv')
+    selected_routes=route_stats[(route_stats.cohort=='primary97')&(route_stats.evidence=='database_or_external')]
+    fig,ax=plt.subplots(figsize=(9,3.8),layout='constrained')
+    ax.errorbar(selected_routes.mean_delta,range(len(selected_routes)),
+        xerr=np.vstack([selected_routes.mean_delta-selected_routes.CI95_low,selected_routes.CI95_high-selected_routes.mean_delta]),
+        fmt='o',color='#0072B2',capsize=3)
+    ax.axvline(0,color='#555',linestyle='--',linewidth=1)
+    ax.set_yticks(range(len(selected_routes)),selected_routes.route)
+    ax.set(xlabel='Heldout-patient macro-F1 difference versus selected UMAP2-HDBSCAN workflow',
+        title='Each route selects HVG, marker and cutoff on training patients\nPrimary 55 patients; conditional paired-bootstrap intervals; 13 primary libraries')
+    ax.spines[['top','right']].set_visible(False)
+    for ext in ['png','pdf']:fig.savefig(d/f'patient_heldout_route_comparisons.{ext}',dpi=220,bbox_inches='tight')
+    plt.close(fig)
     factorial=pd.read_csv(d/'marker_DL_factorial_heldout.csv')
     fac=factorial.groupby(['cohort','marker_selection','stage'])[['macroF1_present','coverage']].agg(['mean','std','count'])
     fac.columns=['_'.join(c) for c in fac.columns];fac.reset_index().to_csv(d/'marker_DL_factorial_summary.csv',index=False)
@@ -84,7 +97,7 @@ The original RNA branch uses native VST genes for PCA and normalized DL input, w
 
 At fixed CM2_glioma_other / mean cutoff, the highest primary-cohort point estimate is {best.budget}/{best.route}: patient-weighted terminal L1 macro-F1 {best.macroF1_present_mean:.6f}. The original HVG2000/UMAP2/HDBSCAN configuration is {original.macroF1_present_mean:.6f}. Paired patient effects and intervals, rather than the highest point alone, determine the strength of this comparison. No equivalence or noninferiority margin was prespecified.
 
-Configuration selection uses five frozen patient folds. Training-patient labels choose HVG/route/marker/cutoff; heldout labels only score. The cohort was previously explored, so this is retrospective label-heldout validation, not a never-seen cohort. Every target sample is fitted independently. Author L1 macro-F1 uses all cells; Unknown and unmapped predictions count as errors. Fixed11 and collapsed-neuron10 are secondary, with no outcome-driven choice of label granularity. Malignant state ARI is a clustering evaluation, not final subtype annotation.
+Configuration selection uses five frozen patient folds. Training-patient labels choose HVG/route/marker/cutoff; heldout labels only score. Each route also receives its own equal HVG/marker/cutoff search on training patients. Three paired route-specific workflow contrasts against the selected UMAP-HDBSCAN workflow use conditional patient-bootstrap intervals and a separate Holm family; these differ from pure fixed-marker clusterer effects. The cohort was previously explored, so this is retrospective label-heldout validation, not a never-seen cohort. Every target sample is fitted independently. Author L1 macro-F1 uses all cells; Unknown and unmapped predictions count as errors. Fixed11 and collapsed-neuron10 are secondary, with no outcome-driven choice of label granularity. Malignant state ARI is a clustering evaluation, not final subtype annotation.
 
 CARE_TME and BrainAtlas112 participated in reference-label construction; UNION_all includes them. The primary marker-selection table excludes these three, while the complete concordance table retains them. The fixed glioma marker vocabulary lacks several author classes; missing classes remain in the denominator.
 
@@ -117,7 +130,7 @@ display(pd.read_csv(C/'markers/coverage_vocabulary.csv'))''')
         md('## Full decision tree and fixed-marker HVG comparison\n\nThe native-R single-sample scoring universe is all eligible RNA genes. Actual geometry and DL feature lists are saved per unit.')
         code('figure("summary/workflow_decision_tree.png")\nfigure("summary/fixed_marker_HVG_routes.png")\nfigure("summary/paired_HVG_route_effects.png")\ndisplay(table("primary_fixed_marker_24.csv"))\ndisplay(table("fixed_marker_patient_paired.csv"))')
         md('## Patient-heldout selection and marker × DL contribution\n\nThe same selected marker library is used on both sides of each no-DL/with-DL pair. Fixed-cutoff factorial and broader configuration selection are separate tables.')
-        code('display(table("patient_heldout_summary.csv"))\ndisplay(table("patient_heldout_selection.csv"))\ndisplay(table("marker_DL_factorial_summary.csv"))\ndisplay(table("terminal_status_counts.csv"))')
+        code('display(table("patient_heldout_summary.csv"))\nfigure("summary/patient_heldout_route_comparisons.png")\ndisplay(table("patient_heldout_route_comparisons.csv"))\ndisplay(table("patient_heldout_selection.csv"))\ndisplay(table("marker_DL_factorial_summary.csv"))\ndisplay(table("terminal_status_counts.csv"))')
         md('## Marker-source distributions at the fixed original geometry\n\nEvery dot is one primary-cohort patient after averaging that patient\'s samples. All 16 libraries retain the same HVG2000/UMAP2/HDBSCAN geometry and mean cutoff. Orange libraries overlap author-label construction and remain concordance results; they are excluded from primary marker selection.')
         code('figure("summary/marker_context_distributions.png")\ndisplay(table("marker_context_summary.csv"))')
         md('## Per-class errors, Unknown and actual refinement changes\n\nAll cells remain in each confusion-matrix denominator. Wrong known marker seeds are preserved by the historical algorithm; the audit separately records correct and incorrect newly filled cells.')
