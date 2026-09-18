@@ -53,6 +53,39 @@ def run():
     for ext in ['png','pdf']:fig.savefig(d/f'display_sample_confusions.{ext}',dpi=200,bbox_inches='tight')
     plt.close(fig)
     a=pd.read_csv(d/'all_annotation_metrics.csv.gz',dtype={'cutoff':str})
+    contexts=a[(a.budget=='hvg2000')&(a.route=='UMAP2_HDBSCAN_R')&(a.family=='native_R_budget')]
+    parts=[]
+    for name,frame in [('primary97',contexts[contexts.primary]),('all121',contexts)]:
+        p=frame.groupby(['patient','library','cutoff','stage'])[['macroF1_present','coverage','unknown_rate']].mean().reset_index()
+        p.insert(0,'cohort',name);parts.append(p)
+    contexts=pd.concat(parts,ignore_index=True)
+    contexts.to_csv(d/'marker_context_patient.csv',index=False)
+    means=contexts.groupby(['cohort','library','cutoff','stage'])[['macroF1_present','coverage','unknown_rate']].agg(['mean','std','count'])
+    means.columns=['_'.join(k) for k in means.columns]
+    means.reset_index().to_csv(d/'marker_context_summary.csv',index=False)
+    shown=contexts[(contexts.cohort=='primary97')&(contexts.cutoff=='mean')&(contexts.stage=='terminal090')]
+    libraries=json.loads((OUT/'markers/manifest.json').read_text())['libraries']
+    concordance={'CARE_TME','BrainAtlas112','UNION_all'}
+    palette=['#D55E00' if lib in concordance else '#0072B2' for lib in libraries]
+    fig,axes=plt.subplots(1,2,figsize=(14,9),layout='constrained',sharey=True)
+    patients=sorted(shown.patient.unique());assert len(patients)==55
+    offsets=dict(zip(patients,np.random.default_rng(20260917).uniform(-.16,.16,len(patients))))
+    for ax,metric,title in zip(axes,['macroF1_present','coverage'],['Terminal all-cell macro-F1','Native-call coverage']):
+        values=[shown[shown.library==lib].sort_values('patient')[metric].to_numpy() for lib in libraries]
+        assert all(len(v)==55 for v in values)
+        boxes=ax.boxplot(values,positions=range(len(libraries)),vert=False,patch_artist=True,
+                         widths=.55,showfliers=False,medianprops={'color':'black','linewidth':1})
+        for i,(box,color,lib) in enumerate(zip(boxes['boxes'],palette,libraries)):
+            box.set(facecolor=color,alpha=.25)
+            g=shown[shown.library==lib].sort_values('patient')
+            ax.scatter(g[metric],i+g.patient.map(offsets),color=color,s=7,alpha=.45,linewidths=0)
+        ax.set_yticks(range(len(libraries)),[lib+(' [label-source overlap]' if lib in concordance else '') for lib in libraries],fontsize=8)
+        ax.set(xlim=(-.02,1.02),xlabel=title)
+        ax.spines[['top','right']].set_visible(False)
+    axes[0].invert_yaxis()
+    fig.suptitle('Marker-source performance distributions: fixed original GBM geometry and mean cutoff\n55 patients; samples averaged within patient; orange libraries are concordance-only')
+    for ext in ['png','pdf']:fig.savefig(d/f'marker_context_distributions.{ext}',dpi=220,bbox_inches='tight')
+    plt.close(fig)
     a=a[(a.stage=='terminal090')&(a.library=='CM2_glioma_other')&(a.cutoff=='mean')]
     columns=['sample','patient','primary','budget','route','dl_status','training_executed','n_cells','n_known','n_pool',
         'n_training_classes','n_new_correct','n_new_incorrect','n_initially_wrong_retained','coverage','unknown_rate']
@@ -60,7 +93,7 @@ def run():
     write_json(d/'diagnostics_manifest.json',dict(status='completed',display_sample=display,
         missing_classes_remain_errors=True,known_marker_labels_retained_by_design=True,
         propagation='Original DL only fills Undecided; wrong known seeds are retained. New wrong fills are reported explicitly.',
-        files={p.name:sha(p) for p in d.iterdir() if p.stem in ['per_class_original2000','display_sample_confusions','fixed_marker_DL_change_audit','original2000_fixed_marker_per_class_patient','original2000_fixed_marker_per_class_mean']},
+        files={p.name:sha(p) for p in d.iterdir() if p.stem in ['per_class_original2000','display_sample_confusions','fixed_marker_DL_change_audit','original2000_fixed_marker_per_class_patient','original2000_fixed_marker_per_class_mean','marker_context_patient','marker_context_summary','marker_context_distributions']},
         job=os.environ['SLURM_JOB_ID'],source_sha256=sha(__file__),completed_at=utc()))
 
 if __name__=='__main__':run()

@@ -87,6 +87,8 @@ extra_figure('summary/workflow_decision_tree.png')''')
         code("extra_figure('controls_summary/geometry_and_DL.png')\nextra_table('controls_summary/geometry_vs_DL_paired_effects.csv')")
         md('## Parameter and seed sensitivity\n\nThree prespecified size pilots. MLP and embedding seeds are separate; neither is a patient replicate. Every representation condition has a clustering/terminal PNG and PDF.')
         code("extra_figure('controls_summary/MLP_controls.png')\nextra_figure('controls_summary/representation_controls.png')\nextra_table('controls_summary/representation_figure_index.csv')")
+        md('### Saved training curves and epoch endpoints\n\nAll histories come from the completed MLP controls. The 5/10-epoch histories are checked against the first 5/10 epochs of the 20-epoch run. Loss describes fit to marker pseudo-labels; terminal annotation F1 uses all cells and the fixed author labels. No per-epoch validation loss was saved.')
+        code("extra_figure('controls_summary/MLP_training_learning_curves.png')\nextra_figure('controls_summary/MLP_epoch_endpoints.png')\nextra_table('controls_summary/MLP_epoch_history_prefix_parity.csv')\ndisplay(Markdown((F/'controls_summary/MLP_LEARNING_CURVE_INTERPRETATION.md').read_text()))")
         index=pd.read_csv(OUT/'controls_summary/representation_figure_index.csv')
         for (sample,budget),group in index.groupby(['sample','budget'],sort=False):
             links='\n'.join(f'- [{r.name}](../results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/{r.pdf})' for r in group.itertuples())
@@ -110,7 +112,7 @@ extra_figure('summary/workflow_decision_tree.png')''')
         addition=nbformat.v4.new_notebook(cells=cells,metadata={'kernelspec':{'display_name':'Python3','language':'python','name':'python3'}})
         NotebookClient(addition,timeout=1200,kernel_name='python3',resources={'metadata':{'path':str(ROOT/'notebooks')}},allow_errors=False).execute()
         assert sha(path)==before,'Notebook changed externally'
-        banner=nbformat.v4.new_markdown_cell('**GBM原R主网格、机制控制、公平比较与单次规模实验已完成。** [完整补实验](#gbm-native-r-followups)追加在原notebook；PTC后续单独推进。',metadata={'tags':[TAG]})
+        banner=nbformat.v4.new_markdown_cell('**GBM原R主网格、机制控制、公平比较与重复规模实验已完成。** [完整补实验](#gbm-native-r-followups)追加在原notebook；PTC后续单独推进。',metadata={'tags':[TAG]})
         nb.cells=[banner]+baseline+addition.cells
         tmp=path.with_suffix('.ipynb.full_GBM_part');nbformat.write(nb,tmp);tmp.replace(path)
         current=nbformat.read(path,as_version=4);assert current.cells[1:1+len(baseline)]==baseline

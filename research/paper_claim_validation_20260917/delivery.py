@@ -81,6 +81,8 @@ def run():
         statement='Actual allocation/job/step records; core per-sample jobs do not prove single-run >100k scalability.',
         job=os.environ['SLURM_JOB_ID'],completed_at=utc()));copy(resource/'manifest.json')
     manifest=OUT/'summary/core_delivery_manifest.json'
+    from delivery_index import update
+    files.extend(update(STAGE,'GBM_core'))
     records=[dict(path=s,sha256=sha(STAGE/s),bytes=(STAGE/s).stat().st_size) for s in sorted(set(files))]
     write_json(manifest,dict(status='staged',scope='GBM core only',files=records,n_files=len(records),
         total_bytes=sum(v['bytes'] for v in records),sample_artifacts=artifacts,remote=REMOTE,

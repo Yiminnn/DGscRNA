@@ -15,6 +15,7 @@ def run():
     import matplotlib.pyplot as plt
     from dl_controls import CONFIGS
     from representation_controls import configurations
+    import learning_curves
 
     assert checked(OUT/'summary', 'aggregate_manifest.json', 'AGGREGATE_COMPLETE')
     dest = OUT/'controls_summary'; dest.mkdir(exist_ok=True)
@@ -133,8 +134,10 @@ def run():
         fig.suptitle(title+'\nPrespecified size pilots; points are algorithm conditions, not additional patients')
         for ext in ['png','pdf']:fig.savefig(dest/f'{filename}.{ext}',dpi=190,bbox_inches='tight')
         plt.close(fig)
+    learning_curves.run(dest)
     write_json(dest/'manifest.json',dict(status='completed',geometry_units=363,MLP_units=54,representation_units=180,
         identical_2000_anchor=True,source_manifests=sources,
+        learning_curves_manifest_sha256=sha(dest/'learning_curves_manifest.json'),
         scopes=dict(geometry='All121samples/59patients; primary97/55separate',
                     MLP_and_representation='Three count-selected samples, descriptive stability only; no all-cohort optimality inference'),
         files={p.name:sha(p) for p in dest.iterdir() if p.suffix in ['.csv','.gz','.png','.pdf']},

@@ -69,6 +69,8 @@ def run():
         copy(OUT/name)
     for p in (OUT/'verification').rglob('*'):
         if p.is_file() and p.suffix in ['.json','.csv','.md','.txt']:copy(p)
+    from delivery_index import update
+    files.extend(update(STAGE,'GBM_full'))
     records=[dict(path=n,sha256=sha(STAGE/n),bytes=(STAGE/n).stat().st_size) for n in sorted(set(files))]
     manifest=OUT/'GBM_full_summary/delivery_manifest.json'
     write_json(manifest,dict(status='staged',scope='GBM follow-ups; existing core and historical results retained',

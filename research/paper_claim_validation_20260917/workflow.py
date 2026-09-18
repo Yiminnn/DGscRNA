@@ -57,7 +57,7 @@ def run():
         (.43,'Reference interpretation',
         'CARE_TME / BrainAtlas112\ncontributed to author labels.\nTheir results are concordance,\nnot independent validation.\nNo generic neuron is assigned\nto an excitatory/inhibitory class\nusing evaluation outcomes.'),
         (.245,'Publication claim boundary',
-        f'Best among evaluated choices,\nwithin specified cohorts/metrics.\nHistorical NMT selected SNN.\nInternal ablation does not prove\nsuperiority to other tools.\nFair comparators: {comparators}\nSingle-run resources: {resources}')]
+        f'Best among evaluated choices,\nwithin specified cohorts/metrics.\nHistorical NMT selected SNN.\nInternal ablation does not prove\nsuperiority to other tools.\nFair comparators: {comparators}\nResource repeats (3): {resources}')]
     for y,title,body in notes:
         ax.text(.725,y,title,fontsize=9,color='#C46518',weight='bold',va='top')
         ax.text(.725,y-.025,body,fontsize=8,va='top',linespacing=1.4)

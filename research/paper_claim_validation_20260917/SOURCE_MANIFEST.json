@@ -5,7 +5,7 @@
   "files": [
     {
       "path": "delivery.py",
-      "sha256": "65656f0f55fb44628aed85e30e4229fd3094db72b880b99ddea3de0264abc79e"
+      "sha256": "2f9469f0f2fc3405d834e3e6c2dfe41bd2705a67ce81f72118890fdfd94eda83"
     },
     {
       "path": "verify_density.R",
@@ -37,7 +37,7 @@
     },
     {
       "path": "report.py",
-      "sha256": "839d96dbccd2fa787636f9826fc5e4af7e17f4793059b86f1efc3ada8b6cd208"
+      "sha256": "71bc0c91a4e542773347a4c10819a6211f3185569dc9fa8f8d6d577286b80e10"
     },
     {
       "path": "audit_SN040_wilcox_kernel.R",
@@ -69,7 +69,7 @@
     },
     {
       "path": "aggregate_controls.py",
-      "sha256": "daec08830c490664dfbbb5897f53553db4510b6ac5a148f0e581343fb7c48181"
+      "sha256": "26f8e6e9b7aaa593cf47118f0ae758c74ea8db597aad28f31571163f7c4cbce6"
     },
     {
       "path": "comparator_job.py",
@@ -137,7 +137,7 @@
     },
     {
       "path": "plot_unit.py",
-      "sha256": "e0f4164313f7e8db964f897a47bc65147da6a00e77b7d52132d99d8605347154"
+      "sha256": "eed5803750a34aff9453efc714405151b3c3ea2c04a19cc5a4b0ccb9d2a7773b"
     },
     {
       "path": "ptc_finalize.py",
@@ -169,7 +169,7 @@
     },
     {
       "path": "ptc_delivery.py",
-      "sha256": "1083f23b5bc3d9216946ffff9af103aed80e9ba098ff49554e355da8bccd537e"
+      "sha256": "34d68516d07e9672dc1e7cfa6de832f5d6d42115bc7bebcb3d22b38c8fe4a5dc"
     },
     {
       "path": "aggregate_scalability.py",
@@ -188,16 +188,20 @@
       "sha256": "b04cbcaea32251a5e8ab0b4b026a7ddbff3b83b638c518f2f908e57b4073f508"
     },
     {
+      "path": "delivery_index.py",
+      "sha256": "d06bfeedd8d58e677327812b295b363c3585e7489af18f73a502b3d608069b0a"
+    },
+    {
       "path": "ptc_select.py",
       "sha256": "310b4ef46349d9e3c2b4b0f22382f576f1dd59a7fb1d429de6b0819b0e7c54fc"
     },
     {
       "path": "EXECUTION_NOTES.md",
-      "sha256": "40d44ee0f1dd29234f8718fcc0158e80af17d31dc6826af26e1a70f8d165f925"
+      "sha256": "ed9ce3474907a398e03be1666eaa4e3f0ded4131ab27904dd146b489ed7c277a"
     },
     {
       "path": "full_GBM_report.py",
-      "sha256": "14f491378b48910061a728f91d7c5d173f99801e074297ca590f2fb6956f619a"
+      "sha256": "a47978feb724c91700f701d15148f107a5c0f5ef167e35836e52e1991d473b4b"
     },
     {
       "path": "install_comparators.R",
@@ -209,7 +213,7 @@
     },
     {
       "path": "diagnostics.py",
-      "sha256": "792808f4edc1e34b9c04edd9ee907851c32714d3c8ddad6159d38cb598008216"
+      "sha256": "3c4d5d9e0f1e8ee51f41b1d29ecfdf4618f013c68b91a586cfa219cddf2fbc61"
     },
     {
       "path": "representation_controls.py",
@@ -241,7 +245,7 @@
     },
     {
       "path": "deliver_GBM_followups.py",
-      "sha256": "3d68ac44b11df416844d8214c52a4b0b5184714580b67c50366b444779f3752c"
+      "sha256": "fb6ab4b3388df94675beab812f2168f27da39ef61fabc11dd1a8b1fff7c873c5"
     },
     {
       "path": "aux_dispatch.py",
@@ -249,7 +253,7 @@
     },
     {
       "path": "reviewer_evidence.py",
-      "sha256": "5cea49fb1488a0e7b76a10660171e1d9131078cccb745f6f7fe1837aee5a5ac9"
+      "sha256": "dbd8546b67e3c72e89a81c8c0a1d053ed43b661bb239dc994a6ad0bb994793ce"
     },
     {
       "path": "ptc_evaluate.py",
@@ -333,7 +337,7 @@
     },
     {
       "path": "workflow.py",
-      "sha256": "9e36b13ad02d33afbac3ec38ab85713c651c1a00959c47b15a93f458c26ba6e8"
+      "sha256": "4185ebd0b8fa10e7132f5d38d941bb225ddf9d6031cec9eb75246cbb83ec991c"
     },
     {
       "path": "scalability_paths.py",
@@ -408,6 +412,10 @@
       "sha256": "ec21e80bf4d657f2282774e0024e625a52e235fdb24ab95ff07383b6e05ee424"
     },
     {
+      "path": "learning_curves.py",
+      "sha256": "5f1bb5caafe5d8a3857ad1fce8950939f8a3a63da3d91392ff88334937a6c0a0"
+    },
+    {
       "path": "verify_selected_mapping.py",
       "sha256": "46b10becc441ee885aeafb470c2690589c2a995fe439f7ef33f0572cb105c96d"
     },
@@ -428,7 +436,7 @@
       "sha256": "585e25ef8f5946a52bf2aed68d5becfc38be94a8663aa01c1b31d88aa57f1de3"
     }
   ],
-  "archived_at": "2026-09-18T02:39:48.329561+00:00",
+  "archived_at": "2026-09-18T02:55:29.748864+00:00",
   "excluded": [
     "data",
     "per-cell labels",

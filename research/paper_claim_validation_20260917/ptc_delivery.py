@@ -54,6 +54,8 @@ def run():
         'PTC_immutable_sources.tar.gz',OUT/'source_snapshots')
     copy(PTC/'dispatch_state.json')
     manifest=OUT/'PTC_summary/delivery_manifest.json'
+    from delivery_index import update
+    files.extend(update(STAGE,'PTC_full'))
     records=[dict(path=f,sha256=sha(STAGE/f),bytes=(STAGE/f).stat().st_size) for f in sorted(set(files))]
     write_json(manifest,dict(status='staged',remote=REMOTE,scope='PTC additions; completed GBM and historical results preserved',
         files=records,n_files=len(records),total_bytes=sum(r['bytes'] for r in records),job=os.environ['SLURM_JOB_ID']))

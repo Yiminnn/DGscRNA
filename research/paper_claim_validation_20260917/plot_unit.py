@@ -2,10 +2,11 @@
 import json
 import os
 from pathlib import Path
+import shutil
 import sys
 from common import OUT, L1, ROUTES, require_slurm, write_json, sha, complete, checked, utc
 
-def run(prep):
+def run(prep, refresh_marker_legend=False):
     require_slurm()
     import numpy as np
     import pandas as pd
@@ -15,7 +16,11 @@ def run(prep):
     from matplotlib.lines import Line2D
     prep=Path(prep);pm=json.loads((prep/'prepare_manifest.json').read_text())
     sample=pm['sample'];dest=prep/'figures';dest.mkdir(exist_ok=True)
-    if checked(dest,'manifest.json','FIGURES_COMPLETE'):return
+    if checked(dest,'manifest.json','FIGURES_COMPLETE'):
+        prior=json.loads((dest/'manifest.json').read_text())
+        if not refresh_marker_legend or prior.get('all_marker_legends_included'):return
+        backup=prep/'figures_before_marker_legend'
+        if not backup.exists():shutil.copytree(dest,backup)
     reference=OUT/'GBM'/sample/'hvg2000'
     assert checked(reference,'prepare_manifest.json','PREPARED'),'Common display hvg2000 must finish first'
     assert checked(prep/'evaluation')
@@ -77,11 +82,13 @@ def run(prep):
                     mapped=[maps[lib].get(v,'Unknown' if v in ['Unknown','Undecided'] else 'UNMAPPABLE') for v in pp[key]]
                     scatter(axes[i,j],mapped,lib+(' | marker-only ablation' if j==0 else ' | terminal DL'))
             fig.suptitle(f'{sample} | {pm["budget"]} | {route}\nAll marker contexts; fixed mean cutoff and display coordinates',fontsize=13)
+            fig.legend(handles=handles,loc='outside lower center',ncol=3,fontsize=8,frameon=False)
             for suffix in ['png','pdf']:fig.savefig(dest/f'{route}_all_markers.{suffix}',dpi=130,bbox_inches='tight')
             plt.close(fig)
     files={p.name:sha(p) for p in dest.iterdir() if p.suffix in ['.png','.pdf']}
     write_json(dest/'manifest.json',dict(status='completed',sample=sample,budget=pm['budget'],clustering_routes=ROUTES,
         all_cells_plotted=len(t),display_coordinates=str(reference/'UMAP2.csv'),display_sha256=sha(reference/'UMAP2.csv'),
+        all_marker_legends_included=sample==pilot['display_sample'],
         display_not_used_as_substitute_for_clustering_input=True,files=files,source_sha256=sha(__file__),
         job=os.environ['SLURM_JOB_ID'],completed_at=utc()))
     complete(dest,'manifest.json','FIGURES_COMPLETE');print('FIGURES_COMPLETE',sample,pm['budget'],flush=True)

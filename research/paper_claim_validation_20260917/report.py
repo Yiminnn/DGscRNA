@@ -18,11 +18,14 @@ def run():
     from nbclient import NotebookClient
     import workflow
     import diagnostics
+    import plot_unit
     d=OUT/'summary'
     assert checked(d,'aggregate_manifest.json','AGGREGATE_COMPLETE')
     audit=json.loads((OUT/'protocol/input_audit.json').read_text())
     agg=json.loads((d/'aggregate_manifest.json').read_text())
     assert agg['completed_units']==726 and agg['n_clustering_results']==2904
+    for budget in FEATURES:
+        plot_unit.run(OUT/'GBM'/audit['display_sample']/budget,refresh_marker_legend=True)
     diagnostics.run()
     means=pd.read_csv(d/'patient_aggregates.csv',dtype={'cutoff':str})
     fixed=means[(means.cohort=='primary97')&(means.library=='CM2_glioma_other')&(means.cutoff=='mean')&(means.stage=='terminal090')&(means.family=='native_R_budget')]
@@ -115,6 +118,8 @@ display(pd.read_csv(C/'markers/coverage_vocabulary.csv'))''')
         code('figure("summary/workflow_decision_tree.png")\nfigure("summary/fixed_marker_HVG_routes.png")\nfigure("summary/paired_HVG_route_effects.png")\ndisplay(table("primary_fixed_marker_24.csv"))\ndisplay(table("fixed_marker_patient_paired.csv"))')
         md('## Patient-heldout selection and marker × DL contribution\n\nThe same selected marker library is used on both sides of each no-DL/with-DL pair. Fixed-cutoff factorial and broader configuration selection are separate tables.')
         code('display(table("patient_heldout_summary.csv"))\ndisplay(table("patient_heldout_selection.csv"))\ndisplay(table("marker_DL_factorial_summary.csv"))\ndisplay(table("terminal_status_counts.csv"))')
+        md('## Marker-source distributions at the fixed original geometry\n\nEvery dot is one primary-cohort patient after averaging that patient\'s samples. All 16 libraries retain the same HVG2000/UMAP2/HDBSCAN geometry and mean cutoff. Orange libraries overlap author-label construction and remain concordance results; they are excluded from primary marker selection.')
+        code('figure("summary/marker_context_distributions.png")\ndisplay(table("marker_context_summary.csv"))')
         md('## Per-class errors, Unknown and actual refinement changes\n\nAll cells remain in each confusion-matrix denominator. Wrong known marker seeds are preserved by the historical algorithm; the audit separately records correct and incorrect newly filled cells.')
         code('figure("summary/per_class_original2000.png")\nfigure("summary/display_sample_confusions.png")\ndisplay(table("original2000_fixed_marker_per_class_mean.csv"))\ndisplay(table("fixed_marker_DL_change_audit.csv"))')
         md('## Prespecified display sample: all six budgets and all four clusterers')
