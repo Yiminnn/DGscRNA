@@ -11,6 +11,11 @@ def tick():
     state=json.loads(path.read_text()) if path.exists() else dict(jobs={})
     active=states();source=freeze('SCINA_libraries')
     slots=sum(name=='claim_GBM_SCINA_library' for name,status in active.values())
+    core=json.loads((OUT/'dispatch_state.json').read_text())
+    desired=96 if core.get('n_evaluated_plotted')==726 else 64 if core.get('n_terminal_complete',0)>=600 else 32
+    # Leave a cushion for independent controllers; SLURM still enforces MaxJobsPU.
+    other=sum(name!='claim_GBM_SCINA_library' for name,status in active.values())
+    limit=max(0,min(desired,220-other))
     pilots=['TKU4163','NL022','SN040']
     gates={i:all(checked(OUT/'comparators/SCINA'/s/f'L{i:02d}') for s in pilots) for i in range(16)}
     rows=list(csv.DictReader((OUT/'protocol/sample_order.csv').open()))
@@ -32,11 +37,11 @@ def tick():
                 if found and found[0][1].split()[0] in ['FAILED','OUT_OF_MEMORY','TIMEOUT','CANCELLED','COMPLETED','NODE_FAIL']:
                     r.update(status='needs_review',accounting=found[0])
                 continue
-            if slots>=24:continue
+            if slots>=limit:continue
             job=submit(source,'scina_R.R',[sample,i],['--job-name=claim_GBM_SCINA_library','--cpus-per-task=2','--mem=32G','--time=04:00:00'])
             r.update(job=job,submitted=time.time(),status='submitted',source=str(source));slots+=1;write_json(path,state)
     completed=sum(r.get('status')=='complete' for r in state['jobs'].values())
-    state.update(expected=121*16,completed=completed,three_size_gate_by_library=gates,last_check=utc(),
+    state.update(expected=121*16,completed=completed,concurrency_limit=limit,three_size_gate_by_library=gates,last_check=utc(),
                  review_required={k:r['accounting'] for k,r in state['jobs'].items() if r.get('status')=='needs_review'})
     write_json(path,state);print('SCINA_LIBRARY_PROGRESS',completed,'/1936',flush=True)
     return completed==121*16

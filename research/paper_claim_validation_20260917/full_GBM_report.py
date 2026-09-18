@@ -11,10 +11,10 @@ def run():
     import pandas as pd
     import nbformat
     from nbclient import NotebookClient
-    import workflow
+    import workflow,reviewer_evidence
     assert (OUT/'summary/GBM_CORE_DELIVERED.json').exists()
     folders=['controls_summary','comparison_summary','comparison_summary/diagnostics',
-             'unknown_summary','marker_evidence_summary','scalability_summary']
+             'unknown_summary','unknown_expression','marker_evidence_summary','scalability_summary','legacy_coverage_audit']
     for folder in folders:assert checked(OUT/folder),folder
     dest=OUT/'GBM_full_summary';dest.mkdir(exist_ok=True)
     workflow.run()
@@ -36,9 +36,9 @@ The matched-partition patient-heldout comparison uses terminal DG-scRNA, scType 
 
 SingleR references contain only labelled training-patient cells, excluding all samples of each heldout patient; its primary mean is {primary.loc['SingleR','macroF1_present_mean']:.6f}. Published pretrained Brain scDeepSort is an atlas-GNN condition, with mean {primary.loc['scDeepSort','macroF1_present_mean']:.6f}. These reference-information conditions differ from marker methods. The pretrained atlas lacks a malignant class; missing vocabulary remains in the denominator. Every primary score includes all cells, including Unknown/unmapped calls. These are retrospective patient-label-heldout folds in an explored cohort, not a never-seen external test cohort.
 
-Unknown is analyzed using counts, detected genes and visible mitochondrial percentage within author cell class. These are descriptive QC associations; doublets and novel cell types are not inferred. The original DL preserves known marker seeds; retained seed errors and newly filled wrong predictions are reported separately. Marker tables expose recovered source/species/assay records and unresolved links without manufacturing independence.
+Unknown is analyzed using counts, detected genes and visible mitochondrial percentage within author cell class. Patient-paired differential expression compares Unknown and called cells within the same sample and author class, with minimum cell/patient support, all gene effects, patient intervals and global BH correction reported. Because the annotation status uses the same expression, these are exploratory algorithm-status associations; doublets and novel cell types are not inferred. The original DL preserves known marker seeds; retained seed errors and newly filled wrong predictions are reported separately. Marker tables expose recovered source/species/assay records and unresolved links without manufacturing independence.
 
-The resource experiment contains 15 cold-input runs: three methods on the same nested 10k / 30k / 50k / 100k / 120k pooled-cell inputs. Each point is one workflow run. Actual wall time, hardware and scheduler peak RSS are recorded. This is one timing measurement per point, not repeated runtime inference. Pooled input is not biological batch-correction evidence; see RESOURCE_INTERPRETATION.md for preprocessing and memory-measurement limits.
+The resource experiment contains 45 cold-input runs: three methods on the same nested 10k / 30k / 50k / 100k / 120k pooled-cell inputs. Each method and input size has three independent process runs from identical counts, with isolated outputs and model caches. Actual wall time, hardware and scheduler peak RSS are recorded, and means and sample standard deviations are reported. Pooled input is not biological batch-correction evidence; see RESOURCE_INTERPRETATION.md for preprocessing and memory-measurement limits.
 
 The original notebook is extended, with all clustering figures indexed and the English decision tree updated. This completes the GBM evidence stage only. Historical PTC NMT-SNN and TTU-UMAP/HDBSCAN anchors remain separate; new PTC repeats and marker-retention controls follow delivery. No new Darmanis or independent Pu cohort is included.
 '''
@@ -49,7 +49,7 @@ The original notebook is extended, with all clustering figures indexed and the E
 
 363个geometry-only、54个MLP和180个表示/聚类控制完成。参数与种子控制仅限事先按细胞数选定的3个样本。固定原聚类条件下，marker方法留出患者最高点为{marker.index[0]}（{marker.iloc[0].macroF1_present_mean:.6f}），DG-scRNA={primary.loc['DG-scRNA','macroF1_present_mean']:.6f}。SingleR和scDeepSort使用不同reference信息，结果单列保留。
 
-单次规模验证为三方法×五档细胞量，最大120000细胞；不是多个小样本合计。Unknown、marker来源和DL新增错误表已更新。沿用原notebook和OneDrive目录；PTC后续控制单独推进，本文件不宣称整项研究完成。
+规模验证为三方法×五档细胞量×三次独立运行，最大120000细胞，报告均值与标准差；每次都为完整大输入运行，不是多个小样本合计。Unknown、marker来源和DL新增错误表已更新。沿用原notebook和OneDrive目录；PTC后续控制单独推进，本文件不宣称整项研究完成。
 ''')
     methods='''# Method description corrections supported by executed source
 
@@ -64,6 +64,7 @@ The original notebook is extended, with all clustering figures indexed and the E
 These are proposed wording corrections stored with the experiment; the manuscript itself is preserved.
 '''
     (dest/'METHODS_CORRECTIONS.md').write_text(methods)
+    reviewer_evidence.run('GBM')
     path=ROOT/'notebooks/dgscrna_results.ipynb'
     with (OUT/'notebook.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX)
@@ -96,10 +97,16 @@ extra_figure('summary/workflow_decision_tree.png')''')
         code("extra_table('comparison_summary/equal24_DG_scType_comparison.csv')\nextra_table('comparison_summary/equal24_DG_scType_choices.csv')")
         md('## Unknown, seed errors and refinement outcomes\n\nQC associations condition on original class; they do not diagnose doublets or novel types.')
         code("extra_figure('unknown_summary/Unknown_QC_association.png')\nextra_table('unknown_summary/retained_seed_and_DL_new_errors.csv')\nextra_table('marker_evidence_summary/library_source_assay_coverage_audit.csv')\ndisplay(Markdown((F/'marker_evidence_summary/MARKER_EVIDENCE.md').read_text()))")
-        md('## Single-run resource measurements, 10k through 120k cells\n\nFrozen nested pooled counts; resource evidence, not new batch-correction or biological validation.')
-        code("extra_figure('scalability_summary/resource_curves.png')\nextra_table('scalability_summary/cold_pipeline_resource_curve.csv')\ndisplay(Markdown((F/'scalability_summary/RESOURCE_INTERPRETATION.md').read_text()))")
-        for n in [10000,30000,50000,100000,120000]:code(f"extra_figure('scalability/{n}/clustering.png')")
+        md('### Patient-paired Unknown expression contrasts\n\nUnknown and called cells are compared within original cell class and sample, then averaged within patient. All support exclusions and gene-level results are exported. Exact sign tests and global BH accompany bootstrap intervals for mean expression differences. This is exploratory: annotation itself uses expression, so differential expression does not establish a novel population.')
+        code("extra_figure('unknown_expression/Unknown_expression_contrasts.png')\nextra_table('unknown_expression/class_condition_support.csv')\nextra_table('unknown_expression/top10_descriptive_genes_per_contrast.csv')\ndisplay(Markdown((F/'unknown_expression/INTERPRETATION.md').read_text()))")
+        md('## Resource measurements, 10k through 120k cells, three process runs each\n\nFrozen nested pooled counts; resource evidence, not new batch-correction or biological validation.')
+        code("extra_figure('scalability_summary/resource_curves.png')\nextra_table('scalability_summary/cold_pipeline_resource_curve.csv')\nextra_table('scalability_summary/resource_repeated_mean_SD.csv')\ndisplay(Markdown((F/'scalability_summary/RESOURCE_INTERPRETATION.md').read_text()))")
+        for row in pd.read_csv(OUT/'scalability_summary/all_resource_clustering_figures.csv').itertuples():code(f'extra_figure({row.png!r})')
+        md('## Historical brain_GBM denominator and stage audit\n\nSaved predictions only: no new Darmanis fitting. This separate legacy Python/Leiden result is not part of the new native-R GSE274546 comparison. The old table had selected initial marker calls even though saved terminal DL calls were available.')
+        code("extra_table('legacy_coverage_audit/summary.csv')\ndisplay(Markdown((F/'legacy_coverage_audit/AUDIT.md').read_text()))")
         md('## Wording supported by the implementation\n\n'+methods.split('\n',1)[1])
+        md('## PI and reviewer evidence map\n\nExperimental completion and manuscript/deposition requirements are separate. Remaining biological and source limitations are retained.')
+        md(reviewer_evidence.notebook_text('GBM'))
         addition=nbformat.v4.new_notebook(cells=cells,metadata={'kernelspec':{'display_name':'Python3','language':'python','name':'python3'}})
         NotebookClient(addition,timeout=1200,kernel_name='python3',resources={'metadata':{'path':str(ROOT/'notebooks')}},allow_errors=False).execute()
         assert sha(path)==before,'Notebook changed externally'

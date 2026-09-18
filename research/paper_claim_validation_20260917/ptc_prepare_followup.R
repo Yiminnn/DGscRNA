@@ -34,14 +34,16 @@ if(cfg$kind=='retention') {
   libs<-fromJSON(marker_path,simplifyVector=FALSE)
   marker_genes<-unique(unlist(libs,use.names=FALSE))
   stopifnot(DefaultAssay(obj)=='integrated',identical(all_features,rownames(obj[['integrated']])) )
-  # A single universe per group; keep original expression row order and denominators.
-  scoring<-all_features[all_features %in% union(fixed,marker_genes)]
+  # Keep fixed2000's original order, then append eligible extra markers in CCAall order.
+  # This also preserves common genes' relative tie/summation order in the old scorer.
+  scoring<-c(fixed,all_features[all_features %in% setdiff(marker_genes,fixed)])
   stopifnot(all(fixed %in% scoring),length(fixed)==2000L)
   assay<-CreateAssayObject(data=obj[['integrated']]@data[scoring,,drop=FALSE])
   result<-CreateSeuratObject(counts=assay,assay='CCAall_marker_retained',meta.data=obj@meta.data)
   rm(obj,assay);gc()
   geometry<-file.path(old,'PTC_ablation',paste0('PTC_',cfg$group,'_GEOMETRY',cfg$budget,'_FIXED_CCAall_DL2000'))
   gm<-verified_manifest(geometry)
+  stopifnot(gm$fixed_expression_source_sha256==digest(file=file.path(source,'prepare_manifest.json'),algo='sha256'))
   pca<-as.matrix(read.csv(file.path(geometry,'PCA30.csv'),row.names=1,check.names=FALSE))
   umap<-as.matrix(read.csv(file.path(geometry,'UMAP2.csv'),row.names=1,check.names=FALSE))
   stopifnot(identical(rownames(pca),colnames(result)),identical(rownames(umap),colnames(result)))
@@ -62,23 +64,27 @@ if(cfg$kind=='retention') {
   pm$geometry_source<-geometry;pm$geometry_source_manifest_sha256<-digest(file=file.path(geometry,'prepare_manifest.json'),algo='sha256')
   writeLines(scoring,file.path(dest,'scoring_features.txt'))
   writeLines(sort(setdiff(marker_genes,all_features)),file.path(dest,'markers_outside_eligible_CCA.txt'))
-  pm$uniform_retention_rule<-'(fixed2000 union all17 marker genes) intersect eligible group CCAall universe; row order retained'
+  pm$uniform_retention_rule<-'(fixed2000 union all17 marker genes) intersect eligible group CCAall universe; fixed2000 order then extras in CCAall order'
   pm$scientific_scope<-'Conditional on frozen all-gene CCA expression; only score-gene universe changed from original fixed2000 geometry control'
 } else {
   source<-file.path(old,'PTC_ablation',paste0('PTC_',cfg$group,'_CCA',cfg$budget))
   pm<-verified_manifest(source);result<-readRDS(file.path(source,'expression_PCA30.rds'))
   features<-readLines(file.path(source,'DL_features.txt'))
+  pca_features<-rownames(Loadings(result,'pca'))
+  stopifnot(length(pca_features)>=30L,all(pca_features %in% features))
   if(cfg$seed==42L) {
     umap<-as.matrix(read.csv(file.path(source,'UMAP2.csv'),row.names=1,check.names=FALSE))
     stopifnot(identical(rownames(umap),colnames(result)))
     result[['umap']]<-CreateDimReducObject(embeddings=umap,key='UMAP_',assay=DefaultAssay(result))
   } else {
-    result<-RunPCA(result,features=features,npcs=30L,seed.use=as.integer(cfg$seed),verbose=FALSE)
+    # Preserve the actually used original PCA feature order, including its zero-variance exclusions.
+    result<-RunPCA(result,features=pca_features,npcs=30L,seed.use=as.integer(cfg$seed),verbose=FALSE)
     result<-RunUMAP(result,reduction='pca',dims=1:30,n.components=2,n.neighbors=30L,
       umap.method='uwot',metric='cosine',min.dist=.3,seed.use=as.integer(cfg$seed),verbose=FALSE)
   }
   for(f in c('cells.csv','DL_features.txt'))link_exact(file.path(source,f),file.path(dest,f))
   writeLines(features,file.path(dest,'geometry_features.txt'));writeLines(rownames(result[[DefaultAssay(result)]]),file.path(dest,'scoring_features.txt'))
+  writeLines(pca_features,file.path(dest,'PCA_actual_feature_order.txt'))
   write.csv(Embeddings(result,'pca'),file.path(dest,'PCA30.csv'))
   write.csv(Embeddings(result,'umap'),file.path(dest,'UMAP2.csv'))
   pm$scientific_scope<-'PCA/UMAP seed sensitivity conditional on unchanged CCA fit, features and expression; SNN seed0 and MLP seed42 fixed'

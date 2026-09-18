@@ -6,8 +6,9 @@ from ptc_followup_common import require_ptc
 
 def run():
     require_ptc()
-    import ptc_aggregate,ptc_report,ptc_delivery
+    import ptc_aggregate,ptc_comparator_replay,ptc_report,ptc_delivery
     if not checked(OUT/'PTC_summary'):ptc_aggregate.run()
+    if not checked(OUT/'PTC_comparator_replay'):ptc_comparator_replay.run()
     if not (OUT/'PTC_summary/notebook_manifest.json').exists():ptc_report.run()
     ptc_delivery.run()
     receipt=json.loads((OUT/'PTC_summary/DELIVERY_RECEIPT.json').read_text())

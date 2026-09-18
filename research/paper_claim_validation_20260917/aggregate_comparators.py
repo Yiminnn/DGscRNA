@@ -62,6 +62,9 @@ def run():
             draws=delta[rng.integers(0,len(delta),size=(10000,len(delta)))].mean(axis=1)
             contrasts.append(dict(cohort=name,method=method,comparison='competitor minus DG-scRNA; matched fixed partition for cluster-based marker methods',
                 n_patients=len(delta),mean_delta=float(delta.mean()),CI95_low=float(np.quantile(draws,.025)),CI95_high=float(np.quantile(draws,.975)),
+                DG_mean_macroF1=float(paired.DG_F1.mean()),competitor_mean_macroF1=float(paired.macroF1_present.mean()),
+                DG_minus_competitor_percentage_points=float(-100*delta.mean()),
+                DG_relative_gain_percent=float(-100*delta.mean()/paired.macroF1_present.mean()) if paired.macroF1_present.mean()>0 else None,
                 p=float(wilcoxon(delta).pvalue) if np.any(np.abs(delta)>1e-14) else 1.,
                 mean_coverage_delta=float((paired.coverage-paired.DG_coverage).mean()),
                 information='labelled training-patient reference' if method=='SingleR' else 'published atlas pretrained GNN' if method=='scDeepSort' else 'matched marker libraries'))

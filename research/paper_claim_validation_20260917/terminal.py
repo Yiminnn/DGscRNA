@@ -66,7 +66,9 @@ def finish_route(source, only_arm=None, dl_prep=None):
         training_source_sha256=source_hash,params=refine.PARAMS,
         torch_version=torch.__version__,torch_threads=torch.get_num_threads())
     signature_bytes=json.dumps(signature,sort_keys=True).encode()
-    cache_root=OUT/'DL_cache';cache_root.mkdir(parents=True,exist_ok=True)
+    cache_root=Path(os.environ.get('DGSCRNA_DL_CACHE_ROOT',str(OUT/'DL_cache')))
+    assert cache_root.is_relative_to(OUT),'DL cache override must stay inside this result campaign'
+    cache_root.mkdir(parents=True,exist_ok=True)
     terminal_root=source/('terminal' if dl_prep is None else 'terminal_geometry_only_DL2000')
     terminal_root.mkdir(exist_ok=True)
     arms=[only_arm] if only_arm else list(m['arms'])

@@ -42,3 +42,25 @@ Input audits, source snapshots, package provenance, failed attempts, parity chec
 scType derives its linear score aggregation from the official GPL-3 function; the original source and license are retained. scCATCH3.2.2 and SCINA1.2.0 use isolated installed copies with pinned source archives. SCINA's explicit numerical boundary guard is separately audited and records when the original solver failed; it is not silently described as an unmodified result. SingleR2.8.0 uses labelled training patients under a separate information condition. Pretrained scDeepSort uses its published human-Brain checkpoint when its isolated environment passes validation.
 
 Do not claim a universal optimum. The final report must distinguish an original-default win, an optimized-configuration win, uncertain near-ties and genuine group-specific exceptions.
+
+Reviewer C1 explicitly requests repeated runtime measurements. Resource execution
+therefore includes three independent process runs per method and size (45 total),
+with identical nested counts, isolated result/DL caches, mean and sample SD, and
+actual scheduler allocations. OS file-cache state remains uncontrolled.
+
+`analysis_dispatch.py` releases independent summary/diagnostic jobs as their own
+prerequisites finish. `unknown_expression.py` adds patient-paired, within-author-class
+Unknown expression contrasts; they are exploratory associations because annotation
+uses the same expression. `ptc_comparator_replay.py` reuses corrected SignacX outputs,
+separates explicit-T CellStates from coarse TNK, and corrects old endpoint framing
+without fitting another model. It is subject to the same GBM-before-PTC gate.
+`reviewer_evidence.py` links the PI/reviewer requests to verified artifacts while
+retaining manuscript, deposition and biological-validation limitations.
+
+Metadata controllers use `metadata_chain.py`: one-hour allocations renew between
+complete ticks after50minutes, leaving fitting jobs untouched. This avoids multi-day
+metadata allocations being backfilled days later. The nextgen memory/CPU coupling
+is also enforced: MaxCPUsPerNode120 and MaxMemPerCPU4027MiB make480GiB infeasible;
+resource submissions cap at448GiB, with measured-pilot headroom and actual allocation
+recorded. Scientific failures still require review; a bounded pilot recovery only
+retries a scheduler-confirmed timeout/OOM/node failure and preserves the attempt.

@@ -42,8 +42,13 @@ def score(cfg,route):
         pm=json.loads((dest/'prepare_manifest.json').read_text())
         om=json.loads((original/'score_manifest.json').read_text())
         assert pm['DL_binary_sha256']==om['DL_binary_sha256']
+        config=dest/'retention_audit_config.json'
+        if config.exists():assert json.loads(config.read_text())==cfg
+        else:write_json(config,cfg)
+        subprocess.run([RSCRIPT,str(SOURCE/'ptc_retention_audit.R'),str(config),route],check=True)
         write_json(source/'retention_invariants.json',dict(status='passed',partition_cells_exact=True,
-            same_DL_binary=True,reference=str(original),geometry_unchanged=True,job=os.environ['SLURM_JOB_ID']))
+            same_DL_binary=True,reference=str(original),geometry_unchanged=True,
+            shared_gene_DEG_audit_sha256=sha(source/'retention_DEG_audit.json'),job=os.environ['SLURM_JOB_ID']))
 
 def terminal(cfg,route,aid):
     require_ptc()

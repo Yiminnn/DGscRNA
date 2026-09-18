@@ -104,3 +104,21 @@ their original input/reference conditions disclosed. The GBM matched-method
 comparison is separate evidence, not proof that the PTC historical comparisons
 were matched. Report original-winner, tuned-winner, ties and group-specific
 counterexamples according to observed results.
+# Cached competitor correction after the GBM gate
+
+No additional SignacX fitting is needed: eight corrected per-sample outputs and a
+concatenated107,545-cell export already exist. Verify their equality, join all92,404
+historical evaluation cells by sample plus barcode, and retain excluded source rows.
+The SignacX2.2.5 GenerateLabels hierarchy separates CellStates explicit-T labels from
+the coarser CellTypes TNK label. Freeze that name-only rule, preserve NK and Unknown,
+and show strict-T and TNK sensitivities separately. The0.9180 historical memo used
+TNK and must not be compared with DG's published non-T-positive F1. Its archived
+S3 run returned labels but no lymphoid class; version/graph causation is unestablished.
+
+Reuse the already audited compact-name ontology for other original competitors.
+Score all cells, report coverage and Unknown-aware metrics, and keep productive-TCR,
+any-contig and source-paper indicators separate. Compare with original-R terminal
+anchors and patient-label-selected fresh workflows using four paired patients per
+group. Save absolute/relative gains and every patient difference. Their original
+input/reference conditions differ, so equal endpoints do not make this a matched
+information benchmark. These calculations execute only after verified GBM delivery.

@@ -14,8 +14,9 @@ def run():
     import pandas as pd
     import nbformat
     from nbclient import NotebookClient
-    import workflow
+    import workflow,reviewer_evidence
     dest=OUT/'PTC_summary';assert checked(dest)
+    assert checked(OUT/'PTC_comparator_replay')
     workflow.run()
     anchors=pd.read_csv(dest/'original_anchor_patient_metrics.csv')
     tuned=pd.read_csv(dest/'heldout_workflow_patient_metrics.csv')
@@ -91,6 +92,11 @@ conditions); all 50 MLP task groups have saved terminal outputs and evaluation.
 The pre-existing native-R grid and batch-biology comparisons are retained.
 Historical competitor outputs keep their original input/reference conditions;
 the matched GBM comparison does not retroactively make these PTC comparisons fair.
+The cached SignacX rerun is checked against its eight per-sample exports. Its finer
+CellStates explicit-T predictions and coarser CellTypes TNK calls are evaluated
+separately. The earlier0.9180 memo was a TNK-versus-detection score. It cannot be
+compared directly with DG's published non-T-positive F1. The original S3 SignacX
+run produced labels but no lymphoid calls; its mechanism is not established.
 No new Darmanis or independent Pu validation cohort was run.
 
 A publication claim must name the evaluated cohorts, metric, marker-selection
@@ -108,6 +114,7 @@ from a tuned workflow and from a merely higher point estimate.
 
 实际分组数值见 claim_summary_by_group.csv。最高点、训练患者选出的流程和固定原配置是不同结论；不能在存在NMT例外时写成所有步骤在两组始终最优。
 ''')
+    reviewer_evidence.run('PTC')
     notebook=ROOT/'notebooks/dgscrna_results.ipynb'
     with (OUT/'notebook.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX)
@@ -137,6 +144,9 @@ ptc_table('claim_summary_by_group.csv')''')
         code("ptc_figure('PTC_summary/PTC_marker_retention_mechanism.png')\nptc_table('marker_retention_matched_summary.csv')")
         md('## Original paper endpoint reconciliation\n\nOriginal non-T-positive F1 and hard-call AUC remain separate from strict-T productive-TCR selection. No historical Accuracy value is fabricated.')
         code("ptc_table('original_paper_endpoint_reconciliation.csv')")
+        md('## Saved competitors and corrected SignacX endpoints\n\nThe same full-cell denominator and detection indicator are used within each comparison. SignacX CellStates supplies explicit T states; CellTypes TNK remains a separate coarse sensitivity. Original fits differ in input, pooling and reference information. The old zero-lymphoid output was not a crashed run; its cause is unestablished. Every patient difference and absolute/relative gain is retained.')
+        code("ptc_figure('PTC_comparator_replay/PTC_cached_comparators.png')\nfor name in ['strict_productive_TCR_patient_summary.csv','paired_patient_gains.csv','SignacX_previous_memo_replay.csv']:\n    display(pd.read_csv(P/'PTC_comparator_replay'/name))")
+        md('## PI / reviewer evidence and remaining manuscript limits\n\n'+reviewer_evidence.notebook_text('PTC'))
         md('## Every new clustering result\n\nFixed group display coordinates; saved lineage and TCR are evaluation overlays only. Each panel shows the fixed historical group marker before and after terminal DL.')
         figures=pd.read_csv(dest/'all_new_clustering_figures.csv')
         for row in figures.itertuples():

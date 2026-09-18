@@ -26,6 +26,9 @@ def run():
     copy(ROOT/'notebooks/dgscrna_results.ipynb')
     for p in (OUT/'PTC_summary').iterdir():
         if p.is_file() and p.name not in ['delivery_manifest.json','DELIVERY_RECEIPT.json','PTC_FULL_DELIVERED.json']:copy(p)
+    assert checked(OUT/'PTC_comparator_replay')
+    for p in (OUT/'PTC_comparator_replay').iterdir():
+        if p.is_file():copy(p)
     for p in (OUT/'summary').glob('workflow_*'):copy(p)
     for p in CODE.glob('*.md'):copy(p)
     for directory in ['selection','verification','configurations']:
@@ -34,8 +37,8 @@ def run():
     selected={'predictions.csv.gz','terminal_manifest.json','training_manifest.json','training_history.json','manifest.json',
         'metrics.csv.gz','terminal_statuses.csv.gz','clusters.csv','initial_calls.csv.gz','cluster_calls.csv.gz',
         'marker_retention.csv.gz','score_manifest.json','prepare_manifest.json','cells.csv','PCA30.csv','UMAP2.csv',
-        'DL_features.txt','scoring_features.txt','geometry_features.txt','markers_outside_eligible_CCA.txt',
-        'SCORE_COMPLETE','COMPLETE','TERMINAL_COMPLETE','PREPARED','default_parity.json','retention_invariants.json','sessionInfo.txt'}
+        'DL_features.txt','scoring_features.txt','geometry_features.txt','PCA_actual_feature_order.txt','markers_outside_eligible_CCA.txt',
+        'SCORE_COMPLETE','COMPLETE','TERMINAL_COMPLETE','PREPARED','default_parity.json','retention_invariants.json','retention_DEG_audit.json','sessionInfo.txt'}
     for family in ['representation','marker_retention','MLP_seeds','default_parity','existing_grid_evaluation']:
         for d in (PTC/family).iterdir():
             if not d.is_dir():continue

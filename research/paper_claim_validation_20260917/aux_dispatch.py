@@ -16,6 +16,8 @@ def tick():
         samples=list(csv.DictReader((OUT/'protocol/sample_order.csv').open()))
         active=states();source=freeze('auxiliary')
         n_active=sum(v[0] in ['claim_GBM_geometry','claim_GBM_scType','claim_GBM_SCINA','claim_GBM_scCATCH','claim_GBM_DL_control'] for v in active.values())
+        core=json.loads((OUT/'dispatch_state.json').read_text())
+        limit=48 if core.get('n_evaluated_plotted')==726 else 32
         type_ready=checked(OUT/'comparators/scType/TKU4163','audit_sensitivity_manifest.json','AUDIT_SENSITIVITY_COMPLETE')
         scina_ready=all(checked(OUT/f'comparators/SCINA/{s}/L{i:02d}') for s in ['TKU4163','NL022','SN040'] for i in range(16))
         catch_ready=checked(OUT/'comparators/scCATCH/TKU4163/hvg2000/PCA30_SNN','audit_manifest.json','AUDIT_COMPLETE') and all(
@@ -59,12 +61,12 @@ def tick():
                 if final and final[0][1].split()[0] in ['FAILED','TIMEOUT','OUT_OF_MEMORY','CANCELLED','COMPLETED','NODE_FAIL']:
                     record['status']='needs_review';record['accounting']=final[0]
                 continue
-            if n_active>=24:continue
+            if n_active>=limit:continue
             jid=submit(source,script,args,[f'--job-name={name}',f'--cpus-per-task={cpus}',f'--mem={mem}',f'--time={wall}'])
             record.update(job=jid,source=str(source),submitted=time.time(),status='submitted');n_active+=1
             write_json(path,state)
         complete_count=sum(r.get('status')=='complete' for r in state['jobs'].values())
-        state.update(last_check=utc(),expected=780,ready_tasks=len(tasks),completed=complete_count,
+        state.update(last_check=utc(),expected=780,ready_tasks=len(tasks),completed=complete_count,concurrency_limit=limit,
             scType_parity_gate=type_ready,SCINA_three_size_pilot_gate=scina_ready,
             scCATCH_three_size_gate=catch_ready,DL_default_parity_gate=dl_ready,
             review_required={k:r['accounting'] for k,r in state['jobs'].items() if r.get('status')=='needs_review'})

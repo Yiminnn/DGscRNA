@@ -5,11 +5,13 @@ from common import OUT,require_slurm,checked,sha,write_json,utc
 def run():
     require_slurm()
     import aggregate_controls,aggregate_comparators,comparison_diagnostics,unknown_diagnostics
-    import marker_evidence_audit,aggregate_scalability,full_GBM_report,deliver_GBM_followups
+    import marker_evidence_audit,aggregate_scalability,full_GBM_report,deliver_GBM_followups,legacy_coverage_audit,unknown_expression
     assert (OUT/'summary/GBM_CORE_DELIVERED.json').exists()
     for folder,module in [('controls_summary',aggregate_controls),('comparison_summary',aggregate_comparators),
                           ('comparison_summary/diagnostics',comparison_diagnostics),('unknown_summary',unknown_diagnostics),
-                          ('marker_evidence_summary',marker_evidence_audit),('scalability_summary',aggregate_scalability)]:
+                          ('unknown_expression',unknown_expression),
+                          ('marker_evidence_summary',marker_evidence_audit),('scalability_summary',aggregate_scalability),
+                          ('legacy_coverage_audit',legacy_coverage_audit)]:
         if not checked(OUT/folder):module.run()
     # Refresh source-evidence wording without changing the frozen marker roster.
     marker_evidence_audit.run()

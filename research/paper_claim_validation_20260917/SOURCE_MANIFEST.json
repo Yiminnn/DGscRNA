@@ -13,7 +13,11 @@
     },
     {
       "path": "ptc_control_job.py",
-      "sha256": "a1ca727e56320329c22f64e5db9662d2f6234a7eae70d45e391066d85c64dee4"
+      "sha256": "a3e6d72a047413c3d4024c8a97d50c8e33b7dab1fb84a8d6d170e163556d3dc2"
+    },
+    {
+      "path": "recover_resource_pilot.py",
+      "sha256": "8bffcf4498df837ad7a776df1da5d88a830b5109ee2223b3b7faa5d195d804a3"
     },
     {
       "path": "install_deepsort.sbatch",
@@ -29,7 +33,7 @@
     },
     {
       "path": "scalability_job.py",
-      "sha256": "2072b6b9b23d8eb64a747c3e96ae262e5986c3594938df0c424f58dac84e799b"
+      "sha256": "4bd3da2d440efcc11b9ad58a445b93d38aa015995bd8f4e4e7fea99bbab3a2e3"
     },
     {
       "path": "report.py",
@@ -49,7 +53,7 @@
     },
     {
       "path": "terminal.py",
-      "sha256": "a284e635e0617025ee34958e342771ca87ec7639d59568377065ed9ab152feb8"
+      "sha256": "2ea6490a961c3d0ebc4a4857dc0958dae014dcfa934f3e6d7703642b8bf03d5e"
     },
     {
       "path": "pipeline.py",
@@ -57,7 +61,7 @@
     },
     {
       "path": "aggregate_comparators.py",
-      "sha256": "732d60119ff83e4d748a7381d026fa61b12de2ac1730eed604ecedb19baf2c11"
+      "sha256": "b039d91bb9c7c3e036325d64ceaa7eb49f71aa5f499adba22ec7acd86f987204"
     },
     {
       "path": "ptc_common.py",
@@ -117,7 +121,7 @@
     },
     {
       "path": "full_GBM_launcher.py",
-      "sha256": "ae08aaadd6852afa290527671a7b25582d1a0d6e66e58df694f75998c10ef35f"
+      "sha256": "c7ecb94e52f4be004e2542022026a2c382ccb565c19f536e18770bcc313f9d83"
     },
     {
       "path": "build_sccatch_markers.py",
@@ -128,16 +132,24 @@
       "sha256": "41823522b23f0b9d5083bd7afd0912a9f1fb029b95ba2aad7dffa232843cd2a2"
     },
     {
+      "path": "analysis_dispatch.py",
+      "sha256": "1427b034ded16f8eb81302b9e230c09c4fed6e2168e0eb7d39560ddca05e5040"
+    },
+    {
       "path": "plot_unit.py",
       "sha256": "e0f4164313f7e8db964f897a47bc65147da6a00e77b7d52132d99d8605347154"
     },
     {
       "path": "ptc_finalize.py",
-      "sha256": "7b0393fbfefd5dc77dc3b9a7bf0633ed96a84b2599b2726d882124cb1e27af02"
+      "sha256": "381cbf98216fceeed366ec2fbc74f6253dabb34360bd8ae39a142004acd06636"
     },
     {
       "path": "finalize_launcher.py",
       "sha256": "d3099ae3e63338560a8c19e9f279592c5b0b191e441785839ec11fbf05929706"
+    },
+    {
+      "path": "metadata_chain.py",
+      "sha256": "535d1883adc545f45d6c10c9766b365b8ea7be739b5ecf0809ebf28490f7776b"
     },
     {
       "path": "geometry_only.py",
@@ -157,11 +169,11 @@
     },
     {
       "path": "ptc_delivery.py",
-      "sha256": "02a54282a4beeac5f9bcc850691f750afd6e98ec46ecfc4607f9d6d876f6bbe1"
+      "sha256": "1083f23b5bc3d9216946ffff9af103aed80e9ba098ff49554e355da8bccd537e"
     },
     {
       "path": "aggregate_scalability.py",
-      "sha256": "0127449fb544eda4cd72a0da4ceb9b7eb8f3a240760573e20d2875a5ee6c9313"
+      "sha256": "4c39175134720f2174163844b552aa4092888f14018728f56445df5c61dbb278"
     },
     {
       "path": "audit_inputs.py",
@@ -173,7 +185,7 @@
     },
     {
       "path": "PTC_FOLLOWUP_PROTOCOL.md",
-      "sha256": "040cb4d6310e49ec3ff1d6baa0a9dcfc6e84b4992ff5bdf2bc7b13f1d40ba119"
+      "sha256": "b04cbcaea32251a5e8ab0b4b026a7ddbff3b83b638c518f2f908e57b4073f508"
     },
     {
       "path": "ptc_select.py",
@@ -181,11 +193,11 @@
     },
     {
       "path": "EXECUTION_NOTES.md",
-      "sha256": "77910ad182065e1aabb42bd08c2aa27549bdbcf63d84882e6a593861b132bcbc"
+      "sha256": "40d44ee0f1dd29234f8718fcc0158e80af17d31dc6826af26e1a70f8d165f925"
     },
     {
       "path": "full_GBM_report.py",
-      "sha256": "59efe15eed07205ca30c5a5494fdd1f5bb9ff0b450fdbf9b57138e0ee4912284"
+      "sha256": "14f491378b48910061a728f91d7c5d173f99801e074297ca590f2fb6956f619a"
     },
     {
       "path": "install_comparators.R",
@@ -224,12 +236,20 @@
       "sha256": "e621011c5f7d970cb41b0329854a98c4a4167c6e8a7cf8d5336372f3c2dab3e0"
     },
     {
+      "path": "legacy_coverage_audit.py",
+      "sha256": "10f1387f0eb09cddccba8a4fe2a4d8aa31b0d3f61344f71ea46dfe1f83464403"
+    },
+    {
       "path": "deliver_GBM_followups.py",
-      "sha256": "d774372ca962e53fcbdb6cdd116eb526fc2804ede84c1bd96ba3cecd083942d4"
+      "sha256": "3d68ac44b11df416844d8214c52a4b0b5184714580b67c50366b444779f3752c"
     },
     {
       "path": "aux_dispatch.py",
-      "sha256": "14c42c39d5b0314ce02a52868d1e641b7c5030b60c0400c45ec4cce6a791364e"
+      "sha256": "2c089efeab8e7f575b47dcb914f6e5ac7b9f7c716360b71f375e1b1bd405e504"
+    },
+    {
+      "path": "reviewer_evidence.py",
+      "sha256": "5cea49fb1488a0e7b76a10660171e1d9131078cccb745f6f7fe1837aee5a5ac9"
     },
     {
       "path": "ptc_evaluate.py",
@@ -246,6 +266,10 @@
     {
       "path": "audit_cache_publication.py",
       "sha256": "4dfeea9dcbde1fce814ade9903dd64135e02b617b22b1f806d93adfc682a283b"
+    },
+    {
+      "path": "legacy_brain_lineage.py",
+      "sha256": "5db8142dcb08192f864c7cc223ff61c6c04f9870bfe6e59947eefbcd73aea95d"
     },
     {
       "path": "ptc_derivation.json",
@@ -273,7 +297,7 @@
     },
     {
       "path": "ptc_report.py",
-      "sha256": "c39d33a4782dfeeb4aadb4a08f9cca39feda3eef933d9b3b04e20b7d29a8cffc"
+      "sha256": "782aca6de05b452a94d91acb0c5a38d63f4e76855489c6a3dd365153fe259513"
     },
     {
       "path": "DARMANIS_SCOPE_UPDATE_ZH.md",
@@ -297,7 +321,11 @@
     },
     {
       "path": "ptc_prepare_followup.R",
-      "sha256": "fada71e92495b12dfac73af8b1f20a2588f16286e9113c767d4ff4baa48c26fb"
+      "sha256": "241f25583710015fb7f31cc42227b15b65dd4bb89e7522d689354dcf4838cddf"
+    },
+    {
+      "path": "ptc_retention_audit.R",
+      "sha256": "eadf2f109ff0ed47543e2370580efd1005368e3fda48c446b4f8aba50d43fea9"
     },
     {
       "path": "verify_pilot.py",
@@ -308,12 +336,16 @@
       "sha256": "9e36b13ad02d33afbac3ec38ab85713c651c1a00959c47b15a93f458c26ba6e8"
     },
     {
+      "path": "scalability_paths.py",
+      "sha256": "ea253ccb20d3b4dc8db515f3704a43a6f76f7ffc1844bf03542a21cdb396e076"
+    },
+    {
       "path": "README.md",
-      "sha256": "0a6aa51129e143037d392ca44612f76fe87068bbd3e46ea9cde09f2417d471c8"
+      "sha256": "5abef36e595855efd21094868bf1fb3c553ae5dea2103f2bbc1d62ea9e9e1e8b"
     },
     {
       "path": "scalability_SCINA.R",
-      "sha256": "78f3e9c3807b9305b99b465263d4eaf39fbd2b45e344879b6c9e160ce8c3796a"
+      "sha256": "26d41084cc80af0bb0ab76e630f075296b93072152cb4a78e1fcd4f13d22a78b"
     },
     {
       "path": "evaluate_comparator.py",
@@ -348,24 +380,32 @@
       "sha256": "f6e94d72dc0603b9c94b3583d034285a45f85a7dba7b4636ee6dd9d0298d1dd3"
     },
     {
+      "path": "ptc_comparator_replay.py",
+      "sha256": "db02b0df8384ffa49a91f3f43a5292db42effae132801c8328b7f56b96ccf2a3"
+    },
+    {
       "path": "scalability_method_job.py",
-      "sha256": "15dbaa30fb356595307f806a4bf75a3160be740c95bd1ada6157c198b5462e99"
+      "sha256": "080de029712e146e1ed4ac6dc408d788127be857580e09c6b7667779f8f9223b"
     },
     {
       "path": "ptc_dispatch.py",
       "sha256": "6e0fc90f887bb603222aea7f583a8c2fd89fafd54939e50d105ee258abe2f3df"
     },
     {
+      "path": "unknown_expression.py",
+      "sha256": "953a765de8a2eaa6623d8aca4a216281d16a32948450243b1e5f4c4ff52aa4ca"
+    },
+    {
       "path": "full_GBM_finalize.py",
-      "sha256": "04e3ba1e0d7d08c0e8dc7e5d9c005a2a5fd855ebc417f78fbd295ee47b2ab435"
+      "sha256": "e53d40d04c6bc7570bd1d349ad4fd0808f2524c93efb03a43d95248beb73a2cd"
     },
     {
       "path": "scina_library_dispatch.py",
-      "sha256": "4e2375df480af0b09a14f28215a33d10780846b160d83649795f0171298a78f5"
+      "sha256": "baf9c07d5097c11741e67301314dd6721860d47033743863cdfb0f4ad74c87ce"
     },
     {
       "path": "scalability_dispatch.py",
-      "sha256": "5af6d5358ec69b92e991d9add8895d21864a9a66b07fe671071ebb1dae12321d"
+      "sha256": "ec21e80bf4d657f2282774e0024e625a52e235fdb24ab95ff07383b6e05ee424"
     },
     {
       "path": "verify_selected_mapping.py",
@@ -388,7 +428,7 @@
       "sha256": "585e25ef8f5946a52bf2aed68d5becfc38be94a8663aa01c1b31d88aa57f1de3"
     }
   ],
-  "archived_at": "2026-09-18T01:43:07.194195+00:00",
+  "archived_at": "2026-09-18T02:39:48.329561+00:00",
   "excluded": [
     "data",
     "per-cell labels",
