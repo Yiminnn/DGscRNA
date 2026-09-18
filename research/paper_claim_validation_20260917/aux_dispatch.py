@@ -39,8 +39,11 @@ def tick():
                 tasks.append((f'SCINA/{sample}','evaluate_comparator.py',['SCINA',sample],
                     'claim_GBM_SCINA',OUT/'comparators/SCINA'/sample/'evaluation','00:30:00','8G',2))
             if catch_ready and (base/'hvg2000/UMAP2_HDBSCAN_R/SCORE_COMPLETE').exists():
+                # The largest native pairwise-DEG pilot already exceeded three
+                # hours. Reserve its bounded recovery allowance for cohort jobs;
+                # keep the audited implementation and memory request unchanged.
                 tasks.append((f'scCATCH/{sample}','comparator_job.py',['scCATCH',sample],
-                    'claim_GBM_scCATCH',OUT/'comparators/scCATCH'/sample/'evaluation','04:00:00','24G',2))
+                    'claim_GBM_scCATCH',OUT/'comparators/scCATCH'/sample/'evaluation','12:00:00','24G',2))
             if dl_ready and sample in pilots:
                 for budget in ['hvg2000','hvg5000']:
                     if not (base/budget/'pipeline_manifest.json').exists():continue
