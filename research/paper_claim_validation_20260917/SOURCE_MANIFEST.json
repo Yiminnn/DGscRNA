@@ -152,6 +152,10 @@
       "sha256": "d3099ae3e63338560a8c19e9f279592c5b0b191e441785839ec11fbf05929706"
     },
     {
+      "path": "adjust_pending_120k_memory.py",
+      "sha256": "21eb9b6ccca47493e0ecb761d677974215f49f1bb25c4e41ab5ee6316c88a99d"
+    },
+    {
       "path": "metadata_chain.py",
       "sha256": "535d1883adc545f45d6c10c9766b365b8ea7be739b5ecf0809ebf28490f7776b"
     },
@@ -205,7 +209,7 @@
     },
     {
       "path": "EXECUTION_NOTES.md",
-      "sha256": "a1b285e3ff9e6abe15e4c3438616412a2a4d6f64ee0fa01c1423ca984b6eadb6"
+      "sha256": "bb851a112f6922de25b4a91194fcf9688f475c36a29f867e12ecaec2f329b472"
     },
     {
       "path": "full_GBM_report.py",
@@ -269,7 +273,7 @@
     },
     {
       "path": "COMPARATOR_PROTOCOL.md",
-      "sha256": "9d8f450cdf4a9dd4ed370bce6eec8bb6c44ca83f72b4576558ae32e3b9f4e29a"
+      "sha256": "7ee9112cb38fe3cb74a410c4b07ca85cb3326300a19c0b204ed081e9a24a164f"
     },
     {
       "path": "refine_controls_derivation.json",
@@ -302,6 +306,10 @@
     {
       "path": "ptc_score_R.R",
       "sha256": "c79736991ed9710f30fb4f0f002f325b605cfd9017ccbb8f0fdb5cafbdf72cc3"
+    },
+    {
+      "path": "adjust_pending_120k_backfill.py",
+      "sha256": "9ed6b4e448855139c11764890311eb6c02b63d335197e777aaf5996f41d9cc33"
     },
     {
       "path": "audit_SN040_cluster_rng.R",
@@ -456,7 +464,7 @@
       "sha256": "585e25ef8f5946a52bf2aed68d5becfc38be94a8663aa01c1b31d88aa57f1de3"
     }
   ],
-  "archived_at": "2026-09-18T06:13:04.713501+00:00",
+  "archived_at": "2026-09-18T07:01:17.102471+00:00",
   "excluded": [
     "data",
     "per-cell labels",
