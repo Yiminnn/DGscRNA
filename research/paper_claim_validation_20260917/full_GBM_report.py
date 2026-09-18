@@ -24,11 +24,19 @@ def run():
     held=pd.read_csv(OUT/'comparison_summary/patient_heldout_summary.csv')
     primary=held[held.cohort=='primary97'].set_index('method')
     marker=primary.loc[['DG-scRNA','scType','scCATCH','SCINA']].sort_values('macroF1_present_mean',ascending=False)
+    routes=pd.read_csv(OUT/'summary/patient_heldout_route_comparisons.csv')
+    snn=routes[(routes.cohort=='primary97')&(routes.evidence=='database_or_external')&(routes.route=='PCA30_SNN')].iloc[0]
+    support=pd.read_csv(OUT/'unknown_expression/class_condition_support.csv')
+    tested=support[support.status=='tested']
+    supported={c:', '.join(tested.loc[tested.condition==c,'label']) or 'none' for c in ['fixed_glioma','training_patient_selected']}
+    support_text=f"Expression contrasts meeting the frozen support threshold: fixed glioma markers — {supported['fixed_glioma']}; training-patient-selected markers — {supported['training_patient_selected']}. Insufficient-support contrasts are retained in the tables and are not evidence of no expression difference."
     text=f'''# Completed GBM evidence package
 
 The native-R core covers 121 samples / 59 patients and 429,305 cells, with the historical primary 97 samples / 55 patients reported separately. All 726 feature-budget units and 2,904 clustering outputs have terminal predictions, evaluation tables and figures. The 139,392 terminal conditions include trained, no-op and untrainable states; these are not 139,392 successful neural-network fits.
 
 At fixed historical glioma marker/mean cutoff, HVG2000/UMAP2/HDBSCAN has primary patient-weighted terminal macro-F1 {original.macroF1_present_mean:.6f}. The highest point among the 24 fixed-marker configurations is {best.budget}/{best.route}, {best.macroF1_present_mean:.6f}. Paired-patient intervals and Holm-adjusted comparisons determine the strength of evidence. Selecting a maximum is not proof of a global optimum, equivalence or noninferiority.
+
+With equal training-patient selection opportunities over HVG budgets, primary marker libraries and cutoffs within each route, PCA30/SNN has heldout mean {snn.candidate_mean_F1:.6f} versus UMAP2/HDBSCAN {snn.reference_mean_F1:.6f}. The paired difference is {snn.mean_delta:.6f} (conditional95%patient-bootstrapCI[{snn.CI95_low:.6f},{snn.CI95_high:.6f}], Holm-adjusted Wilcoxon p={snn.p_Holm:.6g}). This compares route-specific selected workflows, not an isolated clusterer effect. The observed GBM evidence does not establish the original UMAP-HDBSCAN route as best; preserve this counterexample.
 
 All 363 geometry-only controls hold RNA scoring and normalized HVG2000 DL expression fixed while changing geometry. Their 2000-gene anchor exactly equals the original arm. Native versus fixed DL genes at the same geometry isolates the DL-input effect. Another 54 MLP controls and 180 representation controls cover the three count-selected size pilots. Model seeds and embedding seeds are varied separately; the original default is retained. These repeats describe algorithm sensitivity, not additional patients or all-cohort optimal dimensions.
 
@@ -37,6 +45,8 @@ The matched-partition patient-heldout comparison uses terminal DG-scRNA, scType 
 SingleR references contain only labelled training-patient cells, excluding all samples of each heldout patient; its primary mean is {primary.loc['SingleR','macroF1_present_mean']:.6f}. Published pretrained Brain scDeepSort is an atlas-GNN condition, with mean {primary.loc['scDeepSort','macroF1_present_mean']:.6f}. These reference-information conditions differ from marker methods. The pretrained atlas lacks a malignant class; missing vocabulary remains in the denominator. Every primary score includes all cells, including Unknown/unmapped calls. These are retrospective patient-label-heldout folds in an explored cohort, not a never-seen external test cohort.
 
 Unknown is analyzed using counts, detected genes and visible mitochondrial percentage within author cell class. Patient-paired differential expression compares Unknown and called cells within the same sample and author class, with minimum cell/patient support, all gene effects, patient intervals and global BH correction reported. Because the annotation status uses the same expression, these are exploratory algorithm-status associations; doublets and novel cell types are not inferred. The original DL preserves known marker seeds; retained seed errors and newly filled wrong predictions are reported separately. Marker tables expose recovered source/species/assay records and unresolved links without manufacturing independence.
+
+{support_text}
 
 The resource experiment contains 45 cold-input runs: three methods on the same nested 10k / 30k / 50k / 100k / 120k pooled-cell inputs. Each method and input size has three independent process runs from identical counts, with isolated outputs and model caches. Actual wall time, hardware and scheduler peak RSS are recorded, and means and sample standard deviations are reported. Pooled input is not biological batch-correction evidence; see RESOURCE_INTERPRETATION.md for preprocessing and memory-measurement limits.
 
@@ -47,9 +57,13 @@ The original notebook is extended, with all clustering figures indexed and the E
 
 原R主网格覆盖121样本/59患者/429305细胞，97样本/55患者主队列另报。固定旧marker/mean时，原HVG2000/UMAP2/HDBSCAN患者平均终端macro-F1={original.macroF1_present_mean:.6f}；24配置最高点为{best.budget}/{best.route}，{best.macroF1_present_mean:.6f}。需结合配对区间与多重比较，不能把最大值写成全局最优。
 
+各路线在训练患者中都有同等HVG/主marker库/cutoff选择机会时，留出患者PCA30/SNN={snn.candidate_mean_F1:.6f}，UMAP2/HDBSCAN={snn.reference_mean_F1:.6f}；配对差={snn.mean_delta:.6f}，条件95%患者bootstrap区间[{snn.CI95_low:.6f},{snn.CI95_high:.6f}]，Holm校正Wilcoxon p={snn.p_Holm:.6g}。这是经选择的完整路线比较，不能单独归因于聚类器。GBM现有证据不支持原UMAP-HDBSCAN路线最优，反例保留。
+
 363个geometry-only、54个MLP和180个表示/聚类控制完成。参数与种子控制仅限事先按细胞数选定的3个样本。固定原聚类条件下，marker方法留出患者最高点为{marker.index[0]}（{marker.iloc[0].macroF1_present_mean:.6f}），DG-scRNA={primary.loc['DG-scRNA','macroF1_present_mean']:.6f}。SingleR和scDeepSort使用不同reference信息，结果单列保留。
 
 规模验证为三方法×五档细胞量×三次独立运行，最大120000细胞，报告均值与标准差；每次都为完整大输入运行，不是多个小样本合计。Unknown、marker来源和DL新增错误表已更新。沿用原notebook和OneDrive目录；PTC后续控制单独推进，本文件不宣称整项研究完成。
+
+Unknown表达对照达到预设支持人数的细胞大类：固定glioma marker为{supported['fixed_glioma']}；训练患者所选marker为{supported['training_patient_selected']}。支持人数不足的对照仍保留在表中，不能据此声称不存在表达差异。
 ''')
     methods='''# Method description corrections supported by executed source
 

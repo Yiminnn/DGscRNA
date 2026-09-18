@@ -2,6 +2,43 @@
 import os
 from common import OUT, require_slurm, checked, complete, sha, write_json, utc
 
+def plot_patient_qc(patient,dest):
+    require_slurm()
+    import numpy as np
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    conditions=['fixed_glioma','training_patient_selected']
+    counts=[int(patient.condition.eq(c).sum()) for c in conditions]
+    ticks=[f'Fixed marker\n(n={counts[0]})',f'Selected marker\n(n={counts[1]})']
+    fig,axs=plt.subplots(1,3,figsize=(13,4.8),layout='constrained')
+    for ax,key,label,unit in zip(axs,['median_nCount','median_nFeature','median_pct_mt_visible'],
+                               ['Counts','Detected genes','Visible mitochondrial fraction'],
+                               ['Count difference','Gene-count difference','Percentage-point difference']):
+        for i,condition in enumerate(conditions):
+            v=patient.loc[patient.condition==condition,key].to_numpy()
+            if len(v):ax.scatter(np.full(len(v),i)+np.linspace(-.09,.09,len(v)),v,s=12,alpha=.7,color=['#0072B2','#D55E00'][i])
+        ax.axhline(0,color='#555',lw=1);ax.set_xticks([0,1],ticks)
+        ax.set(title=label,ylabel=unit);ax.set_xlim(-.3,1.3)
+    fig.suptitle('Unknown minus called within author cell class\nEach point is a patient; QC association does not establish cell identity',fontsize=12)
+    for ext in ['png','pdf']:fig.savefig(dest/f'Unknown_QC_association.{ext}',dpi=200,bbox_inches='tight')
+    plt.close(fig)
+
+def replot_saved():
+    require_slurm()
+    import json
+    import shutil
+    import pandas as pd
+    dest=OUT/'unknown_summary';assert checked(dest)
+    backup=dest/'figures_before_short_labels';backup.mkdir(exist_ok=True)
+    for name in ['Unknown_QC_association.png','Unknown_QC_association.pdf','manifest.json','COMPLETE']:
+        if not (backup/name).exists():shutil.copy2(dest/name,backup/name)
+    plot_patient_qc(pd.read_csv(dest/'within_truth_class_QC_patient_differences.csv'),dest)
+    meta=json.loads((dest/'manifest.json').read_text())
+    meta.update(plot_source_sha256=sha(__file__),plot_job=os.environ['SLURM_JOB_ID'],plot_updated_at=utc())
+    for ext in ['png','pdf']:meta['files'][f'Unknown_QC_association.{ext}']=sha(dest/f'Unknown_QC_association.{ext}')
+    write_json(dest/'manifest.json',meta);complete(dest)
+
 def run():
     require_slurm()
     import numpy as np
@@ -59,16 +96,7 @@ def run():
     contrasts=table[table.category=='Unknown_minus_called_within_class']
     patient=contrasts.groupby(['patient','condition'])[['median_nCount','median_nFeature','median_pct_mt_visible']].mean().reset_index()
     patient.to_csv(dest/'within_truth_class_QC_patient_differences.csv',index=False)
-    fig,axs=plt.subplots(1,3,figsize=(13,4),layout='constrained')
-    for ax,key,label in zip(axs,['median_nCount','median_nFeature','median_pct_mt_visible'],['Counts','Detected genes','Visible mitochondrial %']):
-        for i,condition in enumerate(['fixed_glioma','training_patient_selected']):
-            v=patient.loc[patient.condition==condition,key].to_numpy()
-            if len(v):ax.scatter(np.full(len(v),i)+np.linspace(-.09,.09,len(v)),v,s=12,alpha=.7,color=['#0072B2','#D55E00'][i])
-        ax.axhline(0,color='#555',lw=1);ax.set_xticks([0,1],['Fixed marker','Selected marker'],rotation=15)
-        ax.set(title=label,ylabel='Unknown minus called; class-matched median difference')
-    fig.suptitle('QC association, not a diagnosis: each point is a patient\nOnly samples/classes containing both called and Unknown cells contribute')
-    for ext in ['png','pdf']:fig.savefig(dest/f'Unknown_QC_association.{ext}',dpi=200,bbox_inches='tight')
-    plt.close(fig)
+    plot_patient_qc(patient,dest)
     (dest/'INTERPRETATION.md').write_text('Unknown is an abstention status. The QC comparisons condition on original author L1 class and average within patients. They are descriptive associations, not proof of doublets, poor-quality cells or a novel cell type. No doublet scores were available in this audited QC export. Mitochondrial percentage refers only to mitochondrial genes visible in the supplied matrix. Wrong known marker seeds are retained by the original algorithm; newly filled wrong predictions are counted separately.\n')
     write_json(dest/'manifest.json',dict(status='completed',n_primary_samples=97,sources=sources,
         no_new_fit=True,no_doublet_or_novel_type_claim=True,
@@ -76,4 +104,8 @@ def run():
         job=os.environ['SLURM_JOB_ID'],source_sha256=sha(__file__),completed_at=utc()))
     complete(dest)
 
-if __name__=='__main__':run()
+if __name__=='__main__':
+    import sys
+    if sys.argv[1:]==['plot_saved']:replot_saved()
+    elif not sys.argv[1:]:run()
+    else:raise ValueError('Expected no arguments or plot_saved')
