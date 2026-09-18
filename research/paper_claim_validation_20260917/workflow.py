@@ -11,6 +11,10 @@ def run():
     d=OUT/'summary';d.mkdir(exist_ok=True)
     core=checked(d,'aggregate_manifest.json','AGGREGATE_COMPLETE')
     state='completed' if core else 'running'
+    controls='completed' if checked(OUT/'controls_summary') else 'running'
+    comparators='completed' if checked(OUT/'comparison_summary') else 'running'
+    resources='completed' if checked(OUT/'scalability_summary') else 'running'
+    ptc='completed' if checked(OUT/'PTC_summary') else 'pending GBM'
     plt.rcParams.update({'font.family':'DejaVu Sans','font.size':8,'pdf.fonttype':42,'svg.fonttype':'none'})
     fig,ax=plt.subplots(figsize=(11,12));ax.set(xlim=(0,1),ylim=(0,1));ax.axis('off')
     def node(x,y,w,h,title,body,color='#0072B2'):
@@ -23,7 +27,7 @@ def run():
     x=.35;w=.62
     node(x,.917,w,.065,'Inputs and evaluation boundary','GSE274546: 121 samples / 59 patients; primary 97 / 55\nAuthor cells; genes detected in >=3 cells; labels stored separately','#525a61')
     arrow(x,.880,x,.862)
-    node(x,.83,w,.06,'Batch scope [existing PTC comparison]','GBM per sample: RNA, no batch integration\nPTC: NMT and TTU CCA; archived all-8 baseline kept separate')
+    node(x,.83,w,.06,'A0 Batch scope [existing PTC comparison]','GBM per sample: RNA, no batch integration\nPTC: NMT and TTU CCA; archived all-8 baseline kept separate')
     arrow(x,.795,x,.775)
     node(x,.738,w,.064,f'A1  Feature budget [GBM {state}]','Native VST: 500 / 1,000 / 2,000 / 3,000 / 5,000 / all\nLogNormalize 10,000; center/scale; record every stage gene list')
     arrow(x,.701,x,.684)
@@ -34,7 +38,7 @@ def run():
     for u,v in [(.17,.09),(.17,.26),(.52,.44),(.52,.61)]:arrow(u,.557,v,.541)
     for xx,title,body in [(.09,'A3 SNN','Louvain r=.5'),(.26,'A3 HDBSCAN','R minPts=50'),(.44,'A3 SNN','Louvain r=.5'),(.61,'A3 HDBSCAN','R minPts=50')]:
         node(xx,.515,.15,.047,title,body);arrow(xx,.488,x,.47)
-    node(x,.44,w,.053,'Cluster DEG and original density score','Wilcoxon / legacy log2FC; density uses FC>1, full-panel denominator\nSingleton factor .8; ties -> Undecided; HDBSCAN noise scored as cluster','#525a61')
+    node(x,.44,w,.053,'Cluster DEG and original density score','Wilcoxon; density sums DEG log2FC>1, full-panel denominator\nSingleton factor .8; ties -> Undecided; HDBSCAN noise scored as cluster','#525a61')
     arrow(x,.41,x,.394)
     node(x,.363,w,.055,f'A4  Marker context [GBM {state}]','16 frozen libraries; 3 cutoffs: none / mean / 0.5\nBrain / glioma / immune / vascular / unions / AllHuman / curated references')
     arrow(x,.33,x,.313)
@@ -48,12 +52,12 @@ def run():
         '6 budgets x 4 clustering routes\nx 16 libraries x 3 cutoffs.\nOriginal 2,000/UMAP/HDBSCAN\nremains a fixed anchor.\nA high score is not assumed.'),
         (.79,'What HVG changes',
         'Single-sample GBM RNA:\ngeometry + DL genes vary;\nDEG scoring keeps all RNA genes.\nPTC CCA budget: anchors,\ngeometry, scoring and DL vary.\nA geometry-only arm must fix DL\nand the scoring gene universe.'),
-        (.60,'Follow-up controls',
-        'Geometry-only fixed DL2000;\nUMAP 10/30D, no-DR,\nclustering parameter curves;\nmatched random seeds;\nPTC marker-retention rescue.\nCompletion is tracked separately.'),
+        (.60,'Ablation completion',
+        f'A7 Geometry-only: {controls}\nA8 Dimensions / clustering /\nembedding seeds: {controls}\nA9 MLP width / epochs /\nmodel seeds: {controls}\nPTC retention: {ptc}'),
         (.43,'Reference interpretation',
         'CARE_TME / BrainAtlas112\ncontributed to author labels.\nTheir results are concordance,\nnot independent validation.\nNo generic neuron is assigned\nto an excitatory/inhibitory class\nusing evaluation outcomes.'),
         (.245,'Publication claim boundary',
-        'Best among evaluated choices,\nwithin specified cohorts/metrics.\nHistorical NMT selected SNN.\nInternal ablation does not prove\nsuperiority to other tools.\nFair competitors, batch, and\nscalability are separate evidence.')]
+        f'Best among evaluated choices,\nwithin specified cohorts/metrics.\nHistorical NMT selected SNN.\nInternal ablation does not prove\nsuperiority to other tools.\nFair comparators: {comparators}\nSingle-run resources: {resources}')]
     for y,title,body in notes:
         ax.text(.725,y,title,fontsize=9,color='#C46518',weight='bold',va='top')
         ax.text(.725,y-.025,body,fontsize=8,va='top',linespacing=1.4)
@@ -62,6 +66,7 @@ def run():
     for ext in ['png','pdf','svg']:fig.savefig(d/f'workflow_decision_tree.{ext}',dpi=300,facecolor='white')
     plt.close(fig)
     write_json(d/'workflow_manifest.json',dict(GBM_core_status=state,job=os.environ['SLURM_JOB_ID'],
-        source_sha256=sha(__file__),completed_at=utc(),followups_separately_tracked=True))
+        source_sha256=sha(__file__),completed_at=utc(),followups_separately_tracked=True,
+        controls=controls,comparators=comparators,scalability=resources,PTC=ptc))
 
 if __name__=='__main__':run()

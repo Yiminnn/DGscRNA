@@ -72,11 +72,58 @@ def run():
         stats.loc[ix,'p_Holm']=np.minimum(1,np.maximum.accumulate(stats.loc[ix,'p'].to_numpy()*np.arange(len(ix),0,-1)))
     stats.to_csv(dest/'paired_patient_comparisons.csv',index=False)
     pd.DataFrame(differences).to_csv(dest/'paired_patient_differences.csv',index=False)
+    # Separate, equal24configuration tuning comparison. It cannot be inserted
+    # into the fixed-partition table against scCATCH or a per-cell method.
+    expanded=allrows[allrows.method.isin(['DG-scRNA','scType']) &
+                     ~allrows.library.isin(['CARE_TME','BrainAtlas112','UNION_all'])]
+    expanded_rows=[];expanded_choices=[]
+    for name,c in [('primary97',expanded[expanded.primary]),('all121',expanded)]:
+        patient=c.groupby(['patient']+spec)[measures].mean().reset_index().merge(folds,on='patient',validate='many_to_one')
+        for method,g in patient.groupby('method'):
+            for fold in sorted(g.fold.unique()):
+                train=g[g.fold!=fold];test=g[g.fold==fold]
+                rank=train.groupby(spec)[measures].mean().reset_index().sort_values(['macroF1_present']+spec,ascending=[False]+[True]*len(spec),kind='stable')
+                assert len(rank)==24*13*3,(method,len(rank))
+                best=rank.iloc[0];mask=np.ones(len(test),dtype=bool)
+                for key in spec:mask &= test[key].eq(best[key]).to_numpy()
+                held=test[mask];assert held.patient.nunique()==test.patient.nunique()
+                expanded_choices.append(dict(cohort=name,fold=int(fold),n_candidates=len(rank),**{k:best[k] for k in spec}))
+                for row in held.to_dict('records'):expanded_rows.append(dict(cohort=name,**row))
+    extra=pd.DataFrame(expanded_rows)
+    extra.to_csv(dest/'equal24_DG_scType_heldout.csv',index=False)
+    pd.DataFrame(expanded_choices).to_csv(dest/'equal24_DG_scType_choices.csv',index=False)
+    corecv=pd.read_csv(OUT/'summary/patient_heldout_test_results.csv',dtype={'cutoff':str})
+    corecv=corecv[(corecv.evidence=='database_or_external')&(corecv.selection=='all_routes')]
+    parity=extra[extra.method=='DG-scRNA'].merge(corecv,on=['cohort','patient'],suffixes=('_comparison','_core'),validate='one_to_one')
+    assert len(parity)==55+59
+    for key in ['budget','route','library','cutoff']:
+        assert np.array_equal(parity[key+'_comparison'],parity[key+'_core']),key
+    np.testing.assert_allclose(parity.macroF1_present_comparison,parity.macroF1_present_core,rtol=0,atol=1e-14)
+    rows=[]
+    for name,c in extra.groupby('cohort'):
+        table=c.pivot(index='patient',columns='method',values='macroF1_present')
+        delta=(table['scType']-table['DG-scRNA']).to_numpy()
+        boot=delta[rng.integers(0,len(delta),size=(10000,len(delta)))].mean(axis=1)
+        rows.append(dict(cohort=name,n_patients=len(delta),DG_mean=float(table['DG-scRNA'].mean()),scType_mean=float(table.scType.mean()),
+            scType_minus_DG=float(delta.mean()),CI95_low=float(np.quantile(boot,.025)),CI95_high=float(np.quantile(boot,.975)),
+            p=float(wilcoxon(delta).pvalue) if np.any(np.abs(delta)>1e-14) else 1.,scope='Secondary equal24configuration tuning; one prespecified contrast per cohort'))
+    pd.DataFrame(rows).to_csv(dest/'equal24_DG_scType_comparison.csv',index=False)
+    solver=[]
+    for sample in cohort['sample']:
+        for i in range(16):
+            meta=json.loads((OUT/'comparators/SCINA'/sample/f'L{i:02d}/manifest.json').read_text())
+            for aid,arm in meta['arms'].items():
+                solver.append(dict(sample=sample,library=arm['library'],cutoff=aid,status=arm['status'],
+                    solver=arm.get('solver','official_unmodified'),native_error=arm.get('native_error'),
+                    n_input_panels=arm['n_input_panels'],n_supported_panels=arm['n_supported_panels']))
+    solver=pd.DataFrame(solver);solver.to_csv(dest/'SCINA_numerical_and_signature_status.csv',index=False)
+    solver.groupby(['solver','status']).size().rename('n_conditions').reset_index().to_csv(dest/'SCINA_solver_counts.csv',index=False)
     write_json(dest/'manifest.json',dict(status='completed',methods=['DG-scRNA']+METHODS,
         primary_scope='Original native-R HVG2000/UMAP2/HDBSCAN partition shared by cluster-based marker methods. Marker/cutoff selected on training patients; SingleR default pruned and scDeepSort published default use distinct reference information.',
         not_compared_as_equal='DG/scType24-configuration tuning is not contrasted with fixed-partition scCATCH as an equal tuning comparison.',
         uncertainty='Paired patient bootstrap conditional on frozen cross-validated predictions; model selection not re-fitted inside bootstrap.',
         retrospective=True,all_cells_in_denominator=True,source_manifests=manifests,
+        equal24_DG_selection_matches_core=True,SCINA_numerical_boundary_guards_disclosed=True,
         files={p.name:sha(p) for p in dest.iterdir() if p.suffix in ['.csv','.gz']},
         job=os.environ['SLURM_JOB_ID'],source_sha256=sha(__file__),completed_at=utc()))
     complete(dest)

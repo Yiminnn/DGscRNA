@@ -9,6 +9,32 @@ import uuid
 from common import OUT, require_slurm, sha, write_json, complete, checked, utc
 import legacy_refine as refine
 
+def preserve_equivalent_duplicate(temp,cache):
+    """GPFS flock can be node-local: verify before accepting atomic publication."""
+    require_slurm()
+    import numpy as np
+    temp=Path(temp);cache=Path(cache)
+    assert checked(temp,'training_manifest.json','COMPLETE')
+    assert checked(cache,'training_manifest.json','COMPLETE')
+    left=json.loads((temp/'training_manifest.json').read_text())
+    right=json.loads((cache/'training_manifest.json').read_text())
+    assert left['provenance']['cache_key']==right['provenance']['cache_key']
+    assert left['provenance']['input_signature']==right['provenance']['input_signature']
+    for path,manifest in [(temp,left),(cache,right)]:
+        assert sha(path/'terminal.npz')==manifest['outputs']['terminal.npz']
+    with np.load(temp/'terminal.npz',allow_pickle=False) as a,np.load(cache/'terminal.npz',allow_pickle=False) as b:
+        assert set(a.files)==set(b.files)
+        for name in a.files:
+            if name=='probabilities':np.testing.assert_allclose(a[name],b[name],rtol=1e-6,atol=1e-7)
+            elif name=='confidence_rounded':np.testing.assert_allclose(a[name],b[name],rtol=0,atol=0,equal_nan=True)
+            else:assert np.array_equal(a[name],b[name]),f'Concurrent deterministic result differs: {name}'
+    write_json(temp/'DUPLICATE_TERMINAL_EQUIVALENCE.json',dict(status='passed',published_cache=str(cache),
+        terminal_labels_splits_rounded_confidence_exact=True,probability_rtol=1e-6,probability_atol=1e-7,
+        published_manifest_sha256=sha(cache/'training_manifest.json'),duplicate_manifest_sha256=sha(temp/'training_manifest.json'),
+        note='Verified duplicate retained; atomic canonical publication reused',job=os.environ['SLURM_JOB_ID']))
+    directory=cache.parent/'duplicate_publications';directory.mkdir(exist_ok=True)
+    temp.rename(directory/temp.name)
+
 def finish_route(source, only_arm=None, dl_prep=None):
     require_slurm()
     import numpy as np
@@ -64,7 +90,11 @@ def finish_route(source, only_arm=None, dl_prep=None):
                     first_condition=str(dest),reference_labels_used_for_fit=False,
                     driver_source_sha256=sha(__file__),job=os.environ['SLURM_JOB_ID']))
                 assert checked(tmp,'training_manifest.json','COMPLETE')
-                tmp.rename(cache)
+                try:
+                    tmp.rename(cache)
+                except FileExistsError:
+                    preserve_equivalent_duplicate(tmp,cache)
+                    reused=True
             cm=json.loads((cache/'training_manifest.json').read_text())
             assert cm['provenance']['cache_key']==key
             z=np.load(cache/'terminal.npz',allow_pickle=False)

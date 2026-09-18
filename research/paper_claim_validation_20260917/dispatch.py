@@ -78,7 +78,7 @@ def tick():
                 tries=u.get('post_attempts',0)
                 if tries>=3:
                     u['needs_review']='postprocess_failed';continue
-                if active_post<8:
+                if active_post<24:
                     u['post_job']=submit(source,'postprocess.py',[prep],['--job-name=claim_GBM_post','--cpus-per-task=2','--mem=12G','--time=00:30:00'])
                     u['post_attempts']=tries+1;u['post_submitted']=time.time();active_post+=1;write_json(path,state)
                 continue

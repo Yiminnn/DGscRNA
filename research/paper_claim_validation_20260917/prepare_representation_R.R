@@ -33,8 +33,11 @@ colnames(Z)<-paste0('CTRL_',seq_len(ncol(Z)))
 obj[['control']]<-CreateDimReducObject(embeddings=Z,key='CTRL_',assay='RNA')
 write.csv(Z,file.path(dest,'control_embedding.csv'))
 saveRDS(obj,file.path(dest,'expression_PCA30.rds'),compress=FALSE)
-for(file in c('cells.csv','selected_features.txt','geometry_features.txt','scoring_features.txt','DL_features.txt'))
-  stopifnot(file.link(file.path(source,file),file.path(dest,file)))
+for(file in c('cells.csv','selected_features.txt','geometry_features.txt','scoring_features.txt','DL_features.txt')) {
+  target<-file.path(dest,file)
+  if(!file.exists(target))stopifnot(file.link(file.path(source,file),target))
+  stopifnot(digest(file=target,algo='sha256')==digest(file=file.path(source,file),algo='sha256'))
+}
 m$reference_prepare_manifest_sha256<-digest(file=file.path(source,'prepare_manifest.json'),algo='sha256')
 m$expression_sha256<-digest(file=file.path(dest,'expression_PCA30.rds'),algo='sha256')
 m$representation_control<-cfg;m$geometry_dimensions<-ncol(Z)
