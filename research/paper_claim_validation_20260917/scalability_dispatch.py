@@ -1,5 +1,6 @@
 """Release larger cold-input resource runs only after measured smaller pilots."""
 import json
+import math
 import re
 import shutil
 import subprocess
@@ -21,6 +22,12 @@ def accounting(job):
     data=[dict(zip(lines[0].split('|'),r.split('|'))) for r in lines[1:]]
     return data
 
+def completed_accounting(record):
+    rows=record.get('accounting',[])
+    parent=[r for r in rows if r.get('JobID')==record.get('job')]
+    return (len(parent)==1 and parent[0].get('State')=='COMPLETED'
+            and any(r.get('MaxRSS') for r in rows))
+
 def tick():
     path=OUT/'scalability_dispatch_state.json'
     state=json.loads(path.read_text()) if path.exists() else dict(jobs={})
@@ -34,8 +41,14 @@ def tick():
             key=task_key(method,n,repeat);record=state['jobs'].setdefault(key,{})
             if n==10000 and repeat==0 and not record:record.update(job=PILOTS[method],submitted=0,status='submitted',pilot=True)
             if checked(dest(method,n,repeat)):
-                record['status']='complete'
-                if 'accounting' not in record:record['accounting']=accounting(record['job'])
+                # A result marker may precede final SLURM accounting. Refresh a
+                # partial snapshot instead of persisting RUNNING/empty RSS forever.
+                if not completed_accounting(record):record['accounting']=accounting(record['job'])
+                exact=[r for r in record['accounting'] if r.get('JobID')==record['job']]
+                if completed_accounting(record):record['status']='complete'
+                elif exact and exact[0]['State'].split()[0] in ['FAILED','TIMEOUT','OUT_OF_MEMORY','CANCELLED','NODE_FAIL']:
+                    record['status']='needs_review'
+                else:record['status']='results_ready_awaiting_accounting'
                 continue
             if record.get('job') in active:continue
             if record.get('job') and time.time()-record.get('submitted',0)<180:continue
@@ -80,12 +93,26 @@ def tick():
             if repeat:
                 same_size=state['jobs'][task_key(method,n)]
                 if same_size.get('memory_GB'):mem=same_size['memory_GB']
-            wall='24:00:00' if method=='DG-scRNA' and n>=100000 else '12:00:00' if method=='DG-scRNA' else '00:30:00' if method=='SCINA' else '08:00:00'
+            wall='12:00:00' if method=='DG-scRNA' else '00:30:00' if method=='SCINA' else '08:00:00'
+            wall_details={}
+            if method=='DG-scRNA' and n>=100000:
+                parent=[r for r in gate_record['accounting'] if r['JobID']==gate_record['job']]
+                assert len(parent)==1 and parent[0]['State']=='COMPLETED',parent
+                gate_seconds=int(parent[0]['ElapsedRaw']);assert gate_seconds>0
+                # Scheduling headroom only, not an empirical complexity model or
+                # a reported runtime. Keep every scientific parameter unchanged.
+                wall_estimate=gate_seconds*(n/gate)**2*1.5
+                hours=min(72,max(24,6*math.ceil(wall_estimate/(6*3600))))
+                wall=f'{hours}:00:00'
+                wall_details=dict(gate_elapsed_seconds=gate_seconds,
+                    uncapped_wall_estimate_seconds=wall_estimate,
+                    wall_reservation_policy='1.5 * completed50k_elapsed * (n/50000)^2; round up6h; min24h/max72h')
             script='scalability_job.py' if method=='DG-scRNA' else 'scalability_method_job.py'
             args=[n,repeat] if method=='DG-scRNA' else [method,n,repeat]
             job=submit(source,script,args,[f'--job-name=claim_scale_{method}_{n}_r{repeat}','--cpus-per-task=4',f'--mem={mem}G',f'--time={wall}'])
             record.update(job=job,submitted=time.time(),status='submitted',source=str(source),memory_GB=mem,
-                          resource_repeat=repeat,pilot_gate=gate,gate_maxRSS_GB=max(measured),uncapped_estimate_GB=estimate);slots+=1
+                          resource_repeat=repeat,pilot_gate=gate,gate_maxRSS_GB=max(measured),uncapped_estimate_GB=estimate,
+                          requested_walltime=wall,**wall_details);slots+=1
             write_json(path,state)
     completed=sum(r.get('status')=='complete' for r in state['jobs'].values())
     state.update(expected=45,repeats_per_method_size=3,completed=completed,last_check=utc(),concurrency_limit=limit,
