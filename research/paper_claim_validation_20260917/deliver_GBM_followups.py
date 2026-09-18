@@ -74,7 +74,10 @@ def run():
     guard_audit=OUT/'verification/scCATCH_dimension_guard_audit'
     if guard_audit.exists():
         assert checked(guard_audit)
-        bundle([p for p in guard_audit.rglob('*') if p.is_file()],OUT,
+        native_audit=OUT/'comparators/scCATCH/TKU4163/hvg2000/PCA30_SNN'
+        assert checked(native_audit,'audit_manifest.json','AUDIT_COMPLETE')
+        proof_roots=[guard_audit,OUT/'verification/scCATCH_dimension_diagnosis',native_audit]
+        bundle([p for root in proof_roots for p in root.rglob('*') if p.is_file()],OUT,
                'artifacts/scCATCH_dimension_guard_validation.tar.gz')
     from delivery_index import update
     files.extend(update(STAGE,'GBM_full'))
