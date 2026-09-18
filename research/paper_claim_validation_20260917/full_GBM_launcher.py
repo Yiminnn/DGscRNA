@@ -14,7 +14,7 @@ def ready():
     samples=list(csv.DictReader((OUT/'protocol/cohort.csv').open()))
     for method in ['scType','scCATCH','SCINA','SingleR','scDeepSort']:
         checks[method]=all(checked(OUT/'comparators'/method/r['sample']/'evaluation') for r in samples)
-    checks['parallel_analyses']=all(checked(OUT/name) for name in ['controls_summary','comparison_summary',
+    checks['parallel_analyses']=all(checked(OUT/name) for name in ['DG_fixed_partition_selection','controls_summary','comparison_summary',
         'comparison_summary/diagnostics','unknown_summary','unknown_expression','scalability_summary'])
     write_json(OUT/'full_GBM_completion_gates.json',dict(checks=checks,ready=all(checks.values()),checked_at=utc()))
     return all(checks.values())

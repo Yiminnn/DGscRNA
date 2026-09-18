@@ -19,11 +19,13 @@ def tick():
     comparators=all(checked(OUT/'comparators'/m/r['sample']/'evaluation')
         for m in ['scType','scCATCH','SCINA','SingleR','scDeepSort'] for r in cohort)
     compared=checked(OUT/'comparison_summary')
-    tasks=[('controls_summary','aggregate_controls.py',core and controls,'32G','02:00:00'),
-        ('comparison_summary','aggregate_comparators.py',core and comparators,'32G','02:00:00'),
+    selected=checked(OUT/'DG_fixed_partition_selection')
+    tasks=[('DG_fixed_partition_selection','fixed_partition_selection.py',core,'8G','00:30:00'),
+        ('controls_summary','aggregate_controls.py',core and controls,'32G','02:00:00'),
+        ('comparison_summary','aggregate_comparators.py',core and comparators and selected,'32G','02:00:00'),
         ('comparison_summary/diagnostics','comparison_diagnostics.py',compared,'24G','02:00:00'),
-        ('unknown_summary','unknown_diagnostics.py',compared,'16G','02:00:00'),
-        ('unknown_expression','unknown_expression.py',compared,'32G','04:00:00'),
+        ('unknown_summary','unknown_diagnostics.py',selected,'16G','02:00:00'),
+        ('unknown_expression','unknown_expression.py',selected,'32G','04:00:00'),
         ('scalability_summary','aggregate_scalability.py',scale.get('completed')==45,'8G','01:00:00')]
     slots=sum(name.startswith('claim_GBM_analysis_') for name,status in active.values())
     for folder,script,ready,mem,wall in tasks:

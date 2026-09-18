@@ -61,7 +61,7 @@
     },
     {
       "path": "aggregate_comparators.py",
-      "sha256": "b039d91bb9c7c3e036325d64ceaa7eb49f71aa5f499adba22ec7acd86f987204"
+      "sha256": "7ae801064a8484877c37f212ff6e10629069547d1e0e435e29f3d234db489874"
     },
     {
       "path": "ptc_common.py",
@@ -105,7 +105,7 @@
     },
     {
       "path": "unknown_diagnostics.py",
-      "sha256": "29a2e4e1b5ed31efdd4bf18b55089132a8b53126397e71be367d687dcf327499"
+      "sha256": "d5ac00ea1357d57e23da1ade681bd20a25dd5b2c0ada97785852fdf5a3dcba06"
     },
     {
       "path": "PLAN_ZH.md",
@@ -121,7 +121,7 @@
     },
     {
       "path": "full_GBM_launcher.py",
-      "sha256": "c7ecb94e52f4be004e2542022026a2c382ccb565c19f536e18770bcc313f9d83"
+      "sha256": "f8a086684ae203e6618bb468de667db9409468c13e889d074ea12a822b0b3188"
     },
     {
       "path": "build_sccatch_markers.py",
@@ -133,7 +133,7 @@
     },
     {
       "path": "analysis_dispatch.py",
-      "sha256": "1427b034ded16f8eb81302b9e230c09c4fed6e2168e0eb7d39560ddca05e5040"
+      "sha256": "ca23957f411cfecef908cc001f3d6c7217e7797de1653db8f56b0fb9f575713f"
     },
     {
       "path": "plot_unit.py",
@@ -197,7 +197,7 @@
     },
     {
       "path": "EXECUTION_NOTES.md",
-      "sha256": "5b330d9563b8f8f86734d7a220b452f655a61f2565a97d76e65f52469eea1da0"
+      "sha256": "0c13461a498e825e597d0898bc7281c07ca2e6c87997f18c020139ed2d082574"
     },
     {
       "path": "full_GBM_report.py",
@@ -245,7 +245,7 @@
     },
     {
       "path": "deliver_GBM_followups.py",
-      "sha256": "fb6ab4b3388df94675beab812f2168f27da39ef61fabc11dd1a8b1fff7c873c5"
+      "sha256": "9d9d05b9f8466abacc4b2b25261153d8574f3e899ae0d51d840e37ce1b6c6adf"
     },
     {
       "path": "aux_dispatch.py",
@@ -376,6 +376,10 @@
       "sha256": "8bb9a7ae52045e3bb3b29bea9f66c7246b20ea49bd6376b03c0592fb33d00e2a"
     },
     {
+      "path": "GOAL_SCOPE_RECONCILIATION.md",
+      "sha256": "2a8d403b70bc08d647dbb6feb9f18a5dff92c5d5b237380e077ce06a04d9f14a"
+    },
+    {
       "path": "dispatch.py",
       "sha256": "2cdfc8d41b03804b1e384791caecec705c48cb4f7573dfaf2d8f78c3f751920b"
     },
@@ -396,8 +400,12 @@
       "sha256": "6e0fc90f887bb603222aea7f583a8c2fd89fafd54939e50d105ee258abe2f3df"
     },
     {
+      "path": "fixed_partition_selection.py",
+      "sha256": "95d2eb574670247c6c8822541116d7c91278d0dec8eac04a52d51ba82a23214b"
+    },
+    {
       "path": "unknown_expression.py",
-      "sha256": "953a765de8a2eaa6623d8aca4a216281d16a32948450243b1e5f4c4ff52aa4ca"
+      "sha256": "03e8a2544fbcfdbc7c368a3bf1b585360d25785a6001f8ee27d6310315c17473"
     },
     {
       "path": "full_GBM_finalize.py",
@@ -436,7 +444,7 @@
       "sha256": "585e25ef8f5946a52bf2aed68d5becfc38be94a8663aa01c1b31d88aa57f1de3"
     }
   ],
-  "archived_at": "2026-09-18T03:31:17.577264+00:00",
+  "archived_at": "2026-09-18T03:40:31.199959+00:00",
   "excluded": [
     "data",
     "per-cell labels",

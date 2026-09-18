@@ -11,12 +11,12 @@ def run():
     import matplotlib.pyplot as plt
     from prediction_helpers import read_native,map_labels,UNKNOWN
 
-    assert checked(OUT/'comparison_summary')
+    assert checked(OUT/'DG_fixed_partition_selection')
     dest=OUT/'unknown_summary';dest.mkdir(exist_ok=True)
     cohort=pd.read_csv(OUT/'protocol/cohort.csv')
-    cv=pd.read_csv(OUT/'comparison_summary/patient_heldout_results.csv',dtype={'cutoff':str})
+    cv=pd.read_csv(OUT/'DG_fixed_partition_selection/patient_heldout_results.csv',dtype={'cutoff':str})
     cv=cv[(cv.method=='DG-scRNA')&(cv.cohort=='primary97')]
-    rows=[];errors=[];sources={}
+    rows=[];errors=[];sources={'DG_fixed_partition_selection/manifest.json':sha(OUT/'DG_fixed_partition_selection/manifest.json')}
     for s in cohort[cohort.primary].itertuples():
         truth=pd.read_csv(OUT/'evaluation_inputs'/s.sample/'truth.csv.gz',dtype=str,keep_default_na=False)
         qc=pd.read_csv(OUT/'evaluation_inputs'/s.sample/'qc.csv.gz')

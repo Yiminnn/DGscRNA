@@ -17,12 +17,12 @@ def run():
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     from prediction_helpers import read_native,UNKNOWN
-    assert checked(OUT/'comparison_summary')
+    assert checked(OUT/'DG_fixed_partition_selection')
     dest=OUT/'unknown_expression';dest.mkdir(exist_ok=True)
     cohort=pd.read_csv(OUT/'protocol/cohort.csv');cohort=cohort[cohort.primary]
-    cv=pd.read_csv(OUT/'comparison_summary/patient_heldout_results.csv',dtype={'cutoff':str})
+    cv=pd.read_csv(OUT/'DG_fixed_partition_selection/patient_heldout_results.csv',dtype={'cutoff':str})
     cv=cv[(cv.method=='DG-scRNA')&(cv.cohort=='primary97')]
-    genes=set();local={};sources={}
+    genes=set();local={};sources={'DG_fixed_partition_selection/manifest.json':sha(OUT/'DG_fixed_partition_selection/manifest.json')}
     for row in cohort.itertuples():
         p=OUT/'GBM'/row.sample/'hvg2000/Seurat_gene_names.csv'
         g=pd.read_csv(p,dtype=str,keep_default_na=False)

@@ -49,6 +49,17 @@ def run():
             anchor=g[(g.library=='CM2_glioma_other')&(g.cutoff==('mean' if method=='DG-scRNA' else 'default' if method in ['scType','scCATCH'] else 'overlap1'))]
             for row in anchor.to_dict('records'):fixed.append(dict(cohort=name,**row))
     cv=pd.DataFrame(predictions);cv.to_csv(dest/'patient_heldout_results.csv',index=False)
+    # The earlier DG-only table may release Unknown diagnostics, but the final
+    # benchmark must independently reproduce every selected context and metric.
+    assert checked(OUT/'DG_fixed_partition_selection')
+    early=pd.read_csv(OUT/'DG_fixed_partition_selection/patient_heldout_results.csv',dtype={'cutoff':str})
+    keys=['cohort','patient']
+    parity=cv[cv.method=='DG-scRNA'].merge(early,on=keys,suffixes=('_full','_early'),validate='one_to_one')
+    assert len(parity)==len(early)==55+59
+    for key in spec+['fold']:
+        assert np.array_equal(parity[key+'_full'],parity[key+'_early']),key
+    for key in measures:
+        np.testing.assert_allclose(parity[key+'_full'],parity[key+'_early'],rtol=0,atol=1e-14)
     pd.DataFrame(selected).to_csv(dest/'training_patient_choices.csv',index=False)
     pd.DataFrame(fixed).to_csv(dest/'fixed_glioma_marker_anchors.csv',index=False)
     summary=cv.groupby(['cohort','method'])[measures].agg(['mean','std','count']);summary.columns=['_'.join(v) for v in summary.columns]
@@ -126,7 +137,8 @@ def run():
         not_compared_as_equal='DG/scType24-configuration tuning is not contrasted with fixed-partition scCATCH as an equal tuning comparison.',
         uncertainty='Paired patient bootstrap conditional on frozen cross-validated predictions; model selection not re-fitted inside bootstrap.',
         retrospective=True,all_cells_in_denominator=True,source_manifests=manifests,
-        equal24_DG_selection_matches_core=True,SCINA_numerical_boundary_guards_disclosed=True,
+        equal24_DG_selection_matches_core=True,fixed_partition_DG_selection_matches_early_diagnostics=True,
+        SCINA_numerical_boundary_guards_disclosed=True,
         files={p.name:sha(p) for p in dest.iterdir() if p.suffix in ['.csv','.gz']},
         job=os.environ['SLURM_JOB_ID'],source_sha256=sha(__file__),completed_at=utc()))
     complete(dest)
