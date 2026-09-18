@@ -201,7 +201,7 @@
     },
     {
       "path": "EXECUTION_NOTES.md",
-      "sha256": "5c6b1ef3e1b8ed833f0e6791accd68718dc50fe4699ebf14d52227c92f30ae8f"
+      "sha256": "8ab718be872eb7b54c366dcb681042a0dee8f07d2c4b05ea376f86d523a4652c"
     },
     {
       "path": "full_GBM_report.py",
@@ -253,7 +253,7 @@
     },
     {
       "path": "aux_dispatch.py",
-      "sha256": "016f064ea6f3afec1640e03c2be5e348c9180ed01cb13090e3ea83d2c45a27a9"
+      "sha256": "3f6f553ba5309e4900303788c4495e4cbc33a6c02f718ba92fc72f19c9394678"
     },
     {
       "path": "reviewer_evidence.py",
@@ -265,7 +265,7 @@
     },
     {
       "path": "COMPARATOR_PROTOCOL.md",
-      "sha256": "2f0a18d9a4d640ae8653c57b44f06b8010e84b229bc9a81610deb4761eb65158"
+      "sha256": "9d8f450cdf4a9dd4ed370bce6eec8bb6c44ca83f72b4576558ae32e3b9f4e29a"
     },
     {
       "path": "refine_controls_derivation.json",
@@ -404,6 +404,10 @@
       "sha256": "6e0fc90f887bb603222aea7f583a8c2fd89fafd54939e50d105ee258abe2f3df"
     },
     {
+      "path": "sccatch_resource_gate.py",
+      "sha256": "27cdd2c9c0475129019ef531ec623c168437b8a3727163139e492e778f680335"
+    },
+    {
       "path": "fixed_partition_selection.py",
       "sha256": "95d2eb574670247c6c8822541116d7c91278d0dec8eac04a52d51ba82a23214b"
     },
@@ -448,7 +452,7 @@
       "sha256": "585e25ef8f5946a52bf2aed68d5becfc38be94a8663aa01c1b31d88aa57f1de3"
     }
   ],
-  "archived_at": "2026-09-18T04:40:58.280955+00:00",
+  "archived_at": "2026-09-18T05:26:25.730032+00:00",
   "excluded": [
     "data",
     "per-cell labels",
