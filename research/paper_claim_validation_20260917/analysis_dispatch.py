@@ -22,6 +22,7 @@ def tick():
     selected=checked(OUT/'DG_fixed_partition_selection')
     tasks=[('DG_fixed_partition_selection','fixed_partition_selection.py',core,'8G','00:30:00'),
         ('controls_summary','aggregate_controls.py',core and controls,'32G','02:00:00'),
+        ('workflow_choice_summary','workflow_choice_summary.py',core and checked(OUT/'controls_summary'),'8G','00:30:00'),
         ('comparison_summary','aggregate_comparators.py',core and comparators and selected,'32G','02:00:00'),
         ('comparison_summary/diagnostics','comparison_diagnostics.py',compared,'24G','02:00:00'),
         ('unknown_summary','unknown_diagnostics.py',selected,'16G','02:00:00'),

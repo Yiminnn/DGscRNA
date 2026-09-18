@@ -23,7 +23,7 @@ def run():
             for path in sorted(set(paths)):arc.add(path,arcname=str(path.relative_to(relative)),recursive=False)
         temporary.replace(target);files.append(str(target.relative_to(STAGE)))
     copy(ROOT/'notebooks/dgscrna_results.ipynb')
-    folders=['DG_fixed_partition_selection','controls_summary','comparison_summary','unknown_summary','unknown_expression','marker_evidence_summary','scalability_summary','legacy_coverage_audit','GBM_full_summary']
+    folders=['DG_fixed_partition_selection','controls_summary','workflow_choice_summary','comparison_summary','unknown_summary','unknown_expression','marker_evidence_summary','scalability_summary','legacy_coverage_audit','GBM_full_summary']
     for name in folders:
         for p in (OUT/name).rglob('*'):
             if p.is_file() and p.name not in ['delivery_manifest.json','DELIVERY_RECEIPT.json','REMOTE_RECEIPT_UPLOADED.json','GBM_FULL_DELIVERED.json']:copy(p)

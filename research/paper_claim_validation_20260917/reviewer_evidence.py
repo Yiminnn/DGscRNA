@@ -23,7 +23,7 @@ def run(phase='GBM'):
     assert previous['status']=='complete' and previous['evaluated_units']==100
     rows=[
       ('PI08-13：固定 marker 的降维/聚类与逐样本图；R2-2模块消融',core,
-       link(OUT/'summary/primary_fixed_marker_24.csv','六档HVG×四路线')+'；'+link(OUT/'summary/workflow_decision_tree.pdf','英文主流程图'),
+       link(OUT/'summary/primary_fixed_marker_24.csv','六档HVG×四路线')+'；'+link(OUT/'summary/workflow_decision_tree.pdf','英文主流程图')+'；'+link(OUT/'workflow_choice_summary/workflow_node_evidence.csv','逐节点证据')+'；'+link(OUT/'workflow_choice_summary/marker_DL_patient_paired.csv','模块配对贡献'),
        '完整原R终端注释；HVG作用按RNA与CCA分支解释；每种聚类有图。最高点只适用于列明的搜索范围。'),
       ('PI08-04/08-13：不同组织及外部研究 marker',status('marker_evidence_summary'),
        link(OUT/'marker_evidence_summary/library_source_assay_coverage_audit.csv','来源/技术/覆盖审计'),

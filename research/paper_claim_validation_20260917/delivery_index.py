@@ -25,6 +25,7 @@ def update(stage,phase):
           link(rel+'/summary/patient_heldout_summary.csv','训练患者选择配置后的留出评价')+' · '+link(rel+'/summary/marker_DL_factorial_summary.csv','marker × DL 四方比较')]
     if phase in ['GBM_full','PTC_full']:
         rows += [link(rel+'/GBM_full_summary/GBM_FULL_REPORT_ZH.md','GBM 完整补实验中文结果')+' · '+link(rel+'/GBM_full_summary/GBM_FULL_REPORT.md','English full GBM report'),
+                 link(rel+'/workflow_choice_summary/workflow_node_evidence.csv','流程各节点能支持什么结论')+' · '+link(rel+'/workflow_choice_summary/marker_DL_patient_paired.csv','marker × DL 患者配对贡献'),
                  link(rel+'/comparison_summary/paired_patient_comparisons.csv','GBM 与全部比较方法的绝对/相对增益及配对检验'),
                  link(rel+'/controls_summary/geometry_and_DL.png','几何与 DL 特征作用')+' · '+link(rel+'/controls_summary/MLP_training_learning_curves.pdf','实际 DL 学习曲线'),
                  link(rel+'/unknown_expression/INTERPRETATION.md','Unknown 表达分析与解释范围'),
