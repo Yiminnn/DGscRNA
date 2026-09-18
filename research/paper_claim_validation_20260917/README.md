@@ -4,6 +4,12 @@ Execution is in progress. This source archive is not a claim that the full exper
 
 The accepted scope is in `NEXT_STEPS.md`, with original context in `PLAN_ZH.md` and the exclusion of new Darmanis fitting in `DARMANIS_SCOPE_UPDATE_ZH.md`. `COMPARATOR_PROTOCOL.md` separates matched-marker, broader tuning and labelled-reference comparisons.
 
+`PTC_FOLLOWUP_PROTOCOL.md` specifies the bounded continuation: reuse the completed
+native-R grid, evaluate the verified four patient pairs, separate initialization
+from PCA/UMAP seed effects, and test a uniform marker-retention scoring universe.
+Every new PTC scientific entry point checks the verified full-GBM delivery receipt.
+Preparing the adapters does not imply that the PTC parity pilots or new fits passed.
+
 ## Scientific contract
 
 - GSE274546: original121samples/59patients,429305cells; fixed primary97samples/55patients. Counts and author labels are stored separately. All prediction rows retain exact cell IDs.
@@ -17,6 +23,15 @@ The accepted scope is in `NEXT_STEPS.md`, with original context in `PLAN_ZH.md` 
 ## Execution
 
 All scientific computation and plotting require SLURM. `job.sbatch` sets the site environments; `dispatch.py` schedules core fits, terminal checks, evaluation and all-route figures. `aux_dispatch.py` schedules controls and audited marker comparators. `finalize_launcher.py` freezes the current finalizer only after all726core units pass; `core_finalize.py` updates the existing notebook and verifies the upload to the already authorized OneDrive directory. Further controls have separate completion gates.
+
+`scina_library_dispatch.py` gates each library on its own three size pilots before
+parallel cohort release; evaluation still requires all 16 libraries.
+`full_GBM_launcher.py` waits for all controls, competitors and measured resource
+points before the complete GBM report/delivery. `ptc_dispatch.py` then releases
+saved-grid evaluation and native-default parity pilots, followed by 22 controlled
+PTC preparation units and 50 MLP task groups. It requires a marker-retention resource
+pilot before expanding that stage. Scientific failures require log review; they
+are never turned into zero performance or silently dropped.
 
 The scripts contain original site paths under `/fs/scratch/PCON0080/yimin/dgscrna`. This is an execution archive, not a portable Python package release. Raw data, per-cell labels, model weights, installed environments, credentials and rendered notebooks are not copied into Git.
 

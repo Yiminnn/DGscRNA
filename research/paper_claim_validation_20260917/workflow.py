@@ -61,7 +61,7 @@ def run():
     for y,title,body in notes:
         ax.text(.725,y,title,fontsize=9,color='#C46518',weight='bold',va='top')
         ax.text(.725,y-.025,body,fontsize=8,va='top',linespacing=1.4)
-    ax.text(.04,.047,'Retrospective validation: the cohort was explored previously. The frozen folds isolate test labels during configuration selection;\nper-sample fitting does not pool heldout donor expression. No global-optimum or never-seen-cohort claim.',fontsize=8,va='top')
+    ax.text(.04,.047,'Retrospective validation: frozen patient folds isolate test labels during configuration selection. GBM fits each sample separately;\nPTC integrates full-group expression, with patient labels held out for selection. No global-optimum or never-seen-cohort claim.',fontsize=8,va='top')
     fig.subplots_adjust(left=.01,right=.99,top=.99,bottom=.01)
     for ext in ['png','pdf','svg']:fig.savefig(d/f'workflow_decision_tree.{ext}',dpi=300,facecolor='white')
     plt.close(fig)

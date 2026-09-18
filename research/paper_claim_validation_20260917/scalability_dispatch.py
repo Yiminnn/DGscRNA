@@ -55,8 +55,15 @@ def tick():
             if slots>=5:continue
             # Explicit quadratic headroom for original R HDBSCAN; actual peak is
             # reported later, never inferred from these reservation amounts.
-            lower={30000:128,50000:192,100000:384,120000:480} if method=='DG-scRNA' else {30000:64,50000:96,100000:192,120000:256}
-            estimate=max(measured)*(n/gate)**(2 if method=='DG-scRNA' else 1)*1.5
+            lower=({30000:128,50000:192,100000:384,120000:480} if method=='DG-scRNA' else
+                   {30000:32,50000:48,100000:64,120000:80} if method=='SCINA' else
+                   {30000:64,50000:96,100000:192,120000:256})
+            estimate=max(measured)*(n/gate)*1.5
+            if method=='DG-scRNA':
+                # Three additional condensed-distance buffers are reserved above
+                # linear scaling of the entire observed pilot footprint. Scaling
+                # the full Seurat/DEG heap quadratically over-reserves memory.
+                estimate+=3*8*(n*(n-1)-gate*(gate-1))/2/1024**3
             # nextgen nodes advertise515456MiB. A512GiB reservation cannot fit.
             mem=min(480,max(lower[n],int((estimate+31)//32)*32))
             wall='24:00:00' if method=='DG-scRNA' and n>=100000 else '12:00:00' if method=='DG-scRNA' else '08:00:00'

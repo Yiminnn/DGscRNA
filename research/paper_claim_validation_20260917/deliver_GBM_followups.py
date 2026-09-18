@@ -60,7 +60,7 @@ def run():
         if p.is_file() and p.suffix in ['.png','.pdf']:copy(p)
         elif p.is_file() and (p.name in selected or p.suffix=='.json'):resources.append(p)
     bundle(resources,OUT/'scalability','artifacts/single_run_resource_artifacts.tar.gz')
-    for name in ['submissions.jsonl','dispatch_state.json','aux_dispatch_state.json','representation_dispatch_state.json','scalability_dispatch_state.json']:
+    for name in ['submissions.jsonl','dispatch_state.json','aux_dispatch_state.json','representation_dispatch_state.json','scalability_dispatch_state.json','SCINA_library_dispatch_state.json']:
         copy(OUT/name)
     for p in (OUT/'verification').rglob('*'):
         if p.is_file() and p.suffix in ['.json','.csv','.md','.txt']:copy(p)

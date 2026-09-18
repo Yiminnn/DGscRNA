@@ -1,0 +1,15 @@
+{
+  "reference_score_source": "handoff/r_reference_campaign_20260917/reference_score.R",
+  "reference_score_sha256": "8f622eed2e488266e11edd1c9ff3aad4a932e13c2109ebbde1919b10414a8858",
+  "derived_score_sha256": "c79736991ed9710f30fb4f0f002f325b605cfd9017ccbb8f0fdb5cafbdf72cc3",
+  "score_changes": [
+    "Remove old self-copy entry guard; immutable job snapshot is supplied by dispatcher",
+    "Require verified GBM delivery before PTC compute",
+    "Record executing snapshot path, without changing scientific statements"
+  ],
+  "label_rule_source": "handoff/ptc_recovery_20260916/label_rules.py",
+  "label_rule_sha256": "759e2b7fe9b2adfc97f072ff8caed7802f210b649e49bdd5643fdb6dc26048c9",
+  "label_rule_changes": [
+    "Append original ptc_general simplification unchanged from previous evaluation_rules.py"
+  ]
+}

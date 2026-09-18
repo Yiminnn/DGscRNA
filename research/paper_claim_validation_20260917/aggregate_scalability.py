@@ -20,8 +20,11 @@ def run():
             source=dest(method,n);assert checked(source)
             m=json.loads((source/'manifest.json').read_text());sources[f'{method}/{n}']=sha(source/'manifest.json')
             acc=accounting(m['job']);peak=[]
+            for previous in state['jobs'][f'{method}/{n}'].get('attempts',[]):
+                for record in accounting(previous['job']):
+                    accounting_rows.append(dict(method=method,n_cells=n,attempt='previous',**record))
             for r in acc:
-                accounting_rows.append(dict(method=method,n_cells=n,**r))
+                accounting_rows.append(dict(method=method,n_cells=n,attempt='completed_cold_run',**r))
                 if r.get('MaxRSS'):
                     value=re.fullmatch(r'([0-9.]+)([KMGTP]?)',r['MaxRSS']);assert value
                     scale={'':1,'K':1024,'M':1024**2,'G':1024**3,'T':1024**4,'P':1024**5}[value[2]]

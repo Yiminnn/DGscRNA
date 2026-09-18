@@ -33,9 +33,9 @@ def tick():
             if type_ready and all((base/b/'pipeline_manifest.json').exists() for b in ['hvg500','hvg1000','hvg2000','hvg3000','hvg5000','all']):
                 tasks.append((f'scType/{sample}','comparator_job.py',['scType',sample],
                     'claim_GBM_scType',OUT/'comparators/scType'/sample/'evaluation','01:00:00','24G',2))
-            if scina_ready and checked(base/'hvg2000','prepare_manifest.json','PREPARED'):
-                tasks.append((f'SCINA/{sample}','comparator_job.py',['SCINA',sample],
-                    'claim_GBM_SCINA',OUT/'comparators/SCINA'/sample/'evaluation','04:00:00','32G',2))
+            if all(checked(OUT/'comparators/SCINA'/sample/f'L{i:02d}') for i in range(16)):
+                tasks.append((f'SCINA/{sample}','evaluate_comparator.py',['SCINA',sample],
+                    'claim_GBM_SCINA',OUT/'comparators/SCINA'/sample/'evaluation','00:30:00','8G',2))
             if catch_ready and (base/'hvg2000/UMAP2_HDBSCAN_R/SCORE_COMPLETE').exists():
                 tasks.append((f'scCATCH/{sample}','comparator_job.py',['scCATCH',sample],
                     'claim_GBM_scCATCH',OUT/'comparators/scCATCH'/sample/'evaluation','04:00:00','24G',2))

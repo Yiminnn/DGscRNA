@@ -12,6 +12,10 @@
       "sha256": "20a7a0e039594dab4e22ba4f98ac25e6458bbdd2e82c59523f0b1f5588b8b289"
     },
     {
+      "path": "ptc_control_job.py",
+      "sha256": "a1ca727e56320329c22f64e5db9662d2f6234a7eae70d45e391066d85c64dee4"
+    },
+    {
       "path": "install_deepsort.sbatch",
       "sha256": "2133e8a251d0f512cef5c622bb276cc06936c993a7c67755a55b02688987b9a7"
     },
@@ -40,6 +44,10 @@
       "sha256": "2b4e14cf998c97885e556bf91ba94a8e09324734e305e818cf663844509bd253"
     },
     {
+      "path": "ptc_aggregate.py",
+      "sha256": "511c3f9152f87c9362b36b02f014fedf12e4e72c0613df2846b04ac3a733b985"
+    },
+    {
       "path": "terminal.py",
       "sha256": "a284e635e0617025ee34958e342771ca87ec7639d59568377065ed9ab152feb8"
     },
@@ -66,6 +74,10 @@
     {
       "path": "scina_R.R",
       "sha256": "558189387e977d8301fde0d817110db44f208093f3ae3fdc8803c8a372bbaa35"
+    },
+    {
+      "path": "ptc_followup_common.py",
+      "sha256": "8d77fc320c2ba264d3fb66daa14527639e7ba3108647c188a18047e665ee7918"
     },
     {
       "path": "job.sbatch",
@@ -120,6 +132,10 @@
       "sha256": "e0f4164313f7e8db964f897a47bc65147da6a00e77b7d52132d99d8605347154"
     },
     {
+      "path": "ptc_finalize.py",
+      "sha256": "7b0393fbfefd5dc77dc3b9a7bf0633ed96a84b2599b2726d882124cb1e27af02"
+    },
+    {
       "path": "finalize_launcher.py",
       "sha256": "d3099ae3e63338560a8c19e9f279592c5b0b191e441785839ec11fbf05929706"
     },
@@ -140,8 +156,12 @@
       "sha256": "06c9aab8973216b2a82e5a0b65798cb9746c8d2844cb0bc6e2f4ff2f9f579716"
     },
     {
+      "path": "ptc_delivery.py",
+      "sha256": "02a54282a4beeac5f9bcc850691f750afd6e98ec46ecfc4607f9d6d876f6bbe1"
+    },
+    {
       "path": "aggregate_scalability.py",
-      "sha256": "421a6d5f926d3d28172cbad8789967ec4e61bffbef42a5281496afec8cb8bb0a"
+      "sha256": "0127449fb544eda4cd72a0da4ceb9b7eb8f3a240760573e20d2875a5ee6c9313"
     },
     {
       "path": "audit_inputs.py",
@@ -152,8 +172,16 @@
       "sha256": "665da68fd3d39af7d324fa47fae9277d681b58cc450b89acf05e4d216aa92184"
     },
     {
+      "path": "PTC_FOLLOWUP_PROTOCOL.md",
+      "sha256": "040cb4d6310e49ec3ff1d6baa0a9dcfc6e84b4992ff5bdf2bc7b13f1d40ba119"
+    },
+    {
+      "path": "ptc_select.py",
+      "sha256": "310b4ef46349d9e3c2b4b0f22382f576f1dd59a7fb1d429de6b0819b0e7c54fc"
+    },
+    {
       "path": "EXECUTION_NOTES.md",
-      "sha256": "b6794a78363972cb70fbd13a279073d91c44c986755a325c60f7989c9f14adf4"
+      "sha256": "77910ad182065e1aabb42bd08c2aa27549bdbcf63d84882e6a593861b132bcbc"
     },
     {
       "path": "full_GBM_report.py",
@@ -180,6 +208,10 @@
       "sha256": "74542e88fefb9a72c58083ba1f1a13313fb90ab75e98beb00d02b26fe98a6de2"
     },
     {
+      "path": "ptc_terminal.py",
+      "sha256": "cdab6c58d34282887612a6aacdb42e5c451f9fa12107841e215765ae1c29f8be"
+    },
+    {
       "path": "sctype_R.R",
       "sha256": "0f71b6bcfbd63febe26080d967b1f20bb25f1ef5ba42a8034a4be1a12ede9b3a"
     },
@@ -193,11 +225,15 @@
     },
     {
       "path": "deliver_GBM_followups.py",
-      "sha256": "335b94f511af1bdda689a3a9588ff1dc48660eb8a8593f1075623d9575d5a50d"
+      "sha256": "d774372ca962e53fcbdb6cdd116eb526fc2804ede84c1bd96ba3cecd083942d4"
     },
     {
       "path": "aux_dispatch.py",
-      "sha256": "62d557bf85dab9959087e974612d59e7e5c6ed2052337ae15854136a2fbf1c8e"
+      "sha256": "14c42c39d5b0314ce02a52868d1e641b7c5030b60c0400c45ec4cce6a791364e"
+    },
+    {
+      "path": "ptc_evaluate.py",
+      "sha256": "ae7a34d2002123cbee486223c9de06e3db33081e3d0fc5dc1a8bf026f23e2a78"
     },
     {
       "path": "COMPARATOR_PROTOCOL.md",
@@ -212,6 +248,14 @@
       "sha256": "4dfeea9dcbde1fce814ade9903dd64135e02b617b22b1f806d93adfc682a283b"
     },
     {
+      "path": "ptc_derivation.json",
+      "sha256": "4d8532058a65982e5705891a93c7e8b72f3fb9433c06e7f663feee069018e9cd"
+    },
+    {
+      "path": "ptc_label_rules.py",
+      "sha256": "d5e915b699a15534a5b2914bbc1c8e3382d81309a5a000bb9f9756f8d7a99424"
+    },
+    {
       "path": "source_checks.py",
       "sha256": "9d5434b4af03ef3551dfb49cb607bf6fffa6ac1e45842059a20d5b303c3430ba"
     },
@@ -220,8 +264,16 @@
       "sha256": "f5785d297cdaeb05131c1919d7a07eede438622792133c37c8178f66b149319d"
     },
     {
+      "path": "ptc_score_R.R",
+      "sha256": "c79736991ed9710f30fb4f0f002f325b605cfd9017ccbb8f0fdb5cafbdf72cc3"
+    },
+    {
       "path": "audit_SN040_cluster_rng.R",
       "sha256": "7272e67d5db07936d7d4e82d8bedcd4fb035fd545694299f3cadf7d00bbb2d67"
+    },
+    {
+      "path": "ptc_report.py",
+      "sha256": "c39d33a4782dfeeb4aadb4a08f9cca39feda3eef933d9b3b04e20b7d29a8cffc"
     },
     {
       "path": "DARMANIS_SCOPE_UPDATE_ZH.md",
@@ -244,16 +296,20 @@
       "sha256": "e32daabbf2e883666deace944020ebdab406f705f24200ae1cb3a8df9860d3c3"
     },
     {
+      "path": "ptc_prepare_followup.R",
+      "sha256": "fada71e92495b12dfac73af8b1f20a2588f16286e9113c767d4ff4baa48c26fb"
+    },
+    {
       "path": "verify_pilot.py",
       "sha256": "f428b869266b7a6c1b3926dcf8535f274f87a185e4e0bd3901855a9f0775f743"
     },
     {
       "path": "workflow.py",
-      "sha256": "d42ad6331638d8ea6f357e7c8b9dfd213d638b9e398e171f49f57ae195f6d663"
+      "sha256": "9e36b13ad02d33afbac3ec38ab85713c651c1a00959c47b15a93f458c26ba6e8"
     },
     {
       "path": "README.md",
-      "sha256": "7d11fa258d5a7e9b8a0047a72619beea849983b81c642949cb322c86f0d774e8"
+      "sha256": "0a6aa51129e143037d392ca44612f76fe87068bbd3e46ea9cde09f2417d471c8"
     },
     {
       "path": "scalability_SCINA.R",
@@ -296,12 +352,20 @@
       "sha256": "15dbaa30fb356595307f806a4bf75a3160be740c95bd1ada6157c198b5462e99"
     },
     {
+      "path": "ptc_dispatch.py",
+      "sha256": "6e0fc90f887bb603222aea7f583a8c2fd89fafd54939e50d105ee258abe2f3df"
+    },
+    {
       "path": "full_GBM_finalize.py",
       "sha256": "04e3ba1e0d7d08c0e8dc7e5d9c005a2a5fd855ebc417f78fbd295ee47b2ab435"
     },
     {
+      "path": "scina_library_dispatch.py",
+      "sha256": "4e2375df480af0b09a14f28215a33d10780846b160d83649795f0171298a78f5"
+    },
+    {
       "path": "scalability_dispatch.py",
-      "sha256": "f75b228939644f6085f557bfe179d1f2417b4f79e3044362117f038d24664831"
+      "sha256": "5af6d5358ec69b92e991d9add8895d21864a9a66b07fe671071ebb1dae12321d"
     },
     {
       "path": "verify_selected_mapping.py",
@@ -324,7 +388,7 @@
       "sha256": "585e25ef8f5946a52bf2aed68d5becfc38be94a8663aa01c1b31d88aa57f1de3"
     }
   ],
-  "archived_at": "2026-09-18T01:10:58.655472+00:00",
+  "archived_at": "2026-09-18T01:43:07.194195+00:00",
   "excluded": [
     "data",
     "per-cell labels",
