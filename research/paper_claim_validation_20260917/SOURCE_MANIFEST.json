@@ -209,7 +209,7 @@
     },
     {
       "path": "EXECUTION_NOTES.md",
-      "sha256": "01f68006ca50d24cad9017d0bd6c9d2572c1fed6cd032ce5ae4397d4c09c8b9a"
+      "sha256": "15466e5681f927863779f8492e05855e9ff7f3e61505156a2bb85254f24b0714"
     },
     {
       "path": "full_GBM_report.py",
@@ -273,7 +273,7 @@
     },
     {
       "path": "COMPARATOR_PROTOCOL.md",
-      "sha256": "d092e5ba8608b23871874121ed2bb2211b058899a1c3190b195075442ff67e7f"
+      "sha256": "1902fd76254bff502f254baaeacecc375f051f3a4bdacd2d22320eae48c798da"
     },
     {
       "path": "refine_controls_derivation.json",
@@ -480,7 +480,7 @@
       "sha256": "585e25ef8f5946a52bf2aed68d5becfc38be94a8663aa01c1b31d88aa57f1de3"
     }
   ],
-  "archived_at": "2026-09-18T10:02:39.171785+00:00",
+  "archived_at": "2026-09-18T10:53:34.409290+00:00",
   "excluded": [
     "data",
     "per-cell labels",
