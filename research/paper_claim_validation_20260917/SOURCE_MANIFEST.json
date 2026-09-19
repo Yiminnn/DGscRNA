@@ -49,7 +49,7 @@
     },
     {
       "path": "ptc_aggregate.py",
-      "sha256": "a010a16eaa434f74a7704a7f70c05399796a91aac5731c3d6c9898a54eb91e15"
+      "sha256": "f0fdf2058cee83ef276332888144e9b8e9dc6f8e92a1f811208ee96528813732"
     },
     {
       "path": "terminal.py",
@@ -132,6 +132,10 @@
       "sha256": "41823522b23f0b9d5083bd7afd0912a9f1fb029b95ba2aad7dffa232843cd2a2"
     },
     {
+      "path": "deliver_PTC_followup_audit.py",
+      "sha256": "195cfac6319896595ae42eed67effd758d8f9e9afd92f5b9be3231af5ae28846"
+    },
+    {
       "path": "analysis_dispatch.py",
       "sha256": "f814dcd5a04ba209c308d3eb0e8de6cd43b845a0a12bea07d1abdc99364db8d7"
     },
@@ -145,7 +149,7 @@
     },
     {
       "path": "ptc_finalize.py",
-      "sha256": "381cbf98216fceeed366ec2fbc74f6253dabb34360bd8ae39a142004acd06636"
+      "sha256": "411bd43af42c7125f2f6a6bc75628fd477cc70b3ede891c6499054f36b2b4a7c"
     },
     {
       "path": "finalize_launcher.py",
@@ -209,7 +213,7 @@
     },
     {
       "path": "EXECUTION_NOTES.md",
-      "sha256": "5c84dff4f6f4092c86b670a9eb75eacb395540ca8e6bb763c8ccc0fbfe99db4d"
+      "sha256": "a34fe7542ce60449811f5b0632ab1d295ae32ee496198eccadf7b04263732e02"
     },
     {
       "path": "full_GBM_report.py",
@@ -321,7 +325,7 @@
     },
     {
       "path": "ptc_report.py",
-      "sha256": "9afd0f9fe1bce11b8a92796c65671961524b01b1aa2da4317d10d6309b5b5cbb"
+      "sha256": "3d8dfd215b0802ef86f782f8f23286479d4875e7053e6ddeac5d4b11087122ec"
     },
     {
       "path": "DARMANIS_SCOPE_UPDATE_ZH.md",
@@ -378,6 +382,10 @@
     {
       "path": "evaluate_comparator.py",
       "sha256": "74f2307a78e3a4b72d658bde1cf0b618fc242afa78bae4f897b3c2b7c155f9c5"
+    },
+    {
+      "path": "verify_PTC_followup_delivery.py",
+      "sha256": "2dcb46675a9aeb2dc86bc8933690028c43ab48fed522c8662aa0296013b0ca2a"
     },
     {
       "path": "representation_score_derivation.json",
@@ -488,7 +496,7 @@
       "sha256": "585e25ef8f5946a52bf2aed68d5becfc38be94a8663aa01c1b31d88aa57f1de3"
     }
   ],
-  "archived_at": "2026-09-19T12:45:13.630935+00:00",
+  "archived_at": "2026-09-19T12:52:06.043206+00:00",
   "excluded": [
     "data",
     "per-cell labels",

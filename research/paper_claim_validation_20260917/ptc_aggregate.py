@@ -147,7 +147,7 @@ def run():
         dl_status_counts={k:int(v) for k,v in ledger.dl_status.value_counts().items()},
         condition_action_counts={k:int(v) for k,v in ledger.condition_action.value_counts().items()},
         counting_unit='requested follow-up terminal condition, not patient, metric stage, or unique model',
-        scope='50 MLP task groups and 22 new control units; excludes parity pilots and reused original grid',
+        scope='50 MLP task groups and 22 new control units; archived seed42 MLP parity pilots are included once within the 50 groups; separate scoring-only parity pilots and reused original grid are excluded',
         training_executed_note='The raw training flag describes the cached result; fresh training additionally requires identical_result_reused=False')
     write_json(dest/'terminal_execution_overview.json',execution_overview)
     sources={};seed_frames=[];retention_frames=[];retention_states=[];figure_rows=[]

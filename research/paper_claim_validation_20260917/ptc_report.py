@@ -27,7 +27,8 @@ def run():
         f"{execution['n_fresh_training']} fresh training executions and "
         f"{execution['n_cached_terminal_reuse']} exact cached-terminal reuses. "
         "Raw terminal states: "+'; '.join(f"{k}: {v}" for k,v in sorted(execution['dl_status_counts'].items()))+'. '
-        "These counts exclude parity pilots and the reused original grid. Each condition is counted once, "
+        "The archived seed42 MLP parity pilots are included once within the 50 MLP task groups; "
+        "separate scoring-only parity pilots and the reused original grid are excluded. Each condition is counted once, "
         "not once per patient or metric stage. The ledger separates a cached model's training flag from "
         "training actually executed for the current condition. No-op and untrainable conditions are "
         "retained as terminal results, not described as successful training; a single known class is "
