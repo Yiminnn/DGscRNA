@@ -70,6 +70,7 @@ def tick():
         write_json(proof,dict(status='passed',scoring_records=[str(p) for p in pilot_scoring],MLP_records=[str(p) for p in pilot_mlp],
             source=str(source),score_sha256=sha(source/'ptc_score_R.R'),terminal_sha256=sha(source/'ptc_terminal.py'),completed_at=utc()))
     n_prepared=n_scores=n_terminal=n_controls=n_mlp=0
+    scoring_limit=4
     marker_pilot=False
     if pilot_ready and checked(PTC/'selection'):
         preparations=json.loads((PTC/'selection/preparation_tasks.json').read_text())
@@ -79,6 +80,10 @@ def tick():
         if checked(marker_pilot_source,'score_manifest.json','SCORE_COMPLETE'):
             aid=original_arm(marker_pilot_source,'NMT')
             marker_pilot=checked(marker_pilot_source/'terminal'/aid,'terminal_manifest.json','TERMINAL_COMPLETE')
+        # After preparation and the MLP series finish, their allocations are free.
+        # Raise only scoring concurrency; retain every task's memory and threads.
+        if marker_pilot and all(checked(Path(c['dest']),'prepare_manifest.json','PREPARED') for c in preparations) and all(checked(Path(c['dest'])) for c in mlp):
+            scoring_limit=8
         contexts=json.loads((PTC/'selection/frozen_seed_contexts.json').read_text())
         for cfg in [pilot]+[c for c in preparations if c!=pilot]:
             if cfg!=pilot and not marker_pilot:continue
@@ -90,7 +95,7 @@ def tick():
             all_terminal=True
             for route in CONTROL_ROUTES:
                 s=d/route
-                scored=launch('score/'+name+'/'+route,'ptc_control_job.py',['score',f,route],'claim_PTC_score','128G','06:00:00',4,4,
+                scored=launch('score/'+name+'/'+route,'ptc_control_job.py',['score',f,route],'claim_PTC_score','128G','06:00:00',4,scoring_limit,
                     checked(s,'score_manifest.json','SCORE_COMPLETE') and (cfg['kind']!='retention' or (s/'retention_invariants.json').exists()))
                 n_scores+=int(scored)
                 if not scored:all_terminal=False;continue
@@ -113,6 +118,7 @@ def tick():
             n_mlp+=int(done)
     state.update(phase='PTC_followup_execution',last_check=utc(),old_grid_evaluated=all_old,default_parity_passed=pilot_ready,
         marker_retention_resource_pilot_passed=marker_pilot,n_control_preparations=n_prepared,n_control_scores=n_scores,
+        scoring_concurrency_limit=scoring_limit,
         n_control_terminal_arms=n_terminal,n_control_units_complete=n_controls,expected_control_units=22,
         n_MLP_tasks_complete=n_mlp,expected_MLP_tasks=50,
         review_required={k:r['accounting'] for k,r in state['jobs'].items() if r.get('status')=='needs_review'})
