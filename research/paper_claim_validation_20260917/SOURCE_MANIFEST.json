@@ -20,6 +20,10 @@
       "sha256": "8bffcf4498df837ad7a776df1da5d88a830b5109ee2223b3b7faa5d195d804a3"
     },
     {
+      "path": "COMPLETION_EVIDENCE.json",
+      "sha256": "2bf485f78a819a0ac966d171686c30c8c2de6d5889ffd2ff1d3228be2a066bbc"
+    },
+    {
       "path": "install_deepsort.sbatch",
       "sha256": "2133e8a251d0f512cef5c622bb276cc06936c993a7c67755a55b02688987b9a7"
     },
@@ -380,6 +384,10 @@
       "sha256": "26d41084cc80af0bb0ab76e630f075296b93072152cb4a78e1fcd4f13d22a78b"
     },
     {
+      "path": "COMPLETION_REVIEW_20260919.md",
+      "sha256": "41681bb4bf1b4fa3085b0dde4b90bbdf4a6697339d562436b199c1df0993f319"
+    },
+    {
       "path": "evaluate_comparator.py",
       "sha256": "74f2307a78e3a4b72d658bde1cf0b618fc242afa78bae4f897b3c2b7c155f9c5"
     },
@@ -496,7 +504,7 @@
       "sha256": "585e25ef8f5946a52bf2aed68d5becfc38be94a8663aa01c1b31d88aa57f1de3"
     }
   ],
-  "archived_at": "2026-09-19T13:28:21.036927+00:00",
+  "archived_at": "2026-09-19T15:08:51.349749+00:00",
   "excluded": [
     "data",
     "per-cell labels",

@@ -1,0 +1,147 @@
+{
+  "status": "experiments_and_delivery_verified",
+  "verified_at": "2026-09-19T15:05:11.715914+00:00",
+  "scope": "Final requirement review uses existing SLURM-produced results and audit receipts. This local step reads metadata, hashes and document links only; no scientific result, archive audit or network transfer is rerun.",
+  "component_manifest_checks": {
+    "summary": {
+      "manifest": "aggregate_manifest.json",
+      "flag": "AGGREGATE_COMPLETE",
+      "manifest_sha256": "6312adf31a9ae41ff0a1ab0b11d4bb10636bbe177e53c02e244d2b1a7a3f4d11"
+    },
+    "GBM_full_summary": {
+      "manifest": "manifest.json",
+      "flag": "COMPLETE",
+      "manifest_sha256": "55e0048f4f6791e435cdb6815be465ef79a867c9cf3dfce226942e62df32b293"
+    },
+    "controls_summary": {
+      "manifest": "manifest.json",
+      "flag": "COMPLETE",
+      "manifest_sha256": "297454c22a8700d30739a420d60cbf96e43f01b4311071dcffbcf13adb06a0c6"
+    },
+    "comparison_summary": {
+      "manifest": "manifest.json",
+      "flag": "COMPLETE",
+      "manifest_sha256": "fd54f68453144c3dca470390ee72db78841a1172a6ae2c68dcac5725db0cd83d"
+    },
+    "scalability_summary": {
+      "manifest": "manifest.json",
+      "flag": "COMPLETE",
+      "manifest_sha256": "893430fbe7ba893cb0a592bbf502775f59a3f6454da12ba9aa248d17248abd56"
+    },
+    "workflow_choice_summary": {
+      "manifest": "manifest.json",
+      "flag": "COMPLETE",
+      "manifest_sha256": "cd55d9370ae7db0450937c171b5743f51eb5619b495a2bad0c8574647084eec0"
+    },
+    "unknown_summary": {
+      "manifest": "manifest.json",
+      "flag": "COMPLETE",
+      "manifest_sha256": "f4e3e2d00d6ae125a97f2f2bf61c2cd6e5e4b19be55d63f1ad84ef046ae9509d"
+    },
+    "unknown_expression": {
+      "manifest": "manifest.json",
+      "flag": "COMPLETE",
+      "manifest_sha256": "15c58e37e9d65958e68eddcbff7ef24dad60db53581094d1227064591ae5f73c"
+    },
+    "marker_evidence_summary": {
+      "manifest": "manifest.json",
+      "flag": "COMPLETE",
+      "manifest_sha256": "76e5e0b5c8d7af3bf001d60d4736d600a30ab1969484147096c3f4da3d55cd33"
+    },
+    "PTC_summary": {
+      "manifest": "manifest.json",
+      "flag": "COMPLETE",
+      "manifest_sha256": "24b32ce7c47df024d96f7378414c6490def9bd1304a32e8fd2935f35a7a511b4"
+    },
+    "PTC_comparator_replay": {
+      "manifest": "manifest.json",
+      "flag": "COMPLETE",
+      "manifest_sha256": "a3d2562570202b881f1b7f495b4f5823255d0d89449d9c884c88380e54316c1b"
+    },
+    "verification/core_archive_content_audit": {
+      "manifest": "manifest.json",
+      "flag": "COMPLETE",
+      "manifest_sha256": "a8100d54fb2d62f5cd9873a98a8056f1ce38097f72fd32fde141b7b6bda60c0e"
+    },
+    "verification/GBM_followup_archive_content_audit": {
+      "manifest": "manifest.json",
+      "flag": "COMPLETE",
+      "manifest_sha256": "53548e9a4bb3a3257cd2ba4d82a75f54cd5fb9ec6a1658ff1d08f7e5ced950b1"
+    },
+    "PTC_followups/verification/PTC_followup_archive_content_audit": {
+      "manifest": "manifest.json",
+      "flag": "COMPLETE",
+      "manifest_sha256": "6d40dcdc92ee2816deb208263575ba5f0d8f746309d1d126f8facf1a5424670c"
+    }
+  },
+  "PTC_task_counts": {
+    "preparation_tasks": 22,
+    "MLP_tasks": 50
+  },
+  "main_index_links_resolve": 31,
+  "notebook": {
+    "status": "completed",
+    "old_cells_preserved": 694,
+    "added_cells": 107,
+    "errors": 0,
+    "before_sha256": "a5962f9ef9b233032cbe44aba20bfe11e989c6f1d1ad72a3cf3aee488d4071cb",
+    "after_sha256": "f0665732a3403bc319685c5deec3c66831f8d452f8a6ba64bc11213da1daca0a",
+    "job": "7398160"
+  },
+  "canonical_notebook_sha256": "f0665732a3403bc319685c5deec3c66831f8d452f8a6ba64bc11213da1daca0a",
+  "PTC_gate_sha256": "6675b737d7a553698d397a62e9cb2bcb4e2d91b7934d53af4d1b71b3073f7854",
+  "PTC_receipt_sha256": "6151aee5e73071cd511254e3de73efab955cf89544c0ae156928e75ad2ef2b8b",
+  "PTC_audit_sha256": "6d40dcdc92ee2816deb208263575ba5f0d8f746309d1d126f8facf1a5424670c",
+  "PTC_audit_receipt_sha256": "15d571b07d615014cd9f0c345aa743bbed70047229ff08027ad59f0dcbf4ac6c",
+  "GBM_full_receipt_sha256": "d7d602c4b989db9135b03ac73815f236a2633584b106ec83ed4cc9842a7a3b16",
+  "GBM_audit_receipt_sha256": "bac0ae74c560161c0e726582d443f7226896e11c76c93ba03e6182e518320113",
+  "finalizer_accounting_UTC": [
+    {
+      "JobID": "7398160",
+      "State": "COMPLETED",
+      "ExitCode": "0:0",
+      "Elapsed": "00:07:10",
+      "MaxRSS": "",
+      "Start": "2026-09-19T14:52:46",
+      "End": "2026-09-19T14:59:56"
+    },
+    {
+      "JobID": "7398160.batch",
+      "State": "COMPLETED",
+      "ExitCode": "0:0",
+      "Elapsed": "00:07:10",
+      "MaxRSS": "2611652K",
+      "Start": "2026-09-19T14:52:46",
+      "End": "2026-09-19T14:59:56"
+    },
+    {
+      "JobID": "7398160.extern",
+      "State": "COMPLETED",
+      "ExitCode": "0:0",
+      "Elapsed": "00:07:10",
+      "MaxRSS": "",
+      "Start": "2026-09-19T14:52:46",
+      "End": "2026-09-19T14:59:56"
+    }
+  ],
+  "remote": "onedrive:work_od/share/dgscrna_GSE274546_TKU3186/01_report/GBM_PTC_results_20260916",
+  "visual_review": {
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/PTC_summary/PTC_workflow_comparison.png": "3225fbb637d97b05d341b0d69deeb2a116425e9b287b7b21a53de82f6a4f7103",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/PTC_summary/PTC_marker_retention_mechanism.png": "a51d6de3dc67193d40953779171e6c8be07670efb41bed93fdfacf240d4a4353",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/PTC_summary/PTC_MLP_seed_stability.png": "1961895303f66b8bfbc2d13e6ad9c9672aa99f6673cf7d93c5ad4dbe4068dc60",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/PTC_summary/PTC_representation_seed_stability.png": "c3922ef9e4aa613d53e4e58ca49c0d7a5bd32c989d785dc01797c35980805a10",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/PTC_comparator_replay/PTC_cached_comparators.png": "6a5688e96b104644ecd087dc97bc454a08df9406bfcc463f4c092cf9ee75adc2"
+  },
+  "visual_review_scope": "Five new PTC summary plots inspected; representative NMT/TTU cluster plots have earlier explicit review records. All44 new PNG/PDF pairs were separately covered by the completed content audit.",
+  "accepted_limits": [
+    "Approximate historical reproduction accepted; original trained weights and Accuracy calculation source remain unavailable and disclosed.",
+    "PTC has four paired patients; cells and seeds are not biological replicates.",
+    "No new Darmanis fit or independent Pu cohort; no replacement notebook or website.",
+    "Original workflow is not claimed uniquely optimal in both datasets."
+  ],
+  "pilot_and_PTC_parity": {
+    "GBM_pilot_manifest_sha256": "a0d2cafd0c2b00bd6b8f338817c14d30a402a1c25e951f78d8c5af323808dd87",
+    "PTC_default_parity_sha256": "2a052ceb03020fcdd4a4df445b5bf4b14fe0169ffcd3a343cc7f65ea1ebe6c13",
+    "all12_retention_audits_sha256": "2a9dce5178dcf0471da1ff9c41a7f2cfca00815c5888f8eb37e0afe60b4a0adf"
+  }
+}
