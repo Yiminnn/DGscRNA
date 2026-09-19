@@ -31,7 +31,8 @@ def update(stage,phase):
                  link(rel+'/unknown_expression/INTERPRETATION.md','Unknown 表达分析与解释范围'),
                  link(rel+'/scalability_summary/resource_repeated_mean_SD.csv','单次输入 10k–120k：三方法各重复三次的耗时与内存')]
     if phase=='PTC_full':
-        rows += [link(rel+'/PTC_summary/PTC_FOLLOWUP_REPORT_ZH.md','PTC 补实验中文结果')+' · '+link(rel+'/PTC_summary/PTC_FOLLOWUP_REPORT.md','English PTC report'),
+        rows += [link(rel+'/PTC_followups/notebook_before_PTC_followups.ipynb','追加 PTC 补实验前的原 notebook 备份'),
+                 link(rel+'/PTC_summary/PTC_FOLLOWUP_REPORT_ZH.md','PTC 补实验中文结果')+' · '+link(rel+'/PTC_summary/PTC_FOLLOWUP_REPORT.md','English PTC report'),
                  link(rel+'/PTC_summary/claim_summary_by_group.csv','NMT 与 TTU 的原配置和实际结果'),
                  link(rel+'/PTC_summary/all_new_clustering_figures.csv','PTC 新增 44 个聚类条件的图索引'),
                  link(rel+'/PTC_comparator_replay/ENDPOINT_CORRECTIONS.md','SignacX 与历史比较表的评价端点修正')]

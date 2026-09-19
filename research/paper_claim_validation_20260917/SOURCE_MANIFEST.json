@@ -181,7 +181,7 @@
     },
     {
       "path": "ptc_delivery.py",
-      "sha256": "34d68516d07e9672dc1e7cfa6de832f5d6d42115bc7bebcb3d22b38c8fe4a5dc"
+      "sha256": "ca4a5d8c567dec2414a96ff0d23c8e167ec27482ba70b945ffeb73e940064ec0"
     },
     {
       "path": "aggregate_scalability.py",
@@ -201,7 +201,7 @@
     },
     {
       "path": "delivery_index.py",
-      "sha256": "3f187a566f3b3bce7aeb27c72c2b3dc06bb441b21ede5d5a805f75b5220fcafa"
+      "sha256": "3ef4b2527592bc83dce588ff08c32435b53e43c66e0d9f9852d66a3e1471f816"
     },
     {
       "path": "ptc_select.py",
@@ -209,7 +209,7 @@
     },
     {
       "path": "EXECUTION_NOTES.md",
-      "sha256": "4deb6cd092c1a73153ad1b762e4f7b4e6941b932feb745c6cbea372ccb0534c0"
+      "sha256": "27004b32d7f05bd6a1d478ed2f293d2133b51a21bc669b14372a1e6c3bad5e50"
     },
     {
       "path": "full_GBM_report.py",
@@ -488,7 +488,7 @@
       "sha256": "585e25ef8f5946a52bf2aed68d5becfc38be94a8663aa01c1b31d88aa57f1de3"
     }
   ],
-  "archived_at": "2026-09-19T11:34:42.154317+00:00",
+  "archived_at": "2026-09-19T12:06:11.280158+00:00",
   "excluded": [
     "data",
     "per-cell labels",

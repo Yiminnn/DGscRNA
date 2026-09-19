@@ -24,6 +24,7 @@ def run():
             for p in sorted(set(paths)):arc.add(p,arcname=str(p.relative_to(relative)),recursive=False)
         tmp.replace(target);files.append(str(target.relative_to(STAGE)))
     copy(ROOT/'notebooks/dgscrna_results.ipynb')
+    copy(PTC/'notebook_before_PTC_followups.ipynb')
     for p in (OUT/'PTC_summary').iterdir():
         if p.is_file() and p.name not in ['delivery_manifest.json','DELIVERY_RECEIPT.json','PTC_FULL_DELIVERED.json']:copy(p)
     assert checked(OUT/'PTC_comparator_replay')
