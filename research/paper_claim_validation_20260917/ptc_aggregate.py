@@ -6,6 +6,56 @@ from pathlib import Path
 from common import OUT,OLD,sha,checked,write_json,complete,utc
 from ptc_followup_common import PTC,ANCHORS,CONTROL_ROUTES,require_ptc,original_arm
 
+def terminal_execution_tables(mlp_tasks,preparations):
+    """One row per requested follow-up condition, without patient/stage duplication."""
+    require_ptc()
+    import pandas as pd
+    from ptc_control_job import context_arms
+    conditions=[]
+    for cfg in mlp_tasks:
+        assert checked(Path(cfg['dest']))
+        conditions.extend((cfg,Path(cfg['source']),Path(cfg['dest'])/'terminal'/aid,aid,cfg['seed'])
+                          for aid in cfg['arm_ids'])
+    for cfg in preparations:
+        assert checked(Path(cfg['dest'])/'evaluation')
+        for route in CONTROL_ROUTES:
+            source=Path(cfg['dest'])/route
+            conditions.extend((cfg,source,source/'terminal'/aid,aid,42) for aid in context_arms(cfg,route))
+    nontraining={'no_op_all_initially_known':'no_op_all_initially_known',
+        'no_known_labels_archived_Undecided_terminal':'untrainable_no_known_labels',
+        'structural_insufficient_known_split':'untrainable_insufficient_known_split'}
+    rows=[]
+    for cfg,source,d,aid,seed in conditions:
+        assert checked(d,'terminal_manifest.json','TERMINAL_COMPLETE')
+        tm=json.loads((d/'terminal_manifest.json').read_text())
+        training=json.loads((d/'training_manifest.json').read_text())
+        assert tm['source']==str(source) and tm['model_seed']==seed and tm['split_seed']==42
+        assert tm['score_manifest_sha256']==sha(source/'score_manifest.json')
+        assert tm['training_manifest_sha256']==sha(d/'training_manifest.json')
+        for key in ['dl_status','training_executed','n_known','n_pool','n_training_classes']:
+            assert tm[key]==training[key],(str(d),key)
+        status=tm['dl_status'];trained=tm['training_executed'];reused=tm['identical_result_reused']
+        assert isinstance(trained,bool) and isinstance(reused,bool)
+        assert trained==(status in ['trained','trained_single_known_class'])
+        assert trained or status in nontraining,status
+        action='cached_terminal_reuse' if reused else ('fresh_training' if trained else nontraining[status])
+        if not training['terminal_valid']:action='invalid_terminal'
+        rows.append(dict(family=cfg['kind'],group=cfg['group'],control_name=cfg['name'],
+            source_unit=source.parent.name,route=source.name,arm_id=aid,
+            library=tm['arm']['library'],cutoff=tm['arm']['cutoff'],model_seed=seed,split_seed=42,
+            dl_status=status,condition_action=action,cached_training_executed=trained,
+            identical_result_reused=reused,training_executed_in_this_condition=trained and not reused,
+            terminal_valid=training['terminal_valid'],n_cells=training['n_cells'],n_known=tm['n_known'],
+            n_pool=tm['n_pool'],n_training_classes=tm['n_training_classes'],
+            terminal_directory=str(d),terminal_manifest_sha256=sha(d/'terminal_manifest.json'),
+            training_manifest_sha256=tm['training_manifest_sha256'],cache_key=tm['cache_key'],
+            condition_job=tm['job'],original_training_or_noop_job=training['job']))
+    ledger=pd.DataFrame(rows)
+    assert len(ledger)==len(conditions) and ledger.terminal_directory.is_unique
+    summary=ledger.groupby(['family','group','dl_status','condition_action','terminal_valid'],dropna=False).size().rename('n_conditions').reset_index()
+    assert int(summary.n_conditions.sum())==len(ledger)
+    return ledger,summary
+
 def paired(delta):
     import numpy as np
     v=np.asarray(delta,dtype=float);assert v.shape==(4,) and np.isfinite(v).all()
@@ -87,6 +137,19 @@ def run():
     # New seed and retention conditions are separate from the reused native grid.
     preparations=json.loads((PTC/'selection/preparation_tasks.json').read_text())
     mlp_tasks=json.loads((PTC/'selection/MLP_tasks.json').read_text())
+    ledger,execution_summary=terminal_execution_tables(mlp_tasks,preparations)
+    ledger.to_csv(dest/'terminal_execution_ledger.csv.gz',index=False)
+    execution_summary.to_csv(dest/'terminal_execution_summary.csv',index=False)
+    execution_overview=dict(n_requested_conditions=len(ledger),
+        n_fresh_training=int(ledger.training_executed_in_this_condition.sum()),
+        n_cached_terminal_reuse=int(ledger.identical_result_reused.sum()),
+        n_invalid_terminal=int((~ledger.terminal_valid).sum()),
+        dl_status_counts={k:int(v) for k,v in ledger.dl_status.value_counts().items()},
+        condition_action_counts={k:int(v) for k,v in ledger.condition_action.value_counts().items()},
+        counting_unit='requested follow-up terminal condition, not patient, metric stage, or unique model',
+        scope='50 MLP task groups and 22 new control units; excludes parity pilots and reused original grid',
+        training_executed_note='The raw training flag describes the cached result; fresh training additionally requires identical_result_reused=False')
+    write_json(dest/'terminal_execution_overview.json',execution_overview)
     sources={};seed_frames=[];retention_frames=[];retention_states=[];figure_rows=[]
     for cfg in mlp_tasks:
         d=Path(cfg['dest']);assert checked(d);sources[str(d)]=sha(d/'manifest.json')
@@ -204,6 +267,7 @@ def run():
     plt.close(fig)
     write_json(dest/'manifest.json',dict(status='completed',n_patients=4,old_units_reused=30,
         new_control_units=22,new_clustering_conditions=44,MLP_task_groups=50,
+        terminal_execution=execution_overview,
         reference_weights_recovered=False,default_parity=sha(PTC/'verification/default_parity.json'),
         seed_and_control_sources=sources,selection_manifest_sha256=sha(PTC/'selection/manifest.json'),
         selection_is_transductive_patient_label_holdout=True,bootstrap_is_conditional_on_frozen_predictions=True,

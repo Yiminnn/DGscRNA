@@ -22,6 +22,16 @@ def run():
     tuned=pd.read_csv(dest/'heldout_workflow_patient_metrics.csv')
     paper=pd.read_csv(dest/'original_paper_endpoint_reconciliation.csv')
     core=pd.read_csv(dest/'fresh24_patient_summary.csv')
+    execution=json.loads((dest/'terminal_execution_overview.json').read_text())
+    execution_text=(f"The {execution['n_requested_conditions']} requested follow-up terminal conditions include "
+        f"{execution['n_fresh_training']} fresh training executions and "
+        f"{execution['n_cached_terminal_reuse']} exact cached-terminal reuses. "
+        "Raw terminal states: "+'; '.join(f"{k}: {v}" for k,v in sorted(execution['dl_status_counts'].items()))+'. '
+        "These counts exclude parity pilots and the reused original grid. Each condition is counted once, "
+        "not once per patient or metric stage. The ledger separates a cached model's training flag from "
+        "training actually executed for the current condition. No-op and untrainable conditions are "
+        "retained as terminal results, not described as successful training; a single known class is "
+        "reported separately even when the historical training code executes.")
     rows=[]
     for group,a in ANCHORS.items():
         p=paper[(paper.group==group)&(paper.patient=='ALL')&(paper.stage=='final090')].iloc[0]
@@ -83,7 +93,8 @@ The marker-retention experiment preserves the exact original geometry and cluste
 partitions while using a single scoring universe per group: fixed2000 union all
 17-library marker genes, intersected with eligible CCAall genes. Geometry2000,
 geometry5000 and geometryall share that score matrix and the same DL2000 matrix.
-All 17x3 contexts reach terminal DL. This tests the missing-marker mechanism and
+All 17x3 contexts retain the terminal result or explicit no-op/untrainable state.
+This tests the missing-marker mechanism and
 geometry conditional on a fixed CCAall fit; it is not a substitute for original
 CCA2000. No isolated CD3D insertion or outcome-based label editing is performed.
 
@@ -105,6 +116,7 @@ retaining NMT exceptions, endpoint tradeoffs and Unknown coverage is part of the
 evidence. Use the actual tables below to distinguish a fixed original configuration
 from a tuned workflow and from a merely higher point estimate.
 '''
+    text+='\n\n## Terminal execution accounting\n\n'+execution_text+'\n\nSee `terminal_execution_summary.csv` and `terminal_execution_ledger.csv.gz`.\n'
     (dest/'PTC_FOLLOWUP_REPORT.md').write_text(text)
     (dest/'PTC_FOLLOWUP_REPORT_ZH.md').write_text('''# PTC 补充实验完成
 
@@ -113,7 +125,9 @@ from a tuned workflow and from a merely higher point estimate.
 论文原 non-T F1/AUC、严格T/TCR检出一致性、TCR recall 和 Unknown coverage 分开报告。TCR未检出不等于确定非T；S2/S3一致率不等于独立准确率。4个患者不能由细胞数或种子数扩充，精确双侧符号翻转检验最小p值为0.125。缺失历史权重及Accuracy原始计算来源继续保留记录，不妨碍用户接受的近似复现。
 
 实际分组数值见 claim_summary_by_group.csv。最高点、训练患者选出的流程和固定原配置是不同结论；不能在存在NMT例外时写成所有步骤在两组始终最优。
-''')
+'''+f"\n本轮 {execution['n_requested_conditions']} 个终端条件中，实际新执行训练 {execution['n_fresh_training']} 次、精确复用缓存终端结果 {execution['n_cached_terminal_reuse']} 次。各条件仅计一次，不按患者或评价阶段重复计数。原始状态如下："+
+        '；'.join(f'{k}：{v}' for k,v in sorted(execution['dl_status_counts'].items()))+
+        '。无需训练、无法训练及单一已知类别分别保留；缓存记录中的训练标志不等于当前条件重新训练。详见 terminal_execution_summary.csv 与 terminal_execution_ledger.csv.gz。\n')
     reviewer_evidence.run('PTC')
     notebook=ROOT/'notebooks/dgscrna_results.ipynb'
     with (OUT/'notebook.lock').open('a') as lock:
@@ -138,6 +152,8 @@ ptc_table('claim_summary_by_group.csv')''')
         code("ptc_figure('PTC_summary/PTC_workflow_comparison.png')\nptc_table('fresh24_patient_summary.csv')\nptc_table('paired_patient_contrasts.csv')\nptc_table('paired_patient_differences.csv')")
         md('## Marker and DL contributions\n\nThe main four-way analysis uses the same terminal-selected marker in both stages; patient differences and the interaction are explicit.')
         code("ptc_table('marker_DL_paired_effects.csv')\nptc_table('marker_DL_patient_differences.csv')")
+        md('## Terminal execution states\n\n'+execution_text+'\n\nThe full condition ledger is `PTC_summary/terminal_execution_ledger.csv.gz`.')
+        code("ptc_table('terminal_execution_summary.csv')")
         md('## Initialization versus representation stability\n\nSame five seeds, separate perturbations. Each point aggregates the same four patients.')
         code("ptc_figure('PTC_summary/PTC_MLP_seed_stability.png')\nptc_figure('PTC_summary/PTC_representation_seed_stability.png')\nptc_table('seed_patient_mean_summary.csv')")
         md('## Uniform marker-retention mechanism\n\nSame geometry, partitions and DL input as the earlier geometry-only controls. Only the scoring gene universe changes under one rule shared by all budgets.')

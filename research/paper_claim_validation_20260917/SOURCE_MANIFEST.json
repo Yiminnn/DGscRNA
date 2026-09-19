@@ -49,7 +49,7 @@
     },
     {
       "path": "ptc_aggregate.py",
-      "sha256": "511c3f9152f87c9362b36b02f014fedf12e4e72c0613df2846b04ac3a733b985"
+      "sha256": "a010a16eaa434f74a7704a7f70c05399796a91aac5731c3d6c9898a54eb91e15"
     },
     {
       "path": "terminal.py",
@@ -209,7 +209,7 @@
     },
     {
       "path": "EXECUTION_NOTES.md",
-      "sha256": "27004b32d7f05bd6a1d478ed2f293d2133b51a21bc669b14372a1e6c3bad5e50"
+      "sha256": "5c84dff4f6f4092c86b670a9eb75eacb395540ca8e6bb763c8ccc0fbfe99db4d"
     },
     {
       "path": "full_GBM_report.py",
@@ -321,7 +321,7 @@
     },
     {
       "path": "ptc_report.py",
-      "sha256": "782aca6de05b452a94d91acb0c5a38d63f4e76855489c6a3dd365153fe259513"
+      "sha256": "9afd0f9fe1bce11b8a92796c65671961524b01b1aa2da4317d10d6309b5b5cbb"
     },
     {
       "path": "DARMANIS_SCOPE_UPDATE_ZH.md",
@@ -488,7 +488,7 @@
       "sha256": "585e25ef8f5946a52bf2aed68d5becfc38be94a8663aa01c1b31d88aa57f1de3"
     }
   ],
-  "archived_at": "2026-09-19T12:06:11.280158+00:00",
+  "archived_at": "2026-09-19T12:45:13.630935+00:00",
   "excluded": [
     "data",
     "per-cell labels",
