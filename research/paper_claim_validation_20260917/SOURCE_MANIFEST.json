@@ -209,7 +209,7 @@
     },
     {
       "path": "EXECUTION_NOTES.md",
-      "sha256": "d21d212d0d9c8d24be98ce06d1df006e5997c4f6f700ce02a6a2dfc2a16c9780"
+      "sha256": "4deb6cd092c1a73153ad1b762e4f7b4e6941b932feb745c6cbea372ccb0534c0"
     },
     {
       "path": "full_GBM_report.py",
@@ -234,6 +234,10 @@
     {
       "path": "common.py",
       "sha256": "74542e88fefb9a72c58083ba1f1a13313fb90ab75e98beb00d02b26fe98a6de2"
+    },
+    {
+      "path": "deliver_GBM_followup_audit.py",
+      "sha256": "1a22168d1f778366c88af5b693f0162d9a9583477a685d4134552dd184f5af39"
     },
     {
       "path": "ptc_terminal.py",
@@ -464,6 +468,10 @@
       "sha256": "46b10becc441ee885aeafb470c2690589c2a995fe439f7ef33f0572cb105c96d"
     },
     {
+      "path": "verify_GBM_followup_delivery.py",
+      "sha256": "ce8e2d21e948bbe4dfb90901f956389b94da642631628de541343e08c894c6fd"
+    },
+    {
       "path": "vendor_sources/scType_LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
@@ -480,7 +488,7 @@
       "sha256": "585e25ef8f5946a52bf2aed68d5becfc38be94a8663aa01c1b31d88aa57f1de3"
     }
   ],
-  "archived_at": "2026-09-18T15:07:57.457697+00:00",
+  "archived_at": "2026-09-19T11:34:42.154317+00:00",
   "excluded": [
     "data",
     "per-cell labels",
