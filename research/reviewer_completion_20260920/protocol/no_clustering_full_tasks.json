@@ -1,0 +1,849 @@
+[
+  {
+    "sample": "COLUMBIA000157",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "COLUMBIA090596",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "COLUMBIA100163",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "COLUMBIA130301",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "COLUMBIA140122",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "COLUMBIA160126",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "COLUMBIA170139",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "COLUMBIA990051",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "Duke050575",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "Duke070293",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "Duke080105",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "Duke100284",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "MDA1010433",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "MDA1118141",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "MDA774755",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "MDA849796",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N0405762135",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N0506122731",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N0706824045",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N0806424735",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N080884b5509",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N0910876605",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N1010736250",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N1011956321",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N1107416866",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N1203607434",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N120810",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N130332",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N130428",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N130439",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N131356",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N131376",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N140257",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N160535",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N161090",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N170821",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N171117",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N171302",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N171380",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N180819",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N181389",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "N190264",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "NL020",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "NL021",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "NL022",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "NL060",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "NL061",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "NL070",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "NL071",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "NL081",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "NL082",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "NL090",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "NL091",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "NL100",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "NL101",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "P189067",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "P199752",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SMMG001A",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SMMG001B",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SMMG004A",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SMMG004B",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SMMG005A",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SMMG005B",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SMMG006A",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SMMG006B",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SMMG007A",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SMMG007B",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SMMG008A",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SMMG008B",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SMMG009A",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SMMG009B",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN010",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN011",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN020",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN021",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN030",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN031",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN040",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN041",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN060",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN061",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN080",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN081",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN100",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN101",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN130",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN132",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN150",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN152",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN160",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "SN161",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3074",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3131",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3163",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3186",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3261",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3280",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3288",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3300",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3316",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3404",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3421",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3560",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3614",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3834",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3851",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3879",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU3899",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU4010",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU4110",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU4114",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU4163",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU4190",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU4249",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU4263",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU4291",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU4350",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU4354",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU4419",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU4487",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  },
+  {
+    "sample": "TKU4492",
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ]
+  }
+]

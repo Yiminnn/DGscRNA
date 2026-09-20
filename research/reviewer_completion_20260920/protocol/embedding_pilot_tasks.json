@@ -1,0 +1,41 @@
+[
+  {
+    "sample": "TKU4163",
+    "budget": "hvg2000",
+    "spaces": [
+      "noDR",
+      "PCA2",
+      "FA2",
+      "ICA2",
+      "Isomap2",
+      "UMAP2",
+      "TSNE2"
+    ]
+  },
+  {
+    "sample": "NL022",
+    "budget": "hvg2000",
+    "spaces": [
+      "noDR",
+      "PCA2",
+      "FA2",
+      "ICA2",
+      "Isomap2",
+      "UMAP2",
+      "TSNE2"
+    ]
+  },
+  {
+    "sample": "SN040",
+    "budget": "hvg2000",
+    "spaces": [
+      "noDR",
+      "PCA2",
+      "FA2",
+      "ICA2",
+      "Isomap2",
+      "UMAP2",
+      "TSNE2"
+    ]
+  }
+]

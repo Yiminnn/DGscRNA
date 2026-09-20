@@ -1,0 +1,8 @@
+{
+  "status": "frozen",
+  "purpose": "Final cohort selector with checked input hashes and boolean cohort flags; not yet executed",
+  "files": {
+    "select_and_summarize.py": "c6487314ecdb2bdc6a421eb5ef55ffec9aa8663a062ce97bb4dad2bcf02ede91",
+    "legacy/common.py": "74542e88fefb9a72c58083ba1f1a13313fb90ab75e98beb00d02b26fe98a6de2"
+  }
+}

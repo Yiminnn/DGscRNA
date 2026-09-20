@@ -1,0 +1,5 @@
+{
+  "purpose": "Operational profile: identical R scorer with four parallel DEG workers, validated on largest SN040 sample K5",
+  "validation": "embedding_worker_probe/SN040/hvg2000/PCA2_workers4/validation.json",
+  "job.sbatch": "defdc85c4af9457ed6a8f78656b4ce129f4b5048086af9d412a3847efecf68d6"
+}

@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "partitions": 3,
+  "marker_seed_arms_per_partition": 48,
+  "terminal_contexts_per_partition": 2,
+  "exact": [
+    "clusters",
+    "all marker seed labels",
+    "terminal labels",
+    "probabilities",
+    "training/validation cell split",
+    "10-epoch training histories"
+  ],
+  "source_hashes": {
+    "prepare_neighbors.R": "6c6b72e8267a10740c1e31a5a7f2a5a4ad5f93270e145f9d49c7396a53397bd9",
+    "refine_learning.py": "8ac2e69ac39b9f0cba71e20c3a622c4a8ff6872776e4ec657a1a443f19924824",
+    "run_controls.py": "ce9344490befaa6a3cbe3a12a6cfb187a7b3ebbcf106074d3a9bb6312bd7c2b2",
+    "aggregate.py": "ce0d89c2cebaa0dcddb6e62cb78b1648500ea32fedc98296d638e7b306e183ec",
+    "score_neighbors.R": "68c745f442412277b91c4d726caa43579d72ff1c452a35c8252070f1e371cb35"
+  },
+  "job": "7445409",
+  "completed_at": "2026-09-20T22:10:00.315847+00:00"
+}

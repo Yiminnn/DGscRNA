@@ -1,0 +1,19 @@
+{
+  "frozen_at": "2026-09-20T22:30:23.470954+00:00",
+  "files": {
+    "PROTOCOL.md": "4a3b52667818af5ef3a16210eca1f07034781f4b52d772a038ded8a38686f48d",
+    "a2_common.py": "702777319169a92e7426125998f0d326148944826c745b68ec058391c98ee9a9",
+    "aggregate.py": "353fce33a19c05e4752d3e5f7684ef140d01e6eaccfc1d073ff41633cad8440e",
+    "evaluate.py": "0cdb94b7d977db14e2839e29b892a248942b22a7352246174a1567705e3a3d3d",
+    "freeze.py": "3048ad49a8831c098f47e2ca3b3e6d199079e9cd85955211b60644f7c9416c30",
+    "job.sbatch": "a540397f87a9c5accb12a6947fd5f83f4daa3e62325effb7f3da156c8fe45409",
+    "legacy/common.py": "74542e88fefb9a72c58083ba1f1a13313fb90ab75e98beb00d02b26fe98a6de2",
+    "legacy/legacy_refine.py": "e32daabbf2e883666deace944020ebdab406f705f24200ae1cb3a8df9860d3c3",
+    "legacy/ptc_common.py": "3fcba04e4fd6154f24efbda069ca2574040bb749a5eced615e028d780e33b789",
+    "legacy/score_original_anchor.R": "dee01bce3163aa1ae2cf521124e2d163eaa0f1d6d7c15451f2aef62e76988a78",
+    "legacy/terminal.py": "2ea6490a961c3d0ebc4a4857dc0958dae014dcfa934f3e6d7703642b8bf03d5e",
+    "refresh_status.py": "59d15ec886fcf86d4e9deb9fa69e0b16dbdbcd347cd5a763ccfff8174bccbbb1",
+    "run.py": "01015692048b42a4ade809fb71bca5cf7ae5d485f0ce15c2316b9ea1eca29ac0",
+    "score_cellwise.R": "0314b44c1d4dc216d0b6f8198dfac82c22aee96ab805eae9de9911ec9eb85b90"
+  }
+}
