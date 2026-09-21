@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "passed_at": "2026-09-21T00:23:12.910162+00:00",
+  "evidence": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding/dispatch/v3_activation.json": "f99a5897c6c7804df05497b6ef0f6b00fdfca1c26b6f9e4af381c8abe1102b5d",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_v8_regression/presentation_validation.json": "3f677544957c6d359e5b4ec8638c1378f5ace1e21db7d8ae8c96d3d8d75adc6d",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_worker_probe/SN040/hvg2000/PCA2_workers4/validation.json": "8e84ca29f1191ae10bcbe1b63b38a2cb1fc71f6cb466f6eaae7b41a425561512",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_geometry_smoke_v2/TKU4163/hvg2000/manifest.json": "e1094c38ed9a49d6a77d9f03eff5669c5291e55c1ed273a2ea1a744151d9cdf9",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_geometry_smoke_v2/TKU4163/hvg5000/manifest.json": "aa3b8cb279c241544771494eee9dc565a150987cca51628cef33e3642a783cb6",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_geometry_smoke_v2/NL022/hvg2000/manifest.json": "b18edebccce3796cb64c0311990404614ae346e7295cf879eee8e11217d25c3b",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_geometry_smoke_v2/NL022/hvg5000/manifest.json": "a3d549a1f2c0c4bc21cef7e625fff2d32d42baa41493a20befcedbcd6bebc993",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_geometry_smoke_v2/SN040/hvg2000/manifest.json": "27740525525fc10e7a1042074c0f7ce013a6e6b23b3dcfa60ac5351df7d4df1d",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_geometry_smoke_v2/SN040/hvg5000/manifest.json": "275d915f38071d2ca38fee02da59f9ede54108ffdebe7f962ab030d4230a4310",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_geometry_smoke_v2/gate_verification.json": "60fb18ae99cd3f2aa36fa6ca673d8c6cbdd080a0337b62fc8f86fc6119fe7146",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding/TKU4163/hvg2000/anchor_parity/PARITY_PASSED.json": "55ca99b8ba8c9c1e9504b9f522e29d3e363f85ec51b213944f5138f1dcdb9a4a",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering/a1_first_review/TKU4163/hvg2000/PCA2/validation.json": "d4e78462d21e320dd865ae8748f276ed3387f328a3878ef674e4736633272c6a",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering/a1_first_review/NL022/hvg2000/PCA2/validation.json": "c7f95db1b01a789f10eb6a73c0d068bf245c0c77a4aefec4a1fcdda7547e6f37",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering/a1_first_review/SN040/hvg2000/PCA2/validation.json": "1282d62651dc56c3c10785c68f0037f87bda3514e060193ca6278004aaa94d4b"
+  },
+  "scientific_protocol_sha256": "635979d0c62c60d3b360ddaba08c3f1ef4a757b7e2c518ac5b57ceccb74f60f4",
+  "policy": "All seven interfaces at three sizes/two budgets; all three PCA2 end-to-end independently verified."
+}

@@ -1,0 +1,25 @@
+{
+  "approved_previous_sources": {
+    "embedding_v5": {
+      "directory": "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/source_snapshots/embedding_v5",
+      "manifest_sha256": "8a5f432393f8316fc029556219f438fd38913935abcdade307bbb9a619147479",
+      "run_sha256": "7a7e0ed72e17c69afe3cccdcd53d9ffb98d5f2097809c18daff9677dec1b2842"
+    },
+    "embedding_v6": {
+      "directory": "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/source_snapshots/embedding_v6",
+      "manifest_sha256": "4aae145565890879fe249ed9f66b9c2a8ffe5c5bf67809e476d23ea14c599cf4",
+      "run_sha256": "726fc0205136490295ff1fce2b6c968bbb08b0c41b0dc06af22e1ff3a6413085"
+    }
+  },
+  "unchanged_dependency_files": [
+    "export_geometry.R",
+    "native_geometry.R",
+    "score_candidates.R",
+    "legacy/common.py",
+    "legacy/ptc_common.py",
+    "legacy/evaluate.py",
+    "legacy/terminal.py",
+    "legacy/legacy_refine.py"
+  ],
+  "rule": "Only successful producer-pinned caches; ICA must be original parallel5000 with no convergence warning. Consumer provenance is separate."
+}

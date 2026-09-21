@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "scope": "Independent B Lfine presentation data/source audit; root visual review remains separate",
+  "presentation_manifest_sha256": "f680ae768f28c9fa40e85b0c30dced440beeaa2a8547c81640f849df2cc3e988",
+  "validation_source_sha256": "775dd89357a7cb974333fdde467b0f676f2be1d245d835f4038906a69cb50880",
+  "source_validation_sha256": "3a011a029f2a9d0e4fd49049776027744b53b7cd464602fe94328dfca86707b5",
+  "n_source_rows": 408,
+  "n_unique_neighbor_terminal090_rows": 132,
+  "n_plotted_neighbor_points": 144,
+  "n_shared_UMAP_SNN_default_points": 12,
+  "n_sweep_families": 48,
+  "n_checkpoint_seed_rows": 144,
+  "n_checkpoint_aggregate_rows": 48,
+  "all_neighbor_rows_and_all_source_fields_equal": true,
+  "all48_default_relation_descriptions_recomputed": true,
+  "all_checkpoint_means_sample_SDs_and_coverages_recomputed": true,
+  "thresholds": [
+    0.7,
+    0.9
+  ],
+  "epochs": [
+    5,
+    10,
+    20,
+    30
+  ],
+  "model_seeds": [
+    0,
+    1,
+    42
+  ],
+  "learning_coverage_equals_legacy_called_coverage": true,
+  "source_hashes_verified": true,
+  "PNG_dimensions": [
+    3540,
+    1710
+  ],
+  "PDF_header_valid": true,
+  "graphical_scope": "Saved plot-point data independently verified; frozen builder asserts each line x/y equals those inputs; no independent re-render or claim of visual review",
+  "no_fitting": true,
+  "original_artifacts_unchanged": true,
+  "no_canonical_notebook_writes": true,
+  "job": "7204040",
+  "step": "193",
+  "completed_at": "2026-09-21T00:41:35.731817+00:00"
+}

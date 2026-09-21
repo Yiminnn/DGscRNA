@@ -1,0 +1,57 @@
+{
+  "created_at": "2026-09-20T23:51:43.135774+00:00",
+  "policy_id": "ICA2_parallel_caps_then_deflation_v2",
+  "comparator_name": "ICA2 adaptive (parallel; deflation fallback)",
+  "scope": "Uniform truth-blind adaptive A1 comparator; original published R/UMAP pipeline unchanged",
+  "original_protocol_sha256": "635979d0c62c60d3b360ddaba08c3f1ef4a757b7e2c518ac5b57ceccb74f60f4",
+  "predecessor_addendum_sha256": "f23fa4de95800424d29f0beda750f34e51ec13e60a7d30e0e8a9f9cb60157998",
+  "attempts": [
+    {
+      "algorithm": "parallel",
+      "max_iter": 5000
+    },
+    {
+      "algorithm": "parallel",
+      "max_iter": 50000
+    },
+    {
+      "algorithm": "parallel",
+      "max_iter": 100000
+    },
+    {
+      "algorithm": "deflation",
+      "max_iter": 100000
+    }
+  ],
+  "fixed_parameters": {
+    "n_components": 2,
+    "tol": 0.0001,
+    "random_state": 42,
+    "whiten": "unit-variance",
+    "whiten_solver": "svd",
+    "fun": "logcosh",
+    "alpha": 1.0,
+    "sklearn_version": "1.9.0"
+  },
+  "retry_trigger": "Only native parallel ConvergenceWarning; other errors/nonfinite output need independent repair",
+  "acceptance": "First finite converged result. Deflation additionally requires n_iter<cap and every independent per-component next-step stopping residual<1e-4.",
+  "all_attempts_failed": "Remain incomplete; no last-iterate acceptance, zero imputation or silent cohort exclusion",
+  "eligibility": "Every sample and both budgets under one policy; no author labels, F1 or downstream predictions select a solver",
+  "canonical_configuration": "Original parallel5000 success/failure retained separately; deflation is not called the same configuration",
+  "successful_parallel5000_unchanged": true,
+  "input": "Identical whole scaled-HVG matrix and recorded cell/gene order",
+  "trigger_evidence": {
+    "path": "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_geometry_smoke/SN040/hvg5000/ICA2/CONVERGENCE_FAILURE.json",
+    "sha256": "757f7b7f40d9fc40aceb05e88be85da21c8d4aba4b320d3f20377b8ef30b71a5"
+  },
+  "native_deflation_diagnostic": {
+    "path": "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_convergence_probe/SN040/hvg5000/native_deflation/manifest.json",
+    "sha256": "0b5f7a3b25fa00f9e5e579199202c2bfdd27b3a2b58259bb017c5a9fe7bd57cb"
+  },
+  "producer_compatibility": {
+    "path": "handoff/reviewer_completion_20260920/embedding_v7/CACHE_COMPATIBILITY.json",
+    "sha256": "10f9daa4aac99e0121d2db31d6c4749b7591a6bf043442d22bbaa273ee6b47f0"
+  },
+  "presentation": "All ICA main-table/figure entries use adaptive-policy name; actual solver/cap/attempt retained; old historical figures are preserved separately.",
+  "activation": "Pending successful-ICA coordinates and 13-partition regression, independent source review, and root dispatcher gate update; this freeze launches no production jobs"
+}

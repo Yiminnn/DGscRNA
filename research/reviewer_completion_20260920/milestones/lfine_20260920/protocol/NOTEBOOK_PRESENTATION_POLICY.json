@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-20",
+  "canonical": "notebooks/dgscrna_results.ipynb",
+  "local_only": true,
+  "html_export": false,
+  "latest_user_instructions": [
+    "匹配只用Lfine，不放L1的结果",
+    "主图放non HVG的，之后对比放不同HVG的",
+    "整个notebook废话太多了，简洁点",
+    "只画最关键的图or表，不用画这么多",
+    "统一按R的版本来；Python只是方便计算的简化版"
+  ],
+  "report_structure": "Original Notion section order; concise headings, key figures/tables and short conclusions",
+  "evaluation": "Frozen Lfine definition and documented compatible-target-set rule; do not rename L1 metrics",
+  "scientific_reference": "Recovered R/Rmd numerical workflow and historical Python DL; simplified Python implementation is separate",
+  "main_display": "Native-R all-retained-gene UMAP coordinates shared across native-R marker contexts; actual all-gene terminal predictions",
+  "later_comparison": "HVG500/1000/2000/3000/5000 versus all; preserve actual fitted representation provenance",
+  "background_writer_action": "Do not append the old verbose L1-based notebook material. Scientific experiments and saved results continue unchanged. Reevaluate against Lfine before adding a compact result.",
+  "compact_builder": "handoff/lfine_compact_20260920/build_notebook.py"
+}

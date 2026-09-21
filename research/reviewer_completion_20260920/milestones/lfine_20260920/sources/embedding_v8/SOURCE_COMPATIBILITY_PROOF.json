@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "scope": "V8 completed-cache hardening only; all fresh numerical paths byte-exact v7",
+  "unchanged_functions": {
+    "call_r": "9fab6c18cb4ce3f1e64ed43eb7efabfd537240c25dfa6b59819ae19934fe6ae1",
+    "get_geometry": "8e2ebdd4a811e6f0d8dfe00845c71fea78406b6dcb65af9470f15873fd76c01a",
+    "model_metadata": "195e868df4a4be23ea54d129cf342258be0159c4b4501d8a3ccad8d8be1da857",
+    "fit_model": "840d2dfdf5afed04b161d0abb24ae0fa9f0a5200ec9d5a6e8fd3139c2126d664",
+    "make_embedding": "244d9e7cf9c39ee71bb8a69a7629fcb0d7bfe7083641fa77931a40e8e1216e0e",
+    "make_partitions": "e5874362df100e523b51efb95ecf2ba5b906db3b038f444f8ca974f314af9a83",
+    "finish": "3ee95e0605662dc2e0bab18adc8b5308f3c9780b15031e475f07fc511004c7cf",
+    "parity": "17f04eb959f055b34223b89f2d43bdf775be62cb32a169071439b53e2efdefb9"
+  },
+  "unchanged_fresh_run_tail": true,
+  "adaptive_helper_sha256": "b0ecd92b63157e822a2fca5638cac94b67172bcd560d9a668c8c81b546534334",
+  "inherited_numerical_regression": {
+    "path": "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_v7_regression/TKU4163/hvg2000/validation.json",
+    "sha256": "1f062122492a7b5f1a5e499b5c01bb55a5b6ad5910bac61c9ea28c4bc91e7639",
+    "source_manifest_sha256": "ac0d877613895a6a90ef803cc326eda09958c988fe7aa54ddaca9c0ff11c541d",
+    "embedding_csv_bytes_exact": true,
+    "all_13_partitions_exact": true
+  },
+  "policy_sha256": "ad69004d945eecbe850cdf0c5c3c1f3fc8167d601e4d40092625c8ec3355e458",
+  "compatibility_catalog_sha256": "10f9daa4aac99e0121d2db31d6c4749b7591a6bf043442d22bbaa273ee6b47f0",
+  "completed_cache_tamper_regression_required": true,
+  "activation": "Not activated; root gate review required",
+  "job": "7204040",
+  "step": "133"
+}

@@ -1,0 +1,45 @@
+{
+  "Malignant": [
+    "Malignant_"
+  ],
+  "TAM": [
+    "TAM_"
+  ],
+  "Lymphocyte": [
+    "Lymphocyte",
+    "TIL_"
+  ],
+  "Oligodendrocyte": [
+    "Oligodendrocyte"
+  ],
+  "OPC": [
+    "OPC",
+    "Malignant_OPC"
+  ],
+  "Astrocyte": [
+    "Astrocyte",
+    "Malignant_AC"
+  ],
+  "Excitatory neuron": [
+    "ExN_",
+    "Malignant_Neuron"
+  ],
+  "Inhibitory neuron": [
+    "InN_",
+    "Malignant_Neuron"
+  ],
+  "AMBIGUOUS_NEURON": [
+    "ExN_",
+    "InN_",
+    "Malignant_Neuron"
+  ],
+  "Endothel": [
+    "Endothelial"
+  ],
+  "Pericyte": [
+    "Mural_"
+  ],
+  "Other": [
+    "Other"
+  ]
+}

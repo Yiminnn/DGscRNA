@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "contract_sha256": "a9dd6c7f9ee25d7f7752f6d660bebf3eaf080007681b91ccf01ee53454e9264c",
+  "proofs": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_lfine_v1/verification/TKU4163/hvg2000/PCA2/manifest.json": "85cdba34a1ab13e3dbe483f4359148e92dae7f9696fb573c5ad477aa9f820c0e",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_lfine_v1/verification/NL022/hvg2000/PCA2/manifest.json": "b62be15e4c182a0ac0773fd5ac5b10120c31e3171ff8fab1886677b7d8ffdae6",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_lfine_v1/verification/SN040/hvg2000/PCA2/manifest.json": "0a73cb58c7336fed3088377114718aaf5ce798b3af65ce2832020fd14beeaf7c",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_lfine_v1/verification/TKU4163/hvg2000/ICA2/manifest.json": "5cb4877d9f60f1635578853fd6d953b096fde014841153f8809878f23ac33ceb"
+  },
+  "published_at": "2026-09-21T00:44:28.546962+00:00",
+  "scope": "Four Lfine replay/count-check pilots only"
+}

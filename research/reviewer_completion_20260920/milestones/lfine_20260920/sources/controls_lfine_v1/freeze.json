@@ -1,0 +1,29 @@
+{
+  "frozen_at": "2026-09-21T00:21:11.543762+00:00",
+  "scope": "B Lfine compatible-target-set evaluation; no numerical computation in preparation",
+  "files": {
+    "handoff/reviewer_completion_20260920/controls_lfine/evaluate.py": "01c8244b3135b3df96f20ded48e623667d8a848448430ccac47873196506eaf8",
+    "handoff/reviewer_completion_20260920/controls_lfine/PROTOCOL.md": "d78f159c47408870ba07be24880fc9a68769566164ff8ae9e3af6707f8a6a2e9",
+    "handoff/reviewer_completion_20260920/controls_lfine/reference_sources/compact_evaluate_lfine.py": "6f94bb83bd5118ee19e22c87044f86a68fffa0bea4be396cfd96b4a53b33a02e",
+    "handoff/lfine_compact_20260920/evaluate_lfine.py": "6f94bb83bd5118ee19e22c87044f86a68fffa0bea4be396cfd96b4a53b33a02e",
+    "handoff/lfine_compact_20260920/LFINE_EVALUATION.md": "996a15bdbfe709cd98315d0d40ff14373b192f326d6cefe11a2239766e15d54e",
+    "handoff/g274/grid_sets.py": "a985b9650c8bf05c1337dc5adab25951ded27e4644e9d4eeeb6913af53adc66f",
+    "handoff/g274_table4/v5_final_annotations.py": "0a3995a7a3a47c1acdbf87ac40210c90f7ca6fa5d9bff0b2bc3eca574bed1a24",
+    "handoff/markers_v3/mapping_L1_v3.csv": "deb3ef872df03089809e6ec0a43db35a308cec4c2458b1531a9acae8fc666b74",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/markers/panel_L1_mapping.csv": "e0f22e753ae5003001fadfa9991cd0394b482b100f514ca87dc8b338db7ffccb",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/markers/manifest.json": "5567d1cd44a4fb85905079b338df8c439bcf777b016fd9d3d44257064faa6dc5",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/protocol/cohort.csv": "0b5061a3d62934450539ffb095cb1f1fc277dee6502ac645f39f7a628efd3e76",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/controls/tasks.json": "8c651d3b18e3bae2bb649db13954b9663ed7f7a0d5b0b2339f8a019fb021469a",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/controls/summary/manifest.json": "c4e22073db74f7cf02ea31065e5362e52797f28b1ba23a348960c95d34c741ec",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/controls/independent_verification/validation.json": "ec5f71324e9b72a651ba8789b3a20a17881814a57cf12ad5a8b4c39e62ee06c0",
+    "results/hvg_ptc_20260916_v1/lfine_compact_20260920/manifest.json": "a7f7623f420033707914be13ec67cb3312549ff26359f6304da392c6506015e9",
+    "results/hvg_ptc_20260916_v1/lfine_compact_20260920/metrics_hvg24.csv.gz": "96d0a698e9411fff3c33d33958a5840a458fc57ac74f5b374f79d7f3448e5768",
+    "results/hvg_ptc_20260916_v1/lfine_compact_20260920/lfine_target_prefixes.json": "aa1a61bb7014e89cf178daa31e45a90ec5178cb69a691f7631a32b4c4174eae4",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/inputs/TKU4163/input_manifest.json": "84c7b6a5ae57edca2fbe40f2460ca12c71ccf5195101f98b40bc2cec0853e7a3",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/evaluation_inputs/TKU4163/truth.csv.gz": "821b2b92da96e2c991399e237b67a3bff73c5d287a5e0e477e36a3b69543dc10",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/inputs/NL022/input_manifest.json": "e3c708a5a2544886b3a8ad1e07981b4783327ad3cbeffb8b37ea365dc01a8b04",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/evaluation_inputs/NL022/truth.csv.gz": "e800b3e2f3b7fb8dc8369f04bc25974bc03ae58ad74ee6a18d2d6417f69a45a0",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/inputs/SN040/input_manifest.json": "4ffc9a375e0a5258f25e03356b1d45aa09b8da3872a5dc3a16876bc8a2097e0b",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/evaluation_inputs/SN040/truth.csv.gz": "629072e32e9d6b9875504aa3ba704a44b596db3a99d2aafd774f3e117afc139e"
+  }
+}

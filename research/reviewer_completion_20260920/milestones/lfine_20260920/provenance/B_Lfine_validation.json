@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "at": "2026-09-21T00:25:10.940621+00:00",
+  "job": "7204040",
+  "step": "177",
+  "n_rows": 408,
+  "n_neighbor_rows": 264,
+  "n_learning_rows": 144,
+  "n_fields_per_row": 12,
+  "independent_cell_loop_arithmetic": true,
+  "independent_full_roster": true,
+  "thresholds": [
+    "0.90",
+    "0.70"
+  ],
+  "epochs": [
+    5,
+    10,
+    20,
+    30
+  ],
+  "seeds": [
+    0,
+    1,
+    42
+  ],
+  "n_samples": 3,
+  "n_budgets": 2,
+  "no_provider_metric_function_import": true,
+  "no_fitting": true,
+  "no_best_selection": true,
+  "no_L1_performance_values": true,
+  "source_sha256": "b6c7dab226cfa5e9fb7674718367ecfd1d390e5a07b3bc2d649ad55e3bcba9d7",
+  "full_validation_sha256": "ab70ed5877af25a402c725d3929c8658e1a6dfb7994ce009cd12dcddf4ea5938",
+  "protocol_sha256": "d78f159c47408870ba07be24880fc9a68769566164ff8ae9e3af6707f8a6a2e9",
+  "files": {
+    "independently_recomputed_metrics.csv.gz": "0cf4c9af77c9996c64039b0f0031430f189f0603c4328450901ecd3d45da5ead"
+  }
+}

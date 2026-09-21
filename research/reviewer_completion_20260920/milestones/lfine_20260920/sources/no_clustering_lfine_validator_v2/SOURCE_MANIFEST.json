@@ -1,0 +1,22 @@
+{
+  "purpose": "Independent full A2 Lfine saved-call and patient-inference verification; no numerical source mutation",
+  "files": {
+    "validate_full.py": "b204b458ee889214fc27871b6f3b397e0dc1e8309ed89fcda423ee5e6263271b"
+  },
+  "pinned_evidence": {
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering_lfine_v1/protocol_v2.json": "f2df9f5c5ed2a411232b87bab124014b5ae56d6f6abee02ff96fba5d45eaff67",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering_lfine_v1/source_v2/SOURCE_MANIFEST.json": "b717d29d68225001d8a9616f48cd35019bffeaff515cd57952a01d2f094ce6c1",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering_lfine_v1/inputs.json": "d2b8b9dd11df4cb17d53d2fdc9ed804a57abc8dbba85faa8dcde671faf087d67",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering_lfine_v1/APPROVED.json": "12cb8e49cefa32af9d75bb7986c676668e86b5fb3366cc5be6184a9fd2f429f9",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering_lfine_v1/pilot_validation/validation.json": "6dd019ba6fe453c7f2a0cddd2bf8a7801574b4ebdf33e909787d4c837232db3c",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering_lfine_v1/summary/manifest.json": "fb10e69a890f5195f4d705748138b41bc396a98d75312370b256af82060f71af"
+  },
+  "frozen_at": "2026-09-21T00:34:33.479735+00:00",
+  "parent_source_manifest_sha256": "67fc57f7b4347b20b086bbfa5b0d9a89ce11b9ca106988225a3d28768fe8bd3c",
+  "revision": "Only diagnostic training-score JSON tolerance 5.1e-11 for pandas decimal serialization and nonempty class assertion; numerical evaluator and aggregate unchanged.",
+  "parent_attempt": {
+    "job_id": "7204040.186",
+    "status": "cancelled_before_validation_completion",
+    "reason": "Independent review identified diagnostic JSON precision mismatch; no numerical pipeline/output failure"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "at": "2026-09-21T00:05:25.748876+00:00",
+  "cpus_requested": 4,
+  "DEG_workers": 4,
+  "memory_GB": 32,
+  "time_limit_hours": 24,
+  "numerical_source": "embedding_v8",
+  "numerical_source_manifest_sha256": "a9d1d5ecf75f47bef80753e0e3d9e5f312c85f4dd283f3ed785af18b4dc56506",
+  "presentation_source": "embedding_presentation_v1",
+  "presentation_source_manifest_sha256": "dadc492d3992cb3c737841e04877e1b71777a624f767822c264dd0ad36f0ed9a",
+  "numerical_parameters_unchanged": true,
+  "additional_action": "Render separately named adaptive ICA figures from completed predictions; preserve original figures",
+  "worker_parity_proof": "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_worker_probe/SN040/hvg2000/PCA2_workers4/validation.json"
+}

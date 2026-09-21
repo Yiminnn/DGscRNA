@@ -1,0 +1,7 @@
+{
+  "enabled": false,
+  "scope": "DG-scRNA OneDrive synchronization and delivery",
+  "date": "2026-09-20",
+  "user_instruction": "不用同步onedrive 本地盖好就行",
+  "required_behavior": "Update the existing local notebook only. Do not start or resume OneDrive uploads, downloads for delivery verification, or delivery watchers. Preserve existing local and remote files. Resume only after a later explicit user instruction."
+}

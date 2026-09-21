@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "reviewer": "root",
+  "reviewed_at": "2026-09-21T00:49:52.105681+00:00",
+  "scope": "Visual inspection of already generated PNG via view_image; no numerical validation claim",
+  "png_sha256": "bd6d81314aab998635b44d8bd6c4a9e6b9a0ef816f0d90e82cbb4f168aa143fa",
+  "presentation_validation_sha256": "44c20d609e01215877ee4be18af727cf6dd86ac375e6199fd5d591a6110c6791",
+  "observations": [
+    "Eight panels show both HVG budgets and all four declared one-factor sweeps",
+    "Axes, default reference lines and sample/marker legends are readable",
+    "No observed overlap or clipping"
+  ],
+  "canonical_notebook_written": false
+}

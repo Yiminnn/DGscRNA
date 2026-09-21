@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "validation_contract_sha256": "a8ba5017582574658fc31e4ae3e727f7be9f40d002d0e5b40666599c55bcc10b",
+  "proofs": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_full_validation_v1/units/TKU4163/hvg2000/PCA2/manifest.json": "ebafbe615e807c9c5fd2547b31c0929085875e7ee799f818e1f0d9415e263c35",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_full_validation_v1/units/NL022/hvg2000/PCA2/manifest.json": "06f819743ef7d916d63d7986a06506f07c799128a260d4767dd30fa01668fd41",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_full_validation_v1/units/SN040/hvg2000/PCA2/manifest.json": "6a1c28091aa270fcc2a8b7b7553e1e64d14b379dd069f37d6b77e3d0c2454d1f",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_full_validation_v1/units/TKU4163/hvg2000/ICA2/manifest.json": "01045b95ae2f5eaa2dde3bb520f04e784d65fadaf09327d57f5097ca061febb8"
+  },
+  "published_at": "2026-09-21T00:30:52.416753+00:00",
+  "scope": "Three PCA2 and one ICA2 independent validator pilots only; full A1 remains incomplete"
+}
