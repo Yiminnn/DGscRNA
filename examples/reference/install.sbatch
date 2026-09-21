@@ -8,7 +8,7 @@
 # sbatch --export=ALL,CONDA_BASE_PYTHON=/conda-base/bin/python,DGSCRNA_ENV=/env/new-reference \
 #   examples/reference/install.sbatch
 set -euo pipefail
-: "${CONDA_BASE_PYTHON:?Set CONDA_BASE_PYTHON to Conda base's Python executable}"
+: "${CONDA_BASE_PYTHON:?Set CONDA_BASE_PYTHON to the Conda base Python executable}"
 : "${DGSCRNA_ENV:?Set DGSCRNA_ENV to a fresh writable runtime directory}"
 cd -- "${SLURM_SUBMIT_DIR:?Submit this script with sbatch from the repository root}"
 bash environments/reference/install.sh "$CONDA_BASE_PYTHON" "$DGSCRNA_ENV"
