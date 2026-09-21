@@ -1,0 +1,16 @@
+--- score_R.R
++++ backend/score_R.R
+@@ -2,9 +2,10 @@
+ stopifnot(nzchar(Sys.getenv('SLURM_JOB_ID')))
+ script<-sub('^--file=','',grep('^--file=',commandArgs(),value=TRUE)[[1]])
+ Sys.setenv(DGSCRNA_EXECUTION_SOURCE=script)
+-root <- '/fs/scratch/PCON0080/yimin/dgscrna'
+-base <- file.path(root,'results/hvg_ptc_20260916_v1/paper_claim_validation_20260917')
+-.libPaths(c(file.path(root,'results/hvg_ptc_20260916_v1/ptc_experiments/vendor_R_dbscan64'),.libPaths()))
++root <- Sys.getenv('DGSCRNA_SITE_ROOT',getwd())
++base <- Sys.getenv('DGSCRNA_EXAMPLE_OUT');stopifnot(nzchar(base))
++reference_lib <- Sys.getenv('DGSCRNA_REFERENCE_R_LIB','')
++if(nzchar(reference_lib)).libPaths(c(reference_lib,.libPaths()))
+ suppressPackageStartupMessages(library(Seurat))
+ suppressPackageStartupMessages(library(Matrix))
+ suppressPackageStartupMessages(library(jsonlite))

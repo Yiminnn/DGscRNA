@@ -1,0 +1,21 @@
+--- common.py
++++ backend/common.py
+@@ -5,13 +5,13 @@
+ import json
+ import os
+ 
+-ROOT = Path('/fs/scratch/PCON0080/yimin/dgscrna')
+-CODE = ROOT/'handoff/paper_claim_validation_20260917'
+-OUT = ROOT/'results/hvg_ptc_20260916_v1/paper_claim_validation_20260917'
++ROOT = Path(os.environ.get('DGSCRNA_SITE_ROOT',str(Path.cwd())))
++CODE = Path(__file__).resolve().parent
++OUT = Path(os.environ['DGSCRNA_EXAMPLE_OUT'])
+ INPUTS = ROOT/'results/g274_cohort/inputs_v1'
+ OLD = ROOT/'results/hvg_ptc_20260916_v1/r_reference_campaign_20260917'
+-PYTHON = '/fs/scratch/PCON0080/yimin/mamba_envs/dgscrna/bin/python'
+-RSCRIPT = '/fs/scratch/PCON0080/yimin/mamba_envs/deconv_r2/bin/Rscript'
++PYTHON = os.environ.get('DGSCRNA_PYTHON','python')
++RSCRIPT = os.environ.get('DGSCRNA_RSCRIPT','Rscript')
+ FEATURES = ['hvg500', 'hvg1000', 'hvg2000', 'hvg3000', 'hvg5000', 'all']
+ ROUTES = ['PCA30_SNN', 'PCA30_HDBSCAN_R', 'UMAP2_SNN', 'UMAP2_HDBSCAN_R']
+ L1 = ['Malignant', 'TAM', 'Lymphocyte', 'Oligodendrocyte', 'Astrocyte', 'OPC',

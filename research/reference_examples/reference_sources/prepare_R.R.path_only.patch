@@ -1,0 +1,13 @@
+--- prepare_R.R
++++ backend/prepare_R.R
+@@ -7,8 +7,8 @@
+ suppressPackageStartupMessages(library(future))
+ plan(sequential)
+ options(Seurat.object.assay.version='v3',future.globals.maxSize=64*1024^3)
+-root<-'/fs/scratch/PCON0080/yimin/dgscrna'
+-base<-file.path(root,'results/hvg_ptc_20260916_v1/paper_claim_validation_20260917')
++root<-Sys.getenv('DGSCRNA_SITE_ROOT',getwd())
++base<-Sys.getenv('DGSCRNA_EXAMPLE_OUT');stopifnot(nzchar(base))
+ args<-commandArgs(trailingOnly=TRUE)
+ sample<-args[[1]];budget<-args[[2]]
+ stopifnot(budget %in% c('hvg500','hvg1000','hvg2000','hvg3000','hvg5000','all'))

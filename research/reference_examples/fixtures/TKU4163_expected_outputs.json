@@ -1,0 +1,103 @@
+{
+  "status": "frozen_historical_reference_confirmed_by_independent_fresh_fit",
+  "fingerprints": {
+    "selected_features.txt": "ce8b463b0a5f02d49a55b35595f72062b858ed51a30f5a2e2cfdf6ad0eb10d0d",
+    "geometry_features.txt": "ce8b463b0a5f02d49a55b35595f72062b858ed51a30f5a2e2cfdf6ad0eb10d0d",
+    "scoring_features.txt": "b7171bfc559ca84fd53dde6da1ead94b54d753bdf38b73938014aef7b0835b44",
+    "DL_features.txt": "442238019310448fb38e7faa40d2e8bd642fce80b0e8dbd8fe80d60d9dad0f7a",
+    "DL.float32.bin": "1a1cb4a069d640f1af54a821c69a18093583e28fa62e0e306b76510987503fac",
+    "cells.csv": "11f8e374c46f30bbb752afe9aca30f593e96c0112e4273da8520da4e3e2c47cf",
+    "PCA30.csv:parsed_csv": "b5dd61c7e7d9229a7a59b33a5cbc4f436c3d89afb49bf4166d3236df55a46c63",
+    "UMAP2.csv:parsed_csv": "6eff11fe4fd88b1f36d2f6b9474b5fbb654118d7bbd0cbfd33f6befea19dd4b0",
+    "UMAP2_HDBSCAN_R/clusters.csv:parsed_csv": "add20e26e3401efcb2b7c4fdea77299bd25f2c1d5855f4ea75b45f00ff588420",
+    "UMAP2_HDBSCAN_R/density_diagnostics.csv:parsed_csv": "9a574c4e8f2b1fab5c4c3334903b6737b02a29d21c037270e7171702b1198588",
+    "UMAP2_HDBSCAN_R/initial_calls.csv.gz:parsed_csv": "f844078d1b2d90b7bfbce5db966ca7e2dcada360ce4eee876acafb1b390ae57f",
+    "UMAP2_HDBSCAN_R/cluster_calls.csv.gz:parsed_csv": "a6f105f4fb3000d0e5a8166193ad7998ef3d443d17120f40421759c04f117017",
+    "UMAP2_HDBSCAN_R/marker_retention.csv.gz:parsed_csv": "b08ab2149d192945d6f843afc291fe9d206bed613f4030e243b38d94d67e7cf9",
+    "terminal:initial": {
+      "dtype": "<U36",
+      "shape": [
+        178
+      ],
+      "sha256": "adce54b65d12368757fcf2e4a5215d7758aa42aa19534c80da9416847a0ff2d5"
+    },
+    "terminal:final090": {
+      "dtype": "<U36",
+      "shape": [
+        178
+      ],
+      "sha256": "f785e59f847cc438d58c86470613adb604d8d52323a47b814edf0114424b9ac0"
+    },
+    "terminal:final070": {
+      "dtype": "<U36",
+      "shape": [
+        178
+      ],
+      "sha256": "5e69176721728a5e9acf84ffe4a81516166fc869aa6c0a360b312bcbd4d0f26a"
+    },
+    "terminal:classes": {
+      "dtype": "<U36",
+      "shape": [
+        3
+      ],
+      "sha256": "cd53955182e3cb2f1f24748178558a8296952e1916c20bfdb1a21969a6f96240"
+    },
+    "terminal:pool_indices": {
+      "dtype": "int64",
+      "shape": [
+        6
+      ],
+      "sha256": "fd5afaf59580c3c91fb19518553bebd6e66455c87dcdbfdc8cd813f8c9b73199"
+    },
+    "terminal:probabilities": {
+      "dtype": "float32",
+      "shape": [
+        6,
+        3
+      ],
+      "sha256": "ebf539a637083017e0637db730f926f527692f36ca7077b68ad250e05529bfdd"
+    },
+    "terminal:predicted": {
+      "dtype": "<U36",
+      "shape": [
+        178
+      ],
+      "sha256": "6b1a96679e55444859f0ab15e08bee80fe7c44d864feba83743e01447f1b8110"
+    },
+    "terminal:confidence_rounded": {
+      "dtype": "float32",
+      "shape": [
+        178
+      ],
+      "sha256": "34144db63d633ae9c927a64a6dc335cc6bf737bde2a5830a619e4976b7cfe066"
+    },
+    "terminal:lineage": {
+      "dtype": "<U32",
+      "shape": [
+        178
+      ],
+      "sha256": "d272176b017a6f5c6787b990bf45770fcf370ae45cbe76a256e994d0a8715ba0"
+    },
+    "terminal:train_indices": {
+      "dtype": "int64",
+      "shape": [
+        155
+      ],
+      "sha256": "43aef9a557dd6d9324e8ea0a986b54544a3d0e7abb9698b8180f76240e721e21"
+    },
+    "terminal:validation_indices": {
+      "dtype": "int64",
+      "shape": [
+        17
+      ],
+      "sha256": "acc0118902e3ac2c2ff246b9f4c2094b96b4ac96f3c8e08701cc39c56d5f8af5"
+    }
+  },
+  "scope": "Exact fixed TKU4163 fixture and recorded numerical dependencies; hardware/platform variation is not universally certified",
+  "reference_prepare_manifest_sha256": "7ec3930e9789512efc15d46458f7ada9305893b25f46694733e683f11fc1acf7",
+  "reference_terminal_manifest_sha256": "759352caf27472d9d8a971a445176cacfeebc506fecbb587f368df7b9b0c0dd3",
+  "fresh_parity_sha256": "b89c02f35ead3011dc86b65cd599c4b833a0a86892ed17cabd0400fafe040b7e",
+  "fingerprint_source_sha256": "e5e8c0038e3e894a5b523cb413b0935b0d94dec41f4c27c79a8b2016fe117c58",
+  "job": "7204040",
+  "step": "131"
+}

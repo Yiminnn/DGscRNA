@@ -1,0 +1,30 @@
+{
+  "status": "unchanged_historical_site_scripts_not_executed_in_this_package",
+  "records": [
+    {
+      "name": "check_paper_baseline.py",
+      "original_source": "handoff/ptc_paper_baseline_20260916/check_paper_baseline.py",
+      "sha256": "29e6ccb20986f16cd6ea54ea4965771fe24cbabf011328c8dc5e0daa022cc209"
+    },
+    {
+      "name": "reconcile_historical_metrics.py",
+      "original_source": "handoff/ptc_paper_baseline_20260916/reconcile_historical_metrics.py",
+      "sha256": "0797801e4b1acc02b1826ecf3cc8889c4ce2c1bf45e2d19cc6ffb7a9d3358eee"
+    },
+    {
+      "name": "verify_metric_R.R",
+      "original_source": "handoff/ptc_paper_baseline_20260916/verify_metric_R.R",
+      "sha256": "a73052aa3d106fc2895dbb048833c89e46eecaaa2613928d0cd64ee135b86fba"
+    },
+    {
+      "name": "check_accuracy_consistency.py",
+      "original_source": "handoff/ptc_paper_baseline_20260916/check_accuracy_consistency.py",
+      "sha256": "5061e9335595cfa181e9ba5c3f000820dd8f6a7883bf739801723bc14a065203"
+    },
+    {
+      "name": "reference_sources/MLmetrics_1.1.1_Classification.R",
+      "original_source": "handoff/ptc_paper_baseline_20260916/reference_sources/MLmetrics_1.1.1_Classification.R",
+      "sha256": "284316577960aa32f28d95968f9adf6ae988606e14768c9d21cd0bab4ce7348c"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "scope": "Only configurable IO roots and R library selection; numerical bodies unchanged. legacy_refine.py and terminal.py byte-identical.",
+  "files": {
+    "prepare_R.R": {
+      "source": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/paper_claim_validation_20260917/prepare_R.R",
+      "source_sha256": "bafe9a0d73ccbb60e8567cf6ea5431421bc6a80ed0dc7522fd4fee186ff9f9a6",
+      "backend_sha256": "71c8b45e835c288480c3bb6d87d2e3ce075ec856b8cca34ab89088358068c810",
+      "path_only_replacements": [
+        {
+          "before": "root<-'/fs/scratch/PCON0080/yimin/dgscrna'",
+          "after": "root<-Sys.getenv('DGSCRNA_SITE_ROOT',getwd())"
+        },
+        {
+          "before": "base<-file.path(root,'results/hvg_ptc_20260916_v1/paper_claim_validation_20260917')",
+          "after": "base<-Sys.getenv('DGSCRNA_EXAMPLE_OUT');stopifnot(nzchar(base))"
+        }
+      ]
+    },
+    "score_R.R": {
+      "source": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/paper_claim_validation_20260917/score_R.R",
+      "source_sha256": "89953d3113a2f7d4b78aedead6d93aaf0b3bf536c75110467d9ba176c36fa0ed",
+      "backend_sha256": "93a27271f0268aac885c26c62368d30d96e99a02b8d8696930112d7668f4323f",
+      "path_only_replacements": [
+        {
+          "before": "root <- '/fs/scratch/PCON0080/yimin/dgscrna'",
+          "after": "root <- Sys.getenv('DGSCRNA_SITE_ROOT',getwd())"
+        },
+        {
+          "before": "base <- file.path(root,'results/hvg_ptc_20260916_v1/paper_claim_validation_20260917')",
+          "after": "base <- Sys.getenv('DGSCRNA_EXAMPLE_OUT');stopifnot(nzchar(base))"
+        },
+        {
+          "before": ".libPaths(c(file.path(root,'results/hvg_ptc_20260916_v1/ptc_experiments/vendor_R_dbscan64'),.libPaths()))",
+          "after": "reference_lib <- Sys.getenv('DGSCRNA_REFERENCE_R_LIB','')\nif(nzchar(reference_lib)).libPaths(c(reference_lib,.libPaths()))"
+        }
+      ]
+    },
+    "common.py": {
+      "source": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/paper_claim_validation_20260917/common.py",
+      "source_sha256": "74542e88fefb9a72c58083ba1f1a13313fb90ab75e98beb00d02b26fe98a6de2",
+      "backend_sha256": "a98ddb935dbd4a8894dff77626701c2a3c8ba4bf62feadf3a4c9be88a89045df",
+      "path_only_replacements": [
+        {
+          "before": "ROOT = Path('/fs/scratch/PCON0080/yimin/dgscrna')",
+          "after": "ROOT = Path(os.environ.get('DGSCRNA_SITE_ROOT',str(Path.cwd())))"
+        },
+        {
+          "before": "OUT = ROOT/'results/hvg_ptc_20260916_v1/paper_claim_validation_20260917'",
+          "after": "OUT = Path(os.environ['DGSCRNA_EXAMPLE_OUT'])"
+        },
+        {
+          "before": "CODE = ROOT/'handoff/paper_claim_validation_20260917'",
+          "after": "CODE = Path(__file__).resolve().parent"
+        },
+        {
+          "before": "PYTHON = '/fs/scratch/PCON0080/yimin/mamba_envs/dgscrna/bin/python'",
+          "after": "PYTHON = os.environ.get('DGSCRNA_PYTHON','python')"
+        },
+        {
+          "before": "RSCRIPT = '/fs/scratch/PCON0080/yimin/mamba_envs/deconv_r2/bin/Rscript'",
+          "after": "RSCRIPT = os.environ.get('DGSCRNA_RSCRIPT','Rscript')"
+        }
+      ]
+    },
+    "ptc_common.py": {
+      "source": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/paper_claim_validation_20260917/ptc_common.py",
+      "source_sha256": "3fcba04e4fd6154f24efbda069ca2574040bb749a5eced615e028d780e33b789",
+      "backend_sha256": "87376f47564f97f102d768d97822aec8b9054c3c98f27ce2a547018998468d5c",
+      "path_only_replacements": [
+        {
+          "before": "ROOT = Path('/fs/scratch/PCON0080/yimin/dgscrna')",
+          "after": "ROOT = Path(os.environ.get('DGSCRNA_SITE_ROOT',str(Path.cwd())))"
+        },
+        {
+          "before": "BASE = ROOT/'results/hvg_ptc_20260916_v1/ptc_experiments'",
+          "after": "BASE = Path(os.environ['DGSCRNA_EXAMPLE_OUT'])"
+        },
+        {
+          "before": "PYTHON = '/fs/scratch/PCON0080/yimin/mamba_envs/dgscrna/bin/python'",
+          "after": "PYTHON = os.environ.get('DGSCRNA_PYTHON','python')"
+        },
+        {
+          "before": "RSCRIPT = '/fs/scratch/PCON0080/yimin/mamba_envs/deconv_r2/bin/Rscript'",
+          "after": "RSCRIPT = os.environ.get('DGSCRNA_RSCRIPT','Rscript')"
+        }
+      ]
+    },
+    "legacy_refine.py": {
+      "source": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/paper_claim_validation_20260917/legacy_refine.py",
+      "source_sha256": "e32daabbf2e883666deace944020ebdab406f705f24200ae1cb3a8df9860d3c3",
+      "backend_sha256": "e32daabbf2e883666deace944020ebdab406f705f24200ae1cb3a8df9860d3c3",
+      "path_only_replacements": []
+    },
+    "terminal.py": {
+      "source": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/paper_claim_validation_20260917/terminal.py",
+      "source_sha256": "2ea6490a961c3d0ebc4a4857dc0958dae014dcfa934f3e6d7703642b8bf03d5e",
+      "backend_sha256": "2ea6490a961c3d0ebc4a4857dc0958dae014dcfa934f3e6d7703642b8bf03d5e",
+      "path_only_replacements": []
+    }
+  }
+}

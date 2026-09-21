@@ -1,0 +1,18 @@
+--- ptc_common.py
++++ backend/ptc_common.py
+@@ -5,11 +5,11 @@
+ import os
+ from datetime import datetime, timezone
+ 
+-ROOT = Path('/fs/scratch/PCON0080/yimin/dgscrna')
+-BASE = ROOT/'results/hvg_ptc_20260916_v1/ptc_experiments'
++ROOT = Path(os.environ.get('DGSCRNA_SITE_ROOT',str(Path.cwd())))
++BASE = Path(os.environ['DGSCRNA_EXAMPLE_OUT'])
+ RECOVERY = ROOT/'results/hvg_ptc_20260916_v1/ptc_recovery'
+-PYTHON = '/fs/scratch/PCON0080/yimin/mamba_envs/dgscrna/bin/python'
+-RSCRIPT = '/fs/scratch/PCON0080/yimin/mamba_envs/deconv_r2/bin/Rscript'
++PYTHON = os.environ.get('DGSCRNA_PYTHON','python')
++RSCRIPT = os.environ.get('DGSCRNA_RSCRIPT','Rscript')
+ GROUPS = {'MTN': ['MT-1', 'MT-2', 'N-1', 'N-2'], 'TUT': ['TU-1', 'TU-2', 'T-1', 'T-2']}
+ MARKERS = RECOVERY/'archive/tcr/ptc_val/scripts/DGscRNA-Share/data/full_marker_symbol.RDS'
+ 

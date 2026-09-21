@@ -1,0 +1,29 @@
+{
+  "sample": "TKU4163",
+  "dataset": "GSE274546",
+  "n_cells": 178,
+  "n_genes_before_filter": 33538,
+  "n_genes": 17180,
+  "nnz": 582056,
+  "budget": "hvg2000",
+  "route": "UMAP2_HDBSCAN_R",
+  "marker": "CM2_glioma_other",
+  "cutoff": "mean",
+  "arm": "L00_mean",
+  "marker_libraries_sha256": "9efa8476a22156878c2076a9e3c1f1abd46c6218d24c18c035994cef98182eff",
+  "raw_counts_files": {
+    "matrix.mtx": "3f178ccf4af0b7eb55729f11e53f83dfda82ea7033fa457404e5903756092943",
+    "genes.tsv": "3af452388eaa7bafe83fc7c301036a7b42a2c6537ba71f9f2ed46c8b59326401",
+    "barcodes.tsv": "c06b5c4eaed40335463774a6eeaddd74906ae883b90fec7b372bbc29cc80f2af"
+  },
+  "fitting_files": {
+    "x.bin": "fe47db9f5ffca8683ab5e1fb0004fe9cb1724ef7e9940ace862bcbf0322e364d",
+    "i.bin": "62b815163055c5af2d5ddfb0e4862cc500f90e2f05613efd77f5ae5f58545801",
+    "p.bin": "7dfa9342494ad1bd0633e6737fcea6f6afb35fb1b4dbbe61d283241004f02c95",
+    "cells_fit.csv": "6d85afed3f7cfe16a22a19607c1da9def7bd092e5f4ad60b6b16d61c0f219e31",
+    "genes.csv": "c2c97fd60f03a341fe2df9e5b9ca09388c14826af7c30f83434fad9a44e576e1"
+  },
+  "source_counts_h5ad_sha256": "834bb6164a0c7aacf440a0795cf08d057e5f44620e64355c8ba4ea5038d77a90",
+  "data_note": "Author-retained per-sample integer counts, provided as genes x cells MatrixMarket; no labels required by fit. Gene detection >=3 cells. This small fixed fixture tests reproducibility, not HVG optimum or whole-cohort quality.",
+  "historical_reference_relative": "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/GBM/TKU4163/hvg2000"
+}
