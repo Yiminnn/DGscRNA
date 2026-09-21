@@ -14,4 +14,11 @@ global-exclude __pycache__
 global-exclude .DS_Store
 global-exclude .git*
 global-exclude *.so
-global-exclude *.dylib 
+global-exclude *.dylib
+
+recursive-include dgscrna/reference/backend *.R *.json
+recursive-include environments/reference *.txt *.json *.py *.R *.sh *.md
+recursive-include examples/reference *.sbatch *.json *.tsv
+recursive-include research/reference_examples *.py *.R *.txt *.json *.patch *.md
+include research/r_reference_campaign_20260917/source/handoff/r_reference_campaign_20260917/ptc_ablation_prepare.R
+exclude requirements-lock.txt

@@ -1,89 +1,59 @@
-# DGscRNA
+# DG-scRNA reference workflow
 
-A Python package for single-cell RNA-seq cell type annotation using marker-based scoring and deep learning refinement.
+DG-scRNA 2.0.0rc1 packages the recovered **R preprocessing, clustering and marker scoring with the original Python DL/refinement**, behind one Python command. The numerical workflow is shared; the legacy simplified Python implementation remains separately available.
 
-## Overview
+## Install
 
-DGscRNA combines traditional marker-based cell type scoring with deep learning to resolve ambiguous cell type assignments in single-cell RNA-seq data. The workflow includes:
+This is a GitHub prerelease on `align-r-reference`. Download the matching source archive and wheel from this repository’s Releases page. The verified runtime is Linux x86-64, Python 3.11, with pinned R/Python environments. `pip` installs the interface and backend files; it does not install R.
 
-1. **Preprocessing**: Quality control, normalization, and dimensionality reduction
-2. **Clustering**: Multiple clustering algorithms (Leiden, HDBSCAN, K-means)
-3. **Marker Scoring**: Density-based scoring using known cell type markers
-4. **Deep Learning**: Neural network refinement of ambiguous annotations
-
-## Installation
+From the extracted source archive, install the fixed runtimes in a fresh directory:
 
 ```bash
-pip install dgscrna
+bash environments/reference/install.sh /path/to/conda/bin/python /path/to/reference-env
+/path/to/reference-env/python/bin/python -m pip install --no-deps /path/to/dgscrna-2.0.0rc1-py3-none-any.whl
+/path/to/reference-env/python/bin/dgscrna doctor --rscript /path/to/reference-env/r/bin/Rscript
 ```
 
-Or install from source:
+On an HPC system, run installation and computation in an allocation. Portable SLURM examples are in `examples/reference/`.
+
+## Run
+
+Provide an **already-QC**, single-sample 10x count matrix directory and a marker library. The GBM preset does not repeat raw-droplet QC, DoubletFinder or cross-patient CCA.
 
 ```bash
-git clone https://github.com/yourusername/DGscRNA.git
-cd DGscRNA
-pip install -e .
+dgscrna run --counts sample_10x/ --markers markers.tsv \
+  --preset gbm-reference --sample sample1 --out results/sample1 \
+  --rscript /path/to/reference-env/r/bin/Rscript
 ```
 
-## Quick Start
+The default is VST2000 → PCA30 → uwot UMAP2 → R HDBSCAN → Seurat RNA DEGs → marker density with mean cutoff → original DL/refinement. Geometry and DL use the selected genes; RNA DEG scoring uses all eligible genes. `--features all` uses all genes detected in at least three cells. Other supported budgets are 500/1000/3000/5000. `--route all --cutoff all` runs the four original routes and three scoring cutoffs. This preset is a reference configuration, not a claim of universal optimality.
+
+Markers can be nested JSON `{library: {cell_type: [genes]}}` or a long TSV/CSV:
+
+```text
+library	cell_type	gene
+brain	Astrocyte	GFAP
+brain	Astrocyte	AQP4
+brain	Oligodendrocyte	MBP
+```
+
+The run returns `annotations.csv.gz` (initial/final labels, confidence, cluster and DL status for each condition), `embedding.csv`, `condition_summary.csv`, and `run_manifest.json`. Intermediate artifacts and logs remain available. Multiple libraries produce separate conditions; the tool does not use reference truth to pick a winning annotation. Valid no-op outcomes are distinguished from actual training.
+
+Python uses the same runner:
 
 ```python
-import scanpy as sc
-import dgscrna as dg
-
-# Load your data
-adata = sc.read_h5ad('your_data.h5ad')
-
-# Run the complete pipeline
-results = dg.run_dgscrna_pipeline(
-    adata=adata,
-    marker_folder='path/to/marker/sets/',
-    clustering_methods=['leiden', 'hdbscan'],
-    deep_learning=True
-)
-
-# View results
-sc.pl.umap(adata, color=['leiden', 'CellMarker_Thyroid_mean_DGscRNA'])
+from dgscrna import run_reference
+result = run_reference(counts="sample_10x", markers="markers.tsv",
+                       out="results/sample1", sample="sample1",
+                       rscript="/path/to/reference-env/r/bin/Rscript")
 ```
 
-## Input Data Format
+See [the reference guide](docs/reference_workflow.md) for h5ad inputs, resume, staged HPC execution, provenance and limitations. Prepared-input PTC CCA code is included as an advanced backend; raw PTC preprocessing and end-to-end PTC portability are not certified by the GBM fixture.
 
-### Single-cell Data
-- **Format**: AnnData object (scanpy/anndata)
-- **Requirements**: Preprocessed and normalized gene expression matrix
+## Reproducibility and legacy code
 
-### Marker Sets
-- **Format**: CSV files in a folder
-- **Structure**: Columns are cell type names, rows are marker genes
-- **Example**:
-```csv
-,CellType1,CellType2,CellType3
-0,Gene1,Gene4,Gene7
-1,Gene2,Gene5,Gene8
-2,Gene3,Gene6,Gene9
-```
+`research/reference_examples/` preserves the independently verified TKU4163 fresh-fit fixture. The package carries backend source hashes and tests that preserve the original numerical bodies; release-specific fresh-fit checks are reported in release notes. Fitting never requires author reference labels.
 
-## Output
+Existing `dgscrna.core` functions remain the **legacy simplified Python implementation**, available with `pip install 'dgscrna[legacy]'`. They are not interchangeable with the R reference and are not used by the new `dgscrna run` command.
 
-- **AnnData object**: With added annotation columns
-- **Results dictionary**: Training scores and metrics
-- **Visualization**: UMAP plots with annotations
-
-## Documentation
-
-- [API Reference](docs/api.md)
-- [Installation Guide](docs/installation.md)
-- [Tutorial](docs/tutorial.md)
-- [Examples](examples/)
-
-## License
-
-GPL-3.0 License - see LICENSE file for details.
-
-## Contributing
-
-Contributions are welcome! Please read our contributing guidelines and submit pull requests.
-
-## Support
-
-For questions and support, please open an issue on GitHub or contact the maintainers. 
+GPL-3.0. Report issues at https://github.com/Yiminnn/DGscRNA/issues.

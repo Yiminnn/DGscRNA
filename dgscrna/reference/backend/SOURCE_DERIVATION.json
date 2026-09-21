@@ -1,0 +1,65 @@
+{
+  "scope": "Original R reference and historical Python DL, portable backend; not the simplified Python implementation.",
+  "files": {
+    "prepare_R.R": {
+      "source": "research/reference_examples/backend/prepare_R.R",
+      "source_sha256": "71c8b45e835c288480c3bb6d87d2e3ce075ec856b8cca34ab89088358068c810",
+      "packaged_sha256": "054091b62a52445115469b7e423a05def5993147576a8692481120fa2f571218",
+      "changes": [
+        "Portable output and optional library environment; optional SLURM policy; collision-safe publication; completed-input identity check; user-supplied dataset/QC provenance. Scientific normalization, VST, scaling, PCA, UMAP and binary export arithmetic retained.",
+        "Preserve cell/gene/cluster string identifiers such as 001 and NA during CSV input; UMAP row IDs remain strings and coordinate columns remain numeric. No changes to Seurat feature-renaming behavior or scientific calculations.",
+        "Isolate R libraries to the selected Rscript .Library plus an explicit optional reference library; exclude personal/site libraries and record actual library/package paths in stage manifests."
+      ]
+    },
+    "score_R.R": {
+      "source": "research/reference_examples/backend/score_R.R",
+      "source_sha256": "93a27271f0268aac885c26c62368d30d96e99a02b8d8696930112d7668f4323f",
+      "packaged_sha256": "9aa60a655ce2306cf397aeb1f8c02298198660085db5ffa807d91d1c37b6049d",
+      "changes": [
+        "Portable IO/scheduler policy; accept one marker library; completed-score marker/expression/seed validation; fallback UMAP uses recorded seed instead of hardcoded 42 (seed42 unchanged). Native clustering, DEG and marker density arithmetic retained.",
+        "Honor DGSCRNA_DEG_WORKERS for all assays, clamped to four and SLURM CPUs; default large-assay concurrency remains two. Only future worker allocation changes; DEG calculations unchanged.",
+        "Preserve cell/gene/cluster string identifiers such as 001 and NA during CSV input; UMAP row IDs remain strings and coordinate columns remain numeric. No changes to Seurat feature-renaming behavior or scientific calculations.",
+        "Isolate R libraries to the selected Rscript .Library plus an explicit optional reference library; exclude personal/site libraries and record actual library/package paths in stage manifests."
+      ]
+    },
+    "legacy_refine.py": {
+      "source": "research/reference_examples/backend/legacy_refine.py",
+      "source_sha256": "e32daabbf2e883666deace944020ebdab406f705f24200ae1cb3a8df9860d3c3",
+      "packaged_sha256": "d5133968086678d3a2df23d6b031d36704e9247f9bdc306737b86ffed2f63197",
+      "changes": [
+        "Retain PARAMS/build_model/train_cache; remove unused archive-specific experiment drivers; portable imports; scheduler metadata uses actual SLURM job ID or local PID. Model, loss, optimizer, split, minibatch order, threshold arithmetic and terminal status branches retained."
+      ]
+    },
+    "terminal.py": {
+      "source": "research/reference_examples/backend/terminal.py",
+      "source_sha256": "2ea6490a961c3d0ebc4a4857dc0958dae014dcfa934f3e6d7703642b8bf03d5e",
+      "packaged_sha256": "89e19dc14e7cd188edb76174739eee116de5d0497df5630e291d9d6e3d86350b",
+      "changes": [
+        "Portable package/script imports and scheduler metadata; GBM DL input provenance unchanged; integrated-assay PTC input is accurately identified as integrated expression instead of RNA. Training and terminal validation calculations retained.",
+        "Preserve cell/gene/cluster string identifiers such as 001 and NA during CSV input; UMAP row IDs remain strings and coordinate columns remain numeric. No changes to Seurat feature-renaming behavior or scientific calculations."
+      ]
+    },
+    "common.py": {
+      "packaged_sha256": "fec9255536b3c133143295912e009091ef82c9cc5e1d935b86fbec3041ea49fe",
+      "changes": [
+        "New portable runtime IO support; no scientific calculations."
+      ]
+    },
+    "__init__.py": {
+      "packaged_sha256": "06765715e22130a577d0ac019194e1ba60b158345c35a36e6e07ed6d7141b779",
+      "changes": [
+        "New portable runtime IO support; no scientific calculations."
+      ]
+    },
+    "ptc_prepare.R": {
+      "source": "research/r_reference_campaign_20260917/source/handoff/r_reference_campaign_20260917/ptc_ablation_prepare.R",
+      "source_sha256": "6fe57350840e9da4d231cd34e01784e896d968bd301e2cf43d3f736556f30277",
+      "packaged_sha256": "12187d9ef40454252c620b4e784ea77a0760710adf2cef6c7a4eab6eeea92c4b",
+      "changes": [
+        "Prepared-input CCA branch only. Replaces archive paths/array spec with portable JSON and explicit canonical cell order. Retains group sample order, VST, integration feature selection, anchors, integration, scaling and PCA. Adds hashed cache validation and standard scoring manifest fields. NONE/HARMONY and ALL8 experiments remain archived rather than silently substituting methods. Raw-count QC/normalization is not implemented by this stage.",
+        "Preserve cell/gene/cluster string identifiers such as 001 and NA during CSV input; UMAP row IDs remain strings and coordinate columns remain numeric. No changes to Seurat feature-renaming behavior or scientific calculations.",
+        "Isolate R libraries to the selected Rscript .Library plus an explicit optional reference library; exclude personal/site libraries and record actual library/package paths in stage manifests."
+      ]
+    }
+  }
+}
