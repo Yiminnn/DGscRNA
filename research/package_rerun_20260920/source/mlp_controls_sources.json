@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "status": "frozen_for_bounded_validation",
+  "n_groups": 54,
+  "n_terminal_conditions": 432,
+  "scientific_change": "Only archived refine_controls.py common import remapped; all scientific ASTs preserved. Installed package terminal backend; no changes to wheel.",
+  "reference_labels_used_for_fit": false,
+  "files": {
+    "adapter": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/mlp_controls_adapter.py",
+      "sha256": "aa080494801d6a0195a1dce2a4a8dc4bd8e30eac7ab993103e81c7c45d388579"
+    },
+    "parameterized_refine": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/refine_controls_packaged.py",
+      "sha256": "4cc71afbe8377b1f1a0aa740695702d84a9380c68f8878ea874fb911a8d372ba"
+    },
+    "tasks": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/mlp_controls_tasks.json",
+      "sha256": "062ddea2c082474381e29d1b6f78d12c316bfc60376e3dbc6c9600f9c054e384"
+    },
+    "archived_refine": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/paper_claim_validation_20260917/refine_controls.py",
+      "sha256": "6ea081b03c5e04b7b26cb07c3a7383ba1d1757a080cf7d6f13c8f130b06a4ae5"
+    },
+    "archived_driver": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/paper_claim_validation_20260917/dl_controls.py",
+      "sha256": "a7bfe949d3d046a7dffdf1fe84e00102b017c586708f4c71d76028be1057e8ec"
+    },
+    "independent_verifier": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/verify_packaged_parity.py",
+      "sha256": "c386ae61da84553feaa255be4b5f1cf4958d09d32d96460765d1e1cbf0aef3d8"
+    },
+    "core_gate_validator": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/core_task.py",
+      "sha256": "29ad5e39182f56974bed7a37659a21ac8c2fa714977fdc048d72b88be97932c6"
+    },
+    "core_receipt_validator": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/manage_core.py",
+      "sha256": "d0761518c05e2190c2cfea947608962419445d085330d1ffd62cee2f243f2a19"
+    },
+    "extension_evaluator": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_extension_lfine.py",
+      "sha256": "424fb152cee5d95990b0eae724761601199230cb55512e22bd8de5cfcdfd25a9"
+    },
+    "core_evaluator": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_core_lfine.py",
+      "sha256": "5352acee29aa5fb6e8f1e73549ea88e2c0801e037f7460335b4baadfcb172def"
+    },
+    "core_evaluator_sources": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_core_lfine_sources.json",
+      "sha256": "8c1ccab90c51564e01e7547b3557933604c0cb263d4207db3d686867379a6712"
+    },
+    "array_launcher": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/mlp_controls_array.sbatch",
+      "sha256": "0a51e70984527c90bd2df6a42f8d180befd7902913618a4209ba1c19715aadba"
+    }
+  }
+}

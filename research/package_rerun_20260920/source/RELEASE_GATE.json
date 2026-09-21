@@ -1,0 +1,184 @@
+{
+  "status": "release_and_pilots_verified",
+  "publication": {
+    "status": "published",
+    "repository": "Yiminnn/DGscRNA",
+    "branch": "align-r-reference",
+    "commit": "42e332f617ddb7196ba89529734ceebcdd068b9e",
+    "tag": "v2.0.0rc1",
+    "receipt": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/publication_receipt.json",
+      "sha256": "c65f1a343b79c7e0676e5814b03a1935d291767d8c0621b8fc39096e07423808"
+    },
+    "url": "https://github.com/Yiminnn/DGscRNA/releases/tag/v2.0.0rc1"
+  },
+  "wheel": {
+    "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/downloaded_release/dgscrna-2.0.0rc1-py3-none-any.whl",
+    "sha256": "ce6bbf22301a9964d19c7eab3642f759b8a6a284c7d2c865bf3f5f86e3cf4766"
+  },
+  "runtime": {
+    "python": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/runtime_v3/bin/python",
+    "rscript": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/reference_examples/isolated_7447099/r/bin/Rscript",
+    "reference_r_lib": null,
+    "fingerprint": {
+      "python": "3.11.15",
+      "python_packages": {
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "pandas": "2.3.3",
+        "torch": "2.5.1"
+      },
+      "DL_threads": 4,
+      "rscript": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/reference_examples/isolated_7447099/r/bin/Rscript",
+      "R": {
+        "R": "4.5.2",
+        "libraries": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/reference_examples/isolated_7447099/r/lib/R/library",
+        "packages": {
+          "Seurat": "5.5.0",
+          "SeuratObject": "5.4.0",
+          "Matrix": "1.7.5",
+          "jsonlite": "2.0.0",
+          "digest": "0.6.39",
+          "future": "1.70.0",
+          "dbscan": "1.2.6.9001",
+          "limma": "3.66.0",
+          "uwot": "0.2.4"
+        },
+        "package_paths": {
+          "Seurat": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/reference_examples/isolated_7447099/r/lib/R/library/Seurat",
+          "SeuratObject": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/reference_examples/isolated_7447099/r/lib/R/library/SeuratObject",
+          "Matrix": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/reference_examples/isolated_7447099/r/lib/R/library/Matrix",
+          "jsonlite": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/reference_examples/isolated_7447099/r/lib/R/library/jsonlite",
+          "digest": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/reference_examples/isolated_7447099/r/lib/R/library/digest",
+          "future": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/reference_examples/isolated_7447099/r/lib/R/library/future",
+          "dbscan": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/reference_examples/isolated_7447099/r/lib/R/library/dbscan",
+          "limma": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/reference_examples/isolated_7447099/r/lib/R/library/limma",
+          "uwot": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/reference_examples/isolated_7447099/r/lib/R/library/uwot"
+        }
+      },
+      "reference_r_lib": null
+    }
+  },
+  "installed_package": {
+    "root": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/runtime_v3/lib/python3.11/site-packages/dgscrna",
+    "files_sha256": {
+      "__init__.py": "c9406612313d61837bccb6aad4c4f936dfcbb1162b15a078b36cdf617e3779e7",
+      "__main__.py": "42f00097875da8288a34b8a288a22dae3abdb35280a4609f61b65eae4b659976",
+      "core/__init__.py": "b2cf7ceff95f1dfe7dc2f6b216608428af67c5117b2f9fa2eae5165886b97cad",
+      "core/clustering.py": "670239f6cc75b2cd1209a143bd3ce958ecc6401431715f5e1a8c918d75e23c63",
+      "core/deep_learning.py": "5bfbaf55e4c62c7095e35df68d4b87727a3694bda87e31fea2eca1b86c4a4a0b",
+      "core/marker_scoring.py": "2481eb4f57b5dc9b9b8e7202d3c7337c1c0420a82871a1995ff5a042f62ae422",
+      "core/preprocessing.py": "d3ceeed4dda687f6fa23e32cd7703565210177c040aed4860930341e58dd0c29",
+      "core/utils.py": "5c87eb86697aa5150a0e98afb39b80773be8eceb263cb4f8d518cd02dc1bbcd0",
+      "models/__init__.py": "7ac4177505b123df962ef7e83d82ea5c4628358d000882d116dea12420adbe11",
+      "models/deep_model.py": "4381cf21cece13e11026dbedb721371eb83f1af42a54db81e438876e5884856f",
+      "reference/__init__.py": "a308f99055b53668577936e97d7b67e231b5877524d3ba7cf58d161d3cbf05a1",
+      "reference/backend/SOURCE_DERIVATION.json": "a27f90777fc1c5d7f8ed1381a998b6a94bd22077d2b91825d6b05d3442f40860",
+      "reference/backend/__init__.py": "06765715e22130a577d0ac019194e1ba60b158345c35a36e6e07ed6d7141b779",
+      "reference/backend/common.py": "fec9255536b3c133143295912e009091ef82c9cc5e1d935b86fbec3041ea49fe",
+      "reference/backend/legacy_refine.py": "d5133968086678d3a2df23d6b031d36704e9247f9bdc306737b86ffed2f63197",
+      "reference/backend/prepare_R.R": "054091b62a52445115469b7e423a05def5993147576a8692481120fa2f571218",
+      "reference/backend/ptc_prepare.R": "12187d9ef40454252c620b4e784ea77a0760710adf2cef6c7a4eab6eeea92c4b",
+      "reference/backend/score_R.R": "9aa60a655ce2306cf397aeb1f8c02298198660085db5ffa807d91d1c37b6049d",
+      "reference/backend/terminal.py": "89e19dc14e7cd188edb76174739eee116de5d0497df5630e291d9d6e3d86350b",
+      "reference/cli.py": "afa0e5f59d0dd3a354d6b3e2442b97ef42c27f91870c28cd30143ace18479c31",
+      "reference/io.py": "b8917ae9f31aa412b7423cd8761d733b929cfbe0894610ad61090cb7539f9284",
+      "reference/runner.py": "6f809546e7efe3c92030326971aed8d34f3d3a848f4abfc662498f0417807950"
+    }
+  },
+  "task_manifest": {
+    "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/rerun_inventory.core_tasks.json",
+    "sha256": "32e21a22fb279090ab7324f086f0839715d19efbd6d604c163e40795d8f674be"
+  },
+  "markers": {
+    "path": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/markers/libraries.json",
+    "sha256": "9efa8476a22156878c2076a9e3c1f1abd46c6218d24c18c035994cef98182eff"
+  },
+  "config": {
+    "preset": "gbm-reference",
+    "dataset": "GSE274546",
+    "route": "all",
+    "library": "all",
+    "cutoff": "all",
+    "seed": 42,
+    "deg_workers": 4,
+    "require_slurm": true
+  },
+  "output_root": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920",
+  "reference_root": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/paper_claim_validation_20260917",
+  "launcher_files": {
+    "manage_core.py": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/manage_core.py",
+      "sha256": "d0761518c05e2190c2cfea947608962419445d085330d1ffd62cee2f243f2a19"
+    },
+    "core_task.py": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/core_task.py",
+      "sha256": "29ad5e39182f56974bed7a37659a21ac8c2fa714977fdc048d72b88be97932c6"
+    },
+    "core_array.sbatch": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/core_array.sbatch",
+      "sha256": "fa717a3affeed45977d4ff00fda053aa8efdc1f58053bc69776934746f416c09"
+    },
+    "verify_packaged_parity.py": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/verify_packaged_parity.py",
+      "sha256": "c386ae61da84553feaa255be4b5f1cf4958d09d32d96460765d1e1cbf0aef3d8"
+    },
+    "verify_packaged_r_artifacts.R": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/verify_packaged_r_artifacts.R",
+      "sha256": "25091da60fda1663dc12a293cb5a9f4caf70679e4d3c50465a6c8b8e6a110095"
+    },
+    "evaluate_core_lfine.py": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_core_lfine.py",
+      "sha256": "5352acee29aa5fb6e8f1e73549ea88e2c0801e037f7460335b4baadfcb172def"
+    },
+    "evaluate_core_lfine_sources.json": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_core_lfine_sources.json",
+      "sha256": "8c1ccab90c51564e01e7547b3557933604c0cb263d4207db3d686867379a6712"
+    }
+  },
+  "pilots": [
+    {
+      "role": "anchor",
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/pilots/v3_TKU4163_hvg2000_anchor/packaged_parity.json",
+      "sha256": "4e90a40cb242d841f5ede100c8fbd4531768abb501ad5cd839b56210cf1d20e7"
+    },
+    {
+      "role": "full_roster",
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/pilots/v3_TKU4163_hvg2000_full/packaged_parity.json",
+      "sha256": "7019dbf6d44cb9a9f6362a5ec660ff235b70b917dfa9d9842c9eade30e916120"
+    },
+    {
+      "role": "medium_all_genes",
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/pilots/v3_NL022_all/packaged_parity.json",
+      "sha256": "71e7e19def8e7b1bc4cdca0c2a1cd2551d81b693e16df4a471764e1a835b929a"
+    },
+    {
+      "role": "large_hvg2000",
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/pilots/v3_SN040_hvg2000/packaged_parity.json",
+      "sha256": "a31c15c4387cb174b3645493b0d060a71f3de6783b3e305ebaa894954707911d"
+    }
+  ],
+  "additional_verification": [
+    {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_release_20260920/pilot_review_all_v1.json",
+      "sha256": "c6c4080bd409fdec95d2a3643dbca9ccedfe4bf1af5dc8d857fd75736fbf4157"
+    },
+    {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/contract_io_v3/verification.json",
+      "sha256": "dfa778f998c1be575e5f1ce05836d875551554718cc9752d71a051cba11bc360"
+    },
+    {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/evaluation/validation/verification.json",
+      "sha256": "9bdff9c0e1515115c430f6e331bab9dc49148b62e7592edbb2588f5953a01dcb"
+    },
+    {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/distribution_final.json",
+      "sha256": "1dd6930bead681ac2a609b9fd4e18ee32b5bbe472067ee49f0b4183ef028d116"
+    },
+    {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/manage_core_independent_review.json",
+      "sha256": "ec13057c80269807f0f664a948828ceef3591a4018718ba8d8501b5dddb4fe8e"
+    }
+  ],
+  "created_at": "2026-09-21T01:27:14.900593+00:00"
+}

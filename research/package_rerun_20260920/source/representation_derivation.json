@@ -1,0 +1,56 @@
+{
+  "prepare_representation_R.R": {
+    "original_path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/paper_claim_validation_20260917/prepare_representation_R.R",
+    "original_sha256": "1fd3c6e0276492bc6b50a56f6cb8b95085e73a42d86c2e5b49ce1b2e445da006",
+    "portable_sha256": "dfa06d3ced82797fa4cf9b54c2f15c33883c27005c9171cb178c68b0728d6cc2",
+    "replacements": [
+      {
+        "before": "stopifnot(nzchar(Sys.getenv('SLURM_JOB_ID')))\n",
+        "after": "stopifnot(nzchar(Sys.getenv('SLURM_JOB_ID')))\nreference_lib <- Sys.getenv('DGSCRNA_REFERENCE_R_LIB','')\nreference_libraries<-c(if(nzchar(reference_lib))reference_lib else character(),.Library)\n.libPaths(reference_libraries,include.site=FALSE)\n"
+      },
+      {
+        "before": "root<-'/fs/scratch/PCON0080/yimin/dgscrna';base<-file.path(root,'results/hvg_ptc_20260916_v1/paper_claim_validation_20260917')\n",
+        "after": ""
+      },
+      {
+        "before": "source<-file.path(base,'GBM',cfg$sample,cfg$budget)",
+        "after": "source<-cfg$source_prepare;stopifnot(nzchar(source))"
+      },
+      {
+        "before": "dest<-file.path(base,'GBM_representation_controls',cfg$sample,cfg$budget,cfg$name)",
+        "after": "dest<-cfg$output;stopifnot(nzchar(dest))"
+      }
+    ],
+    "scientific_body_rewritten": false
+  },
+  "score_representation_R.R": {
+    "original_path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/paper_claim_validation_20260917/score_representation_R.R",
+    "original_sha256": "bd34ba379cb093ce876b3aa643fbae78cddae2c03b55aaf4cfa5de5696687852",
+    "portable_sha256": "dc74de8a70c96e078e7c6e9c12d73aea5db894027e99f99f3d8a4a949caac69e",
+    "replacements": [
+      {
+        "before": "root <- '/fs/scratch/PCON0080/yimin/dgscrna'\nbase <- file.path(root,'results/hvg_ptc_20260916_v1/paper_claim_validation_20260917')\n.libPaths(c(file.path(root,'results/hvg_ptc_20260916_v1/ptc_experiments/vendor_R_dbscan64'),.libPaths()))",
+        "after": "base <- Sys.getenv('DGSCRNA_REFERENCE_OUT');stopifnot(nzchar(base))\nreference_lib <- Sys.getenv('DGSCRNA_REFERENCE_R_LIB','')\nreference_libraries<-c(if(nzchar(reference_lib))reference_lib else character(),.Library)\n.libPaths(reference_libraries,include.site=FALSE)"
+      },
+      {
+        "before": "cells <- read.csv(file.path(prep,'cells.csv'),stringsAsFactors=FALSE)",
+        "after": "cells <- read.csv(file.path(prep,'cells.csv'),stringsAsFactors=FALSE,check.names=FALSE,\n  colClasses='character',na.strings=NULL)"
+      },
+      {
+        "before": "marker_path <- file.path(base,'markers','libraries.json')",
+        "after": "marker_path <- cfg$marker_path;stopifnot(nzchar(marker_path))"
+      },
+      {
+        "before": "function(p)read.csv(p,stringsAsFactors=FALSE)",
+        "after": "function(p)read.csv(p,stringsAsFactors=FALSE,check.names=FALSE,colClasses='character',na.strings=NULL)"
+      }
+    ],
+    "scientific_body_rewritten": false
+  },
+  "configuration_function": {
+    "original_path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/paper_claim_validation_20260917/representation_controls.py",
+    "original_sha256": "8d89ef918bc449f20f8a62aa2d10abbae132ec1def55eebf1a957aa04a815f69",
+    "function_source_sha256": "d477fcaa5d72cd44dd181ac7226dfeca261ec83af5218764e8d4213a678f5756",
+    "preserved_verbatim": true
+  }
+}

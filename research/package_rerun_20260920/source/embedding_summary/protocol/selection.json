@@ -1,0 +1,28 @@
+{
+  "frozen_at": "2026-09-20T22:22:06.720050+00:00",
+  "patient_folds_sha256": "6217f4f2008e4d4486b59c1f7c2ce3ff71481b578d0d448f50f418403921b8a6",
+  "cohorts": [
+    "primary97",
+    "all121"
+  ],
+  "budgets": [
+    "hvg2000",
+    "hvg5000"
+  ],
+  "fit_endpoint": "terminal090",
+  "selection": "Within each cohort/budget/space/method/fold, average sample terminal090 macroF1_present within patient; average equally over training patients; selectK separately for KMeans/GMM; exact tie smallerK; no selection for HDBSCAN_R",
+  "K": [
+    5,
+    10,
+    15,
+    20,
+    30,
+    40
+  ],
+  "inference": "retrospective labels-held-out patient selection; sample-wise transductive annotation",
+  "test": "Only corresponding heldout fold metrics used in comparison; no fitting parameter uses testlabels",
+  "reference": "same-budget native R PCA30-to-UMAP2 HDBSCAN_R CM2_glioma_other mean terminal090",
+  "statistics": "paired patient means; 10000 paired patient bootstrap delta replicates seed20260920; Wilcoxon sensitivity; Holm across21 representation/clusterer contrasts separately by budget and cohort",
+  "missing": "Require full121 sample two-budget seven-space 13candidate manifest; no silent completecase best-only table",
+  "secondary": "terminal070 and marker-only retained but do not selectK; same selectedK can be used for matched endpoint diagnostics; fixed11 and weightedF1 secondary"
+}

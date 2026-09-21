@@ -1,0 +1,1460 @@
+[
+  {
+    "index": 0,
+    "sample": "TKU4163",
+    "budget": "hvg2000",
+    "control": "original",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 1,
+    "sample": "TKU4163",
+    "budget": "hvg2000",
+    "control": "model_seed0",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 0,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 2,
+    "sample": "TKU4163",
+    "budget": "hvg2000",
+    "control": "model_seed1",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 1,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 3,
+    "sample": "TKU4163",
+    "budget": "hvg2000",
+    "control": "model_seed2",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 2,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 4,
+    "sample": "TKU4163",
+    "budget": "hvg2000",
+    "control": "model_seed3",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 3,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 5,
+    "sample": "TKU4163",
+    "budget": "hvg2000",
+    "control": "width_small",
+    "params": {
+      "architecture": [
+        128,
+        64
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 6,
+    "sample": "TKU4163",
+    "budget": "hvg2000",
+    "control": "width_large",
+    "params": {
+      "architecture": [
+        512,
+        256
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 7,
+    "sample": "TKU4163",
+    "budget": "hvg2000",
+    "control": "epochs5",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 5,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 8,
+    "sample": "TKU4163",
+    "budget": "hvg2000",
+    "control": "epochs20",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 20,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 9,
+    "sample": "TKU4163",
+    "budget": "hvg5000",
+    "control": "original",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 10,
+    "sample": "TKU4163",
+    "budget": "hvg5000",
+    "control": "model_seed0",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 0,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 11,
+    "sample": "TKU4163",
+    "budget": "hvg5000",
+    "control": "model_seed1",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 1,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 12,
+    "sample": "TKU4163",
+    "budget": "hvg5000",
+    "control": "model_seed2",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 2,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 13,
+    "sample": "TKU4163",
+    "budget": "hvg5000",
+    "control": "model_seed3",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 3,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 14,
+    "sample": "TKU4163",
+    "budget": "hvg5000",
+    "control": "width_small",
+    "params": {
+      "architecture": [
+        128,
+        64
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 15,
+    "sample": "TKU4163",
+    "budget": "hvg5000",
+    "control": "width_large",
+    "params": {
+      "architecture": [
+        512,
+        256
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 16,
+    "sample": "TKU4163",
+    "budget": "hvg5000",
+    "control": "epochs5",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 5,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 17,
+    "sample": "TKU4163",
+    "budget": "hvg5000",
+    "control": "epochs20",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 20,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 18,
+    "sample": "NL022",
+    "budget": "hvg2000",
+    "control": "original",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 19,
+    "sample": "NL022",
+    "budget": "hvg2000",
+    "control": "model_seed0",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 0,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 20,
+    "sample": "NL022",
+    "budget": "hvg2000",
+    "control": "model_seed1",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 1,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 21,
+    "sample": "NL022",
+    "budget": "hvg2000",
+    "control": "model_seed2",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 2,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 22,
+    "sample": "NL022",
+    "budget": "hvg2000",
+    "control": "model_seed3",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 3,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 23,
+    "sample": "NL022",
+    "budget": "hvg2000",
+    "control": "width_small",
+    "params": {
+      "architecture": [
+        128,
+        64
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 24,
+    "sample": "NL022",
+    "budget": "hvg2000",
+    "control": "width_large",
+    "params": {
+      "architecture": [
+        512,
+        256
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 25,
+    "sample": "NL022",
+    "budget": "hvg2000",
+    "control": "epochs5",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 5,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 26,
+    "sample": "NL022",
+    "budget": "hvg2000",
+    "control": "epochs20",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 20,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 27,
+    "sample": "NL022",
+    "budget": "hvg5000",
+    "control": "original",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 28,
+    "sample": "NL022",
+    "budget": "hvg5000",
+    "control": "model_seed0",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 0,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 29,
+    "sample": "NL022",
+    "budget": "hvg5000",
+    "control": "model_seed1",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 1,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 30,
+    "sample": "NL022",
+    "budget": "hvg5000",
+    "control": "model_seed2",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 2,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 31,
+    "sample": "NL022",
+    "budget": "hvg5000",
+    "control": "model_seed3",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 3,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 32,
+    "sample": "NL022",
+    "budget": "hvg5000",
+    "control": "width_small",
+    "params": {
+      "architecture": [
+        128,
+        64
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 33,
+    "sample": "NL022",
+    "budget": "hvg5000",
+    "control": "width_large",
+    "params": {
+      "architecture": [
+        512,
+        256
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 34,
+    "sample": "NL022",
+    "budget": "hvg5000",
+    "control": "epochs5",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 5,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 35,
+    "sample": "NL022",
+    "budget": "hvg5000",
+    "control": "epochs20",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 20,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 36,
+    "sample": "SN040",
+    "budget": "hvg2000",
+    "control": "original",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 37,
+    "sample": "SN040",
+    "budget": "hvg2000",
+    "control": "model_seed0",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 0,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 38,
+    "sample": "SN040",
+    "budget": "hvg2000",
+    "control": "model_seed1",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 1,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 39,
+    "sample": "SN040",
+    "budget": "hvg2000",
+    "control": "model_seed2",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 2,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 40,
+    "sample": "SN040",
+    "budget": "hvg2000",
+    "control": "model_seed3",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 3,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 41,
+    "sample": "SN040",
+    "budget": "hvg2000",
+    "control": "width_small",
+    "params": {
+      "architecture": [
+        128,
+        64
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 42,
+    "sample": "SN040",
+    "budget": "hvg2000",
+    "control": "width_large",
+    "params": {
+      "architecture": [
+        512,
+        256
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 43,
+    "sample": "SN040",
+    "budget": "hvg2000",
+    "control": "epochs5",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 5,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 44,
+    "sample": "SN040",
+    "budget": "hvg2000",
+    "control": "epochs20",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 20,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 45,
+    "sample": "SN040",
+    "budget": "hvg5000",
+    "control": "original",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 46,
+    "sample": "SN040",
+    "budget": "hvg5000",
+    "control": "model_seed0",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 0,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 47,
+    "sample": "SN040",
+    "budget": "hvg5000",
+    "control": "model_seed1",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 1,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 48,
+    "sample": "SN040",
+    "budget": "hvg5000",
+    "control": "model_seed2",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 2,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 49,
+    "sample": "SN040",
+    "budget": "hvg5000",
+    "control": "model_seed3",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 10,
+      "model_seed": 3,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 50,
+    "sample": "SN040",
+    "budget": "hvg5000",
+    "control": "width_small",
+    "params": {
+      "architecture": [
+        128,
+        64
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 51,
+    "sample": "SN040",
+    "budget": "hvg5000",
+    "control": "width_large",
+    "params": {
+      "architecture": [
+        512,
+        256
+      ],
+      "epochs": 10,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 52,
+    "sample": "SN040",
+    "budget": "hvg5000",
+    "control": "epochs5",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 5,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  },
+  {
+    "index": 53,
+    "sample": "SN040",
+    "budget": "hvg5000",
+    "control": "epochs20",
+    "params": {
+      "architecture": [
+        256,
+        128
+      ],
+      "epochs": 20,
+      "model_seed": 42,
+      "split_seed": 42
+    },
+    "libraries": [
+      "CM2_glioma_other",
+      "CM2_primary_all_context"
+    ],
+    "cutoff": "mean",
+    "routes": [
+      "PCA30_SNN",
+      "PCA30_HDBSCAN_R",
+      "UMAP2_SNN",
+      "UMAP2_HDBSCAN_R"
+    ],
+    "n_terminal_conditions": 8
+  }
+]

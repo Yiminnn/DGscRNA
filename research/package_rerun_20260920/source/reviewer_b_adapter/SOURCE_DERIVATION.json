@@ -1,0 +1,26 @@
+{
+  "files": {
+    "prepare_neighbors.R": {
+      "source": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/controls/prepare_neighbors.R",
+      "source_sha256": "6c6b72e8267a10740c1e31a5a7f2a5a4ad5f93270e145f9d49c7396a53397bd9",
+      "adapter_sha256": "c08e7537c65e31605035fe71f8120cfd095e982081b4292fa4d9b05f61bf9608",
+      "changes": "Only source/output/library IO configuration and input integrity checks; all numerical R blocks and Python training bodies preserved."
+    },
+    "score_neighbors.R": {
+      "source": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/controls/score_neighbors.R",
+      "source_sha256": "68c745f442412277b91c4d726caa43579d72ff1c452a35c8252070f1e371cb35",
+      "adapter_sha256": "b192b20cfb402017e276dec61cf0a5ea077d85e2886818d0d0035a79a49045bb",
+      "changes": "Only source/output/library IO configuration and input integrity checks; all numerical R blocks and Python training bodies preserved."
+    },
+    "refine_learning.py": {
+      "source": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/controls/refine_learning.py",
+      "source_sha256": "8ac2e69ac39b9f0cba71e20c3a622c4a8ff6872776e4ec657a1a443f19924824",
+      "adapter_sha256": "f2357a82d5e442638e0b731ce78f7a75f74b9ba57196f5bf8696bac12827af9e",
+      "changes": "Only source/output/library IO configuration and input integrity checks; all numerical R blocks and Python training bodies preserved."
+    }
+  },
+  "protocol": {
+    "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/controls/PROTOCOL.md",
+    "sha256": "1964a64e594348ce0be6c2d20872bf9298161610181f6ce1a592c259a7c87790"
+  }
+}

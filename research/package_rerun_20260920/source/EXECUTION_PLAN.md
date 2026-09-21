@@ -1,0 +1,13 @@
+# Installed-package rerun campaign
+
+Authorized on 2026-09-20: package the original R + Python DL implementation, publish on `align-r-reference`, and rerun the existing experiments. Keep old outputs and active research jobs. No HTML or OneDrive delivery.
+
+1. Build and test the installed wheel in the pinned R/Python runtime. Fresh small/full-roster, medium/all-gene and large sample pilots must pass independent numerical parity. Also check identifier roundtrip, isolated libraries, and resume failure/recovery.
+2. Publish `v2.0.0rc1` as a GitHub prerelease from the authorized branch. Verify remote commit/tag and downloaded asset checksums. Only then create the concrete release gate.
+3. Run all 726 GBM sample/budget preparations through the installed package: 2,904 route partitions and 139,392 terminal configurations. Both confidence endpoints are retained. Each unit uses a new cache confined to that unit and independently verifies against the old reference.
+4. Queue one bounded array at a time, initially 64 tasks with concurrency 16; reserve scheduler headroom for the active research campaign. Preserve and diagnose failed attempts, including OOM. Never silently adjust scientific parameters or accept incomplete annotation as terminal output.
+5. Evaluate all accepted GBM arms with the frozen Lfine compatible-target-set mapping. Preserve primary/sensitivity cohorts and terminal/no-op/invalid status. Update the existing compact local notebook once new outputs and evaluation pass checks.
+6. Rerun the previously defined GBM geometry-only, MLP, representation, neighbor/learning, no-cluster seed and seven-space controls using the packaged R/DL core and frozen ablation definitions. Existing comparator predictions can be reused only when their input contract is unchanged. This step needs its own implemented and validated adapters; an inventory is not completion.
+7. After complete GBM validation, reconcile PTC historical S2/S3 endpoints and distinguish historical eight-sample CCA from requested four-sample grouped refits. Then run PTC grids/followups and the eligible reviewer datasets. Exclude independent Pu and the rejected Darmanis sample. Record incomplete public comparator adapters honestly.
+
+`rerun_inventory.md` documents exact family sizes, sources and scientific contracts. `RELEASE_GATE.json` (created only after publication and pilots) binds the wheel, installed files, runtime, inputs, markers and launchers. `control/` under the new result root records actual submissions, attempts and acceptance. Later steps must be completed or explicitly remain pending; starting a queue does not establish complete rerun results.

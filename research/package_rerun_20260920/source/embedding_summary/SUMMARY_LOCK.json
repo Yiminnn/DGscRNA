@@ -1,0 +1,39 @@
+{
+  "status": "reviewed_source_and_synthetic_regressions_real_aggregation_pending",
+  "files": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/README.md": "abe4cfeab2e78ddd8f8dcde13efa48cc96b23002f96177eedd2944e57e31427f",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/SOURCE_PROTOCOL_MANIFEST.json": "9b70f0d4aee41380056c61732c29cf5b8b7ecbdeaa69aacdceb78eb54238ee86",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/canonical_inference.py": "b8c0d3917e6317e7f5d9344e12a62e372fed9475c508406d0313fb5d78c9a6f4",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/independent_review.json": "15db5254137dbedb51547f6f7717316d9e6998d4dfa262f4ac9a4626518ece73",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/numerical.py": "b7303e209c082c56b48bccfc42b663d230dd9ac73461fac24f4b6db86511e8f2",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/original/common.py": "8aa287a41f4428370789138f7004078bb9a14b52e03b2cb86f86dfbe2a6ab5e3",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/original/select_lfine.py": "75e0e991aa79863342ae40b94755838a89b5953e9e65e2ccf2793878a7919a72",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/original/verify_selection.py": "a44b2bf9186063bb9f847e9cbc07ad2a2372cd7f687d5fc8772e39cda30876ba",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/prepare_sources.py": "ebb0486b223d5c53c3de6802eb6904e452c651124644ed907820432d5ea01020",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/protocol/embedding.json": "635979d0c62c60d3b360ddaba08c3f1ef4a757b7e2c518ac5b57ceccb74f60f4",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/protocol/lfine.json": "1cb3d763971a9074ef51d06305cd77bbf0d84534fda6a561b6556c315a7df334",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/protocol/patient_folds.csv": "6217f4f2008e4d4486b59c1f7c2ce3ff71481b578d0d448f50f418403921b8a6",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/protocol/selection.json": "24b0d14a9408388efc8190addc5b2f33ca3d114d1cfc2f826a839338c14e7d38",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/run.py": "732fc1b31f5c5b5c004f983b2dfdc57308c91f2df59b17c09915122452a6ca3b",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/test_quantized_legacy_failure.py": "1a78a124bf970829c2011deee4e1dc08b00474eff246c10d8cd0c6d88f891bc6",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/test_synthetic.py": "7a351d7ff6bad816fd8ece599c8ee5a0f3bdb43e4f24d1667af46ef12e075a15",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/embedding_summary_validation/continuous_v3/inference_verification/manifest.json": "c60cca5e7d17de901454725268d2466c55c11c058bdf56098248ab5c176a61fd",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/embedding_summary_validation/continuous_v3/verification.json": "583001ae09dfda606fbb758df8c3783b3ee60f715eb80c9bad89537915e1578e",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/embedding_summary_validation/quantized_v3/inference_verification/manifest.json": "90086c1d79ea5a0b0b5eb2489cef853fcfee52c1e743cf1503a5c29f3f036c59",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/embedding_summary_validation/quantized_v3/verification.json": "12b27c79709264e2c50416ed724835d359868bd1dc1911e522778b998edf4ebf"
+  },
+  "real_campaign_aggregation_executed": false,
+  "required_real_gates": [
+    "GBM_CORE_COMPLETE",
+    "GBM_EXTENSIONS_COMPLETE"
+  ],
+  "expected": {
+    "A1_representations": 1694,
+    "terminal_rows": 44044,
+    "anchor_rows": 484,
+    "K_choices": 420,
+    "paired_contrasts": 84
+  },
+  "scientific_producer_unchanged": true,
+  "quantized_boundary_resolved_without_tolerance_relaxation": true
+}

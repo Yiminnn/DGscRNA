@@ -1,0 +1,2 @@
+# Preserve the byte-identical frozen source, including its recorded blank line.
+source/final_report/render_B.py whitespace=-blank-at-eol

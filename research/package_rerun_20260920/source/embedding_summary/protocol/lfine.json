@@ -1,0 +1,71 @@
+{
+  "endpoint": "Frozen v5 compatible-target-set Lfine macro-F1",
+  "endpoint_source": "Exact AST-extracted grid/v5 helpers used by compact evaluator",
+  "prediction_semantics": "Native CM2_glioma_other panels retain their frozen ontology parent; no reference-derived one-to-one relabelling",
+  "class_average": "Support >=20, excluding Other/nan; all observed classes define compatible targets",
+  "all_cells": "All cells remain in TP/FP/FN; Unknown/Undecided and off-vocabulary predictions receive no compatible credit",
+  "stages": {
+    "marker_only": "initial",
+    "terminal090": "final090",
+    "terminal070": "final070"
+  },
+  "selection_stage": "terminal090",
+  "selection_metric": "lfine_macroF1",
+  "candidates": {
+    "samples": 121,
+    "budgets": [
+      "hvg2000",
+      "hvg5000"
+    ],
+    "spaces": [
+      "noDR",
+      "PCA2",
+      "FA2",
+      "ICA2",
+      "Isomap2",
+      "UMAP2",
+      "TSNE2"
+    ],
+    "K": [
+      5,
+      10,
+      15,
+      20,
+      30,
+      40
+    ],
+    "methods": [
+      "KMeans",
+      "GMM",
+      "HDBSCAN_R"
+    ],
+    "partitions": 22022
+  },
+  "patient_folds_sha256": "6217f4f2008e4d4486b59c1f7c2ce3ff71481b578d0d448f50f418403921b8a6",
+  "cohorts": {
+    "primary97": {
+      "samples": 97,
+      "patients": 55
+    },
+    "all121": {
+      "samples": 121,
+      "patients": 59
+    }
+  },
+  "selection": "Within-patient mean across samples; equal training-patient mean by K; exact tie smaller K. Select afresh using Lfine only, separately per cohort/budget/space/method/fold",
+  "L1_selection_reuse": false,
+  "secondary": "Use Lfine-selected K for marker-only and terminal070 comparisons",
+  "missing": "Invalid/unavailable native terminals remain NA; final selector rejects any incomplete candidate. Truth-only zero-scored-class eligibility is explicit and must match across all candidates and anchor",
+  "denominators": "Report all cells and observed classes, scored-class fraction, sample and patient totals, Lfine eligibility and per-metric nonmissing counts",
+  "anchor": "Same-budget native R PCA30 to UMAP2/HDBSCAN, CM2_glioma_other/mean, final090, exact same Lfine rule",
+  "bootstrap_seed": 20260920,
+  "bootstrap_replicates": 10000,
+  "paired_test": "Wilcoxon",
+  "Holm_family_size": 21,
+  "inference": "Retrospective patient-label-held-out K choice; paired inference conditional on selected predictions",
+  "original_acceptance_gate": "Each Lfine candidate can be evaluated after matching independent original unit acceptance; final selection requires the complete original archival acceptance",
+  "final_acceptance": "Every Lfine unit has an independent per-class/count proof, then an independent K/denominator/statistics proof",
+  "no_model_fits": true,
+  "notebook_changes": false,
+  "all_gene_claim": false
+}

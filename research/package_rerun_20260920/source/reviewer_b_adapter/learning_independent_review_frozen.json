@@ -1,0 +1,25 @@
+{
+  "status": "independent_review_bound_to_frozen_sources",
+  "reviewed_at": "2026-09-21T01:39:23.403115+00:00",
+  "reviewer": "package_rerun_inventory",
+  "source_sha256": {
+    "learning.py": "bc3a651fd91dfe5391a9a6302b7e579a155b83d1ce269cf9cd427bedb7af1597",
+    "support.py": "7dc5b719fe03fdeaa4a20a358f524fa625fff34730bc532a7f660830927cd1a0",
+    "refine_learning.py": "f2357a82d5e442638e0b731ce78f7a75f74b9ba57196f5bf8696bac12827af9e",
+    "SOURCE_DERIVATION.json": "4a4fb2bb4745790601cbc42837a1080bacad3e007187b66e733c5bfb42bb6435"
+  },
+  "scope": [
+    "scientific model/training/PARAMS ASTs preserved by checked derivation",
+    "only new accepted core/pilot normalized DL and pseudo-label inputs",
+    "fresh direct training without archived model/cache reuse",
+    "all trajectory fitting precedes archived numerical comparison and Lfine truth",
+    "exact terminal/checkpoint arrays, histories and tensors",
+    "epoch10 archived control lookup by semantic library/cutoff",
+    "before/after source hashes and immutable source check",
+    "terminal wrapper preserves known labels and validates confidence thresholds",
+    "heldout pseudo-label validation distinguished from biological truth"
+  ],
+  "findings": [],
+  "source_lock_sha256": "8de2fc83b83cf82d7d74def01b9fcce81aec2de02d16cfb219a6e2c5c4a7dbe9",
+  "prior_review_sha256": "e6a722c0cd073d7ffa9b75ff7c04fb02a52f8b40a08bfffeca4c0e1d5ab2b1e0"
+}

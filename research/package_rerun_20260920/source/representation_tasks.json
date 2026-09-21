@@ -1,0 +1,2522 @@
+[
+  {
+    "index": 0,
+    "configuration": {
+      "name": "UMAP10_SNN_minPts50_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP10",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 1,
+    "configuration": {
+      "name": "UMAP10_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP10",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 2,
+    "configuration": {
+      "name": "UMAP30_SNN_minPts50_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 3,
+    "configuration": {
+      "name": "UMAP30_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 4,
+    "configuration": {
+      "name": "RNA_noDR_SNN_minPts50_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "RNA_noDR",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 5,
+    "configuration": {
+      "name": "RNA_noDR_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "RNA_noDR",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 6,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts25_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 25,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 7,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts100_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 100,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 8,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.25_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.25,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 9,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r1.0_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 1.0,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 10,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed0",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 11,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed0",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 12,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed1",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 13,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed1",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 14,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed2",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 15,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed2",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 16,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed3",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 17,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed3",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 18,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts25_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 25,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 19,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts100_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 100,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 20,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.25_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.25,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 21,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r1.0_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 1.0,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 22,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed0",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 23,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed0",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 24,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed1",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 25,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed1",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 26,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed2",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 27,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed2",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 28,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed3",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 29,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed3",
+      "sample": "TKU4163",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 30,
+    "configuration": {
+      "name": "UMAP10_SNN_minPts50_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP10",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 31,
+    "configuration": {
+      "name": "UMAP10_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP10",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 32,
+    "configuration": {
+      "name": "UMAP30_SNN_minPts50_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 33,
+    "configuration": {
+      "name": "UMAP30_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 34,
+    "configuration": {
+      "name": "RNA_noDR_SNN_minPts50_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "RNA_noDR",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 35,
+    "configuration": {
+      "name": "RNA_noDR_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "RNA_noDR",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 36,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts25_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 25,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 37,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts100_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 100,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 38,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.25_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.25,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 39,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r1.0_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 1.0,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 40,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed0",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 41,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed0",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 42,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed1",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 43,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed1",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 44,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed2",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 45,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed2",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 46,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed3",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 47,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed3",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 48,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts25_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 25,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 49,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts100_r0.5_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 100,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 50,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.25_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.25,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 51,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r1.0_seed42",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 1.0,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 52,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed0",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 53,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed0",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 54,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed1",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 55,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed1",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 56,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed2",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 57,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed2",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 58,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed3",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 59,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed3",
+      "sample": "TKU4163",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 60,
+    "configuration": {
+      "name": "UMAP10_SNN_minPts50_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP10",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 61,
+    "configuration": {
+      "name": "UMAP10_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP10",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 62,
+    "configuration": {
+      "name": "UMAP30_SNN_minPts50_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 63,
+    "configuration": {
+      "name": "UMAP30_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 64,
+    "configuration": {
+      "name": "RNA_noDR_SNN_minPts50_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "RNA_noDR",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 65,
+    "configuration": {
+      "name": "RNA_noDR_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "RNA_noDR",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 66,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts25_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 25,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 67,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts100_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 100,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 68,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.25_seed42",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.25,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 69,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r1.0_seed42",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 1.0,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 70,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed0",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 71,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed0",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 72,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed1",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 73,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed1",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 74,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed2",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 75,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed2",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 76,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed3",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 77,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed3",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 78,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts25_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 25,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 79,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts100_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 100,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 80,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.25_seed42",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.25,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 81,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r1.0_seed42",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 1.0,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 82,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed0",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 83,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed0",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 84,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed1",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 85,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed1",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 86,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed2",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 87,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed2",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 88,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed3",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 89,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed3",
+      "sample": "NL022",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 90,
+    "configuration": {
+      "name": "UMAP10_SNN_minPts50_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP10",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 91,
+    "configuration": {
+      "name": "UMAP10_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP10",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 92,
+    "configuration": {
+      "name": "UMAP30_SNN_minPts50_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 93,
+    "configuration": {
+      "name": "UMAP30_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 94,
+    "configuration": {
+      "name": "RNA_noDR_SNN_minPts50_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "RNA_noDR",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 95,
+    "configuration": {
+      "name": "RNA_noDR_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "RNA_noDR",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 96,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts25_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 25,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 97,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts100_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 100,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 98,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.25_seed42",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.25,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 99,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r1.0_seed42",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 1.0,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 100,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed0",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 101,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed0",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 102,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed1",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 103,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed1",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 104,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed2",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 105,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed2",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 106,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed3",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 107,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed3",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 108,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts25_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 25,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 109,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts100_r0.5_seed42",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 100,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 110,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.25_seed42",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.25,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 111,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r1.0_seed42",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 1.0,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 112,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed0",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 113,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed0",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 114,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed1",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 115,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed1",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 116,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed2",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 117,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed2",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 118,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed3",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 119,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed3",
+      "sample": "NL022",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 120,
+    "configuration": {
+      "name": "UMAP10_SNN_minPts50_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP10",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 121,
+    "configuration": {
+      "name": "UMAP10_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP10",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 122,
+    "configuration": {
+      "name": "UMAP30_SNN_minPts50_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 123,
+    "configuration": {
+      "name": "UMAP30_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 124,
+    "configuration": {
+      "name": "RNA_noDR_SNN_minPts50_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "RNA_noDR",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 125,
+    "configuration": {
+      "name": "RNA_noDR_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "RNA_noDR",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 126,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts25_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 25,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 127,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts100_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 100,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 128,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.25_seed42",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.25,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 129,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r1.0_seed42",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 1.0,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 130,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed0",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 131,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed0",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 132,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed1",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 133,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed1",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 134,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed2",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 135,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed2",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 136,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed3",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 137,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed3",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 138,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts25_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 25,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 139,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts100_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 100,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 140,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.25_seed42",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.25,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 141,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r1.0_seed42",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 1.0,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 142,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed0",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 143,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed0",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 144,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed1",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 145,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed1",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 146,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed2",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 147,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed2",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 148,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed3",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 149,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed3",
+      "sample": "SN040",
+      "budget": "hvg2000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 150,
+    "configuration": {
+      "name": "UMAP10_SNN_minPts50_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP10",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 151,
+    "configuration": {
+      "name": "UMAP10_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP10",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 152,
+    "configuration": {
+      "name": "UMAP30_SNN_minPts50_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 153,
+    "configuration": {
+      "name": "UMAP30_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 154,
+    "configuration": {
+      "name": "RNA_noDR_SNN_minPts50_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "RNA_noDR",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 155,
+    "configuration": {
+      "name": "RNA_noDR_HDBSCAN_R_minPts50_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "RNA_noDR",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "dimension"
+    }
+  },
+  {
+    "index": 156,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts25_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 25,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 157,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts100_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 100,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 158,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.25_seed42",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.25,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 159,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r1.0_seed42",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 1.0,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 160,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed0",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 161,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed0",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 162,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed1",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 163,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed1",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 164,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed2",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 165,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed2",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 166,
+    "configuration": {
+      "name": "PCA30_SNN_minPts50_r0.5_seed3",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 167,
+    "configuration": {
+      "name": "PCA30_HDBSCAN_R_minPts50_r0.5_seed3",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "PCA30",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 168,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts25_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 25,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 169,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts100_r0.5_seed42",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 100,
+      "resolution": 0.5,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 170,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.25_seed42",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.25,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 171,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r1.0_seed42",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 1.0,
+      "embedding_seed": 42,
+      "kind": "parameter"
+    }
+  },
+  {
+    "index": 172,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed0",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 173,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed0",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 0,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 174,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed1",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 175,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed1",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 1,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 176,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed2",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 177,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed2",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 2,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 178,
+    "configuration": {
+      "name": "UMAP2_SNN_minPts50_r0.5_seed3",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "SNN",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  },
+  {
+    "index": 179,
+    "configuration": {
+      "name": "UMAP2_HDBSCAN_R_minPts50_r0.5_seed3",
+      "sample": "SN040",
+      "budget": "hvg5000",
+      "space": "UMAP2",
+      "method": "HDBSCAN_R",
+      "minPts": 50,
+      "resolution": 0.5,
+      "embedding_seed": 3,
+      "kind": "embedding_seed"
+    }
+  }
+]

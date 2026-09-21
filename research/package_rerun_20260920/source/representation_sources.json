@@ -1,0 +1,92 @@
+{
+  "status": "frozen_for_bounded_validation",
+  "scientific_controls": 180,
+  "task_manifest_expected_sha256": "2f5045dbcd936c093473dcd1629254fb81939aa11c62ff0451dbec6f21b6bf0e",
+  "files": {
+    "representation_adapter.py": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/representation_adapter.py",
+      "sha256": "e190b8a5fee4328c140ad3492f3f886a877f120b877e6fba87d82e9a8f5751a4"
+    },
+    "representation_configurations.py": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/representation_configurations.py",
+      "sha256": "6a373925ec209f1cb32a973a9905c8de2accdccc917888fdc98988af7324bf43"
+    },
+    "representation_derivation.json": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/representation_derivation.json",
+      "sha256": "1b51ccf3f13ebe64b2d525bb33d1745316f4ded6b3eeee359461e62406ee9d32"
+    },
+    "prepare_representation_R.R": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/prepare_representation_R.R",
+      "sha256": "dfa06d3ced82797fa4cf9b54c2f15c33883c27005c9171cb178c68b0728d6cc2"
+    },
+    "score_representation_R.R": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/score_representation_R.R",
+      "sha256": "dc74de8a70c96e078e7c6e9c12d73aea5db894027e99f99f3d8a4a949caac69e"
+    },
+    "verify_representation_inputs.R": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/verify_representation_inputs.R",
+      "sha256": "0e2f2f0aab707df70ab630c7d5b1456e8d8e638f53223a993339e2320c54512c"
+    },
+    "verify_packaged_parity.py": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/verify_packaged_parity.py",
+      "sha256": "c386ae61da84553feaa255be4b5f1cf4958d09d32d96460765d1e1cbf0aef3d8"
+    },
+    "verify_packaged_r_artifacts.R": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/verify_packaged_r_artifacts.R",
+      "sha256": "25091da60fda1663dc12a293cb5a9f4caf70679e4d3c50465a6c8b8e6a110095"
+    },
+    "core_task.py": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/core_task.py",
+      "sha256": "29ad5e39182f56974bed7a37659a21ac8c2fa714977fdc048d72b88be97932c6"
+    },
+    "mlp_controls_adapter.py": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/mlp_controls_adapter.py",
+      "sha256": "aa080494801d6a0195a1dce2a4a8dc4bd8e30eac7ab993103e81c7c45d388579"
+    },
+    "manage_core.py": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/manage_core.py",
+      "sha256": "d0761518c05e2190c2cfea947608962419445d085330d1ffd62cee2f243f2a19"
+    },
+    "evaluate_core_lfine.py": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_core_lfine.py",
+      "sha256": "5352acee29aa5fb6e8f1e73549ea88e2c0801e037f7460335b4baadfcb172def"
+    },
+    "evaluate_core_lfine_sources.json": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_core_lfine_sources.json",
+      "sha256": "8c1ccab90c51564e01e7547b3557933604c0cb263d4207db3d686867379a6712"
+    },
+    "extension_evaluator": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_extension_lfine.py",
+      "sha256": "424fb152cee5d95990b0eae724761601199230cb55512e22bd8de5cfcdfd25a9"
+    },
+    "archived_driver": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/paper_claim_validation_20260917/representation_controls.py",
+      "sha256": "8d89ef918bc449f20f8a62aa2d10abbae132ec1def55eebf1a957aa04a815f69"
+    },
+    "roundtrip_audit": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_release_20260920/representation_roundtrip_audit_v1/verification.json",
+      "sha256": "04970381f7a43a20667955752f4bd2b7a8a87d56ea34133f6799c1c0a5176c89"
+    },
+    "roundtrip_RDS_membership": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_release_20260920/representation_roundtrip_audit_v1/rds_membership.csv",
+      "sha256": "4fcb90d96bb4dcb1b64d0ccfba744f14eb73b5702b5bdafa95b0686b691746db"
+    },
+    "roundtrip_CSV_membership": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_release_20260920/representation_roundtrip_audit_v1/csv_membership.csv",
+      "sha256": "0848a72057ddb85b90c1e383ceccabb52594cea9c4db33b25123ad8c3a6a655d"
+    },
+    "roundtrip_metrics": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_release_20260920/representation_roundtrip_audit_v1/roundtrip.json",
+      "sha256": "cb370260f6b707edf709054a946465b9a17242778ccdd76f450e7c4eb66dcc41"
+    },
+    "roundtrip_R_source": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/audit_representation_roundtrip.R",
+      "sha256": "9b53766a69bf7fe921ac0a44225459efc164f31dc2cd269a7279f141312fceef"
+    },
+    "roundtrip_python_source": {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/audit_representation_roundtrip.py",
+      "sha256": "e3e7544d0fa059138770231e26b47cbb27e5614fd0151fb71d905dfc98f6da96"
+    }
+  },
+  "verification_revision": "Membership exact to original representation; core CSV round-trip vector must equal causal audit exactly. Seeds, DEG, marker density, DL remain exact."
+}

@@ -1,0 +1,29 @@
+{
+  "status": "passed_independent_scheduler_only_review",
+  "reviewer": "/root/package_review_standards",
+  "source_hashes": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/manage_v2.py": "bf24cb9d003c646e495e6a6e8f62851cb5207a5e3ea9dc89cf0632c88a910f3e",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/throttle_v2.py": "b05cbc18f7733372a27e863844d6391258511643852c6c7637a429ba05f5ea82",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/selftest_v2.py": "c93afccb8920c2f43233a613130d1e3373e5f8b8b123e1705a981fba25262c65",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/CONTROLLER_V2_DERIVATION.json": "deb48b16e35b8bfcac91eefe82fa22e471a7cf9fb21f1441569ed58a8dd54780"
+  },
+  "test_receipt": {
+    "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/selftest_v2_result.json",
+    "sha256": "e87f0039bdc234224a3bbef84d4bbffaea3cf96d6962df2ae80792ab55e45a14"
+  },
+  "regression_tests": 13,
+  "scheduler_mutations_by_tests": 0,
+  "no_remaining_material_findings": true,
+  "checked": [
+    "Only explicit own-array finished-member diagnostics may be reconciled; mixed or unknown errors still halt.",
+    "No throttle mutation when own array has no waiting members; observed cap is preserved without a false success claim.",
+    "Readback binds ArrayJobId, registered JobName and local yimin, and requires the exact target on active waiting/running members.",
+    "Unresolved crash intents trigger idempotent reconciliation; terminal-array intents retire only after all registered indices have successful accounting and scientific acceptance.",
+    "Migration under the same manager lock preserves submissions, accepted receipts and UUID intents; an identical prior snapshot supports crash-idempotent completion.",
+    "Controller derivative reverses exactly to the frozen original outside documented scheduler changes; original campaign gate and scientific worker sources remain frozen."
+  ],
+  "scientific_workers_changed": false,
+  "campaign_gate_changed": false,
+  "live_jobs_cancelled_or_restarted": false,
+  "review_scope": "Source, metadata and mocked scheduler regression evidence only; root owns lock publication and live controller restart."
+}

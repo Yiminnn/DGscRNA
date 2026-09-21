@@ -1,0 +1,550 @@
+{
+  "status": "validated_sources_archived_full_rerun_still_in_progress",
+  "archived_at": "2026-09-21T02:45:43.240267+00:00",
+  "release": "v2.0.0rc1",
+  "release_commit": "42e332f617ddb7196ba89529734ceebcdd068b9e",
+  "campaign_gate_sha256": "c1477727a92373e6af85bcf4a08046c91aa0ba027d0860a341b57cd8b391a6ef",
+  "core_units": 726,
+  "extension_units": 2617,
+  "raw_matrices_copied": false,
+  "trained_models_copied": false,
+  "notebook_copied": false,
+  "files": {
+    "EXECUTION_PLAN.md": {
+      "sha256": "e816e0043be30402c085777d355003d1ee2089723b71835296b8e0bf2ba2ff16",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/EXECUTION_PLAN.md"
+    },
+    "EXTENSION_GATE_2617.json": {
+      "sha256": "c1477727a92373e6af85bcf4a08046c91aa0ba027d0860a341b57cd8b391a6ef",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/EXTENSION_GATE_2617.json"
+    },
+    "GEOMETRY_CONTROL.md": {
+      "sha256": "3a7943f75f0592c9adc62f2caefd2ba1da552d958f9115aebb987176703f1f15",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/GEOMETRY_CONTROL.md"
+    },
+    "LFINE_EVALUATION.md": {
+      "sha256": "4c20021ca113ebf13dad958fc4f120333b7d2728f96611742f61bcfbccde0b68",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/LFINE_EVALUATION.md"
+    },
+    "MLP_CONTROLS.md": {
+      "sha256": "cbcc300488916d29fc601f755693304bfaa5ecc2cb8e532b905268bc9f91a809",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/MLP_CONTROLS.md"
+    },
+    "RELEASE_GATE.json": {
+      "sha256": "01976ede48f4e715857879d2efad88620c922d2a041ed5315c10592837efd9d2",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/RELEASE_GATE.json"
+    },
+    "aggregate_extensions.py": {
+      "sha256": "e47134863b98cbf2392e8ec6dd17c42b4d7e8f411ab3823bbb79057092e649f7",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/aggregate_extensions.py"
+    },
+    "archive_gbm_sources.py": {
+      "sha256": "4494f6151c1f7eff2f786833d346a720ec02db0d6049702271d65ea692971cbe",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/archive_gbm_sources.py"
+    },
+    "audit_representation_roundtrip.R": {
+      "sha256": "9b53766a69bf7fe921ac0a44225459efc164f31dc2cd269a7279f141312fceef",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/audit_representation_roundtrip.R"
+    },
+    "audit_representation_roundtrip.py": {
+      "sha256": "e3e7544d0fa059138770231e26b47cbb27e5614fd0151fb71d905dfc98f6da96",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/audit_representation_roundtrip.py"
+    },
+    "core_array.sbatch": {
+      "sha256": "fa717a3affeed45977d4ff00fda053aa8efdc1f58053bc69776934746f416c09",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/core_array.sbatch"
+    },
+    "core_task.py": {
+      "sha256": "29ad5e39182f56974bed7a37659a21ac8c2fa714977fdc048d72b88be97932c6",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/core_task.py"
+    },
+    "embedding_adapter/ADAPTER_LOCK.json": {
+      "sha256": "1dd5c75f5fd7692b5d22cd05898f9788cf79aec3a7a3f609a254fe31cf1c9158",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/ADAPTER_LOCK.json"
+    },
+    "embedding_adapter/README.md": {
+      "sha256": "c60d140be65fa707668a2f33d9a78f4a21d74d29c108983928f0eff36ca195d4",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/README.md"
+    },
+    "embedding_adapter/RUNTIME.json": {
+      "sha256": "39b47deb6a0f2dbaf6f137de572313d1aea05f422bd1df50865ca202256b75a0",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/RUNTIME.json"
+    },
+    "embedding_adapter/SOURCE_PROTOCOL_MANIFEST.json": {
+      "sha256": "88b012d63ffa25d9a2b8bf6bb37bf9fb88517abce3dc2a642c3555946a6eafb4",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/SOURCE_PROTOCOL_MANIFEST.json"
+    },
+    "embedding_adapter/TASK_MANIFEST.json": {
+      "sha256": "e2d9eacf267613b40ec1959bf1054b6e2cfc1ec8789e322e9b21d77ae1233925",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/TASK_MANIFEST.json"
+    },
+    "embedding_adapter/adaptive_ica.py": {
+      "sha256": "b0ecd92b63157e822a2fca5638cac94b67172bcd560d9a668c8c81b546534334",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/adaptive_ica.py"
+    },
+    "embedding_adapter/export_geometry.R": {
+      "sha256": "1a7923e2345947d77a77fbe13a19adc60ebee095bf6e0f626837ae9dad48ef98",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/export_geometry.R"
+    },
+    "embedding_adapter/freeze_adapter.py": {
+      "sha256": "b678018dcb3f67b8f861fc0ed9b8c473321d3da26a4d82ecc222379273292c32",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/freeze_adapter.py"
+    },
+    "embedding_adapter/geometry_smoke.py": {
+      "sha256": "3ef0c9539e907c6912cf4ff643484428c8790f9a2cab2490b74bf1d654d295f0",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/geometry_smoke.py"
+    },
+    "embedding_adapter/native_geometry.R": {
+      "sha256": "78c62fc3a55ebad07738e4b3a74e8cee00cc6909353069b1affd786e8d0425d7",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/native_geometry.R"
+    },
+    "embedding_adapter/original/SOURCE_MANIFEST.json": {
+      "sha256": "a9d1d5ecf75f47bef80753e0e3d9e5f312c85f4dd283f3ed785af18b4dc56506",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/original/SOURCE_MANIFEST.json"
+    },
+    "embedding_adapter/original/adaptive_ica.py": {
+      "sha256": "b0ecd92b63157e822a2fca5638cac94b67172bcd560d9a668c8c81b546534334",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/original/adaptive_ica.py"
+    },
+    "embedding_adapter/original/export_geometry.R": {
+      "sha256": "eb5c61beecb5ba10aafdc2f3db2fb516c6ba220420cabb5361d17ecc033c0b82",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/original/export_geometry.R"
+    },
+    "embedding_adapter/original/native_geometry.R": {
+      "sha256": "25bea97fef7e4f30916813cab991a79f6f003097f6a446b4e0e73353128b97f3",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/original/native_geometry.R"
+    },
+    "embedding_adapter/original/run.py": {
+      "sha256": "7a5acb9378c9cbd6f9f33aea0f2041c59106167daf24e8a6f4d0f6eb16d7da4a",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/original/run.py"
+    },
+    "embedding_adapter/original/score_candidates.R": {
+      "sha256": "dee01bce3163aa1ae2cf521124e2d163eaa0f1d6d7c15451f2aef62e76988a78",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/original/score_candidates.R"
+    },
+    "embedding_adapter/prepare_sources.py": {
+      "sha256": "e01ef4217ad90501d6479794e7571a24b1c7b09fef54f413a39a0b6028aaf86a",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/prepare_sources.py"
+    },
+    "embedding_adapter/protocol/embedding.json": {
+      "sha256": "635979d0c62c60d3b360ddaba08c3f1ef4a757b7e2c518ac5b57ceccb74f60f4",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/protocol/embedding.json"
+    },
+    "embedding_adapter/protocol/embedding_convergence_repair_20260920_v2.json": {
+      "sha256": "ad69004d945eecbe850cdf0c5c3c1f3fc8167d601e4d40092625c8ec3355e458",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/protocol/embedding_convergence_repair_20260920_v2.json"
+    },
+    "embedding_adapter/protocol/libraries.json": {
+      "sha256": "9efa8476a22156878c2076a9e3c1f1abd46c6218d24c18c035994cef98182eff",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/protocol/libraries.json"
+    },
+    "embedding_adapter/run.py": {
+      "sha256": "1e87f99bd4bf74ee731fbfb85e461d8b205a1874b13b17dce6563d28a8c78c13",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/run.py"
+    },
+    "embedding_adapter/score_candidates.R": {
+      "sha256": "cdcd4b9c4b149d39a1471e51e977f6e9bc77c5738f561c9f8786c0ab59b28660",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/score_candidates.R"
+    },
+    "embedding_adapter/tasks.json": {
+      "sha256": "980f9cff8cbc33a30a387ac736f908f66d07cf8a565fced07caef16623c30586",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/tasks.json"
+    },
+    "embedding_adapter/verify.py": {
+      "sha256": "3ecb44015c12818b92c2256dea754592fcad36b269110d114b753f8fbcfb9d1c",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/verify.py"
+    },
+    "embedding_adapter/verify_R.R": {
+      "sha256": "0f49880b3fe9d5b23f6166280f110667869a73d356dec96b925f4b47b21062fc",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/verify_R.R"
+    },
+    "embedding_adapter/watch_pilot.py": {
+      "sha256": "14c9e0d976c445fbe7a9fe95f24ddfddc2252f047be30539dbac122b1bae365f",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_adapter/watch_pilot.py"
+    },
+    "embedding_summary/README.md": {
+      "sha256": "abe4cfeab2e78ddd8f8dcde13efa48cc96b23002f96177eedd2944e57e31427f",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/README.md"
+    },
+    "embedding_summary/SOURCE_PROTOCOL_MANIFEST.json": {
+      "sha256": "9b70f0d4aee41380056c61732c29cf5b8b7ecbdeaa69aacdceb78eb54238ee86",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/SOURCE_PROTOCOL_MANIFEST.json"
+    },
+    "embedding_summary/SUMMARY_LOCK.json": {
+      "sha256": "ed1a6abbd5e87b4131e7ba8dc96634572548a0c04893b7178f346cafba9dd95d",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/SUMMARY_LOCK.json"
+    },
+    "embedding_summary/canonical_inference.py": {
+      "sha256": "b8c0d3917e6317e7f5d9344e12a62e372fed9475c508406d0313fb5d78c9a6f4",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/canonical_inference.py"
+    },
+    "embedding_summary/independent_review.json": {
+      "sha256": "15db5254137dbedb51547f6f7717316d9e6998d4dfa262f4ac9a4626518ece73",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/independent_review.json"
+    },
+    "embedding_summary/numerical.py": {
+      "sha256": "b7303e209c082c56b48bccfc42b663d230dd9ac73461fac24f4b6db86511e8f2",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/numerical.py"
+    },
+    "embedding_summary/original/common.py": {
+      "sha256": "8aa287a41f4428370789138f7004078bb9a14b52e03b2cb86f86dfbe2a6ab5e3",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/original/common.py"
+    },
+    "embedding_summary/original/select_lfine.py": {
+      "sha256": "75e0e991aa79863342ae40b94755838a89b5953e9e65e2ccf2793878a7919a72",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/original/select_lfine.py"
+    },
+    "embedding_summary/original/verify_selection.py": {
+      "sha256": "a44b2bf9186063bb9f847e9cbc07ad2a2372cd7f687d5fc8772e39cda30876ba",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/original/verify_selection.py"
+    },
+    "embedding_summary/prepare_sources.py": {
+      "sha256": "ebb0486b223d5c53c3de6802eb6904e452c651124644ed907820432d5ea01020",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/prepare_sources.py"
+    },
+    "embedding_summary/protocol/embedding.json": {
+      "sha256": "635979d0c62c60d3b360ddaba08c3f1ef4a757b7e2c518ac5b57ceccb74f60f4",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/protocol/embedding.json"
+    },
+    "embedding_summary/protocol/lfine.json": {
+      "sha256": "1cb3d763971a9074ef51d06305cd77bbf0d84534fda6a561b6556c315a7df334",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/protocol/lfine.json"
+    },
+    "embedding_summary/protocol/patient_folds.csv": {
+      "sha256": "6217f4f2008e4d4486b59c1f7c2ce3ff71481b578d0d448f50f418403921b8a6",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/protocol/patient_folds.csv"
+    },
+    "embedding_summary/protocol/selection.json": {
+      "sha256": "24b0d14a9408388efc8190addc5b2f33ca3d114d1cfc2f826a839338c14e7d38",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/protocol/selection.json"
+    },
+    "embedding_summary/run.py": {
+      "sha256": "732fc1b31f5c5b5c004f983b2dfdc57308c91f2df59b17c09915122452a6ca3b",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/run.py"
+    },
+    "embedding_summary/test_quantized_legacy_failure.py": {
+      "sha256": "1a78a124bf970829c2011deee4e1dc08b00474eff246c10d8cd0c6d88f891bc6",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/test_quantized_legacy_failure.py"
+    },
+    "embedding_summary/test_synthetic.py": {
+      "sha256": "7a351d7ff6bad816fd8ece599c8ee5a0f3bdb43e4f24d1667af46ef12e075a15",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/test_synthetic.py"
+    },
+    "evaluate_core_lfine.py": {
+      "sha256": "5352acee29aa5fb6e8f1e73549ea88e2c0801e037f7460335b4baadfcb172def",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_core_lfine.py"
+    },
+    "evaluate_core_lfine_sources.json": {
+      "sha256": "8c1ccab90c51564e01e7547b3557933604c0cb263d4207db3d686867379a6712",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_core_lfine_sources.json"
+    },
+    "evaluate_extension_lfine.py": {
+      "sha256": "424fb152cee5d95990b0eae724761601199230cb55512e22bd8de5cfcdfd25a9",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_extension_lfine.py"
+    },
+    "extension_manager/CONTROLLER_V2_DERIVATION.json": {
+      "sha256": "deb48b16e35b8bfcac91eefe82fa22e471a7cf9fb21f1441569ed58a8dd54780",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/CONTROLLER_V2_DERIVATION.json"
+    },
+    "extension_manager/CONTROLLER_V2_LOCK.json": {
+      "sha256": "422c3525747576f7d4d0283c4fb765b684f8e5e077235d097386c2839a9cd6fb",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/CONTROLLER_V2_LOCK.json"
+    },
+    "extension_manager/README.md": {
+      "sha256": "c6be5f0f397c27d8428a8632e8884733d364dc28233738e9ea6e470c156f0b8e",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/README.md"
+    },
+    "extension_manager/array.sbatch": {
+      "sha256": "7d6d2f6e3cb433c61a3a849aa6005bce3b259b493a6d0e467be7e75ee55c5b7b",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/array.sbatch"
+    },
+    "extension_manager/build_candidate.py": {
+      "sha256": "071d77d9732fba6d178e0299f6c9f138dc26ebce73b837489aba8a6d3ab364d0",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/build_candidate.py"
+    },
+    "extension_manager/common.py": {
+      "sha256": "f155b27df4f40c9459e211dbbea0c6d6fff66ee91bf3d4fbe92b16c4e202e844",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/common.py"
+    },
+    "extension_manager/independent_review.json": {
+      "sha256": "0a2ba03861daaf312bc13790ec675ffe0f9c5e569d4257d0d886339056124452",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/independent_review.json"
+    },
+    "extension_manager/independent_review_v2.json": {
+      "sha256": "b2d44f0882d4be06219d87838c979698b4fe41f8352671e2fa729871b591707a",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/independent_review_v2.json"
+    },
+    "extension_manager/manage.py": {
+      "sha256": "6c690b62401b97e4250b0239b72d25ed2ead4776cf386384d9cf5f871ffd05bf",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/manage.py"
+    },
+    "extension_manager/manage_v2.py": {
+      "sha256": "bf24cb9d003c646e495e6a6e8f62851cb5207a5e3ea9dc89cf0632c88a910f3e",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/manage_v2.py"
+    },
+    "extension_manager/prepare_controller_v2.py": {
+      "sha256": "935b80fae7119b215e9a19a0bffbcdd5a9fb0da29739f9318388b299d9175187",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/prepare_controller_v2.py"
+    },
+    "extension_manager/receipts.py": {
+      "sha256": "1b1cc9801f83d27c00091560bfc3cffa30e8e9ddfa0c4db206ddcb12ad33246d",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/receipts.py"
+    },
+    "extension_manager/selftest.py": {
+      "sha256": "59bd843e8ce00d8f3d53547a72d7c4269e7dbcb00dd953c4443ce449beeec07d",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/selftest.py"
+    },
+    "extension_manager/selftest_result.json": {
+      "sha256": "d1722f6c14ec7f139b2151db7173bea4cc5894cffd2c8b4c4d20192fcee5b2de",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/selftest_result.json"
+    },
+    "extension_manager/selftest_v2.py": {
+      "sha256": "c93afccb8920c2f43233a613130d1e3373e5f8b8b123e1705a981fba25262c65",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/selftest_v2.py"
+    },
+    "extension_manager/selftest_v2_result.json": {
+      "sha256": "e87f0039bdc234224a3bbef84d4bbffaea3cf96d6962df2ae80792ab55e45a14",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/selftest_v2_result.json"
+    },
+    "extension_manager/throttle_v2.py": {
+      "sha256": "b05cbc18f7733372a27e863844d6391258511643852c6c7637a429ba05f5ea82",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/throttle_v2.py"
+    },
+    "extension_manager/worker.py": {
+      "sha256": "6b9678a03ea38c8049282fde5f1526fcbb7e495408c98a2a659c311fd6863ebd",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/worker.py"
+    },
+    "final_report/README.md": {
+      "sha256": "c5210c346befd5888074fa3d6cccf6fa834d139852d2b197772163755f2bac10",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/README.md"
+    },
+    "final_report/REPORT_LOCK.json": {
+      "sha256": "aaee737e8ab778144128a6fc37e3e44040f818e05e57897dfe61a1d4cbd4fe22",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/REPORT_LOCK.json"
+    },
+    "final_report/SOURCE_MANIFEST.json": {
+      "sha256": "2b6b70b0198d97b0ed3456df11778a943754ed79127dee5cacdeecd637aaa4b5",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/SOURCE_MANIFEST.json"
+    },
+    "final_report/canonical_C.py": {
+      "sha256": "9501cca31e71ca98bb387a3f4fda91836aa4423f53f7f32c23c4b71bb7491f65",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/canonical_C.py"
+    },
+    "final_report/freeze.py": {
+      "sha256": "8962bf4c1b5fc9f221202bf07cd97b13c5a77e8951e7b299e207ec651e04e3ea",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/freeze.py"
+    },
+    "final_report/independent_review.json": {
+      "sha256": "0419f0dc5369a8f4fb3f3e9f345320d0c063fdb3d378061a8543fe95d337906b",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/independent_review.json"
+    },
+    "final_report/parent_report_source_review.json": {
+      "sha256": "aedb039858a355f47d00bc129dd3e2a6dc3c629050f012ce163123be67f8bb93",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/parent_report_source_review.json"
+    },
+    "final_report/prepare_sources.py": {
+      "sha256": "462bc93121eed7fdc5a3a4dfc0618a73819ec658eb587f82084f69ddda4325bb",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/prepare_sources.py"
+    },
+    "final_report/render_B.py": {
+      "sha256": "f4478234450e47e442232f8973841c271e6432eed12c7ec22e9a79fbe02b6b9f",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/render_B.py"
+    },
+    "final_report/revalidate.py": {
+      "sha256": "2a8131fe215f827e0dc773ef74c442e613441bc726aed2cdec4cb61f4fa9a291",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/revalidate.py"
+    },
+    "final_report/run.py": {
+      "sha256": "0286c2513c28cd0dc05c148650cbe0f944c4cbd86e131a43df3596271779c7e7",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/run.py"
+    },
+    "final_report/test_archived_inputs.py": {
+      "sha256": "f2451e23aedd240c49f317a488e05e085b4ef0956df99aaed045cde59d72ecd0",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/test_archived_inputs.py"
+    },
+    "final_report/test_fresh_pilot_metrics.py": {
+      "sha256": "3a276d1fc42d2d6d461d7bcecbfeaad9e4ddff6c5782a0bcf2ee0db0e94a5fae",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/test_fresh_pilot_metrics.py"
+    },
+    "final_report/test_guards.py": {
+      "sha256": "5d342d4b47ce6a69f3a198ebebffcc15f0b227c8d63a2c8b1b2ffcce9d6e0fad",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/test_guards.py"
+    },
+    "gbm_completion_guard_review.json": {
+      "sha256": "f2893af84dbde986cd5e39783b54e8145e5eb18730a8c984ca065a83c3faa6bf",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/gbm_completion_guard_review.json"
+    },
+    "geometry_control.py": {
+      "sha256": "60baf2b3f22b0732921c8ee6c4108436741f5901019455029fa41b8e0f557bbe",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/geometry_control.py"
+    },
+    "manage_core.py": {
+      "sha256": "d0761518c05e2190c2cfea947608962419445d085330d1ffd62cee2f243f2a19",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/manage_core.py"
+    },
+    "mlp_controls_adapter.py": {
+      "sha256": "aa080494801d6a0195a1dce2a4a8dc4bd8e30eac7ab993103e81c7c45d388579",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/mlp_controls_adapter.py"
+    },
+    "mlp_controls_array.sbatch": {
+      "sha256": "0a51e70984527c90bd2df6a42f8d180befd7902913618a4209ba1c19715aadba",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/mlp_controls_array.sbatch"
+    },
+    "mlp_controls_sources.json": {
+      "sha256": "04b31b9228246144331578fe34778d49bae0c2416d158f200abf908d83492db7",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/mlp_controls_sources.json"
+    },
+    "mlp_controls_tasks.json": {
+      "sha256": "062ddea2c082474381e29d1b6f78d12c316bfc60376e3dbc6c9600f9c054e384",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/mlp_controls_tasks.json"
+    },
+    "no_cluster_adapter/SOURCE_DERIVATION.json": {
+      "sha256": "d48e9122c89d28f08f4f3931d208677e7e1e5d658e30a9f2a066bc75bdb837f0",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/no_cluster_adapter/SOURCE_DERIVATION.json"
+    },
+    "no_cluster_adapter/SOURCE_LOCK.json": {
+      "sha256": "1e32eedcf33dea3850cb0b9b6f7999e18b08f3fefaffbbf0f0dcd499d897939c",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/no_cluster_adapter/SOURCE_LOCK.json"
+    },
+    "no_cluster_adapter/protocol_original.json": {
+      "sha256": "94c64c2229afa3a43a7f3b9be6633cd93ac47bc7ff1c82f53fa1c9de03de7f28",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/no_cluster_adapter/protocol_original.json"
+    },
+    "no_cluster_adapter/run.py": {
+      "sha256": "0257a0cd6a4cf44418a86da8261f4d99ff75ae31200ab04e03638f4dd4474e23",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/no_cluster_adapter/run.py"
+    },
+    "no_cluster_adapter/score_cellwise.R": {
+      "sha256": "3c3c0a92cacc7b6a205da75798ef45d29ae93762d681b3a4a3ff7d728c4ac6ac",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/no_cluster_adapter/score_cellwise.R"
+    },
+    "no_cluster_adapter/verify_scores.R": {
+      "sha256": "bdba06528dd180cf45f66ed12f10ff817a0d342b6ff3f804275f435b46b5506e",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/no_cluster_adapter/verify_scores.R"
+    },
+    "prepare_representation_R.R": {
+      "sha256": "dfa06d3ced82797fa4cf9b54c2f15c33883c27005c9171cb178c68b0728d6cc2",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/prepare_representation_R.R"
+    },
+    "refine_controls_packaged.py": {
+      "sha256": "4cc71afbe8377b1f1a0aa740695702d84a9380c68f8878ea874fb911a8d372ba",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/refine_controls_packaged.py"
+    },
+    "refresh_core_notebook.py": {
+      "sha256": "ded2f073422bfeb98665efce4ce9befec5999071196ce4939a367ddec04b25d1",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/refresh_core_notebook.py"
+    },
+    "representation_adapter.py": {
+      "sha256": "e190b8a5fee4328c140ad3492f3f886a877f120b877e6fba87d82e9a8f5751a4",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/representation_adapter.py"
+    },
+    "representation_configurations.py": {
+      "sha256": "6a373925ec209f1cb32a973a9905c8de2accdccc917888fdc98988af7324bf43",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/representation_configurations.py"
+    },
+    "representation_derivation.json": {
+      "sha256": "1b51ccf3f13ebe64b2d525bb33d1745316f4ded6b3eeee359461e62406ee9d32",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/representation_derivation.json"
+    },
+    "representation_sources.json": {
+      "sha256": "c7ded0c3bd7670a93b327e24f9b9d45ee2c6a5c92b6eb5fbfb5c462e365afff1",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/representation_sources.json"
+    },
+    "representation_tasks.json": {
+      "sha256": "2f5045dbcd936c093473dcd1629254fb81939aa11c62ff0451dbec6f21b6bf0e",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/representation_tasks.json"
+    },
+    "rerun_inventory.core_tasks.json": {
+      "sha256": "32e21a22fb279090ab7324f086f0839715d19efbd6d604c163e40795d8f674be",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/rerun_inventory.core_tasks.json"
+    },
+    "rerun_inventory.json": {
+      "sha256": "55c929ce0530247482b512526d8a816ee72f42359555e23c2022163f6b316f2b",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/rerun_inventory.json"
+    },
+    "rerun_inventory.md": {
+      "sha256": "1a1209180c029219215ef04d414154cce684acad3cf8f380201219bfca99cb02",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/rerun_inventory.md"
+    },
+    "review_extension_candidate.py": {
+      "sha256": "9839034b5e8b89ed64fde9b69fc9bdb4001419313eceb6f97779e5589ebc4a76",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/review_extension_candidate.py"
+    },
+    "reviewer_b_adapter/README.md": {
+      "sha256": "9beb62608ad49ca738006c6a2686c0db9ad09e148e5d8a55acc3bd25e721a0ee",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/README.md"
+    },
+    "reviewer_b_adapter/SOURCE_DERIVATION.json": {
+      "sha256": "4a4fb2bb4745790601cbc42837a1080bacad3e007187b66e733c5bfb42bb6435",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/SOURCE_DERIVATION.json"
+    },
+    "reviewer_b_adapter/SOURCE_LOCK.json": {
+      "sha256": "8de2fc83b83cf82d7d74def01b9fcce81aec2de02d16cfb219a6e2c5c4a7dbe9",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/SOURCE_LOCK.json"
+    },
+    "reviewer_b_adapter/learning.py": {
+      "sha256": "bc3a651fd91dfe5391a9a6302b7e579a155b83d1ce269cf9cd427bedb7af1597",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/learning.py"
+    },
+    "reviewer_b_adapter/learning_independent_review.json": {
+      "sha256": "e6a722c0cd073d7ffa9b75ff7c04fb02a52f8b40a08bfffeca4c0e1d5ab2b1e0",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/learning_independent_review.json"
+    },
+    "reviewer_b_adapter/learning_independent_review_frozen.json": {
+      "sha256": "b0557e81a8ada6769044345a0bc9d1dfd310f62aba758a6b4f8d159be80d5839",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/learning_independent_review_frozen.json"
+    },
+    "reviewer_b_adapter/neighbors.py": {
+      "sha256": "0f15d4d7820a8db900fb23915f459035eaa1e0875ac3db8b12d9050766924c62",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/neighbors.py"
+    },
+    "reviewer_b_adapter/prepare_neighbors.R": {
+      "sha256": "c08e7537c65e31605035fe71f8120cfd095e982081b4292fa4d9b05f61bf9608",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/prepare_neighbors.R"
+    },
+    "reviewer_b_adapter/refine_learning.py": {
+      "sha256": "f2357a82d5e442638e0b731ce78f7a75f74b9ba57196f5bf8696bac12827af9e",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/refine_learning.py"
+    },
+    "reviewer_b_adapter/score_neighbors.R": {
+      "sha256": "b192b20cfb402017e276dec61cf0a5ea077d85e2886818d0d0035a79a49045bb",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/score_neighbors.R"
+    },
+    "reviewer_b_adapter/support.py": {
+      "sha256": "7dc5b719fe03fdeaa4a20a358f524fa625fff34730bc532a7f660830927cd1a0",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/support.py"
+    },
+    "score_representation_R.R": {
+      "sha256": "dc74de8a70c96e078e7c6e9c12d73aea5db894027e99f99f3d8a4a949caac69e",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/score_representation_R.R"
+    },
+    "verify_packaged_parity.py": {
+      "sha256": "c386ae61da84553feaa255be4b5f1cf4958d09d32d96460765d1e1cbf0aef3d8",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/verify_packaged_parity.py"
+    },
+    "verify_packaged_r_artifacts.R": {
+      "sha256": "25091da60fda1663dc12a293cb5a9f4caf70679e4d3c50465a6c8b8e6a110095",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/verify_packaged_r_artifacts.R"
+    },
+    "verify_representation_inputs.R": {
+      "sha256": "0e2f2f0aab707df70ab630c7d5b1456e8d8e638f53223a993339e2320c54512c",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/verify_representation_inputs.R"
+    },
+    "watch_core_report.py": {
+      "sha256": "e82b76aa5262ec576d1d59a7fcbaed8379b2866a18488c34535bcf1a7810392c",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/watch_core_report.py"
+    },
+    "watch_gbm_completion.py": {
+      "sha256": "a0d28930c981b4404c4cef045aa73028be4b49ca7d1789204e078320abafb396",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/watch_gbm_completion.py"
+    },
+    "extension_manager/CAMPAIGN_CANDIDATE_FULL_v3.tasks.json": {
+      "sha256": "a3b29d4346796196be98ae02babe08d2fe0d26f1f56537df6a14fddb62ab70ec",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/CAMPAIGN_CANDIDATE_FULL_v3.tasks.json"
+    },
+    "extension_manager/CAMPAIGN_CANDIDATE_FULL_v3.json": {
+      "sha256": "0c3054ec12873546c8f13c8965dc56bafa3104bdb01499edbfddaca46936a7d7",
+      "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/CAMPAIGN_CANDIDATE_FULL_v3.json"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "status": "validated_report_adapter_full_campaign_pending",
+  "files": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/run.py": "0286c2513c28cd0dc05c148650cbe0f944c4cbd86e131a43df3596271779c7e7",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/revalidate.py": "2a8131fe215f827e0dc773ef74c442e613441bc726aed2cdec4cb61f4fa9a291",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/independent_review.json": "0419f0dc5369a8f4fb3f3e9f345320d0c063fdb3d378061a8543fe95d337906b",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/parent_report_source_review.json": "aedb039858a355f47d00bc129dd3e2a6dc3c629050f012ce163123be67f8bb93",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/canonical_C.py": "9501cca31e71ca98bb387a3f4fda91836aa4423f53f7f32c23c4b71bb7491f65",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/render_B.py": "f4478234450e47e442232f8973841c271e6432eed12c7ec22e9a79fbe02b6b9f",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/freeze.py": "8962bf4c1b5fc9f221202bf07cd97b13c5a77e8951e7b299e207ec651e04e3ea",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/prepare_sources.py": "462bc93121eed7fdc5a3a4dfc0618a73819ec658eb587f82084f69ddda4325bb",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/SOURCE_MANIFEST.json": "2b6b70b0198d97b0ed3456df11778a943754ed79127dee5cacdeecd637aaa4b5",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/test_archived_inputs.py": "f2451e23aedd240c49f317a488e05e085b4ef0956df99aaed045cde59d72ecd0",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/README.md": "c5210c346befd5888074fa3d6cccf6fa834d139852d2b197772163755f2bac10",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/test_fresh_pilot_metrics.py": "3a276d1fc42d2d6d461d7bcecbfeaad9e4ddff6c5782a0bcf2ee0db0e94a5fae",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/test_guards.py": "5d342d4b47ce6a69f3a198ebebffcc15f0b227c8d63a2c8b1b2ffcce9d6e0fad",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/final_report_validation/archived_functions_v2/verification.json": "70bea755d5354dac1f3f5fda23ecfa34d33e3f3074d4e362f6d5bacd1bd7f97f",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/final_report_validation/guard_verification_v2.json": "b2bffb42de5916a44db026c3af465cb932d11068110ddda212bf35ec1dd172e4",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/final_report_validation/fresh_pilot_metrics.json": "ed75c7cffbfea4d2d7f8ecc08eb7bcd78b991390ce7c9438369da98701ca0cb8"
+  },
+  "runtime": {
+    "python": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/runtime_embedding_v1/bin/python",
+    "versions": {
+      "numpy": "2.4.6",
+      "pandas": "2.3.3",
+      "scipy": "1.17.1",
+      "matplotlib": "3.11.0",
+      "nbformat": "5.10.4"
+    }
+  },
+  "full_campaign_report_executed": false,
+  "job": "7204040",
+  "step": "399"
+}

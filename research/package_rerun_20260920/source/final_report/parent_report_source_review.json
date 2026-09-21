@@ -1,0 +1,22 @@
+{
+  "status": "passed_bounded_source_and_actual_aggregate_guard_review",
+  "reviewer": "package_lfine_evaluation",
+  "files": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/aggregate_extensions.py": "e47134863b98cbf2392e8ec6dd17c42b4d7e8f411ab3823bbb79057092e649f7",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/watch_gbm_completion.py": "a0d28930c981b4404c4cef045aa73028be4b49ca7d1789204e078320abafb396"
+  },
+  "actual_guard_receipt": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/final_report_validation/guard_verification_v2.json": "b2bffb42de5916a44db026c3af465cb932d11068110ddda212bf35ec1dd172e4"
+  },
+  "checks": [
+    "Full2617 per-worker acceptance and Lfine metric payload hashes required; no candidate selection by generic aggregate",
+    "A1 separate verification_output roots checked inside extensions/A1_verification",
+    "Watcher requires726core2617extension and completed core notebook before aggregation",
+    "Independent A1 selection420choices84contrasts precedes final existing-section revalidation",
+    "Final report and notebook metadata bind core/A1/extensions receipts",
+    "GBM completion binds immutable final notebook snapshot so later authorized PTC edits cannot invalidate completed GBM proof",
+    "No PTC launched, no HTML or remote synchronization"
+  ],
+  "real_full_aggregation_executed": false,
+  "remaining_material_findings": []
+}

@@ -1,0 +1,39 @@
+{
+  "status": "source_prepared_pending_regression_review",
+  "original": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/manage.py",
+  "original_sha256": "6c690b62401b97e4250b0239b72d25ed2ead4776cf386384d9cf5f871ffd05bf",
+  "derivative": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/manage_v2.py",
+  "derivative_sha256": "bf24cb9d003c646e495e6a6e8f62851cb5207a5e3ea9dc89cf0632c88a910f3e",
+  "literal_replacements": [
+    {
+      "old": "def adapt_throttle(state, control, queued):\n    active = [s for s in state['submissions'] if s['status'] == 'submitted'\n              and any(r['job'].split('_')[0] == s['job_id'] for r in queued)]\n    c.need(len(active) <= 1, 'More than one active extension array')\n    if not active:\n        return\n    submission = active[0]\n    # Recheck global state immediately before a scheduling-only change.\n    fresh = queue()\n    decision = throttle_target(fresh, submission['job_id'])\n    current = submission.get('current_throttle', submission['concurrency'])\n    decision.update(at=c.utc(), array_job=submission['job_id'], previous=current,\n                    scheduling_only=True, scientific_parameters_unchanged=True,\n                    unrelated_controllers_not_constrained=True)\n    pending = state.get('throttle_intent')\n    if decision['target'] != current or pending:\n        # A prior scontrol may have succeeded before its reply/state update.\n        # Never infer the live throttle from cached state after such a crash.\n        # Setting the newly computed target again is safe and idempotent.\n        if pending:\n            decision['reconciles_unresolved_intent'] = pending\n        argv = ['scontrol', 'update', 'JobId=' + submission['job_id'],\n                'ArrayTaskThrottle=' + str(decision['target'])]\n        decision['argv'] = argv\n        state['throttle_intent'] = decision; c.write(control / 'state.json', state)\n        result = subprocess.run(argv, text=True, capture_output=True, timeout=45)\n        decision.update(returncode=result.returncode, stdout=result.stdout, stderr=result.stderr)\n        state.setdefault('throttle_decisions', []).append(decision)\n        c.write(control / 'state.json', state)\n        c.need(result.returncode == 0, 'Own-array throttle update failed; preserve jobs and review')\n        submission['current_throttle'] = decision['target']\n        state.pop('throttle_intent', None)\n    state['last_capacity_decision'] = decision\n    c.write(control / 'state.json', state)\n",
+      "new": "def adapt_throttle(state, control, queued):\n    import throttle_v2\n    return throttle_v2.reconcile(state, control, queued, queue=queue,\n                                target=throttle_target, common=c)\n\n\ndef controller_contract():\n    path = Path(__file__).with_name('CONTROLLER_V2_LOCK.json')\n    value = c.load(path)\n    c.need(value['status'] == 'reviewed_scheduler_only_correction', 'Scheduler correction is not reviewed')\n    for source, digest in value['files'].items():\n        c.need(c.sha(source) == digest, 'Scheduler correction source changed: ' + source)\n    c.need(value['previous_controller']['sha256'] == c.sha(Path(__file__).with_name('manage.py')),\n           'Frozen original scheduler changed')\n    return dict(path=str(path), sha256=c.sha(path))\n\n\ndef migrate_scheduler_state(state, control, gate_hash, tasks, batch_size):\n    contract = controller_contract()\n    if state['controller_sha256'] == c.sha(__file__):\n        c.need(state['controller_override']['contract'] == contract, 'Scheduler correction contract changed')\n        return\n    import manage as original\n    original.registry(state, gate_hash, tasks, batch_size)\n    prior = control / 'controller_v2_migration_prior.json'\n    if prior.exists():\n        c.need(c.load(prior) == state, 'Inconsistent interrupted scheduler migration requires review')\n    else:\n        c.write(prior, state)\n    state['controller_sha256'] = c.sha(__file__)\n    state['controller_override'] = dict(contract=contract, previous_state=c.record(prior),\n        migrated_at=c.utc(), reason='Read back applied throttle when completed array members produce scontrol nonzero',\n        submissions_and_acceptances_preserved=True, campaign_gate_unchanged=True, scientific_workers_unchanged=True)\n    c.write(control / 'state.json', state)\n"
+    },
+    {
+      "old": "    c.need(c.sha(gate_path) == gate_hash, 'Campaign gate changed during execution')",
+      "new": "    contract = controller_contract()\n    c.need(state['controller_override']['contract'] == contract, 'Scheduler correction contract changed')\n    c.need(c.sha(gate_path) == gate_hash, 'Campaign gate changed during execution')"
+    },
+    {
+      "old": "    outstanding = len(assigned - {int(k) for k in state['accepted']})",
+      "new": "    if not busy and state.get('throttle_intent'):\n        import throttle_v2\n        throttle_v2.retire_completed_intent(state, control, records, queued, c)\n    outstanding = len(assigned - {int(k) for k in state['accepted']})"
+    },
+    {
+      "old": "    args = parser.parse_args(); c.safe_identity()",
+      "new": "    args = parser.parse_args(); c.safe_identity()\n    contract = controller_contract()"
+    },
+    {
+      "old": "            state = c.load(control / 'state.json'); registry(state, gate_hash, tasks, args.batch_size)",
+      "new": "            state = c.load(control / 'state.json')\n            migrate_scheduler_state(state, control, gate_hash, tasks, args.batch_size)\n            registry(state, gate_hash, tasks, args.batch_size)"
+    },
+    {
+      "old": "                         limits=c.LIMITS, task_count=len(tasks), batch_size=args.batch_size, submissions=[], accepted={})",
+      "new": "                         limits=c.LIMITS, task_count=len(tasks), batch_size=args.batch_size, submissions=[], accepted={},\n                         controller_override=dict(contract=contract, fresh_controller=True))"
+    },
+    {
+      "old": "                         acceptances=state['accepted'], optional_families=gate['optional_families'], PTC_started=False)",
+      "new": "                         acceptances=state['accepted'], optional_families=gate['optional_families'], PTC_started=False,\n                         controller_override=state['controller_override'])"
+    }
+  ],
+  "exact_reverse_reconstruction": true,
+  "scientific_workers_or_campaign_gate_changed": false
+}

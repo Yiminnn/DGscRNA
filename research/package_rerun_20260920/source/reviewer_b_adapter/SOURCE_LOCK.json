@@ -1,0 +1,54 @@
+{
+  "status": "bounded_pilots_passed",
+  "scope": "research adapters only; no full campaign submitted",
+  "files": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/core_task.py": "29ad5e39182f56974bed7a37659a21ac8c2fa714977fdc048d72b88be97932c6",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_core_lfine.py": "5352acee29aa5fb6e8f1e73549ea88e2c0801e037f7460335b4baadfcb172def",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_core_lfine_sources.json": "8c1ccab90c51564e01e7547b3557933604c0cb263d4207db3d686867379a6712",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_extension_lfine.py": "424fb152cee5d95990b0eae724761601199230cb55512e22bd8de5cfcdfd25a9",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/geometry_control.py": "60baf2b3f22b0732921c8ee6c4108436741f5901019455029fa41b8e0f557bbe",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/README.md": "9beb62608ad49ca738006c6a2686c0db9ad09e148e5d8a55acc3bd25e721a0ee",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/SOURCE_DERIVATION.json": "4a4fb2bb4745790601cbc42837a1080bacad3e007187b66e733c5bfb42bb6435",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/learning.py": "bc3a651fd91dfe5391a9a6302b7e579a155b83d1ce269cf9cd427bedb7af1597",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/neighbors.py": "0f15d4d7820a8db900fb23915f459035eaa1e0875ac3db8b12d9050766924c62",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/prepare_neighbors.R": "c08e7537c65e31605035fe71f8120cfd095e982081b4292fa4d9b05f61bf9608",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/refine_learning.py": "f2357a82d5e442638e0b731ce78f7a75f74b9ba57196f5bf8696bac12827af9e",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/score_neighbors.R": "b192b20cfb402017e276dec61cf0a5ea077d85e2886818d0d0035a79a49045bb",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/reviewer_b_adapter/support.py": "7dc5b719fe03fdeaa4a20a358f524fa625fff34730bc532a7f660830927cd1a0",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/verify_packaged_parity.py": "c386ae61da84553feaa255be4b5f1cf4958d09d32d96460765d1e1cbf0aef3d8",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/verify_packaged_r_artifacts.R": "25091da60fda1663dc12a293cb5a9f4caf70679e4d3c50465a6c8b8e6a110095",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/controls/PROTOCOL.md": "1964a64e594348ce0be6c2d20872bf9298161610181f6ce1a592c259a7c87790",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/controls/prepare_neighbors.R": "6c6b72e8267a10740c1e31a5a7f2a5a4ad5f93270e145f9d49c7396a53397bd9",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/controls/refine_learning.py": "8ac2e69ac39b9f0cba71e20c3a622c4a8ff6872776e4ec657a1a443f19924824",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/controls/score_neighbors.R": "68c745f442412277b91c4d726caa43579d72ff1c452a35c8252070f1e371cb35",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/controls/tasks.json": "8c651d3b18e3bae2bb649db13954b9663ed7f7a0d5b0b2339f8a019fb021469a"
+  },
+  "gate_sha256": "01976ede48f4e715857879d2efad88620c922d2a041ed5315c10592837efd9d2",
+  "pilots": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/pilots/reviewer_b_default_TKU4163_hvg2000/neighbors_parity.json": "9f14f9e405223bf6dc75bda6054f1df32e4e62fc58ae8015f5983e04bc0591a8",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/pilots/reviewer_b_default_TKU4163_hvg2000/learning_parity.json": "544a2d7cd44735674f640b4e654b83ffb20a0d1c52c85b39298d63c79ea4a1be"
+  },
+  "neighbor_pilot": {
+    "default_routes": 3,
+    "terminal_conditions": 6,
+    "Lfine_threshold_rows": 12
+  },
+  "learning_pilot": {
+    "epochs": 10,
+    "model_seed": 42,
+    "checkpoints": [
+      5,
+      10
+    ],
+    "Lfine_threshold_rows": 4
+  },
+  "remaining_roster": {
+    "neighbor_units": 66,
+    "neighbor_terminal_conditions": 132,
+    "primary_learning_trajectories": 18,
+    "epochs": 30,
+    "secondary_only_if_primary_valid_no_training": true
+  },
+  "job": "7204040",
+  "step": "300"
+}

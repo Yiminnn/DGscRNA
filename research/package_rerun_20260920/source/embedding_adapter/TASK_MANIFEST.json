@@ -1,0 +1,13 @@
+{
+  "status": "planned_not_submitted",
+  "n_tasks": 1694,
+  "n_sample_budget_preparations": 242,
+  "n_partitions": 22022,
+  "n_terminal_threshold_rows": 44044,
+  "source_protocol_sha256": "635979d0c62c60d3b360ddaba08c3f1ef4a757b7e2c518ac5b57ceccb74f60f4",
+  "core_task_manifest_sha256": "32e21a22fb279090ab7324f086f0839715d19efbd6d604c163e40795d8f674be",
+  "tasks_sha256": "980f9cff8cbc33a30a387ac736f908f66d07cf8a565fced07caef16623c30586",
+  "gate": "requires_root_release_gate_and_single_geometry_export_per_sample_budget_before_parallel_spaces",
+  "pilot_only": "TKU4163/hvg2000 passed independent exact comparison: seven spaces, 91 terminal conditions, 182 Lfine threshold rows",
+  "pilot_manifest_sha256": "d80078665e498bddf4666fced6d3aa99d7a667824f7a56ee6f50db1163c0b07c"
+}

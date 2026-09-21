@@ -1,0 +1,49 @@
+{
+  "status": "passed_independent_source_review",
+  "reviewer": "package_rerun_inventory",
+  "at": "2026-09-21T02:10:50.277132+00:00",
+  "source_hashes": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/run.py": "732fc1b31f5c5b5c004f983b2dfdc57308c91f2df59b17c09915122452a6ca3b",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/numerical.py": "b7303e209c082c56b48bccfc42b663d230dd9ac73461fac24f4b6db86511e8f2",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/canonical_inference.py": "b8c0d3917e6317e7f5d9344e12a62e372fed9475c508406d0313fb5d78c9a6f4",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/SOURCE_PROTOCOL_MANIFEST.json": "9b70f0d4aee41380056c61732c29cf5b8b7ecbdeaa69aacdceb78eb54238ee86",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/prepare_sources.py": "ebb0486b223d5c53c3de6802eb6904e452c651124644ed907820432d5ea01020",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/test_synthetic.py": "7a351d7ff6bad816fd8ece599c8ee5a0f3bdb43e4f24d1667af46ef12e075a15"
+  },
+  "regression_receipts": [
+    {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/embedding_summary_validation/quantized_v3/verification.json",
+      "sha256": "12b27c79709264e2c50416ed724835d359868bd1dc1911e522778b998edf4ebf",
+      "job": "7204040",
+      "step": "340"
+    },
+    {
+      "path": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/embedding_summary_validation/continuous_v3/verification.json",
+      "sha256": "583001ae09dfda606fbb758df8c3783b3ee60f715eb80c9bad89537915e1578e",
+      "job": "7204040",
+      "step": "339"
+    }
+  ],
+  "reviewed_contracts": [
+    "Complete 2617 extension acceptance and 726 core anchors bound to the same release before loading metrics",
+    "Exactly 1694 A1 spaces, 44044 terminal rows and 484 same-budget native-R anchor rows",
+    "Frozen Lfine patient eligibility/folds, marker context, terminal090 K selection, terminal070 same selected K",
+    "Original scientific producer selection, averaging, bootstrap, Wilcoxon and Holm bodies preserved; only endpoint-count assertions adapted",
+    "Independent selection and patient means/non-p statistics retain original 1e-12 acceptance",
+    "Canonical patient float64 vectors rebuilt exactly from selected raw sample rows and native anchor reduction, saved losslessly, then independent Wilcoxon/Holm recomputation",
+    "Only the existing DGCyTOF notebook subsection is replaced after validation; other cells remain intact, with backup and lock"
+  ],
+  "floating_point_boundary": {
+    "cause": "Series.mean and DataFrame.groupby.mean can differ at machine precision and alter Wilcoxon tied ranks",
+    "quantized_original_independent_p_max_abs": 5.746096696284872e-12,
+    "quantized_original_independent_Holm_max_abs": 3.983730461417518e-11,
+    "canonical_p_and_Holm_max_abs": 0.0,
+    "producer_arithmetic_changed": false,
+    "tolerance_relaxed": false,
+    "ranks_rounded": false
+  },
+  "remaining_material_findings": [],
+  "real_campaign_aggregation_executed": false,
+  "notebook_modified_by_review": false,
+  "source_review_only": true
+}

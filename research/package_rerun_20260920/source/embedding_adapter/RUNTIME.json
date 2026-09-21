@@ -1,0 +1,44 @@
+{
+  "python": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/runtime_embedding_v1/bin/python",
+  "prefix": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/runtime_embedding_v1",
+  "base_prefix": "/fs/scratch/PCON0080/yimin/mamba_envs/dgscrna",
+  "packages": {
+    "dgscrna": {
+      "version": "2.0.0rc1",
+      "root": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/runtime_embedding_v1/lib/python3.11/site-packages"
+    },
+    "numpy": {
+      "version": "2.4.6",
+      "root": "/fs/scratch/PCON0080/yimin/mamba_envs/dgscrna/lib/python3.11/site-packages"
+    },
+    "scipy": {
+      "version": "1.17.1",
+      "root": "/fs/scratch/PCON0080/yimin/mamba_envs/dgscrna/lib/python3.11/site-packages"
+    },
+    "pandas": {
+      "version": "2.3.3",
+      "root": "/fs/scratch/PCON0080/yimin/mamba_envs/dgscrna/lib/python3.11/site-packages"
+    },
+    "scikit-learn": {
+      "version": "1.9.0",
+      "root": "/fs/scratch/PCON0080/yimin/mamba_envs/dgscrna/lib/python3.11/site-packages"
+    },
+    "torch": {
+      "version": "2.5.1",
+      "root": "/fs/scratch/PCON0080/yimin/mamba_envs/dgscrna/lib/python3.11/site-packages"
+    },
+    "joblib": {
+      "version": "1.5.3",
+      "root": "/fs/scratch/PCON0080/yimin/mamba_envs/dgscrna/lib/python3.11/site-packages"
+    },
+    "threadpoolctl": {
+      "version": "3.6.0",
+      "root": "/fs/scratch/PCON0080/yimin/mamba_envs/dgscrna/lib/python3.11/site-packages"
+    }
+  },
+  "wheel": {
+    "path": "/fs/scratch/PCON0080/yimin/dgscrna/DGscRNA/dist/dgscrna-2.0.0rc1-py3-none-any.whl",
+    "sha256": "ce6bbf22301a9964d19c7eab3642f759b8a6a284c7d2c865bf3f5f86e3cf4766"
+  },
+  "policy": "Dedicated installed wheel; original A1 scientific dependency environment inherited read-only; frozen package runtime_v3 unchanged"
+}

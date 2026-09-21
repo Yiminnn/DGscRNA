@@ -1,0 +1,22 @@
+{
+  "status": "reviewed_scheduler_only_correction",
+  "version": 2,
+  "reviewed_at": "2026-09-21T02:43:44.035619+00:00",
+  "files": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/manage_v2.py": "bf24cb9d003c646e495e6a6e8f62851cb5207a5e3ea9dc89cf0632c88a910f3e",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/throttle_v2.py": "b05cbc18f7733372a27e863844d6391258511643852c6c7637a429ba05f5ea82",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/selftest_v2.py": "c93afccb8920c2f43233a613130d1e3373e5f8b8b123e1705a981fba25262c65",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/selftest_v2_result.json": "e87f0039bdc234224a3bbef84d4bbffaea3cf96d6962df2ae80792ab55e45a14",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/CONTROLLER_V2_DERIVATION.json": "deb48b16e35b8bfcac91eefe82fa22e471a7cf9fb21f1441569ed58a8dd54780",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/prepare_controller_v2.py": "935b80fae7119b215e9a19a0bffbcdd5a9fb0da29739f9318388b299d9175187",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/independent_review_v2.json": "b2d44f0882d4be06219d87838c979698b4fe41f8352671e2fa729871b591707a"
+  },
+  "previous_controller": {
+    "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/manage.py",
+    "sha256": "6c690b62401b97e4250b0239b72d25ed2ead4776cf386384d9cf5f871ffd05bf"
+  },
+  "campaign_gate_sha256": "c1477727a92373e6af85bcf4a08046c91aa0ba027d0860a341b57cd8b391a6ef",
+  "worker_or_scientific_source_changed": false,
+  "root_reviewed": true,
+  "job": "7204040"
+}

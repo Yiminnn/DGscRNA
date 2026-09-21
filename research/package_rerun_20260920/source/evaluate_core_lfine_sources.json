@@ -1,0 +1,14 @@
+{
+  "policy": "Frozen source and ontology mapping, no outcome-derived remapping or marker selection",
+  "sources": {
+    "handoff/lfine_compact_20260920/evaluate_lfine.py": "6f94bb83bd5118ee19e22c87044f86a68fffa0bea4be396cfd96b4a53b33a02e",
+    "handoff/g274_table4/v5_final_annotations.py": "0a3995a7a3a47c1acdbf87ac40210c90f7ca6fa5d9bff0b2bc3eca574bed1a24",
+    "handoff/g274/grid_sets.py": "a985b9650c8bf05c1337dc5adab25951ded27e4644e9d4eeeb6913af53adc66f",
+    "handoff/markers_v3/mapping_L1_v3.csv": "deb3ef872df03089809e6ec0a43db35a308cec4c2458b1531a9acae8fc666b74",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/markers/panel_L1_mapping.csv": "e0f22e753ae5003001fadfa9991cd0394b482b100f514ca87dc8b338db7ffccb",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/markers/manifest.json": "5567d1cd44a4fb85905079b338df8c439bcf777b016fd9d3d44257064faa6dc5",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/markers/libraries.json": "9efa8476a22156878c2076a9e3c1f1abd46c6218d24c18c035994cef98182eff",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/protocol/cohort.csv": "0b5061a3d62934450539ffb095cb1f1fc277dee6502ac645f39f7a628efd3e76",
+    "handoff/package_release_20260920/rerun_inventory.core_tasks.json": "32e21a22fb279090ab7324f086f0839715d19efbd6d604c163e40795d8f674be"
+  }
+}

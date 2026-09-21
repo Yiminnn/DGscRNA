@@ -1,0 +1,31 @@
+{
+  "status": "passed_bounded_independent_source_review",
+  "reviewer": "package_rerun_inventory",
+  "files": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/run.py": "0286c2513c28cd0dc05c148650cbe0f944c4cbd86e131a43df3596271779c7e7",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/revalidate.py": "2a8131fe215f827e0dc773ef74c442e613441bc726aed2cdec4cb61f4fa9a291",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/render_B.py": "f4478234450e47e442232f8973841c271e6432eed12c7ec22e9a79fbe02b6b9f",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/canonical_C.py": "9501cca31e71ca98bb387a3f4fda91836aa4423f53f7f32c23c4b71bb7491f65",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/prepare_sources.py": "462bc93121eed7fdc5a3a4dfc0618a73819ec658eb587f82084f69ddda4325bb",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/final_report/SOURCE_MANIFEST.json": "2b6b70b0198d97b0ed3456df11778a943754ed79127dee5cacdeecd637aaa4b5"
+  },
+  "checks": [
+    "A2 original CSV parser and reductions retained; exact float64 selected patient vectors and fold choices required before original inference reuse",
+    "C original fixed-partition39 configuration roster and ordered reduction/ranking retained; all patient vectors exact; non-DG comparisons explicitly archived",
+    "B408 accepted fresh terminal rows reconstructed through frozen task configurations; all132 unique neighbor conditions displayed",
+    "Only four existing notebook cells change; unchanged core/A1 metadata and exact A1 notebook checked within lock",
+    "Source hashes bound before execution and rechecked at acceptance; A1 inputs explicitly bound to same core/campaign/aggregation",
+    "Actual incomplete gate rejects before scientific imports or output creation"
+  ],
+  "resolved_findings": [
+    "Initial REPORT_LOCK sources now enter final immutable input recheck"
+  ],
+  "remaining_material_findings": [],
+  "validation_receipts": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/final_report_validation/archived_functions_v2/verification.json": "70bea755d5354dac1f3f5fda23ecfa34d33e3f3074d4e362f6d5bacd1bd7f97f",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/final_report_validation/guard_verification_v2.json": "b2bffb42de5916a44db026c3af465cb932d11068110ddda212bf35ec1dd172e4",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920/final_report_validation/fresh_pilot_metrics.json": "ed75c7cffbfea4d2d7f8ecc08eb7bcd78b991390ce7c9438369da98701ca0cb8"
+  },
+  "full_campaign_results_claimed": false,
+  "notebook_changed_by_reviewer": false
+}

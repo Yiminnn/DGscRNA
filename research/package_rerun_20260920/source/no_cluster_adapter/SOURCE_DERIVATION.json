@@ -1,0 +1,21 @@
+{
+  "scope": "IO and R library isolation only; cellwise numerical body unchanged",
+  "original_source": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering/source_v2/score_cellwise.R",
+  "original_source_sha256": "0314b44c1d4dc216d0b6f8198dfac82c22aee96ab805eae9de9911ec9eb85b90",
+  "original_protocol": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering/protocol.json",
+  "original_protocol_sha256": "94c64c2229afa3a43a7f3b9be6633cd93ac47bc7ff1c82f53fa1c9de03de7f28",
+  "source_bundle_sha256": "3bfc2b33b8bdaf3809c2ffab1dfd483c2d1f36ba86f09c42d6ff3f89fb800811",
+  "packaged_source_sha256": "3c3c0a92cacc7b6a205da75798ef45d29ae93762d681b3a4a3ff7d728c4ac6ac",
+  "changes": [
+    "Use selected Rscript base library only",
+    "Preserve string cell identifiers in CSV IO"
+  ],
+  "expected_units": 242,
+  "lambda_values": [
+    0.0,
+    0.5,
+    1.0,
+    1.5,
+    2.0
+  ]
+}

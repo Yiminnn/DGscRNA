@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "tests": 22,
+  "failures": 0,
+  "errors": 0,
+  "scheduler_mutations": 0,
+  "source_hashes": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/common.py": "f155b27df4f40c9459e211dbbea0c6d6fff66ee91bf3d4fbe92b16c4e202e844",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/receipts.py": "1b1cc9801f83d27c00091560bfc3cffa30e8e9ddfa0c4db206ddcb12ad33246d",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/worker.py": "6b9678a03ea38c8049282fde5f1526fcbb7e495408c98a2a659c311fd6863ebd",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/manage.py": "6c690b62401b97e4250b0239b72d25ed2ead4776cf386384d9cf5f871ffd05bf",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/extension_manager/array.sbatch": "7d6d2f6e3cb433c61a3a849aa6005bce3b259b493a6d0e467be7e75ee55c5b7b"
+  },
+  "selftest_sha256": "59bd843e8ce00d8f3d53547a72d7c4269e7dbcb00dd953c4443ce449beeec07d",
+  "job": "7204040",
+  "step": "331"
+}

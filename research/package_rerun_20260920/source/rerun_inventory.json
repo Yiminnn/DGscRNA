@@ -1,0 +1,559 @@
+{
+  "status": "metadata_inventory_only_not_submitted",
+  "timestamp_utc": "2026-09-21T00:45:04.320366+00:00",
+  "authorized_identity": "local yimin; no service account accessed",
+  "source_hashes": {
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/protocol/core_tasks.json": "a7c1646f5cb844d83746872ff86e45d092a86399d71705ce077bac53aa131781",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/protocol/sample_order.csv": "7df50d9006a2c1144f9080e72c2a0091123a1d12b2763b03638cfa54b2f0177c",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/protocol/cohort.csv": "0b5061a3d62934450539ffb095cb1f1fc277dee6502ac645f39f7a628efd3e76",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/protocol/patient_folds.csv": "6217f4f2008e4d4486b59c1f7c2ce3ff71481b578d0d448f50f418403921b8a6",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/markers/libraries.json": "9efa8476a22156878c2076a9e3c1f1abd46c6218d24c18c035994cef98182eff",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/protocol/embedding.json": "635979d0c62c60d3b360ddaba08c3f1ef4a757b7e2c518ac5b57ceccb74f60f4",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/comparison/analysis_units.csv": "43c33adc4f0ba3c07f4c3b58f54c3524f2c24755bf40c3a3d2ae1526a5873f71",
+    "handoff/r_reference_campaign_20260917/ptc_ablation_conditions.json": "3ef19e4458ffb65dccdd1b614c90b04e869ef59830c4375c2a1499a9f9d67b30",
+    "results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/PTC_original17.json": "fccb16c16dcd65ee894cb49ba3d34a2dbd328758cd6de25266af059895695275",
+    "handoff/NOTEBOOK_PRESENTATION_POLICY.json": "6443c7ffd12af6e2663d21d7a30d8f82fca1fc341b3745b7f43ddfa01c1cf686"
+  },
+  "core": {
+    "samples": 121,
+    "primary_samples": 97,
+    "patients": 59,
+    "primary_patients": 55,
+    "preparations": 726,
+    "partitions": 2904,
+    "marker_libraries": 16,
+    "cutoffs": 3,
+    "terminal_configurations": 139392,
+    "note": "0.90/0.70 are two endpoints from one probability fit; no-op is explicit.",
+    "existing_state": "GBM_core_complete_followups_pending"
+  },
+  "initial_parity_units": [
+    {
+      "sample": "TKU4163",
+      "budgets": [
+        "hvg2000",
+        "all"
+      ],
+      "n_cells": 178,
+      "first_route": "UMAP2_HDBSCAN_R",
+      "first_arm": "L00_mean"
+    },
+    {
+      "sample": "NL022",
+      "budgets": [
+        "hvg2000",
+        "all"
+      ],
+      "n_cells": 3628,
+      "first_route": "UMAP2_HDBSCAN_R",
+      "first_arm": "L00_mean"
+    },
+    {
+      "sample": "SN040",
+      "budgets": [
+        "hvg2000",
+        "all"
+      ],
+      "n_cells": 10135,
+      "first_route": "UMAP2_HDBSCAN_R",
+      "first_arm": "L00_mean"
+    }
+  ],
+  "package_api": "Not assumed here; parent must bind these inputs to the actual built CLI.",
+  "new_output_root": "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/package_reference_rerun_20260920",
+  "public_datasets": [
+    {
+      "dataset": "brain_GBM",
+      "n_units": 1,
+      "n_cells": 3589,
+      "n_marker_libraries": [
+        8
+      ],
+      "n_terminal_conditions": 96,
+      "input_manifests": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/brain_GBM/brain_GBM/input_manifest.json"
+      ],
+      "marker_files": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/brain_GBM.json"
+      ],
+      "eligible_for_fresh_fit": false
+    },
+    {
+      "dataset": "breast_TNBC",
+      "n_units": 1,
+      "n_cells": 24271,
+      "n_marker_libraries": [
+        10
+      ],
+      "n_terminal_conditions": 120,
+      "input_manifests": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/breast_TNBC/breast_TNBC/input_manifest.json"
+      ],
+      "marker_files": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/breast_TNBC.json"
+      ],
+      "eligible_for_fresh_fit": true
+    },
+    {
+      "dataset": "colorectal",
+      "n_units": 1,
+      "n_cells": 47107,
+      "n_marker_libraries": [
+        12
+      ],
+      "n_terminal_conditions": 144,
+      "input_manifests": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/colorectal/colorectal/input_manifest.json"
+      ],
+      "marker_files": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/colorectal.json"
+      ],
+      "eligible_for_fresh_fit": true
+    },
+    {
+      "dataset": "kidney_ccRCC",
+      "n_units": 1,
+      "n_cells": 20509,
+      "n_marker_libraries": [
+        9
+      ],
+      "n_terminal_conditions": 108,
+      "input_manifests": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/kidney_ccRCC/kidney_ccRCC/input_manifest.json"
+      ],
+      "marker_files": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/kidney_ccRCC.json"
+      ],
+      "eligible_for_fresh_fit": true
+    },
+    {
+      "dataset": "blood_DLBCL",
+      "n_units": 1,
+      "n_cells": 39713,
+      "n_marker_libraries": [
+        14
+      ],
+      "n_terminal_conditions": 168,
+      "input_manifests": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/blood_DLBCL/blood_DLBCL/input_manifest.json"
+      ],
+      "marker_files": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/blood_DLBCL.json"
+      ],
+      "eligible_for_fresh_fit": true
+    },
+    {
+      "dataset": "baron_human",
+      "n_units": 1,
+      "n_cells": 8569,
+      "n_marker_libraries": [
+        8
+      ],
+      "n_terminal_conditions": 96,
+      "input_manifests": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/baron_human/baron_human/input_manifest.json"
+      ],
+      "marker_files": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/baron_human.json"
+      ],
+      "eligible_for_fresh_fit": true
+    },
+    {
+      "dataset": "muraro",
+      "n_units": 1,
+      "n_cells": 2126,
+      "n_marker_libraries": [
+        8
+      ],
+      "n_terminal_conditions": 96,
+      "input_manifests": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/muraro/muraro/input_manifest.json"
+      ],
+      "marker_files": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/muraro.json"
+      ],
+      "eligible_for_fresh_fit": true
+    },
+    {
+      "dataset": "segerstolpe",
+      "n_units": 1,
+      "n_cells": 2209,
+      "n_marker_libraries": [
+        8
+      ],
+      "n_terminal_conditions": 96,
+      "input_manifests": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/segerstolpe/segerstolpe/input_manifest.json"
+      ],
+      "marker_files": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/segerstolpe.json"
+      ],
+      "eligible_for_fresh_fit": true
+    },
+    {
+      "dataset": "xin",
+      "n_units": 1,
+      "n_cells": 1600,
+      "n_marker_libraries": [
+        8
+      ],
+      "n_terminal_conditions": 96,
+      "input_manifests": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/xin/xin/input_manifest.json"
+      ],
+      "marker_files": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/xin.json"
+      ],
+      "eligible_for_fresh_fit": true
+    },
+    {
+      "dataset": "immune_ALL_human",
+      "n_units": 1,
+      "n_cells": 33506,
+      "n_marker_libraries": [
+        8
+      ],
+      "n_terminal_conditions": 96,
+      "input_manifests": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/immune_ALL_human/immune_ALL_human/input_manifest.json"
+      ],
+      "marker_files": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/immune_ALL_human.json"
+      ],
+      "eligible_for_fresh_fit": true
+    },
+    {
+      "dataset": "HCL",
+      "n_units": 59,
+      "n_cells": 599926,
+      "n_marker_libraries": [
+        5,
+        6,
+        7,
+        8
+      ],
+      "n_terminal_conditions": 4668,
+      "input_manifests": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultAdipose/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultAdrenalGland/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultArtery/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultAscendingColon/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultBladder/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultBoneMarrow/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultCerebellum/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultCervix/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultDuodenum/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultEpityphlon/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultEsophagus/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultFallopiantube/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultGallbladder/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultHeart/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultIleum/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultJeJunum/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultKidney/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultLiver/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultLung/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultMuscle/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultOmentum/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultPancreas/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultPeripheralBlood/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultPleura/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultProstate/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultRectum/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultSigmoidColon/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultSpleen/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultStomach/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultTemporalLobe/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultThyroid/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultTrachea/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultTransverseColon/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultUreter/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__AdultUterus/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__ChorionicVillus/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__CordBlood/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__CordBloodCD34P/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalAdrenalGland/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalBrain/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalCalvaria/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalEyes/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalFemaleGonad/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalHeart/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalIntestine/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalKidney/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalLiver/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalLung/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalMaleGonad/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalMuscle/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalPancreas/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalRib/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalSkin/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalSpinalCord/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalStomach/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__FetalThymus/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__HESC/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__NeonatalAdrenalGland/input_manifest.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/inputs/HCL/HCL__Placenta/input_manifest.json"
+      ],
+      "marker_files": [
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultAdipose.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultAdrenalGland.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultArtery.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultAscendingColon.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultBladder.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultBoneMarrow.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultCerebellum.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultCervix.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultDuodenum.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultEpityphlon.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultEsophagus.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultFallopiantube.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultGallbladder.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultHeart.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultIleum.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultJeJunum.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultKidney.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultLiver.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultLung.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultMuscle.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultOmentum.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultPancreas.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultPeripheralBlood.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultPleura.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultProstate.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultRectum.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultSigmoidColon.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultSpleen.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultStomach.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultTemporalLobe.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultThyroid.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultTrachea.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultTransverseColon.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultUreter.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__AdultUterus.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__ChorionicVillus.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__CordBlood.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__CordBloodCD34P.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalAdrenalGland.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalBrain.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalCalvaria.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalEyes.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalFemaleGonad.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalHeart.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalIntestine.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalKidney.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalLiver.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalLung.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalMaleGonad.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalMuscle.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalPancreas.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalRib.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalSkin.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalSpinalCord.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalStomach.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__FetalThymus.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__HESC.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__NeonatalAdrenalGland.json",
+        "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/r_reference_campaign_20260917/markers/HCL__Placenta.json"
+      ],
+      "eligible_for_fresh_fit": true
+    }
+  ],
+  "public_extra_sensitivity": {
+    "unit": "colorectal_CCA28_ge31",
+    "cells": 47104,
+    "donors": 28,
+    "terminal_conditions": 144,
+    "parent_full_cells": 47107,
+    "reason": "Declared >=31 cells per donor needed for CCA30; no outcome filtering."
+  },
+  "ptc": {
+    "groups": {
+      "NMT": [
+        "MT-1",
+        "MT-2",
+        "N-1",
+        "N-2"
+      ],
+      "TTU": [
+        "TU-1",
+        "TU-2",
+        "T-1",
+        "T-2"
+      ]
+    },
+    "group_cells": {
+      "NMT": 48255,
+      "TTU": 44149
+    },
+    "archived_preparation_units": 1,
+    "fresh_combined_units": 17,
+    "isolated_geometry_units": 12,
+    "total_grid_units": 30,
+    "marker_libraries": 17,
+    "cutoffs": 3,
+    "routes": 4,
+    "terminal_grid_conditions": 6120,
+    "followup_preparations": 22,
+    "followup_route_scores": 44,
+    "followup_terminal_arms": 696,
+    "followup_mlp_tasks": 50
+  },
+  "active_jobs_snapshot": [
+    {
+      "array_or_job": "7204040",
+      "name": "claude-science",
+      "state": "RUNNING",
+      "scheduler_rows": 1,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7336645",
+      "name": "claude-science",
+      "state": "PENDING",
+      "scheduler_rows": 1,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7446978",
+      "name": "reviewA_GBM",
+      "state": "RUNNING",
+      "scheduler_rows": 6,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447276",
+      "name": "reviewA_dispatch",
+      "state": "RUNNING",
+      "scheduler_rows": 1,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447416",
+      "name": "reviewA_wave00",
+      "state": "PENDING",
+      "scheduler_rows": 1,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447416",
+      "name": "reviewA_wave00",
+      "state": "RUNNING",
+      "scheduler_rows": 32,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447455",
+      "name": "reviewA_wave01",
+      "state": "PENDING",
+      "scheduler_rows": 1,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447455",
+      "name": "reviewA_wave01",
+      "state": "RUNNING",
+      "scheduler_rows": 32,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447509",
+      "name": "reviewA_wave02",
+      "state": "PENDING",
+      "scheduler_rows": 1,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447509",
+      "name": "reviewA_wave02",
+      "state": "RUNNING",
+      "scheduler_rows": 32,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447545",
+      "name": "reviewA_wave03",
+      "state": "PENDING",
+      "scheduler_rows": 1,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447545",
+      "name": "reviewA_wave03",
+      "state": "RUNNING",
+      "scheduler_rows": 32,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447580",
+      "name": "reviewA_wave04",
+      "state": "PENDING",
+      "scheduler_rows": 1,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447580",
+      "name": "reviewA_wave04",
+      "state": "RUNNING",
+      "scheduler_rows": 32,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447615",
+      "name": "reviewA_wave05",
+      "state": "PENDING",
+      "scheduler_rows": 1,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447615",
+      "name": "reviewA_wave05",
+      "state": "RUNNING",
+      "scheduler_rows": 32,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447690",
+      "name": "A1_independent_validate",
+      "state": "PENDING",
+      "scheduler_rows": 1,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447691",
+      "name": "A1_independent_validate",
+      "state": "PENDING",
+      "scheduler_rows": 1,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447692",
+      "name": "A1_independent_validate",
+      "state": "PENDING",
+      "scheduler_rows": 1,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447740",
+      "name": "reviewC_Lfine_v2",
+      "state": "RUNNING",
+      "scheduler_rows": 1,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    },
+    {
+      "array_or_job": "7447743",
+      "name": "A1_pilot_ICA_figures",
+      "state": "PENDING",
+      "scheduler_rows": 1,
+      "pending_array_rows_may_represent_multiple_tasks": true
+    }
+  ],
+  "policy": {
+    "no_job_submission": true,
+    "no_scientific_input_loading": true,
+    "no_oneDrive": true,
+    "no_notebook_html": true,
+    "preserve_all_old_results": true,
+    "new_Darmanis_fits": false,
+    "independent_Pu_cohort": false
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "status": "source_preparation_only",
+  "source_hashes": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/controls_lfine_presentation_v1/build.py": "c65fa8a03df3a90170babbe6ed2afb6799f2c5a68ac49a0b6048e3e87bfaddf7",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/comparison_lfine_v1/selection_v3/canonical.py": "b5d9d5cb2653670bfd42ee6eb79abf676ed911dbfbdece2efe1c8769937d9877",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/controls_lfine_v1/full/validation.json": "ab70ed5877af25a402c725d3929c8658e1a6dfb7994ce009cd12dcddf4ea5938",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/controls_lfine_v1/independent_verification/validation.json": "3a011a029f2a9d0e4fd49049776027744b53b7cd464602fe94328dfca86707b5",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/controls_lfine_presentation_v1/manifest.json": "f680ae768f28c9fa40e85b0c30dced440beeaa2a8547c81640f849df2cc3e988",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/controls_lfine_presentation_v1/validation.json": "44c20d609e01215877ee4be18af727cf6dd86ac375e6199fd5d591a6110c6791",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering_lfine_v1/summary/manifest.json": "fb10e69a890f5195f4d705748138b41bc396a98d75312370b256af82060f71af",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering_lfine_v1/full_validation/validation.json": "c8d3475b89b589d22934877e48cf18680a1db7469baa0f1d0b6b5a8a6cec754a",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering_lfine_v1/protocol.json": "af8f9090b11afe00c3b0a5845191e7c3a779ac67c5f9b08768eec4a355a7ddca",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering/patient_folds.csv": "6217f4f2008e4d4486b59c1f7c2ce3ff71481b578d0d448f50f418403921b8a6",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/comparison_lfine_v1/summary/manifest.json": "f5b2bcb84cbeb2c93adf45d4ad3fc17cc9e6e546eccaf31691824c504d586678",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/comparison_lfine_v1/selection_validation/validation.json": "a6622a6c2c9ad5118a131fe4eed665073b88cef11077817e8e547abc6deb475a",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/comparison_lfine_v1/selection_v3/selection_freeze.json": "c7db7af88240e9f3bd9af0c307d8e0329779e29ab0c93f2fedec95c4de09d36a",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/protocol/patient_folds.csv": "6217f4f2008e4d4486b59c1f7c2ce3ff71481b578d0d448f50f418403921b8a6",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/no_clustering_lfine_v1/aggregate.py": "2b125628e4548a30d2e618fbbeda5b294f2d37f9bed479e346075b7fce12965d",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/comparison_lfine_v1/selection_v3/select_patients.py": "89f8b5e0b717dfea712b4275debae7383f1e8bc306e26e2743d1b86c722becb5",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/compact_B_A2_handoff_v1/prepare.py": "92253e10154f6faf10bb284e0de330ab5a9944942f4e05f553e04f0ab3098ca9"
+  },
+  "derived_files": {
+    "render_B.py": "f4478234450e47e442232f8973841c271e6432eed12c7ec22e9a79fbe02b6b9f",
+    "canonical_C.py": "9501cca31e71ca98bb387a3f4fda91836aa4423f53f7f32c23c4b71bb7491f65"
+  },
+  "scientific_derivation": "B plotting/checkpoint body copied unchanged from samples declaration through REPORT write; C ordered means/rank functions and constants copied unchanged by AST.",
+  "retained_inference": "A2 and non-DG C confidence intervals/p values retained only after all relevant fresh terminal metric vectors and fixed selection mappings reproduce their frozen inputs; no new inference claimed."
+}

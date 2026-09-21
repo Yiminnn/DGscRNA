@@ -1,0 +1,11 @@
+{
+  "status": "passed_real_incomplete_campaign_guard",
+  "job": "7204040",
+  "step": "405",
+  "source_sha256": "a0d28930c981b4404c4cef045aa73028be4b49ca7d1789204e078320abafb396",
+  "notebook_before_sha256": "b3dbbd4c3a1b206fef481fce6e99a7434c841eabe29d40d59e91c1b99f09cbd3",
+  "notebook_after_sha256": "b3dbbd4c3a1b206fef481fce6e99a7434c841eabe29d40d59e91c1b99f09cbd3",
+  "completion_created": false,
+  "scientific_outputs_created": false,
+  "returncode": 0
+}

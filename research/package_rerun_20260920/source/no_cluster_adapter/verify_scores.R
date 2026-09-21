@@ -1,0 +1,6 @@
+stopifnot(nzchar(Sys.getenv('SLURM_JOB_ID')))
+.libPaths(.Library,include.site=FALSE)
+args<-commandArgs(trailingOnly=TRUE)
+left<-readRDS(args[[1]]);right<-readRDS(args[[2]])
+stopifnot(is.matrix(left),is.matrix(right),identical(left,right))
+cat('CELLWISE_SCORE_MATRIX_EXACT',nrow(left),ncol(left),'\n')

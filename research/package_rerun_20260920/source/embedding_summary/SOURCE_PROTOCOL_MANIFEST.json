@@ -1,0 +1,59 @@
+{
+  "status": "frozen_scientific_selection_body",
+  "source_hashes": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/embedding_lfine_v1/select_lfine.py": "75e0e991aa79863342ae40b94755838a89b5953e9e65e2ccf2793878a7919a72",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/embedding_lfine_v1/verify_selection.py": "a44b2bf9186063bb9f847e9cbc07ad2a2372cd7f687d5fc8772e39cda30876ba",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/reviewer_completion_20260920/embedding_lfine_v1/common.py": "8aa287a41f4428370789138f7004078bb9a14b52e03b2cb86f86dfbe2a6ab5e3",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/embedding_lfine_v1/protocol.json": "1cb3d763971a9074ef51d06305cd77bbf0d84534fda6a561b6556c315a7df334",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/protocol/embedding.json": "635979d0c62c60d3b360ddaba08c3f1ef4a757b7e2c518ac5b57ceccb74f60f4",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/protocol/embedding_selection.json": "24b0d14a9408388efc8190addc5b2f33ca3d114d1cfc2f826a839338c14e7d38",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/protocol/embedding_patient_folds.csv": "6217f4f2008e4d4486b59c1f7c2ce3ff71481b578d0d448f50f418403921b8a6"
+  },
+  "adapted_numerical_sha256": "b7303e209c082c56b48bccfc42b663d230dd9ac73461fac24f4b6db86511e8f2",
+  "measures": [
+    "lfine_macroF1",
+    "coverage",
+    "legacy_called_coverage",
+    "abstain_rate",
+    "offvocab_rate",
+    "acc_on_called",
+    "lfine_scored_class_cell_fraction",
+    "marker_vocab_oracle_upper_bound"
+  ],
+  "substitutions": {
+    "selection": [
+      [
+        "c.MEASURES",
+        "MEASURES"
+      ],
+      [
+        "n_samples*2*7*3*3",
+        "n_samples*2*7*3*2"
+      ]
+    ],
+    "independent_verification": [
+      [
+        "c.MEASURES",
+        "MEASURES"
+      ],
+      [
+        "n_samples*126",
+        "n_samples*84"
+      ]
+    ]
+  },
+  "preserved": "Training-patient selection, exact ties, bootstrap iteration order, Wilcoxon and Holm arithmetic unchanged",
+  "endpoint_difference": "Only terminal070 and terminal090 retained; marker-only diagnostics omitted. Selection remains terminal090.",
+  "independent_inference": {
+    "path": "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/embedding_summary/canonical_inference.py",
+    "sha256": "b8c0d3917e6317e7f5d9344e12a62e372fed9475c508406d0313fb5d78c9a6f4",
+    "policy": "Independently verify patient means/non-p statistics at original precision, then independently recompute Wilcoxon/Holm on lossless canonical producer vectors rebuilt from selected sample rows; no producer change or tolerance relaxation"
+  },
+  "planned_counts": {
+    "representations": 1694,
+    "candidate_threshold_rows": 44044,
+    "anchor_threshold_rows": 484,
+    "selection_rows": 420,
+    "paired_contrasts": 84
+  }
+}

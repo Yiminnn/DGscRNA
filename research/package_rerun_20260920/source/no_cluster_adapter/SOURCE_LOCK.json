@@ -1,0 +1,22 @@
+{
+  "status": "reviewed_ready_for_pilot",
+  "reviewer": "package_review_standards",
+  "review_scope": "Original R numeric body, lambda roster, fresh package backend, new input/cache confinement, exact verification then Lfine, immutable source",
+  "files": {
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/no_cluster_adapter/run.py": "0257a0cd6a4cf44418a86da8261f4d99ff75ae31200ab04e03638f4dd4474e23",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/no_cluster_adapter/score_cellwise.R": "3c3c0a92cacc7b6a205da75798ef45d29ae93762d681b3a4a3ff7d728c4ac6ac",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/no_cluster_adapter/verify_scores.R": "bdba06528dd180cf45f66ed12f10ff817a0d342b6ff3f804275f435b46b5506e",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/no_cluster_adapter/SOURCE_DERIVATION.json": "d48e9122c89d28f08f4f3931d208677e7e1e5d658e30a9f2a066bc75bdb837f0",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/no_cluster_adapter/protocol_original.json": "94c64c2229afa3a43a7f3b9be6633cd93ac47bc7ff1c82f53fa1c9de03de7f28",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering/source_v2/score_cellwise.R": "0314b44c1d4dc216d0b6f8198dfac82c22aee96ab805eae9de9911ec9eb85b90",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering/source_v2/SOURCE_MANIFEST.json": "3bfc2b33b8bdaf3809c2ffab1dfd483c2d1f36ba86f09c42d6ff3f89fb800811",
+    "/fs/scratch/PCON0080/yimin/dgscrna/results/hvg_ptc_20260916_v1/reviewer_completion_20260920/no_clustering/protocol.json": "94c64c2229afa3a43a7f3b9be6633cd93ac47bc7ff1c82f53fa1c9de03de7f28",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/geometry_control.py": "60baf2b3f22b0732921c8ee6c4108436741f5901019455029fa41b8e0f557bbe",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/core_task.py": "29ad5e39182f56974bed7a37659a21ac8c2fa714977fdc048d72b88be97932c6",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/manage_core.py": "d0761518c05e2190c2cfea947608962419445d085330d1ffd62cee2f243f2a19",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/verify_packaged_parity.py": "c386ae61da84553feaa255be4b5f1cf4958d09d32d96460765d1e1cbf0aef3d8",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_extension_lfine.py": "424fb152cee5d95990b0eae724761601199230cb55512e22bd8de5cfcdfd25a9",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_core_lfine.py": "5352acee29aa5fb6e8f1e73549ea88e2c0801e037f7460335b4baadfcb172def",
+    "/fs/scratch/PCON0080/yimin/dgscrna/handoff/package_release_20260920/evaluate_core_lfine_sources.json": "8c1ccab90c51564e01e7547b3557933604c0cb263d4207db3d686867379a6712"
+  }
+}

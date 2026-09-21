@@ -1,0 +1,82 @@
+{
+  "status": "source_adaptation_frozen_before_pilot",
+  "original_sources": {
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/source_snapshots/embedding_v8/run.py": "7a5acb9378c9cbd6f9f33aea0f2041c59106167daf24e8a6f4d0f6eb16d7da4a",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/source_snapshots/embedding_v8/adaptive_ica.py": "b0ecd92b63157e822a2fca5638cac94b67172bcd560d9a668c8c81b546534334",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/source_snapshots/embedding_v8/export_geometry.R": "eb5c61beecb5ba10aafdc2f3db2fb516c6ba220420cabb5361d17ecc033c0b82",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/source_snapshots/embedding_v8/native_geometry.R": "25bea97fef7e4f30916813cab991a79f6f003097f6a446b4e0e73353128b97f3",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/source_snapshots/embedding_v8/score_candidates.R": "dee01bce3163aa1ae2cf521124e2d163eaa0f1d6d7c15451f2aef62e76988a78",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/protocol/embedding.json": "635979d0c62c60d3b360ddaba08c3f1ef4a757b7e2c518ac5b57ceccb74f60f4",
+    "results/hvg_ptc_20260916_v1/reviewer_completion_20260920/protocol/embedding_convergence_repair_20260920_v2.json": "ad69004d945eecbe850cdf0c5c3c1f3fc8167d601e4d40092625c8ec3355e458",
+    "results/hvg_ptc_20260916_v1/paper_claim_validation_20260917/markers/libraries.json": "9efa8476a22156878c2076a9e3c1f1abd46c6218d24c18c035994cef98182eff"
+  },
+  "preserved_python_functions": [
+    "get_geometry",
+    "model_metadata",
+    "fit_model",
+    "make_embedding",
+    "make_partitions"
+  ],
+  "R_substitutions": {
+    "export_geometry.R": [
+      {
+        "before": "suppressPackageStartupMessages(library(Seurat))",
+        "after": ".libPaths(.Library,include.site=FALSE)\nsuppressPackageStartupMessages(library(Seurat))"
+      },
+      {
+        "before": "cells<-read.csv(file.path(prep,'cells.csv'),stringsAsFactors=FALSE)",
+        "after": "cells<-read.csv(file.path(prep,'cells.csv'),stringsAsFactors=FALSE,colClasses='character',na.strings=NULL)"
+      }
+    ],
+    "native_geometry.R": [
+      {
+        "before": "root<-'/fs/scratch/PCON0080/yimin/dgscrna'\n.libPaths(c(file.path(root,'results/hvg_ptc_20260916_v1/ptc_experiments/vendor_R_dbscan64'),.libPaths()))",
+        "after": ".libPaths(.Library,include.site=FALSE)"
+      },
+      {
+        "before": "cells<-read.csv(file.path(cfg$geometry,'cells.csv'),stringsAsFactors=FALSE)$cell_id",
+        "after": "cells<-read.csv(file.path(cfg$geometry,'cells.csv'),stringsAsFactors=FALSE,colClasses='character',na.strings=NULL)$cell_id"
+      },
+      {
+        "before": "e<-read.csv(cfg$embedding,stringsAsFactors=FALSE)",
+        "after": "e<-read.csv(cfg$embedding,stringsAsFactors=FALSE,colClasses=c('character','numeric','numeric'),na.strings=NULL)"
+      }
+    ],
+    "score_candidates.R": [
+      {
+        "before": "root <- '/fs/scratch/PCON0080/yimin/dgscrna'\nbase <- file.path(root,'results/hvg_ptc_20260916_v1/paper_claim_validation_20260917')\n.libPaths(c(file.path(root,'results/hvg_ptc_20260916_v1/ptc_experiments/vendor_R_dbscan64'),.libPaths()))",
+        "after": ".libPaths(.Library,include.site=FALSE)"
+      },
+      {
+        "before": "cells <- read.csv(file.path(prep,'cells.csv'),stringsAsFactors=FALSE)",
+        "after": "cells <- read.csv(file.path(prep,'cells.csv'),stringsAsFactors=FALSE,colClasses='character',na.strings=NULL)"
+      },
+      {
+        "before": "marker_path <- file.path(base,'markers','libraries.json')",
+        "after": "marker_path <- cfg$markers"
+      }
+    ]
+  },
+  "adapted_files": {
+    "export_geometry.R": "1a7923e2345947d77a77fbe13a19adc60ebee095bf6e0f626837ae9dad48ef98",
+    "native_geometry.R": "78c62fc3a55ebad07738e4b3a74e8cee00cc6909353069b1affd786e8d0425d7",
+    "score_candidates.R": "cdcd4b9c4b149d39a1471e51e977f6e9bc77c5738f561c9f8786c0ab59b28660",
+    "adaptive_ica.py": "b0ecd92b63157e822a2fca5638cac94b67172bcd560d9a668c8c81b546534334"
+  },
+  "frozen_protocols": {
+    "embedding.json": "635979d0c62c60d3b360ddaba08c3f1ef4a757b7e2c518ac5b57ceccb74f60f4",
+    "libraries.json": "9efa8476a22156878c2076a9e3c1f1abd46c6218d24c18c035994cef98182eff",
+    "embedding_convergence_repair_20260920_v2.json": "ad69004d945eecbe850cdf0c5c3c1f3fc8167d601e4d40092625c8ec3355e458"
+  },
+  "numerical_body_policy": "Python AST functions are executed unchanged from original/run.py; R changes reverse exactly to original bytes",
+  "DL_policy": "Invoke installed dgscrna.reference.backend.terminal; fresh output-local cache only",
+  "output_policy": "Separate package campaign, old result reads allowed only in verification",
+  "scope": {
+    "samples": 121,
+    "budgets": 2,
+    "spaces": 7,
+    "representation_units": 1694,
+    "partitions_per_unit": 13,
+    "terminal_conditions": 22022
+  }
+}
